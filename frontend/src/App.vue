@@ -1,6 +1,13 @@
 <script setup>
 import { ref } from 'vue'
 
+const isDark = ref(false)
+const selectedSkill = ref('')
+const terminalCommand = ref('')
+const terminalOutput = ref('Try: help, about, skills, projects, contact')
+const emailCopied = ref(false)
+const cvDataUrl = 'data:text/plain;charset=utf-8,' + encodeURIComponent('ZANDA K. — DEVELOPER\n\nGitHub: https://github.com/Zandakumsha\nSkills: Vue.js, JavaScript, HTML, CSS, Node.js, Express, MySQL, Python, Flask, Git and GitHub.\nProjects: WeConnect, Modern Tech, Lightning News.\n\nDemo CV — replace with your real CV before publishing.')
+
 const menuOpen = ref(false)
 
 const projects = [
@@ -52,10 +59,22 @@ const skills = [
 function closeMenu() {
   menuOpen.value = false
 }
+function selectSkill(skill) { selectedSkill.value = selectedSkill.value === skill ? '' : skill }
+function runTerminal() {
+  const command = terminalCommand.value.trim().toLowerCase()
+  const replies = { help: 'Commands: help · about · skills · projects · contact', about: 'I’m Zanda — a developer who loves thoughtful, human-centred digital experiences.', skills: 'Vue.js · JavaScript · HTML/CSS · Node.js · Express · MySQL · Python · Flask', projects: 'WeConnect · Modern Tech · Lightning News', contact: 'Scroll to the contact section and say hello ✳' }
+  terminalOutput.value = replies[command] || 'Command not found. Try help'
+  terminalCommand.value = ''
+}
+async function copyEmail() {
+  const email = 'hello@zandaportfolio.dev'
+  try { await navigator.clipboard.writeText(email); emailCopied.value = true }
+  catch { emailCopied.value = false; window.location.href = 'mailto:' + email }
+}
 </script>
 
 <template>
-  <div class="site-shell">
+  <div class="site-shell" :class="{ 'theme-dark': isDark }">
     <div class="announcement">
       <span class="status-dot"></span>
       <span>OPEN TO NEW OPPORTUNITIES</span>
@@ -81,8 +100,10 @@ function closeMenu() {
         <a href="#about" @click="closeMenu">About</a>
         <a href="#work" @click="closeMenu">Selected work</a>
         <a href="#skills" @click="closeMenu">Expertise</a>
+        <a href="#journey" @click="closeMenu">Journey</a>
         <a class="nav-contact" href="#contact" @click="closeMenu">Let's talk ↗</a>
       </nav>
+      <button class="theme-toggle" type="button" :aria-pressed="isDark" @click="isDark = !isDark">{{ isDark ? "☼ Light mode" : "☾ Dark mode" }}</button>
     </header>
 
     <main>
@@ -96,6 +117,7 @@ function closeMenu() {
           <div class="hero-actions">
             <a class="button-primary" href="#work">Explore my work <span>↗</span></a>
             <a class="text-link" href="#about">A little about me ↓</a>
+            <a class="cv-download" :href="cvDataUrl" download="Zanda-K-Demo-CV.txt">Download CV ↗</a>
           </div>
           <p class="little-note"><span>✳</span> Curious by nature. Intentional by design.</p>
         </div>
@@ -154,7 +176,7 @@ function closeMenu() {
             <p>Different challenges, one common thread: making technology more useful, clear and human.</p>
           </div>
           <div class="project-grid">
-            <article v-for="project in projects" :key="project.number" class="project-card">
+            <article v-for="project in projects" :key="project.number" class="project-card" :class="{ 'project-muted': selectedSkill && !project.tags.some(tag => selectedSkill.toLowerCase().includes(tag.toLowerCase()) || tag.toLowerCase().includes(selectedSkill.toLowerCase()) || project.description.toLowerCase().includes(selectedSkill.toLowerCase())) }">
               <a class="project-art" :class="project.theme" :href="project.url" target="_blank" rel="noreferrer" :aria-label="'Open ' + project.name">
                 <span class="art-label">{{ project.number }} / CASE STUDY</span>
                 <span class="art-star">✳</span>
@@ -169,6 +191,7 @@ function closeMenu() {
               <p class="project-description">{{ project.description }}</p>
               <div class="tag-list"><span v-for="tag in project.tags" :key="tag">{{ tag }}</span></div>
               <a class="project-link" :href="project.url" target="_blank" rel="noreferrer">{{ project.label }} <span>↗</span></a>
+              <details class="case-study"><summary>Inside the project +</summary><p>{{ project.name }} explores {{ project.type.toLowerCase() }}. Add your specific role, technical decisions, challenges and lessons learned here.</p></details>
             </article>
           </div>
           <div class="more-note"><span>✳</span> MORE IDEAS ARE ALWAYS IN THE MAKING <i></i></div>
@@ -184,11 +207,26 @@ function closeMenu() {
             <p class="handwritten">less noise, more meaning ✳</p>
           </div>
           <div class="skills-cloud">
-            <span v-for="skill in skills" :key="skill.name" class="skill-pill">
+            <button v-for="skill in skills" :key="skill.name" type="button" class="skill-pill" :class="{ 'skill-selected': selectedSkill === skill.name }" :aria-pressed="selectedSkill === skill.name" @click="selectSkill(skill.name)">
               <b>{{ skill.symbol }}</b>{{ skill.name }}<small>{{ skill.group }}</small>
-            </span>
-            <p class="skills-footnote"><b>♡</b> Learning is part of the craft.</p>
+            </button>
+            <p class="skills-footnote"><b>♡</b> {{ selectedSkill ? "Highlighting projects connected to " + selectedSkill + ". Select again to clear." : "Select a skill to explore related projects." }}</p>
           </div>
+        </div>
+      </section>
+
+      <section id="journey" class="journey-section page-wrap">
+        <p class="section-kicker"><span>04</span> THE JOURNEY SO FAR</p>
+        <h2 class="journey-heading">Growing into my <em>next chapter.</em></h2>
+        <p class="journey-intro">A little timeline for the work, learning and curiosity that keep shaping how I build. Update these milestones as your journey evolves.</p>
+        <div class="timeline-grid">
+          <article class="timeline-card"><small>FOUNDATIONS</small><h3>Learning by building</h3><p>Strengthening core web development skills through practical interfaces, responsive layouts and collaborative projects.</p></article>
+          <article class="timeline-card"><small>FULL-STACK</small><h3>Connecting the pieces</h3><p>Working across Vue, Node.js, Express and MySQL to understand how polished frontends connect to useful backend systems.</p></article>
+          <article class="timeline-card"><small>ALWAYS IN PROGRESS</small><h3>Curiosity, continued</h3><p>Exploring better UX, accessible interactions, clean code and ways to turn complex problems into friendly experiences.</p></article>
+        </div>
+        <div class="journey-bottom-grid">
+          <article class="explore-card"><small>CURRENTLY EXPLORING</small><h3>Small details, better experiences.</h3><p>Accessibility, interaction design, data visualisation and the little moments that make an app feel thoughtful.</p><span class="feature-label">NOW LEARNING · ALWAYS ITERATING ✳</span></article>
+          <article class="explore-card terminal-card"><small>A LITTLE DEVELOPER MAGIC</small><h3>Curious? Open the terminal.</h3><div class="terminal-window"><div class="terminal-dots"><i></i><i></i><i></i></div><p class="terminal-prompt">zanda@portfolio:~$ <span>help</span></p><p class="terminal-output" aria-live="polite">{{ terminalOutput }}</p><form @submit.prevent="runTerminal"><label for="terminal-command">zanda@portfolio:~$ </label><input id="terminal-command" v-model="terminalCommand" autocomplete="off" placeholder="type a command…" /></form></div><span class="feature-label">TRY: help · about · skills · projects · contact</span></article>
         </div>
       </section>
 
@@ -204,6 +242,7 @@ function closeMenu() {
           <div class="social-links">
             <a href="https://github.com/Zandakumsha" target="_blank" rel="noreferrer">GITHUB ↗</a><span>·</span>
             <a href="mailto:hello@zandaportfolio.dev">EMAIL ↗</a><span>·</span>
+            <button class="copy-email" type="button" @click="copyEmail">{{ emailCopied ? "EMAIL COPIED ✓" : "COPY EMAIL" }}</button><span>·</span>
             <a href="#home">BACK TO TOP ↑</a>
           </div>
         </div>
@@ -244,11 +283,11 @@ html { scroll-behavior: smooth; scroll-padding-top: 90px; }
 body { margin: 0; min-width: 320px; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; }
-.site-shell { min-height: 100vh; overflow: hidden; background: var(--paper); }
+.site-shell { min-height: 100vh; overflow: clip; background: var(--paper); }
 .announcement { min-height: 34px; padding: 7px 16px; background: var(--soft); display: flex; align-items: center; justify-content: center; gap: 10px; font: 9px var(--mono); letter-spacing: .1em; color: var(--muted); }
 .status-dot { width: 6px; height: 6px; border-radius: 50%; background: #8c9c7d; box-shadow: 0 0 0 3px #8c9c7d2a; }
 .announcement-flower { color: var(--rose); }
-.topbar { position: relative; z-index: 10; max-width: 1200px; height: 84px; padding: 0 34px; margin: auto; display: flex; align-items: center; justify-content: space-between; }
+.topbar { position: sticky; top: 0; z-index: 50; max-width: 1200px; height: 84px; padding: 0 34px; margin: auto; display: flex; align-items: center; justify-content: space-between; gap: 18px; background: var(--paper); border-bottom: 1px solid transparent; transition: background .2s ease, border-color .2s ease; }
 .brand { display: flex; align-items: center; gap: 11px; }
 .brand-mark { color: var(--rose); font: italic 39px var(--serif); }
 .brand-copy { font-size: 12px; font-weight: 700; letter-spacing: .14em; }
@@ -257,6 +296,8 @@ button { font: inherit; }
 .navigation a { transition: color .2s ease; }
 .navigation a:hover { color: var(--rose); }
 .navigation .nav-contact { padding: 11px 16px; border: 1px solid #cda5a5; border-radius: 30px; color: var(--rose); }
+.theme-toggle { flex-shrink: 0; border: 1px solid var(--line); border-radius: 24px; padding: 10px 12px; background: transparent; color: var(--ink); font-size: 10px; cursor: pointer; }
+.cv-download { border-bottom: 1px solid #cda5a5; padding-bottom: 5px; color: var(--rose); font-size: 10px; }
 .menu-toggle { display: none; border: 1px solid var(--line); border-radius: 22px; padding: 9px 13px; color: var(--ink); background: transparent; }
 .page-wrap { max-width: 1130px; padding-right: 34px; padding-left: 34px; margin: 0 auto; }
 .hero { position: relative; display: grid; grid-template-columns: 1fr .95fr; align-items: center; gap: 24px; min-height: 605px; padding-top: 22px; padding-bottom: 65px; }
@@ -339,6 +380,13 @@ h1 em, h2 em { color: var(--rose); font-family: var(--serif); font-weight: 500; 
 .tag-list { display: flex; flex-wrap: wrap; gap: 6px; margin: 16px 0; }
 .tag-list span { padding: 6px 9px; border: 1px solid var(--line); border-radius: 20px; color: var(--muted); font: 8px var(--mono); }
 .project-link { display: inline-flex; gap: 12px; padding-bottom: 6px; border-bottom: 1px solid #cda5a5; color: var(--rose); font-size: 10px; }
+.case-study { margin-top: 12px; padding: 11px 12px; border: 1px solid var(--line); border-radius: 4px 14px 4px 14px; color: var(--muted); font-size: 10px; line-height: 1.8; }
+.case-study summary { color: var(--rose); cursor: pointer; }
+.case-study p { min-height: 0; margin: 9px 0 0; }
+.project-card { transition: opacity .2s ease, transform .2s ease; }
+.project-card.project-muted { opacity: .38; }
+.skill-pill { border-color: var(--line); background: transparent; font-family: inherit; cursor: pointer; transition: background .2s ease, border-color .2s ease; }
+.skill-pill:hover, .skill-pill.skill-selected { border-color: var(--rose); background: var(--soft); }
 .more-note { display: flex; align-items: center; gap: 12px; margin-top: 48px; color: var(--muted); font: 8px var(--mono); letter-spacing: .12em; }
 .more-note span { color: var(--rose); font-size: 17px; }
 .more-note i { height: 1px; flex: 1; background: var(--line); }
@@ -351,6 +399,29 @@ h1 em, h2 em { color: var(--rose); font-family: var(--serif); font-weight: 500; 
 .skill-pill small { padding-left: 7px; border-left: 1px solid var(--line); font: 8px var(--mono); }
 .skills-footnote { width: 100%; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font: italic 13px var(--serif); }
 .skills-footnote b { margin-right: 6px; color: var(--rose); }
+.journey-section { padding-top: 100px; padding-bottom: 100px; }
+.journey-heading { max-width: 650px; margin: 24px 0 15px; font-size: clamp(38px, 5vw, 56px); font-weight: 500; letter-spacing: -.06em; line-height: 1.12; }
+.journey-intro { max-width: 530px; color: var(--muted); font-size: 12px; line-height: 1.9; }
+.timeline-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 15px; margin-top: 32px; }
+.timeline-card, .explore-card { padding: 23px; border: 1px solid var(--line); border-radius: 5px 22px 5px 22px; background: var(--paper); }
+.timeline-card small, .explore-card > small { color: var(--rose); font: 8px var(--mono); letter-spacing: .1em; }
+.timeline-card h3, .explore-card h3 { margin: 13px 0 8px; font: 24px var(--serif); }
+.timeline-card p, .explore-card p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.8; }
+.journey-bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+.feature-label { display: block; margin-top: 18px; color: var(--muted); font: 8px var(--mono); letter-spacing: .08em; }
+.terminal-window { margin-top: 15px; padding: 17px; border-radius: 5px 18px 5px 18px; background: #292323; color: #eadbd5; font: 10px/1.8 var(--mono); }
+.terminal-dots { display: flex; gap: 5px; margin-bottom: 13px; }
+.terminal-dots i { width: 7px; height: 7px; border-radius: 50%; background: #c98f8b; }
+.terminal-prompt span, .terminal-window label { color: #b7c9a5; }
+.terminal-output { min-height: 20px; color: #b7c9a5 !important; overflow-wrap: anywhere; }
+.terminal-window form { display: flex; gap: 6px; align-items: center; }
+.terminal-window input { width: 100%; min-width: 0; border: 0; border-bottom: 1px solid #65504d; outline: none; padding: 7px 0; background: transparent; color: #fff; font: 10px var(--mono); }
+.copy-email { border: 0; padding: 0; background: transparent; color: inherit; font: inherit; cursor: pointer; }
+.site-shell.theme-dark { --paper: #201b1b; --ink: #f7eeea; --muted: #c2afaa; --rose: #e0a5ad; --line: #4b3b3b; --soft: #302626; --sage: #424b3c; color-scheme: dark; }
+.site-shell.theme-dark .topbar { border-color: var(--line); }
+.site-shell.theme-dark .skills-cloud { background: #2a2222; }
+.site-shell.theme-dark .green-word { color: #b5c9a4; }
+.site-shell.theme-dark .green-word::after { background: #46523e; }
 .contact-section { position: relative; overflow: hidden; padding: 80px 0 65px; background: #413332; color: #fbf5f0; text-align: center; }
 .contact-inner { position: relative; z-index: 1; }
 .contact-section .section-kicker { justify-content: center; color: #c7aaa2; }
@@ -373,6 +444,7 @@ h1 em, h2 em { color: var(--rose); font-family: var(--serif); font-weight: 500; 
 @media (max-width: 850px) {
   .topbar { padding: 0 25px; }
   .navigation { gap: 18px; }
+  .theme-toggle { padding: 9px 10px; }
   .hero { min-height: 550px; }
   .hero-art { height: 420px; }
   .project-grid { gap: 14px; }
@@ -385,12 +457,13 @@ h1 em, h2 em { color: var(--rose); font-family: var(--serif); font-weight: 500; 
 }
 @media (max-width: 640px) {
   .announcement { gap: 7px; font-size: 7px; }
-  .topbar { height: 73px; padding: 0 21px; }
+  .topbar { height: 73px; padding: 0 21px; gap: 8px; }
+  .theme-toggle { margin-left: auto; padding: 8px 9px; font-size: 9px; }
   .brand-mark { font-size: 34px; }
   .brand-copy { font-size: 10px; }
   .brand-copy small { font-size: 7px; }
   .menu-toggle { display: block; }
-  .navigation { position: absolute; top: 64px; right: 14px; left: 14px; display: none; flex-direction: column; align-items: stretch; gap: 0; padding: 14px; border: 1px solid var(--line); border-radius: 7px 22px 7px 22px; background: var(--paper); box-shadow: 0 15px 35px #4b302015; }
+  .navigation { position: absolute; top: 72px; right: 14px; left: 14px; display: none; flex-direction: column; align-items: stretch; gap: 0; padding: 14px; border: 1px solid var(--line); border-radius: 7px 22px 7px 22px; background: var(--paper); box-shadow: 0 15px 35px #4b302015; }
   .navigation.navigation-open { display: flex; }
   .navigation a { padding: 13px 8px; border-bottom: 1px solid var(--line); }
   .navigation .nav-contact { margin-top: 8px; text-align: center; }
@@ -428,6 +501,10 @@ h1 em, h2 em { color: var(--rose); font-family: var(--serif); font-weight: 500; 
   .project-description { min-height: 0; max-width: 390px; }
   .more-note { gap: 12px; margin-top: 39px; font-size: 7px; letter-spacing: .06em; }
   .skills-grid { grid-template-columns: 1fr; gap: 27px; padding-top: 35px; }
+  .journey-section { padding-top: 72px; padding-bottom: 72px; }
+  .timeline-grid, .journey-bottom-grid { grid-template-columns: 1fr; }
+  .timeline-card, .explore-card { padding: 20px; }
+  .theme-toggle { font-size: 8px; }
   .skills-intro > p:not(.handwritten) { margin-top: 17px; }
   .skills-cloud { gap: 8px; padding: 16px; }
   .skill-pill { gap: 6px; padding: 10px 11px; font-size: 9px; }
