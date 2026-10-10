@@ -1,26 +1,447 @@
-<script setup></script>
+<script setup>
+import { ref } from 'vue'
+
+const menuOpen = ref(false)
+
+const projects = [
+  {
+    number: '01',
+    initials: 'WC',
+    theme: 'rose',
+    type: 'FULL-STACK · VUE / NODE / MYSQL',
+    name: 'WeConnect',
+    description: 'A supplier network experience bringing buyers, suppliers and everyday business operations into one clear workspace.',
+    tags: ['Vue.js', 'Express', 'MySQL'],
+    url: 'https://github.com/zahraamoerat/Project-3-E-Commerce1',
+    label: 'Explore project',
+  },
+  {
+    number: '02',
+    initials: 'MT',
+    theme: 'lavender',
+    type: 'HR TECHNOLOGY · WEB APPLICATION',
+    name: 'Modern Tech',
+    description: 'An HR management experience for employee profiles, leave requests and calendars, with thoughtful workflows at its core.',
+    tags: ['JavaScript', 'Node.js', 'MySQL'],
+    url: 'https://github.com/Zandakumsha/Modern_Tech_2',
+    label: 'Explore project',
+  },
+  {
+    number: '03',
+    initials: 'LN',
+    theme: 'sage',
+    type: 'DATA · WEB SCRAPING · ANALYTICS',
+    name: 'Lightning News',
+    description: 'A news analytics dashboard that brings scraped stories together with search, filtering and export-friendly views.',
+    tags: ['Python', 'Flask', 'Vue.js'],
+    url: 'https://lightning-news.netlify.app/',
+    label: 'View live demo',
+  },
+]
+
+const skills = [
+  { name: 'Vue.js', group: 'Frontend', symbol: '✳' },
+  { name: 'JavaScript', group: 'Frontend', symbol: '⌘' },
+  { name: 'HTML & CSS', group: 'Frontend', symbol: '◇' },
+  { name: 'Node.js & Express', group: 'Backend', symbol: '↗' },
+  { name: 'MySQL', group: 'Data', symbol: '⊹' },
+  { name: 'Python & Flask', group: 'Backend', symbol: '✿' },
+  { name: 'Git & GitHub', group: 'Workflow', symbol: '⌘' },
+]
+
+function closeMenu() {
+  menuOpen.value = false
+}
+</script>
 
 <template>
-  <header>
-    <span class="logo"><a href="https://ibb.co/ymrDXytR"><img src="https://i.ibb.co/kVtpx8jy/background-removed.png" alt="background removed" border="0"></a>My Portfolio</span>
-    <nav>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-  <main>
-    <section>
+  <div class="site-shell">
+    <div class="announcement">
+      <span class="status-dot"></span>
+      <span>OPEN TO NEW OPPORTUNITIES</span>
+      <span class="announcement-flower">✳</span>
+      <span>Building thoughtful things for the web</span>
+    </div>
 
-    </section>
-  </main>
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="Zanda home" @click="closeMenu">
+        <span class="brand-mark">z.</span>
+        <span class="brand-copy">ZANDA K.<small>DEVELOPER & CREATIVE THINKER</small></span>
+      </a>
+      <button
+        class="menu-toggle"
+        type="button"
+        :aria-expanded="menuOpen"
+        aria-controls="main-navigation"
+        @click="menuOpen = !menuOpen"
+      >
+        {{ menuOpen ? 'Close −' : 'Menu +' }}
+      </button>
+      <nav id="main-navigation" class="navigation" :class="{ 'navigation-open': menuOpen }" aria-label="Main navigation">
+        <a href="#about" @click="closeMenu">About</a>
+        <a href="#work" @click="closeMenu">Selected work</a>
+        <a href="#skills" @click="closeMenu">Expertise</a>
+        <a class="nav-contact" href="#contact" @click="closeMenu">Let's talk ↗</a>
+      </nav>
+    </header>
 
+    <main>
+      <section id="home" class="hero page-wrap">
+        <div class="hero-copy">
+          <p class="eyebrow">HELLO, WORLD. I'M ZANDA.</p>
+          <h1>Soft heart.<br />Sharp <em>mind.</em><br />Beautifully<br />built <span class="green-word">code.</span></h1>
+          <p class="hero-description">
+            I'm a developer who loves turning complex ideas into thoughtful, intuitive digital experiences — one considered detail at a time.
+          </p>
+          <div class="hero-actions">
+            <a class="button-primary" href="#work">Explore my work <span>↗</span></a>
+            <a class="text-link" href="#about">A little about me ↓</a>
+          </div>
+          <p class="little-note"><span>✳</span> Curious by nature. Intentional by design.</p>
+        </div>
+
+        <div class="hero-art" aria-label="Portrait and creative details">
+          <div class="portrait-backdrop"></div>
+          <div class="portrait-frame">
+            <img
+              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=85"
+              alt="Editorial portrait representing a confident woman"
+            />
+            <span class="portrait-caption">01 / THE PERSON BEHIND THE PIXELS</span>
+          </div>
+          <div class="creative-sticker"><b>✳</b><span>CREATIVE<br />THINKING</span></div>
+          <div class="intention-sticker">✳<br />made with<br /><em>intention</em></div>
+          <div class="orbit-line"></div>
+          <span class="hero-spark">✴</span>
+        </div>
+        <div class="scroll-cue"><span>SCROLL TO DISCOVER</span><i></i><span>01 — 04</span></div>
+      </section>
+
+      <div class="manifesto">
+        <div class="manifesto-inner">
+          <span class="mini-label">MY LITTLE PHILOSOPHY</span>
+          <p>Good technology should feel <em>human.</em><br />Great design should feel <em>effortless.</em></p>
+          <span class="manifesto-flower">✳</span>
+        </div>
+      </div>
+
+      <section id="about" class="page-wrap content-section">
+        <p class="section-kicker"><span>01</span> A NOTE ABOUT ME</p>
+        <div class="about-grid">
+          <div>
+            <h2>Equal parts<br /><em>logic</em> & lovely.</h2>
+            <p class="handwritten">and always learning ↗</p>
+          </div>
+          <div class="body-copy">
+            <p class="statement">I believe the best digital experiences live where clean engineering meets a little bit of magic.</p>
+            <p>I'm Zanda, a developer growing my craft across frontend and backend technologies. I enjoy shaping ideas into useful products, untangling tricky problems and making the details feel just as considered as the big picture.</p>
+            <p>My approach is curious, collaborative and people-first. I'm here to keep learning, build with purpose and create technology that makes someone's day a little easier.</p>
+            <a class="under-link" href="#contact">Have a project in mind? <span>Let's connect ↗</span></a>
+          </div>
+        </div>
+        <div class="values-row">
+          <div class="value-item"><span class="value-icon">✳</span><div><strong>Thoughtful by design</strong><small>Details matter. People matter more.</small></div></div>
+          <div class="value-item"><span class="value-icon">♡</span><div><strong>Always evolving</strong><small>Curiosity is part of the process.</small></div></div>
+          <div class="value-item"><span class="value-icon">⌘</span><div><strong>Built to be useful</strong><small>Beautiful is better when it works.</small></div></div>
+        </div>
+      </section>
+
+      <section id="work" class="work-section">
+        <div class="page-wrap content-section">
+          <p class="section-kicker"><span>02</span> A FEW THINGS I'VE BUILT</p>
+          <div class="work-heading">
+            <h2>A collection of<br /><em>curiosity.</em></h2>
+            <p>Different challenges, one common thread: making technology more useful, clear and human.</p>
+          </div>
+          <div class="project-grid">
+            <article v-for="project in projects" :key="project.number" class="project-card">
+              <a class="project-art" :class="project.theme" :href="project.url" target="_blank" rel="noreferrer" :aria-label="'Open ' + project.name">
+                <span class="art-label">{{ project.number }} / CASE STUDY</span>
+                <span class="art-star">✳</span>
+                <div class="mock-window">
+                  <div class="window-bar"><i></i><i></i><i></i><small>studio / {{ project.initials.toLowerCase() }}</small></div>
+                  <div class="window-content"><b>{{ project.initials }}</b><span class="mock-lines"><i></i><i></i><i></i></span><span class="mock-arrow">↗</span></div>
+                </div>
+                <span class="art-foot">VIEW PROJECT ↗</span>
+              </a>
+              <p class="project-meta">{{ project.type }}</p>
+              <h3>{{ project.name }}</h3>
+              <p class="project-description">{{ project.description }}</p>
+              <div class="tag-list"><span v-for="tag in project.tags" :key="tag">{{ tag }}</span></div>
+              <a class="project-link" :href="project.url" target="_blank" rel="noreferrer">{{ project.label }} <span>↗</span></a>
+            </article>
+          </div>
+          <div class="more-note"><span>✳</span> MORE IDEAS ARE ALWAYS IN THE MAKING <i></i></div>
+        </div>
+      </section>
+
+      <section id="skills" class="page-wrap content-section">
+        <p class="section-kicker"><span>03</span> TOOLS OF MY TRADE</p>
+        <div class="skills-grid">
+          <div class="skills-intro">
+            <h2>My kind of<br /><em>toolkit.</em></h2>
+            <p>A growing set of tools for bringing thoughtful ideas to life — from the pixels people see to the systems working behind the scenes.</p>
+            <p class="handwritten">less noise, more meaning ✳</p>
+          </div>
+          <div class="skills-cloud">
+            <span v-for="skill in skills" :key="skill.name" class="skill-pill">
+              <b>{{ skill.symbol }}</b>{{ skill.name }}<small>{{ skill.group }}</small>
+            </span>
+            <p class="skills-footnote"><b>♡</b> Learning is part of the craft.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact-section">
+        <div class="contact-orbit"></div>
+        <div class="page-wrap contact-inner">
+          <p class="section-kicker"><span>04</span> THE NEXT CHAPTER</p>
+          <div class="contact-flower">✳</div>
+          <p class="contact-overline">GOOD THINGS START WITH A HELLO</p>
+          <h2>Have a good feeling<br />about <em>this?</em></h2>
+          <p class="contact-description">I'm always happy to connect with kind people, curious teams and ideas worth building. Let's make something meaningful.</p>
+          <a class="contact-button" href="mailto:hello@zandaportfolio.dev">Let's make it happen ↗</a>
+          <div class="social-links">
+            <a href="https://github.com/Zandakumsha" target="_blank" rel="noreferrer">GITHUB ↗</a><span>·</span>
+            <a href="mailto:hello@zandaportfolio.dev">EMAIL ↗</a><span>·</span>
+            <a href="#home">BACK TO TOP ↑</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand-mark footer-mark" href="#home">z.</a>
+      <p>Designed with care <span>♡</span> and a little bit of caffeine.</p>
+      <small>© 2026 ZANDA K.</small>
+    </footer>
+  </div>
 </template>
 
-<style scoped>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,500;1,600&display=swap');
 
+:root {
+  font-family: 'DM Sans', sans-serif;
+  color: #382f2e;
+  background: #fbf8f5;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --paper: #fbf8f5;
+  --ink: #382f2e;
+  --muted: #887977;
+  --rose: #a9656e;
+  --line: #e9dfd9;
+  --soft: #f0e6e0;
+  --sage: #dfe4d7;
+  --serif: 'Playfair Display', Georgia, serif;
+  --mono: 'DM Mono', monospace;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+body { margin: 0; min-width: 320px; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; }
+.site-shell { min-height: 100vh; overflow: hidden; background: var(--paper); }
+.announcement { min-height: 34px; padding: 7px 16px; background: var(--soft); display: flex; align-items: center; justify-content: center; gap: 10px; font: 9px var(--mono); letter-spacing: .1em; color: var(--muted); }
+.status-dot { width: 6px; height: 6px; border-radius: 50%; background: #8c9c7d; box-shadow: 0 0 0 3px #8c9c7d2a; }
+.announcement-flower { color: var(--rose); }
+.topbar { position: relative; z-index: 10; max-width: 1200px; height: 84px; padding: 0 34px; margin: auto; display: flex; align-items: center; justify-content: space-between; }
+.brand { display: flex; align-items: center; gap: 11px; }
+.brand-mark { color: var(--rose); font: italic 39px var(--serif); }
+.brand-copy { font-size: 12px; font-weight: 700; letter-spacing: .14em; }
+.brand-copy small { display: block; margin-top: 5px; color: var(--muted); font: 8px var(--mono); letter-spacing: .08em; }
+.navigation { display: flex; align-items: center; gap: 30px; color: var(--muted); font-size: 12px; }
+.navigation a { transition: color .2s ease; }
+.navigation a:hover { color: var(--rose); }
+.navigation .nav-contact { padding: 11px 16px; border: 1px solid #cda5a5; border-radius: 30px; color: var(--rose); }
+.menu-toggle { display: none; border: 1px solid var(--line); border-radius: 22px; padding: 9px 13px; color: var(--ink); background: transparent; }
+.page-wrap { max-width: 1130px; padding-right: 34px; padding-left: 34px; margin: 0 auto; }
+.hero { position: relative; display: grid; grid-template-columns: 1fr .95fr; align-items: center; gap: 24px; min-height: 605px; padding-top: 22px; padding-bottom: 65px; }
+.eyebrow, .section-kicker { display: flex; align-items: center; gap: 11px; color: var(--muted); font: 9px var(--mono); letter-spacing: .14em; }
+.eyebrow::before { width: 27px; height: 1px; background: var(--rose); content: ''; }
+.hero h1 { margin: 27px 0 20px; font-size: clamp(58px, 7.1vw, 83px); font-weight: 500; letter-spacing: -.075em; line-height: .99; }
+h1 em, h2 em { color: var(--rose); font-family: var(--serif); font-weight: 500; letter-spacing: -.06em; }
+.green-word { position: relative; color: #7e906d; }
+.green-word::after { position: absolute; z-index: 0; right: 0; bottom: 2px; left: 0; height: 8px; border-radius: 50%; background: var(--sage); content: ''; transform: rotate(-2deg); }
+.hero-description { max-width: 390px; margin: 24px 0; color: var(--muted); font-size: 13px; line-height: 1.95; }
+.hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 23px; }
+.button-primary, .contact-button { display: inline-flex; align-items: center; gap: 22px; padding: 15px 20px; border-radius: 4px 18px 4px 18px; background: var(--rose); color: #fff9f6; font-size: 11px; transition: transform .2s ease; }
+.button-primary:hover, .contact-button:hover { transform: translateY(-2px); }
+.text-link { color: var(--muted); font-size: 11px; }
+.little-note { margin-top: 38px; color: var(--muted); font: 9px var(--mono); }
+.little-note span { margin-right: 7px; color: var(--rose); font-size: 16px; }
+.hero-art { position: relative; display: grid; place-items: center; height: 485px; }
+.portrait-backdrop { position: absolute; top: 9%; right: 8%; width: 75%; height: 81%; border-radius: 48% 48% 12px 12px; background: #ead9d0; transform: rotate(4deg); }
+.portrait-frame { position: relative; z-index: 1; width: 67%; height: 83%; overflow: hidden; border-radius: 48% 48% 7px 7px; background: linear-gradient(145deg, #b68d7f, #e4c8bb 55%, #6e6358); }
+.portrait-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; filter: saturate(.78); }
+.portrait-caption { position: absolute; right: 12px; bottom: 18px; left: 17px; color: #fff7f1; font: 7px var(--mono); letter-spacing: .07em; text-shadow: 0 1px 5px #222; }
+.creative-sticker { position: absolute; z-index: 2; top: 14%; right: 2%; display: flex; align-items: center; padding: 13px 15px; border: 1px solid var(--line); border-radius: 5px 17px 5px 17px; background: var(--paper); box-shadow: 0 12px 28px #62474115; color: var(--muted); font: 8px/1.7 var(--mono); transform: rotate(7deg); }
+.creative-sticker b { margin-right: 7px; color: var(--rose); font-size: 25px; }
+.intention-sticker { position: absolute; z-index: 2; bottom: 12%; left: 2%; display: grid; width: 100px; height: 100px; place-content: center; border-radius: 50%; background: var(--sage); color: #59654e; text-align: center; font: 9px/1.4 var(--mono); transform: rotate(-9deg); }
+.intention-sticker em { font: italic 16px var(--serif); }
+.orbit-line { position: absolute; width: 105%; height: 26%; border: 1px solid #d9b9b7; border-radius: 50%; transform: rotate(-31deg); }
+.hero-spark { position: absolute; right: 9%; bottom: 8%; color: var(--rose); font-size: 27px; }
+.scroll-cue { position: absolute; right: 34px; bottom: 20px; left: 34px; display: flex; align-items: center; gap: 12px; color: var(--muted); font: 8px var(--mono); letter-spacing: .13em; }
+.scroll-cue i { width: 42px; height: 1px; background: var(--line); }
+.scroll-cue span:last-child { margin-left: auto; }
+.manifesto { border-block: 1px solid var(--line); background: var(--soft); }
+.manifesto-inner { display: flex; max-width: 1050px; min-height: 100px; align-items: center; justify-content: space-between; gap: 22px; margin: auto; padding: 22px 34px; }
+.mini-label { max-width: 110px; color: var(--muted); font: 8px var(--mono); letter-spacing: .12em; }
+.manifesto p { margin: 0; font: clamp(18px, 2.4vw, 22px)/1.5 var(--serif); text-align: center; }
+.manifesto em { color: var(--rose); }
+.manifesto-flower { color: var(--rose); font-size: 24px; }
+.content-section { padding-top: 105px; padding-bottom: 105px; }
+.section-kicker span { color: var(--rose); }
+.section-kicker::after { width: 28px; height: 1px; background: #d5b6b1; content: ''; }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 85px; padding: 50px 0 58px; }
+.about-grid h2, .work-heading h2, .skills-intro h2 { margin: 0; font-size: clamp(45px, 5vw, 62px); font-weight: 500; letter-spacing: -.065em; line-height: 1.1; }
+.handwritten { margin: 25px 0 0 50px; color: #849274; font: italic 17px var(--serif); transform: rotate(-5deg); }
+.body-copy { max-width: 445px; color: var(--muted); font-size: 12px; line-height: 2; }
+.body-copy .statement { margin-top: 0; color: var(--ink); font: 19px/1.65 var(--serif); }
+.under-link { display: inline-block; margin-top: 8px; padding-bottom: 7px; border-bottom: 1px solid #c89ba0; color: var(--rose); font-size: 11px; }
+.values-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding-top: 27px; border-top: 1px solid var(--line); }
+.value-item { display: flex; align-items: center; gap: 12px; }
+.value-icon { display: grid; width: 38px; height: 38px; flex-shrink: 0; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: var(--rose); font-size: 17px; }
+.value-item strong, .value-item small { display: block; }
+.value-item strong { margin-bottom: 6px; font-size: 11px; }
+.value-item small { color: var(--muted); font-size: 9px; }
+.work-section { border-block: 1px solid var(--line); background: var(--soft); }
+.work-heading { display: flex; align-items: end; justify-content: space-between; gap: 30px; padding: 45px 0; }
+.work-heading p { max-width: 300px; margin: 0 0 5px; color: var(--muted); font-size: 12px; line-height: 1.9; }
+.project-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.project-art { position: relative; display: flex; height: 270px; flex-direction: column; justify-content: space-between; overflow: hidden; padding: 16px; border-radius: 4px 24px 4px 24px; transition: transform .25s ease; }
+.project-art:hover { transform: translateY(-5px); }
+.project-art.rose { background: #e6c7c3; color: #714d4b; }
+.project-art.lavender { background: #d9d5e3; color: #5c566e; }
+.project-art.sage { background: #d8dfcf; color: #59644f; }
+.art-label, .art-foot { z-index: 1; font: 8px var(--mono); letter-spacing: .1em; }
+.art-foot { align-self: end; font-size: 7px; }
+.art-star { position: absolute; top: 22px; right: -8px; font-size: 70px; opacity: .22; }
+.mock-window { z-index: 1; width: 90%; align-self: center; overflow: hidden; border-radius: 4px 12px 4px 12px; background: #fcf8f3ed; box-shadow: 0 15px 35px #49373316; transform: rotate(-2deg); }
+.window-bar { display: flex; height: 28px; align-items: center; gap: 4px; padding: 0 10px; border-bottom: 1px solid #e9dfd8; }
+.window-bar i { width: 5px; height: 5px; border-radius: 50%; background: #d8b1ae; }
+.window-bar i:nth-child(2) { background: #d9d7c0; }
+.window-bar i:nth-child(3) { background: #b7c6aa; }
+.window-bar small { margin-left: auto; color: #9b8984; font: 7px var(--mono); }
+.window-content { display: flex; align-items: center; gap: 12px; padding: 20px 15px; color: #8f6568; }
+.window-content > b { font: 33px var(--serif); }
+.mock-lines { display: grid; flex: 1; gap: 7px; }
+.mock-lines i { height: 4px; border-radius: 5px; background: #e5d8d0; }
+.mock-lines i:nth-child(2) { width: 76%; }
+.mock-lines i:nth-child(3) { width: 54%; }
+.mock-arrow { font-size: 19px; }
+.project-meta { margin: 22px 0 0; color: var(--muted); font: 7px var(--mono); letter-spacing: .08em; }
+.project-card h3 { margin: 11px 0; font: 28px var(--serif); }
+.project-description { min-height: 78px; margin: 0; color: var(--muted); font-size: 11px; line-height: 1.9; }
+.tag-list { display: flex; flex-wrap: wrap; gap: 6px; margin: 16px 0; }
+.tag-list span { padding: 6px 9px; border: 1px solid var(--line); border-radius: 20px; color: var(--muted); font: 8px var(--mono); }
+.project-link { display: inline-flex; gap: 12px; padding-bottom: 6px; border-bottom: 1px solid #cda5a5; color: var(--rose); font-size: 10px; }
+.more-note { display: flex; align-items: center; gap: 12px; margin-top: 48px; color: var(--muted); font: 8px var(--mono); letter-spacing: .12em; }
+.more-note span { color: var(--rose); font-size: 17px; }
+.more-note i { height: 1px; flex: 1; background: var(--line); }
+.skills-grid { display: grid; grid-template-columns: .8fr 1.2fr; align-items: center; gap: 70px; padding-top: 50px; }
+.skills-intro > p:not(.handwritten) { max-width: 315px; margin-top: 22px; color: var(--muted); font-size: 12px; line-height: 2; }
+.skills-intro .handwritten { margin-left: 0; }
+.skills-cloud { display: flex; flex-wrap: wrap; gap: 10px; padding: 26px; border: 1px solid var(--line); border-radius: 5px 30px 5px 30px; background: #fffdfa; }
+.skill-pill { display: flex; align-items: center; gap: 8px; padding: 12px 13px; border: 1px solid var(--line); border-radius: 30px; color: var(--muted); font-size: 10px; }
+.skill-pill b { color: var(--rose); font-size: 14px; }
+.skill-pill small { padding-left: 7px; border-left: 1px solid var(--line); font: 8px var(--mono); }
+.skills-footnote { width: 100%; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font: italic 13px var(--serif); }
+.skills-footnote b { margin-right: 6px; color: var(--rose); }
+.contact-section { position: relative; overflow: hidden; padding: 80px 0 65px; background: #413332; color: #fbf5f0; text-align: center; }
+.contact-inner { position: relative; z-index: 1; }
+.contact-section .section-kicker { justify-content: center; color: #c7aaa2; }
+.contact-section .section-kicker::after { background: #9e7a75; }
+.contact-orbit { position: absolute; top: -130px; left: -200px; width: 400px; height: 400px; border: 1px solid #94736e55; border-radius: 50%; box-shadow: 0 0 0 30px #94736e0b, 0 0 0 60px #94736e0b; }
+.contact-flower { margin-top: 27px; color: #d8aaa8; font-size: 29px; }
+.contact-overline { margin: 15px 0 20px; color: #d1aaa5; font: 8px var(--mono); letter-spacing: .18em; }
+.contact-section h2 { margin: 0; font-size: clamp(44px, 6vw, 66px); font-weight: 500; letter-spacing: -.06em; line-height: 1.12; }
+.contact-section h2 em { color: #e1b5b3; }
+.contact-description { max-width: 410px; margin: 22px auto 26px; color: #d0bfba; font-size: 12px; line-height: 1.9; }
+.contact-button { background: #e9d1c7; color: #443332; }
+.social-links { display: flex; align-items: center; justify-content: center; gap: 15px; margin-top: 45px; color: #c6aaa3; font: 8px var(--mono); letter-spacing: .08em; }
+.social-links a:hover { color: #fff; }
+.site-footer { display: flex; max-width: 1130px; min-height: 80px; align-items: center; justify-content: space-between; gap: 15px; margin: auto; padding: 22px 34px; }
+.footer-mark { font-size: 31px; }
+.site-footer p { color: var(--muted); font: 11px var(--serif); }
+.site-footer p span { color: var(--rose); }
+.site-footer small { color: var(--muted); font: 8px var(--mono); letter-spacing: .08em; }
 
+@media (max-width: 850px) {
+  .topbar { padding: 0 25px; }
+  .navigation { gap: 18px; }
+  .hero { min-height: 550px; }
+  .hero-art { height: 420px; }
+  .project-grid { gap: 14px; }
+  .project-art { height: 225px; padding: 12px; }
+  .project-description { min-height: 105px; }
+  .about-grid { gap: 40px; }
+  .skills-grid { gap: 30px; }
+  .skills-cloud { padding: 18px; }
+  .skill-pill { padding: 10px; }
+}
+@media (max-width: 640px) {
+  .announcement { gap: 7px; font-size: 7px; }
+  .topbar { height: 73px; padding: 0 21px; }
+  .brand-mark { font-size: 34px; }
+  .brand-copy { font-size: 10px; }
+  .brand-copy small { font-size: 7px; }
+  .menu-toggle { display: block; }
+  .navigation { position: absolute; top: 64px; right: 14px; left: 14px; display: none; flex-direction: column; align-items: stretch; gap: 0; padding: 14px; border: 1px solid var(--line); border-radius: 7px 22px 7px 22px; background: var(--paper); box-shadow: 0 15px 35px #4b302015; }
+  .navigation.navigation-open { display: flex; }
+  .navigation a { padding: 13px 8px; border-bottom: 1px solid var(--line); }
+  .navigation .nav-contact { margin-top: 8px; text-align: center; }
+  .page-wrap { padding-right: 22px; padding-left: 22px; }
+  .hero { display: flex; flex-direction: column; align-items: stretch; gap: 0; padding-top: 30px; padding-bottom: 65px; }
+  .hero-copy { position: relative; z-index: 2; }
+  .hero h1 { margin: 23px 0 18px; font-size: clamp(58px, 13vw, 76px); }
+  .hero-description { margin: 20px 0 23px; font-size: 12px; }
+  .hero-actions { gap: 17px; }
+  .button-primary { padding: 14px 16px; }
+  .little-note { margin-top: 27px; font-size: 8px; }
+  .hero-art { height: 390px; margin-top: 10px; }
+  .portrait-frame { width: 68%; height: 82%; }
+  .creative-sticker { top: 12%; right: 2%; }
+  .intention-sticker { bottom: 9%; left: 0; width: 90px; height: 90px; }
+  .scroll-cue { right: 22px; left: 22px; font-size: 7px; }
+  .manifesto-inner { gap: 12px; padding: 22px; }
+  .mini-label { max-width: 75px; font-size: 7px; line-height: 1.8; }
+  .manifesto p { font-size: 17px; text-align: left; }
+  .manifesto-flower { font-size: 19px; }
+  .content-section { padding-top: 76px; padding-bottom: 76px; }
+  .about-grid { grid-template-columns: 1fr; gap: 27px; padding: 36px 0 38px; }
+  .about-grid h2, .work-heading h2, .skills-intro h2 { font-size: 51px; }
+  .handwritten { margin-top: 17px; margin-left: 35px; }
+  .body-copy .statement { font-size: 18px; }
+  .values-row { grid-template-columns: 1fr; gap: 18px; padding-top: 22px; }
+  .work-heading { align-items: start; flex-direction: column; gap: 17px; padding: 35px 0 30px; }
+  .work-heading p { max-width: 340px; }
+  .project-grid { grid-template-columns: 1fr; gap: 38px; }
+  .project-art { height: 285px; padding: 16px; }
+  .mock-window { width: 82%; }
+  .window-content { padding: 24px 18px; }
+  .project-meta { margin-top: 18px; }
+  .project-card h3 { font-size: 28px; }
+  .project-description { min-height: 0; max-width: 390px; }
+  .more-note { gap: 12px; margin-top: 39px; font-size: 7px; letter-spacing: .06em; }
+  .skills-grid { grid-template-columns: 1fr; gap: 27px; padding-top: 35px; }
+  .skills-intro > p:not(.handwritten) { margin-top: 17px; }
+  .skills-cloud { gap: 8px; padding: 16px; }
+  .skill-pill { gap: 6px; padding: 10px 11px; font-size: 9px; }
+  .skill-pill small { padding-left: 6px; font-size: 7px; }
+  .contact-section { padding: 68px 0 52px; }
+  .contact-section h2 { font-size: 47px; }
+  .contact-description { max-width: 330px; }
+  .social-links { gap: 10px; margin-top: 39px; font-size: 7px; }
+  .site-footer { flex-wrap: wrap; padding: 19px 22px; }
+  .site-footer p { order: 3; width: 100%; margin: 0; text-align: center; }
+  .site-footer small { font-size: 7px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; }
+}
 </style>
