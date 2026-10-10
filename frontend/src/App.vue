@@ -19,6 +19,11 @@ const projects = [
     name: 'WeConnect',
     description: 'A supplier network experience bringing buyers, suppliers and everyday business operations into one clear workspace.',
     tags: ['Vue.js', 'Express', 'MySQL'],
+    focus: 'A supplier marketplace connecting product discovery and business workflows in one workspace.',
+    challenge: 'Keeping the frontend, API and relational data model aligned as supplier and buyer features evolve.',
+    approach: 'Vue.js provides the interface, Express handles server-side routes, and MySQL stores structured application data.',
+    learning: 'Full-stack integration, relational data, reusable UI patterns and collaborative Git workflows.',
+    contributionNote: 'Team project — describe the exact screens, components, endpoints or database work you personally completed.',
     url: 'https://github.com/zahraamoerat/Project-3-E-Commerce1',
     label: 'Explore project',
   },
@@ -30,6 +35,11 @@ const projects = [
     name: 'Modern Tech',
     description: 'An HR management experience for employee profiles, leave requests and calendars, with thoughtful workflows at its core.',
     tags: ['JavaScript', 'Node.js', 'MySQL'],
+    focus: 'A central place for employee information and everyday HR workflows such as leave requests and calendar events.',
+    challenge: 'Making sure employee-specific information and protected workflows stay connected to the correct database records.',
+    approach: 'The application combines employee-facing pages with Node.js and Express routes backed by MySQL data.',
+    learning: 'Connecting UI states to backend logic, thinking through authentication and data relationships, and debugging API/database issues.',
+    contributionNote: 'Personalise this section with the pages, routes, authentication or database features you personally implemented.',
     url: 'https://github.com/Zandakumsha/Modern_Tech_2',
     label: 'Explore project',
   },
@@ -41,6 +51,11 @@ const projects = [
     name: 'Lightning News',
     description: 'A news analytics dashboard that brings scraped stories together with search, filtering and export-friendly views.',
     tags: ['Python', 'Flask', 'Vue.js'],
+    focus: 'A dashboard that gathers stories from multiple news sources and makes them easier to search and explore.',
+    challenge: 'News sites can structure their pages differently, so scraped content needs to be parsed and presented consistently.',
+    approach: 'BeautifulSoup supports HTML parsing, Flask exposes backend functionality, and Vue.js powers the interactive dashboard.',
+    learning: 'Data extraction, handling inconsistent source markup, and joining backend scraping with frontend search and filtering.',
+    contributionNote: 'Team project — specify the scraper, API routes, dashboard components or export features you personally worked on.',
     url: 'https://lightning-news.netlify.app/',
     label: 'View live demo',
   },
@@ -191,7 +206,16 @@ async function copyEmail() {
               <p class="project-description">{{ project.description }}</p>
               <div class="tag-list"><span v-for="tag in project.tags" :key="tag">{{ tag }}</span></div>
               <a class="project-link" :href="project.url" target="_blank" rel="noreferrer">{{ project.label }} <span>↗</span></a>
-              <details class="case-study"><summary>Inside the project +</summary><p>{{ project.name }} explores {{ project.type.toLowerCase() }}. Add your specific role, technical decisions, challenges and lessons learned here.</p></details>
+              <details class="case-study">
+                <summary>Inside the project +</summary>
+                <div class="case-study-content">
+                  <p><strong>Project focus</strong>{{ project.focus }}</p>
+                  <p><strong>The challenge</strong>{{ project.challenge }}</p>
+                  <p><strong>My approach</strong>{{ project.approach }}</p>
+                  <p><strong>What it taught me</strong>{{ project.learning }}</p>
+                  <p class="contribution-note">{{ project.contributionNote }}</p>
+                </div>
+              </details>
             </article>
           </div>
           <div class="more-note"><span>✳</span> MORE IDEAS ARE ALWAYS IN THE MAKING <i></i></div>
@@ -383,6 +407,8 @@ h1 em, h2 em { color: var(--rose); font-family: var(--serif); font-weight: 500; 
 .case-study { margin-top: 12px; padding: 11px 12px; border: 1px solid var(--line); border-radius: 4px 14px 4px 14px; color: var(--muted); font-size: 10px; line-height: 1.8; }
 .case-study summary { color: var(--rose); cursor: pointer; }
 .case-study p { min-height: 0; margin: 9px 0 0; }
+.case-study-content strong { display: block; margin-bottom: 2px; color: var(--ink); font-size: 9px; letter-spacing: .04em; }
+.case-study .contribution-note { margin-top: 13px; padding-top: 10px; border-top: 1px solid var(--line); font-style: italic; }
 .project-card { transition: opacity .2s ease, transform .2s ease; }
 .project-card.project-muted { opacity: .38; }
 .skill-pill { border-color: var(--line); background: transparent; font-family: inherit; cursor: pointer; transition: background .2s ease, border-color .2s ease; }
