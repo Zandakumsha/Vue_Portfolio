@@ -283,7 +283,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 90px; }
 body { margin: 0; min-width: 320px; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; }
-.site-shell { min-height: 100vh; overflow: hidden; background: var(--paper); }
+.site-shell { min-height: 100vh; overflow: clip; background: var(--paper); }
 .announcement { min-height: 34px; padding: 7px 16px; background: var(--soft); display: flex; align-items: center; justify-content: center; gap: 10px; font: 9px var(--mono); letter-spacing: .1em; color: var(--muted); }
 .status-dot { width: 6px; height: 6px; border-radius: 50%; background: #8c9c7d; box-shadow: 0 0 0 3px #8c9c7d2a; }
 .announcement-flower { color: var(--rose); }
