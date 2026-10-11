@@ -301,6 +301,13 @@ async function copyEmail() {
               <p class="project-meta">{{ project.type }}</p>
               <h3>{{ project.name }}</h3>
               <p class="project-description">{{ project.description }}</p>
+              <section v-if="project.contributions" class="personal-contributions" :aria-label="'My individual contributions to ' + project.name">
+                <h4>My individual contributions</h4>
+                <ul>
+                  <li v-for="contribution in project.contributions" :key="contribution">{{ contribution }}</li>
+                </ul>
+                <p class="team-context">Individual work within a wider team project.</p>
+              </section>
               <div class="tag-list"><span v-for="tag in project.tags" :key="tag">{{ tag }}</span></div>
               <a class="project-link" :href="project.url" target="_blank" rel="noreferrer">{{ project.label }} <span>↗</span></a>
               <details class="case-study">
@@ -590,6 +597,11 @@ h1 em, h2 em { color: var(--rose); font-family: var(--serif); font-weight: 500; 
 .project-meta { margin: 22px 0 0; color: var(--muted); font: 8px var(--mono); letter-spacing: .08em; line-height: 1.7; }
 .project-card h3 { margin: 11px 0; font: 28px var(--serif); }
 .project-description { min-height: 90px; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.85; }
+.personal-contributions { margin-top: 16px; padding: 15px; border: 1px solid var(--line); border-radius: 4px 16px 4px 16px; background: var(--paper); }
+.personal-contributions h4 { margin: 0 0 10px; color: var(--rose); font-size: 11px; font-weight: 600; }
+.personal-contributions ul { display: grid; gap: 6px; margin: 0; padding-left: 17px; color: var(--muted); font-size: 10px; line-height: 1.7; }
+.personal-contributions li { padding-left: 2px; }
+.personal-contributions .team-context { margin: 10px 0 0; color: var(--muted); font-size: 9px; font-style: italic; line-height: 1.6; }
 .tag-list { display: flex; flex-wrap: wrap; gap: 6px; margin: 16px 0; }
 .tag-list span { padding: 7px 10px; border: 1px solid var(--line); border-radius: 20px; color: var(--muted); font: 9px var(--mono); }
 .project-link { display: inline-flex; gap: 12px; padding-bottom: 6px; border-bottom: 1px solid #cda5a5; color: var(--rose); font-size: 10px; }
