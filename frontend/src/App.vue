@@ -15,6 +15,7 @@ const achievements = ref([])
 const blogError = ref('')
 const achievementsError = ref('')
 const projectsError = ref('')
+const apiStatus = ref('loading')
 const contactForm = ref({ name: '', email: '', subject: '', message: '', website: '' })
 const contactSubmitting = ref(false)
 const contactStatus = ref('')
@@ -26,15 +27,32 @@ onMounted(async () => {
     apiRequest('/blog'),
     apiRequest('/achievements'),
   ])
-  if (results[0].status === 'fulfilled' && results[0].value.length) {
-    projects.value = results[0].value
-  } else if (results[0].status === 'rejected') {
-    projectsError.value = 'Showing saved portfolio examples. Connect the API to load the latest projects.'
+
+  const [projectResult, blogResult, achievementResult] = results
+  const apiAvailable = results.some((result) => result.status === 'fulfilled')
+  apiStatus.value = apiAvailable ? 'connected' : 'offline'
+
+  if (projectResult.status === 'fulfilled' && Array.isArray(projectResult.value)) {
+    // Keep the designed examples when the database has no published projects yet.
+    if (projectResult.value.length) projects.value = projectResult.value
+    projectsError.value = ''
+  } else {
+    projectsError.value = 'The project API is unavailable. Showing the saved portfolio examples instead.'
   }
-  if (results[1].status === 'fulfilled') blogPosts.value = results[1].value
-  else blogError.value = 'Blog posts are temporarily unavailable.'
-  if (results[2].status === 'fulfilled') achievements.value = results[2].value
-  else achievementsError.value = 'Achievements are temporarily unavailable.'
+
+  if (blogResult.status === 'fulfilled' && Array.isArray(blogResult.value)) {
+    blogPosts.value = blogResult.value
+    blogError.value = ''
+  } else {
+    blogError.value = 'Blog posts could not be loaded from the API. Please check the backend and database.'
+  }
+
+  if (achievementResult.status === 'fulfilled' && Array.isArray(achievementResult.value)) {
+    achievements.value = achievementResult.value
+    achievementsError.value = ''
+  } else {
+    achievementsError.value = 'Achievements could not be loaded from the API. Please check the backend and database.'
+  }
 })
 
 async function submitContact() {
