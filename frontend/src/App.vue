@@ -210,7 +210,7 @@ async function copyEmail() {
           <div class="portrait-backdrop"></div>
           <div class="portrait-frame">
             <img
-              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=85"
+              src="/public/Screenshot 2026-06-05 184643.png"
               alt="Editorial portrait representing a confident woman"
             />
             <span class="portrait-caption">01 / THE PERSON BEHIND THE PIXELS</span>
