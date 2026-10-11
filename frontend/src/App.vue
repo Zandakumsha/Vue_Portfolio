@@ -90,7 +90,15 @@ const projects = ref([
     challenge: 'Keeping the frontend, API and relational data model aligned as supplier and buyer features evolve.',
     approach: 'Vue.js provides the interface, Express handles server-side routes, and MySQL stores structured application data.',
     learning: 'Full-stack integration, relational data, reusable UI patterns and collaborative Git workflows.',
-    contributionNote: 'My contributions focused on the supplier side of the application, including Vue.js sidebar and navigation, supplier-facing frontend pages and reusable components, Express API routes and controllers, MySQL schema/query work and database integration, Aiven connection and deployment configuration, plus testing, debugging and Git collaboration. I also contributed styling for the shop section on the buyer side. These were my individual contributions within a wider team project.',
+    contributions: [
+      'Vue.js sidebar and navigation for the supplier side.',
+      'Supplier-side frontend pages and reusable components.',
+      'Styling for the shop section of the buyer side.',
+      'Express API routes and controllers.',
+      'MySQL schema work, queries and database integration.',
+      'Aiven database connection and deployment configuration.',
+      'Testing, debugging and Git collaboration.',
+    ],
     url: 'https://github.com/zahraamoerat/Project-3-E-Commerce1',
     label: 'Explore project',
   },
@@ -122,7 +130,10 @@ const projects = ref([
     challenge: 'News sites can structure their pages differently, so scraped content needs to be parsed and presented consistently.',
     approach: 'BeautifulSoup supports HTML parsing, Flask exposes backend functionality, and Vue.js powers the interactive dashboard.',
     learning: 'Data extraction, handling inconsistent source markup, and joining backend scraping with frontend search and filtering.',
-    contributionNote: 'My confirmed individual contributions were on the Python/Flask backend and web-scraping work, including BeautifulSoup parsing and data extraction. The dashboard was a team project, so this summary distinguishes my backend and parsing work from the broader team deliverable.',
+    contributions: [
+      'BeautifulSoup parsing and data extraction from web pages.',
+      'Python/Flask backend work related to the scraping workflow.',
+    ],
     url: 'https://lightning-news.netlify.app/',
     label: 'View live demo',
   },
@@ -299,7 +310,14 @@ async function copyEmail() {
                   <p><strong>The challenge</strong>{{ project.challenge }}</p>
                   <p><strong>My approach</strong>{{ project.approach }}</p>
                   <p><strong>What it taught me</strong>{{ project.learning }}</p>
-                  <p class="contribution-note">{{ project.contributionNote }}</p>
+                  <div v-if="project.contributions" class="contribution-note">
+                    <strong>My individual contributions</strong>
+                    <ul>
+                      <li v-for="contribution in project.contributions" :key="contribution">{{ contribution }}</li>
+                    </ul>
+                    <p class="team-context">These are my confirmed contributions within a wider team project; the overall project description covers the team deliverable.</p>
+                  </div>
+                  <p v-else-if="project.contributionNote" class="contribution-note">{{ project.contributionNote }}</p>
                 </div>
               </details>
             </article>
@@ -579,7 +597,11 @@ h1 em, h2 em { color: var(--rose); font-family: var(--serif); font-weight: 500; 
 .case-study summary { color: var(--rose); cursor: pointer; }
 .case-study p { min-height: 0; margin: 9px 0 0; }
 .case-study-content strong { display: block; margin-bottom: 2px; color: var(--ink); font-size: 9px; letter-spacing: .04em; }
-.case-study .contribution-note { margin-top: 13px; padding-top: 10px; border-top: 1px solid var(--line); font-style: italic; }
+.case-study .contribution-note { margin-top: 13px; padding-top: 10px; border-top: 1px solid var(--line); }
+.case-study .contribution-note > strong { display: block; margin-bottom: 7px; color: var(--rose); font-size: 10px; font-style: normal; letter-spacing: .02em; }
+.case-study .contribution-note ul { display: grid; gap: 5px; margin: 0; padding-left: 17px; font-style: normal; }
+.case-study .contribution-note li { padding-left: 2px; }
+.case-study .team-context { margin-top: 9px; color: var(--muted); font-size: 9px; font-style: italic; }
 .project-card { transition: opacity .2s ease, transform .2s ease; }
 .api-note { padding: 12px 15px; border: 1px solid var(--line); border-radius: 4px 14px 4px 14px; color: var(--muted); font-size: 11px; line-height: 1.8; }
 .portfolio-data-section .work-heading { padding-top: 30px; }
