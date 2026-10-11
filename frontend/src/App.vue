@@ -155,6 +155,23 @@ const projects = ref([
   },
 ])
 
+// Keep verified personal contributions independent of API/database project records.
+const individualContributions = {
+  WeConnect: [
+    'Vue.js sidebar and navigation for the supplier side.',
+    'Supplier-side frontend pages and reusable components.',
+    'Styling for the shop section of the buyer side.',
+    'Express API routes and controllers.',
+    'MySQL schema work, queries and database integration.',
+    'Aiven database connection and deployment configuration.',
+    'Testing, debugging and Git collaboration.',
+  ],
+  'Lightning News': [
+    'BeautifulSoup parsing and data extraction from web pages.',
+    'Python/Flask backend work related to the scraping workflow.',
+  ],
+}
+
 const skillGroups = [
   { name: 'Frontend', description: 'Interfaces, components and responsive layouts', skills: [
     { name: 'Vue.js', symbol: '✳', projects: [{ name: 'WeConnect', id: '01' }, { name: 'Lightning News', id: '03' }] },
@@ -317,10 +334,10 @@ async function copyEmail() {
               <p class="project-meta">{{ project.type }}</p>
               <h3>{{ project.name }}</h3>
               <p class="project-description">{{ project.description }}</p>
-              <section v-if="project.contributions" class="personal-contributions" :aria-label="'My individual contributions to ' + project.name">
+              <section v-if="individualContributions[project.name]" class="personal-contributions" :aria-label="'My individual contributions to ' + project.name">
                 <h4>My individual contributions</h4>
                 <ul>
-                  <li v-for="contribution in project.contributions" :key="contribution">{{ contribution }}</li>
+                  <li v-for="contribution in individualContributions[project.name]" :key="contribution">{{ contribution }}</li>
                 </ul>
                 <p class="team-context">Individual work within a wider team project.</p>
               </section>
@@ -333,10 +350,10 @@ async function copyEmail() {
                   <p><strong>The challenge</strong>{{ project.challenge }}</p>
                   <p><strong>My approach</strong>{{ project.approach }}</p>
                   <p><strong>What it taught me</strong>{{ project.learning }}</p>
-                  <div v-if="project.contributions" class="contribution-note">
+                  <div v-if="individualContributions[project.name]" class="contribution-note">
                     <strong>My individual contributions</strong>
                     <ul>
-                      <li v-for="contribution in project.contributions" :key="contribution">{{ contribution }}</li>
+                      <li v-for="contribution in individualContributions[project.name]" :key="contribution">{{ contribution }}</li>
                     </ul>
                     <p class="team-context">These are my confirmed contributions within a wider team project; the overall project description covers the team deliverable.</p>
                   </div>
