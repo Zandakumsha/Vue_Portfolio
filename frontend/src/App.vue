@@ -29,8 +29,11 @@ onMounted(async () => {
   ])
 
   const [projectResult, blogResult, achievementResult] = results
-  const apiAvailable = results.some((result) => result.status === 'fulfilled')
-  apiStatus.value = apiAvailable ? 'connected' : 'offline'
+  apiStatus.value = results.every((result) => result.status === 'fulfilled')
+    ? 'connected'
+    : results.some((result) => result.status === 'fulfilled')
+      ? 'partial'
+      : 'offline'
 
   if (projectResult.status === 'fulfilled' && Array.isArray(projectResult.value)) {
     // Keep the designed examples when the database has no published projects yet.
@@ -256,6 +259,7 @@ async function copyEmail() {
             <h2>A collection of<br /><em>curiosity.</em></h2>
             <p>Different challenges, one common thread: making technology more useful, clear and human.</p>
           </div>
+          <p v-if="apiStatus === 'connected'" class="api-note api-connected" role="status">Live projects, journal posts and achievements are connected to the backend.</p>
           <p v-if="projectsError" class="api-note" role="status">{{ projectsError }}</p>
           <div class="project-grid">
             <article v-for="project in projects" :key="project.number" class="project-card" :class="{ 'project-muted': selectedSkill && !project.tags.some(tag => selectedSkill.toLowerCase().includes(tag.toLowerCase()) || tag.toLowerCase().includes(selectedSkill.toLowerCase()) || project.description.toLowerCase().includes(selectedSkill.toLowerCase())) }">
