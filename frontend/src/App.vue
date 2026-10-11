@@ -162,8 +162,7 @@ const individualContributions = {
     'Supplier-side frontend pages and reusable components.',
     'Styling for the shop section of the buyer side.',
     'Express API routes and controllers.',
-    'MySQL schema work, queries and database integration.',
-    'Aiven database connection and deployment configuration.',
+    'Aiven database connection and',
     'Testing, debugging and Git collaboration.',
   ],
   'Lightning News': [
