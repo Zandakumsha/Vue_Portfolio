@@ -1,5 +1,6 @@
 <script setup>
 import { onMounted, ref } from 'vue'
+import { apiRequest } from './services/api.js'
 
 const isDark = ref(false)
 const selectedSkill = ref('')
@@ -18,17 +19,6 @@ const contactForm = ref({ name: '', email: '', subject: '', message: '', website
 const contactSubmitting = ref(false)
 const contactStatus = ref('')
 const contactStatusType = ref('success')
-
-const apiBase = import.meta.env.VITE_API_BASE_URL || '/api'
-async function apiRequest(path, options = {}) {
-  const response = await fetch(`${apiBase}${path}`, {
-    ...options,
-    headers: { 'Content-Type': 'application/json', ...(options.headers || {}) },
-  })
-  const data = await response.json().catch(() => ({}))
-  if (!response.ok) throw new Error(data.message || 'The request could not be completed.')
-  return data
-}
 
 onMounted(async () => {
   const results = await Promise.allSettled([
