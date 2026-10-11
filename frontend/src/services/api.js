@@ -1,11 +1,13 @@
 const configuredBase = import.meta.env.VITE_API_BASE_URL || '/api'
-const API_BASE = configuredBase.replace(/\/+$/, '')
+const trimmedBase = configuredBase.replace(/\/+$/, '')
+// A deployed API URL may be supplied as either https://host.example or https://host.example/api.
+const API_BASE = /^https?:\/\//i.test(trimmedBase) && !trimmedBase.endsWith('/api')
+  ? `${trimmedBase}/api`
+  : trimmedBase
 
 async function readResponse(response) {
   const contentType = response.headers.get('content-type') || ''
-  if (contentType.includes('application/json')) {
-    return response.json()
-  }
+  if (contentType.includes('application/json')) return response.json()
 
   const text = await response.text()
   return text ? { message: text } : {}
