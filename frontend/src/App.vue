@@ -266,7 +266,14 @@ async function copyEmail() {
               <a class="project-art" :class="project.theme" :href="project.url" target="_blank" rel="noreferrer" :aria-label="'Open ' + project.name">
                 <span class="art-label">{{ project.number }} / CASE STUDY</span>
                 <span class="art-star">✳</span>
-                <div class="mock-window">
+                <img
+                  v-if="project.name === 'Lightning News'"
+                  class="project-screenshot"
+                  src="https://i.ibb.co/bj7C9TgS/Screenshot-2026-10-11-015612.png"
+                  alt="Lightning News analytics dashboard showing its topic network and news article cards"
+                  loading="lazy"
+                />
+                <div v-else class="mock-window">
                   <div class="window-bar"><i></i><i></i><i></i><small>studio / {{ project.initials.toLowerCase() }}</small></div>
                   <div class="window-content"><b>{{ project.initials }}</b><span class="mock-lines"><i></i><i></i><i></i></span><span class="mock-arrow">↗</span></div>
                 </div>
@@ -524,6 +531,9 @@ h1 em, h2 em { color: var(--rose); font-family: var(--serif); font-weight: 500; 
 .project-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
 .project-art { position: relative; display: flex; height: 270px; flex-direction: column; justify-content: space-between; overflow: hidden; padding: 16px; border-radius: 4px 24px 4px 24px; transition: transform .25s ease; }
 .project-art:hover { transform: translateY(-5px); box-shadow: 0 16px 35px #49373312; }
+.project-screenshot { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; background: #fff; }
+.project-art:has(.project-screenshot) { background: #fff; color: #252525; }
+.project-art:has(.project-screenshot)::after { position: absolute; inset: 0; background: linear-gradient(180deg, #00000016 0%, transparent 25%, transparent 70%, #00000025 100%); content: ''; pointer-events: none; }
 .project-art.rose { background: #e6c7c3; color: #714d4b; }
 .project-art.lavender { background: #d9d5e3; color: #5c566e; }
 .project-art.sage { background: #d8dfcf; color: #59644f; }
