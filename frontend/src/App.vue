@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 
 const isDark = ref(false)
 const selectedSkill = ref('')
@@ -9,8 +9,64 @@ const emailCopied = ref(false)
 const cvDataUrl = 'data:text/plain;charset=utf-8,' + encodeURIComponent('ZANDA K. — DEVELOPER\n\nGitHub: https://github.com/Zandakumsha\nSkills: Vue.js, JavaScript, HTML, CSS, Node.js, Express, MySQL, Python, Flask, Git and GitHub.\nProjects: WeConnect, Modern Tech, Lightning News.\n\nDemo CV — replace with your real CV before publishing.')
 
 const menuOpen = ref(false)
+const blogPosts = ref([])
+const achievements = ref([])
+const blogError = ref('')
+const achievementsError = ref('')
+const projectsError = ref('')
+const contactForm = ref({ name: '', email: '', subject: '', message: '', website: '' })
+const contactSubmitting = ref(false)
+const contactStatus = ref('')
+const contactStatusType = ref('success')
 
-const projects = [
+const apiBase = import.meta.env.VITE_API_BASE_URL || '/api'
+async function apiRequest(path, options = {}) {
+  const response = await fetch(`${apiBase}${path}`, {
+    ...options,
+    headers: { 'Content-Type': 'application/json', ...(options.headers || {}) },
+  })
+  const data = await response.json().catch(() => ({}))
+  if (!response.ok) throw new Error(data.message || 'The request could not be completed.')
+  return data
+}
+
+onMounted(async () => {
+  const results = await Promise.allSettled([
+    apiRequest('/projects'),
+    apiRequest('/blog'),
+    apiRequest('/achievements'),
+  ])
+  if (results[0].status === 'fulfilled' && results[0].value.length) {
+    projects.value = results[0].value
+  } else if (results[0].status === 'rejected') {
+    projectsError.value = 'Showing saved portfolio examples. Connect the API to load the latest projects.'
+  }
+  if (results[1].status === 'fulfilled') blogPosts.value = results[1].value
+  else blogError.value = 'Blog posts are temporarily unavailable.'
+  if (results[2].status === 'fulfilled') achievements.value = results[2].value
+  else achievementsError.value = 'Achievements are temporarily unavailable.'
+})
+
+async function submitContact() {
+  contactSubmitting.value = true
+  contactStatus.value = ''
+  try {
+    const result = await apiRequest('/contact', {
+      method: 'POST',
+      body: JSON.stringify(contactForm.value),
+    })
+    contactStatusType.value = 'success'
+    contactStatus.value = result.message || 'Thank you — your message has been received.'
+    contactForm.value = { name: '', email: '', subject: '', message: '', website: '' }
+  } catch (error) {
+    contactStatusType.value = 'error'
+    contactStatus.value = error.message || 'Your message could not be sent. Please try again.'
+  } finally {
+    contactSubmitting.value = false
+  }
+}
+
+const projects = ref([
   {
     number: '01',
     initials: 'WC',
@@ -59,7 +115,7 @@ const projects = [
     url: 'https://lightning-news.netlify.app/',
     label: 'View live demo',
   },
-]
+])
 
 const skills = [
   { name: 'Vue.js', group: 'Frontend', symbol: '✳' },
@@ -116,6 +172,8 @@ async function copyEmail() {
         <a href="#work" @click="closeMenu">Selected work</a>
         <a href="#skills" @click="closeMenu">Expertise</a>
         <a href="#journey" @click="closeMenu">Journey</a>
+        <a href="#blog" @click="closeMenu">Journal</a>
+        <a href="#achievements" @click="closeMenu">Milestones</a>
         <a class="nav-contact" href="#contact" @click="closeMenu">Let's talk ↗</a>
       </nav>
       <button class="theme-toggle" type="button" :aria-pressed="isDark" @click="isDark = !isDark">{{ isDark ? "☼ Light mode" : "☾ Dark mode" }}</button>
@@ -190,6 +248,7 @@ async function copyEmail() {
             <h2>A collection of<br /><em>curiosity.</em></h2>
             <p>Different challenges, one common thread: making technology more useful, clear and human.</p>
           </div>
+          <p v-if="projectsError" class="api-note" role="status">{{ projectsError }}</p>
           <div class="project-grid">
             <article v-for="project in projects" :key="project.number" class="project-card" :class="{ 'project-muted': selectedSkill && !project.tags.some(tag => selectedSkill.toLowerCase().includes(tag.toLowerCase()) || tag.toLowerCase().includes(selectedSkill.toLowerCase()) || project.description.toLowerCase().includes(selectedSkill.toLowerCase())) }">
               <a class="project-art" :class="project.theme" :href="project.url" target="_blank" rel="noreferrer" :aria-label="'Open ' + project.name">
@@ -254,6 +313,50 @@ async function copyEmail() {
         </div>
       </section>
 
+      <section id="blog" class="page-wrap content-section portfolio-data-section">
+        <p class="section-kicker"><span>05</span> NOTES FROM THE JOURNEY</p>
+        <div class="work-heading">
+          <h2>A little <em>field journal.</em></h2>
+          <p>Thoughts on learning, problem-solving and the details behind building for the web.</p>
+        </div>
+        <p v-if="blogError" class="api-note" role="status">{{ blogError }}</p>
+        <p v-else-if="!blogPosts.length" class="api-note">New notes are on the way. Check back soon.</p>
+        <div v-else class="blog-grid">
+          <article v-for="post in blogPosts" :key="post.post_id || post.slug" class="blog-card">
+            <p class="project-meta">{{ post.category }} <span>·</span> {{ post.readingMinutes || 3 }} MIN READ</p>
+            <h3>{{ post.title }}</h3>
+            <p class="blog-excerpt">{{ post.excerpt }}</p>
+            <details class="case-study">
+              <summary>Read the note +</summary>
+              <p class="blog-content">{{ post.content }}</p>
+            </details>
+            <a v-if="post.url" class="project-link" :href="post.url" target="_blank" rel="noreferrer">Read more ↗</a>
+          </article>
+        </div>
+      </section>
+
+      <section id="achievements" class="work-section">
+        <div class="page-wrap content-section portfolio-data-section">
+          <p class="section-kicker"><span>06</span> LITTLE MILESTONES, BIG MEANING</p>
+          <div class="work-heading">
+            <h2>Proof of <em>progress.</em></h2>
+            <p>Learning milestones, credentials and experiences that are shaping my developer journey.</p>
+          </div>
+          <p v-if="achievementsError" class="api-note" role="status">{{ achievementsError }}</p>
+          <p v-else-if="!achievements.length" class="api-note">Achievements will appear here as they are added.</p>
+          <div v-else class="achievement-grid">
+            <article v-for="item in achievements" :key="item.achievement_id" class="achievement-card">
+              <span class="achievement-icon">✳</span>
+              <p class="project-meta">{{ item.category }}<span v-if="item.achievedOn"> · {{ new Date(item.achievedOn).toLocaleDateString('en-ZA', { year: 'numeric', month: 'short' }) }}</span></p>
+              <h3>{{ item.title }}</h3>
+              <p class="achievement-issuer">{{ item.issuer }}</p>
+              <p class="blog-excerpt">{{ item.description }}</p>
+              <a v-if="item.credentialUrl" class="project-link" :href="item.credentialUrl" target="_blank" rel="noreferrer">View credential ↗</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section id="contact" class="contact-section">
         <div class="contact-orbit"></div>
         <div class="page-wrap contact-inner">
@@ -262,7 +365,34 @@ async function copyEmail() {
           <p class="contact-overline">GOOD THINGS START WITH A HELLO</p>
           <h2>Have a good feeling<br />about <em>this?</em></h2>
           <p class="contact-description">I'm always happy to connect with kind people, curious teams and ideas worth building. Let's make something meaningful.</p>
-          <a class="contact-button" href="mailto:hello@zandaportfolio.dev">Let's make it happen ↗</a>
+          <form class="contact-form" @submit.prevent="submitContact">
+            <div class="contact-form-row">
+              <label>
+                Your name
+                <input v-model.trim="contactForm.name" name="name" type="text" autocomplete="name" minlength="2" maxlength="100" required placeholder="What should I call you?" />
+              </label>
+              <label>
+                Email address
+                <input v-model.trim="contactForm.email" name="email" type="email" autocomplete="email" maxlength="254" required placeholder="you@example.com" />
+              </label>
+            </div>
+            <label>
+              Subject <span class="optional-label">OPTIONAL</span>
+              <input v-model.trim="contactForm.subject" name="subject" type="text" maxlength="150" placeholder="A little about your idea" />
+            </label>
+            <label>
+              Your message
+              <textarea v-model.trim="contactForm.message" name="message" minlength="10" maxlength="5000" required rows="4" placeholder="Tell me what you're thinking…"></textarea>
+            </label>
+            <label class="honeypot" aria-hidden="true">
+              Leave this field empty
+              <input v-model="contactForm.website" name="website" tabindex="-1" autocomplete="off" />
+            </label>
+            <button class="contact-button" type="submit" :disabled="contactSubmitting">
+              {{ contactSubmitting ? 'Sending your note…' : 'Send a little hello ↗' }}
+            </button>
+            <p v-if="contactStatus" class="contact-status" :class="'status-' + contactStatusType" role="status" aria-live="polite">{{ contactStatus }}</p>
+          </form>
           <div class="social-links">
             <a href="https://github.com/Zandakumsha" target="_blank" rel="noreferrer">GITHUB ↗</a><span>·</span>
             <a href="mailto:hello@zandaportfolio.dev">EMAIL ↗</a><span>·</span>
@@ -413,6 +543,28 @@ h1 em, h2 em { color: var(--rose); font-family: var(--serif); font-weight: 500; 
 .case-study-content strong { display: block; margin-bottom: 2px; color: var(--ink); font-size: 9px; letter-spacing: .04em; }
 .case-study .contribution-note { margin-top: 13px; padding-top: 10px; border-top: 1px solid var(--line); font-style: italic; }
 .project-card { transition: opacity .2s ease, transform .2s ease; }
+.api-note { padding: 12px 15px; border: 1px solid var(--line); border-radius: 4px 14px 4px 14px; color: var(--muted); font-size: 11px; line-height: 1.8; }
+.portfolio-data-section .work-heading { padding-top: 30px; }
+.blog-grid, .achievement-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.blog-card, .achievement-card { padding: 24px; border: 1px solid var(--line); border-radius: 5px 22px 5px 22px; background: var(--paper); }
+.blog-card h3, .achievement-card h3 { margin: 12px 0; font: 27px/1.2 var(--serif); }
+.blog-excerpt { color: var(--muted); font-size: 12px; line-height: 1.9; }
+.blog-content { white-space: pre-line; color: var(--muted); line-height: 1.9; }
+.achievement-icon { color: var(--rose); font-size: 25px; }
+.achievement-issuer { color: var(--rose); font-size: 11px; font-weight: 600; }
+.contact-form { display: grid; gap: 14px; max-width: 620px; margin: 28px auto 0; text-align: left; }
+.contact-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.contact-form label { display: grid; gap: 7px; color: #e5d4ce; font-size: 10px; letter-spacing: .04em; }
+.contact-form input, .contact-form textarea { width: 100%; min-width: 0; border: 1px solid #866c67; border-radius: 4px 12px 4px 12px; padding: 12px 13px; background: #332827; color: #fff8f4; font: 12px 'DM Sans', sans-serif; outline-offset: 3px; }
+.contact-form input::placeholder, .contact-form textarea::placeholder { color: #bda9a3; }
+.contact-form textarea { resize: vertical; }
+.contact-form .contact-button { justify-self: center; border: 0; cursor: pointer; }
+.contact-form .contact-button:disabled { cursor: wait; opacity: .7; }
+.optional-label { color: #bda9a3; font: 8px var(--mono); }
+.honeypot { position: absolute !important; left: -10000px !important; width: 1px !important; height: 1px !important; overflow: hidden !important; }
+.contact-status { margin: 0; text-align: center; font-size: 12px; line-height: 1.8; }
+.status-success { color: #d7e4c8; }
+.status-error { color: #ffd0cb; }
 .project-card.project-muted { opacity: .38; }
 .skill-pill { border-color: var(--line); background: transparent; font-family: inherit; cursor: pointer; transition: background .2s ease, border-color .2s ease; }
 .skill-pill:hover, .skill-pill.skill-selected { border-color: var(--rose); background: var(--soft); }
@@ -541,7 +693,7 @@ h1 em, h2 em { color: var(--rose); font-family: var(--serif); font-weight: 500; 
   .more-note { gap: 12px; margin-top: 39px; font-size: 7px; letter-spacing: .06em; }
   .skills-grid { grid-template-columns: 1fr; gap: 27px; padding-top: 35px; }
   .journey-section { padding-top: 72px; padding-bottom: 72px; }
-  .timeline-grid, .journey-bottom-grid { grid-template-columns: 1fr; }
+  .timeline-grid, .journey-bottom-grid, .blog-grid, .achievement-grid, .contact-form-row { grid-template-columns: 1fr; }
   .timeline-card, .explore-card { padding: 20px; }
   .theme-toggle { font-size: 8px; }
   .project-description { font-size: 12px; }
