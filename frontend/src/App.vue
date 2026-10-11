@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { apiRequest } from './services/api.js'
 
 const isDark = ref(false)
@@ -7,11 +7,16 @@ const selectedSkill = ref('')
 const terminalCommand = ref('')
 const terminalOutput = ref('Try: help, about, skills, projects, contact')
 const emailCopied = ref(false)
-const cvDataUrl = 'data:text/plain;charset=utf-8,' + encodeURIComponent('ZANDA K. — DEVELOPER\n\nGitHub: https://github.com/Zandakumsha\nSkills: Vue.js, JavaScript, HTML, CSS, Node.js, Express, MySQL, Python, Flask, Git and GitHub.\nProjects: WeConnect, Modern Tech, Lightning News.\n\nDemo CV — replace with your real CV before publishing.')
 
 const menuOpen = ref(false)
 const blogPosts = ref([])
 const achievements = ref([])
+const completedAchievements = computed(() =>
+  achievements.value.filter((item) => !item.status || item.status === 'completed'),
+)
+const learningAchievements = computed(() =>
+  achievements.value.filter((item) => item.status === 'in_progress' || item.status === 'planned'),
+)
 const blogError = ref('')
 const achievementsError = ref('')
 const projectsError = ref('')
@@ -252,7 +257,6 @@ async function copyEmail() {
           <div class="hero-actions">
             <a class="button-primary" href="#work">Explore my work <span>↗</span></a>
             <a class="text-link" href="#about">A little about me ↓</a>
-            <a class="cv-download" :href="cvDataUrl" download="Zanda-K-Demo-CV.txt">Download CV ↗</a>
           </div>
           <p class="little-note"><span>✳</span> Curious by nature. Intentional by design.</p>
         </div>
@@ -435,16 +439,44 @@ async function copyEmail() {
             <p>Learning milestones, credentials and experiences that are shaping my developer journey.</p>
           </div>
           <p v-if="achievementsError" class="api-note" role="status">{{ achievementsError }}</p>
-          <p v-else-if="!achievements.length" class="api-note">Achievements will appear here as they are added.</p>
-          <div v-else class="achievement-grid">
-            <article v-for="item in achievements" :key="item.achievement_id" class="achievement-card">
-              <span class="achievement-icon">✳</span>
-              <p class="project-meta">{{ item.category }}<span v-if="item.achievedOn"> · {{ new Date(item.achievedOn).toLocaleDateString('en-ZA', { year: 'numeric', month: 'short' }) }}</span></p>
-              <h3>{{ item.title }}</h3>
-              <p class="achievement-issuer">{{ item.issuer }}</p>
-              <p class="blog-excerpt">{{ item.description }}</p>
-              <a v-if="item.credentialUrl" class="project-link" :href="item.credentialUrl" target="_blank" rel="noreferrer">View credential ↗</a>
-            </article>
+          <div v-else class="credential-sections">
+            <section class="credential-group" aria-labelledby="completed-credentials-heading">
+              <div class="credential-group-heading">
+                <h3 id="completed-credentials-heading">Completed credentials</h3>
+                <p>Certificates and badges that can be verified.</p>
+              </div>
+              <p v-if="!completedAchievements.length" class="api-note">
+                No verified credentials have been added yet. Only add a completed badge or certificate once its title, issuer, date and public verification link are confirmed.
+              </p>
+              <div v-else class="achievement-grid">
+                <article v-for="item in completedAchievements" :key="item.achievement_id" class="achievement-card">
+                  <img v-if="item.imageUrl" class="credential-image" :src="item.imageUrl" :alt="item.title + ' badge or certificate'" loading="lazy" />
+                  <span v-else class="achievement-icon" aria-hidden="true">✳</span>
+                  <p class="project-meta">COMPLETED<span v-if="item.achievedOn"> · {{ new Date(item.achievedOn).toLocaleDateString('en-ZA', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' }) }}</span></p>
+                  <h4>{{ item.title }}</h4>
+                  <p class="achievement-issuer">{{ item.issuer }}</p>
+                  <p class="blog-excerpt">{{ item.description }}</p>
+                  <a v-if="item.credentialUrl" class="project-link" :href="item.credentialUrl" target="_blank" rel="noopener noreferrer">Verify credential ↗</a>
+                  <p v-else class="credential-unverified">Public verification link not supplied.</p>
+                </article>
+              </div>
+            </section>
+            <section class="credential-group" aria-labelledby="learning-credentials-heading">
+              <div class="credential-group-heading">
+                <h3 id="learning-credentials-heading">In progress & planned learning</h3>
+                <p>Learning goals are listed separately from completed credentials.</p>
+              </div>
+              <p v-if="!learningAchievements.length" class="api-note">No in-progress or planned learning items have been listed yet.</p>
+              <div v-else class="achievement-grid">
+                <article v-for="item in learningAchievements" :key="item.achievement_id" class="achievement-card">
+                  <span class="achievement-icon" aria-hidden="true">✳</span>
+                  <p class="project-meta">{{ item.status === 'planned' ? 'PLANNED' : 'IN PROGRESS' }}</p>
+                  <h4>{{ item.title }}</h4>
+                  <p class="achievement-issuer">{{ item.issuer }}</p>
+                  <p class="blog-excerpt">{{ item.description }}</p>
+                </article>
+              </div>
+            </section>
           </div>
         </div>
       </section>
@@ -546,7 +578,6 @@ button { font: inherit; }
 .navigation a:hover { color: var(--rose); }
 .navigation .nav-contact { padding: 11px 16px; border: 1px solid #cda5a5; border-radius: 30px; color: var(--rose); }
 .theme-toggle { flex-shrink: 0; border: 1px solid var(--line); border-radius: 24px; padding: 10px 12px; background: transparent; color: var(--ink); font-size: 10px; cursor: pointer; }
-.cv-download { border-bottom: 1px solid #cda5a5; padding-bottom: 5px; color: var(--rose); font-size: 10px; }
 .menu-toggle { display: none; border: 1px solid var(--line); border-radius: 22px; padding: 9px 13px; color: var(--ink); background: transparent; }
 .page-wrap { max-width: 1130px; padding-right: 34px; padding-left: 34px; margin: 0 auto; }
 .hero { position: relative; display: grid; grid-template-columns: 1fr .95fr; align-items: center; gap: 24px; min-height: 605px; padding-top: 22px; padding-bottom: 65px; }
@@ -650,8 +681,15 @@ h1 em, h2 em { color: var(--rose); font-family: var(--serif); font-weight: 500; 
 .api-note { padding: 12px 15px; border: 1px solid var(--line); border-radius: 4px 14px 4px 14px; color: var(--muted); font-size: 11px; line-height: 1.8; }
 .portfolio-data-section .work-heading { padding-top: 30px; }
 .blog-grid, .achievement-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.credential-sections { display: grid; gap: 38px; margin-top: 30px; }
+.credential-group-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 18px; margin-bottom: 17px; }
+.credential-group-heading h3 { margin: 0; font: 29px/1.2 var(--serif); }
+.credential-group-heading p { margin: 0; color: var(--muted); font-size: 11px; }
+.credential-image { display: block; width: 100%; max-width: 250px; max-height: 170px; object-fit: contain; object-position: left center; margin: 0 0 16px; border-radius: 10px; }
+.credential-unverified { color: var(--muted); font-size: 10px; font-style: italic; }
 .blog-card, .achievement-card { padding: 24px; border: 1px solid var(--line); border-radius: 5px 22px 5px 22px; background: var(--paper); }
-.blog-card h3, .achievement-card h3 { margin: 12px 0; font: 27px/1.2 var(--serif); }
+.blog-card h3, .achievement-card h3, .achievement-card h4 { margin: 12px 0; font: 27px/1.2 var(--serif); }
+.achievement-card h4 { font-weight: 500; }
 .blog-excerpt { color: var(--muted); font-size: 12px; line-height: 1.9; }
 .blog-content { white-space: pre-line; color: var(--muted); line-height: 1.9; }
 .achievement-icon { color: var(--rose); font-size: 25px; }
