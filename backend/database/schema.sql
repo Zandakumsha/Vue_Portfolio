@@ -45,11 +45,16 @@ CREATE TABLE IF NOT EXISTS achievements (
   issuer VARCHAR(180) NOT NULL,
   description VARCHAR(600) NOT NULL,
   credential_url VARCHAR(2048) NULL,
+  image_url VARCHAR(2048) NULL,
   achieved_on DATE NULL,
+  status ENUM('completed', 'in_progress', 'planned') NOT NULL DEFAULT 'completed',
   category VARCHAR(80) NOT NULL DEFAULT 'Learning',
   is_published BOOLEAN NOT NULL DEFAULT TRUE,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Existing databases need a one-time migration before the updated API is deployed:
+-- run backend/database/migrations/20261012_achievements_status_image.sql
 
 CREATE TABLE IF NOT EXISTS contact_messages (
   message_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
