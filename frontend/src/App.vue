@@ -128,14 +128,22 @@ const projects = ref([
   },
 ])
 
-const skills = [
-  { name: 'Vue.js', group: 'Frontend', symbol: '✳' },
-  { name: 'JavaScript', group: 'Frontend', symbol: '⌘' },
-  { name: 'HTML & CSS', group: 'Frontend', symbol: '◇' },
-  { name: 'Node.js & Express', group: 'Backend', symbol: '↗' },
-  { name: 'MySQL', group: 'Data', symbol: '⊹' },
-  { name: 'Python & Flask', group: 'Backend', symbol: '✿' },
-  { name: 'Git & GitHub', group: 'Workflow', symbol: '⌘' },
+const skillGroups = [
+  { name: 'Frontend', description: 'Interfaces, components and responsive layouts', skills: [
+    { name: 'Vue.js', symbol: '✳', projects: [{ name: 'WeConnect', id: '01' }, { name: 'Lightning News', id: '03' }] },
+    { name: 'JavaScript', symbol: '⌘', projects: [{ name: 'WeConnect', id: '01' }, { name: 'Modern Tech', id: '02' }, { name: 'Lightning News', id: '03' }] },
+    { name: 'HTML & CSS', symbol: '◇', projects: [{ name: 'WeConnect', id: '01' }, { name: 'Modern Tech', id: '02' }, { name: 'Lightning News', id: '03' }] },
+  ]},
+  { name: 'Backend', description: 'Server routes and application logic', skills: [
+    { name: 'Node.js & Express', symbol: '↗', projects: [{ name: 'WeConnect', id: '01' }, { name: 'Modern Tech', id: '02' }] },
+    { name: 'Python & Flask', symbol: '✿', projects: [{ name: 'Lightning News', id: '03' }] },
+  ]},
+  { name: 'Databases', description: 'Structured application data', skills: [
+    { name: 'MySQL', symbol: '⊹', projects: [{ name: 'WeConnect', id: '01' }, { name: 'Modern Tech', id: '02' }] },
+  ]},
+  { name: 'Tools', description: 'Version control and collaboration', skills: [
+    { name: 'Git & GitHub', symbol: '⌘', projects: [{ name: 'WeConnect', id: '01' }, { name: 'Modern Tech', id: '02' }, { name: 'Lightning News', id: '03' }] },
+  ]},
 ]
 
 function closeMenu() {
@@ -262,7 +270,7 @@ async function copyEmail() {
           <p v-if="apiStatus === 'connected'" class="api-note api-connected" role="status">Live projects, journal posts and achievements are connected to the backend.</p>
           <p v-if="projectsError" class="api-note" role="status">{{ projectsError }}</p>
           <div class="project-grid">
-            <article v-for="project in projects" :key="project.number" class="project-card" :class="{ 'project-muted': selectedSkill && !project.tags.some(tag => selectedSkill.toLowerCase().includes(tag.toLowerCase()) || tag.toLowerCase().includes(selectedSkill.toLowerCase()) || project.description.toLowerCase().includes(selectedSkill.toLowerCase())) }">
+            <article v-for="project in projects" :key="project.number" :id="'project-' + project.number" class="project-card" :class="{ 'project-muted': selectedSkill && !project.tags.some(tag => selectedSkill.toLowerCase().includes(tag.toLowerCase()) || tag.toLowerCase().includes(selectedSkill.toLowerCase()) || project.description.toLowerCase().includes(selectedSkill.toLowerCase())) }">
               <a class="project-art" :class="project.theme" :href="project.url" target="_blank" rel="noreferrer" :aria-label="'Open ' + project.name">
                 <span class="art-label">{{ project.number }} / CASE STUDY</span>
                 <span class="art-star">✳</span>
@@ -308,11 +316,19 @@ async function copyEmail() {
             <p>A growing set of tools for bringing thoughtful ideas to life — from the pixels people see to the systems working behind the scenes.</p>
             <p class="handwritten">less noise, more meaning ✳</p>
           </div>
-          <div class="skills-cloud">
-            <button v-for="skill in skills" :key="skill.name" type="button" class="skill-pill" :class="{ 'skill-selected': selectedSkill === skill.name }" :aria-pressed="selectedSkill === skill.name" @click="selectSkill(skill.name)">
-              <b>{{ skill.symbol }}</b>{{ skill.name }}<small>{{ skill.group }}</small>
-            </button>
-            <p class="skills-footnote"><b>♡</b> {{ selectedSkill ? "Highlighting projects connected to " + selectedSkill + ". Select again to clear." : "Select a skill to explore related projects." }}</p>
+          <div class="skills-catalog">
+            <section v-for="group in skillGroups" :key="group.name" class="skill-group">
+              <div class="skill-group-heading"><h3>{{ group.name }}</h3><p>{{ group.description }}</p></div>
+              <div class="skill-group-list">
+                <article v-for="skill in group.skills" :key="skill.name" class="skill-entry">
+                  <button type="button" class="skill-pill" :class="{ 'skill-selected': selectedSkill === skill.name }" :aria-pressed="selectedSkill === skill.name" @click="selectSkill(skill.name)">
+                    <b>{{ skill.symbol }}</b>{{ skill.name }}<span class="skill-action">{{ selectedSkill === skill.name ? 'Selected ✓' : 'Highlight projects' }}</span>
+                  </button>
+                  <p class="skill-projects"><span>USED IN</span><a v-for="project in skill.projects" :key="project.id" :href="'#project-' + project.id">{{ project.name }} ↗</a></p>
+                </article>
+              </div>
+            </section>
+            <p class="skills-footnote"><b>♡</b> {{ selectedSkill ? "Highlighting projects connected to " + selectedSkill + ". Select again to clear." : "Choose a technology to highlight related projects, or jump directly to a project where it was used." }}</p>
           </div>
         </div>
       </section>
@@ -596,10 +612,22 @@ h1 em, h2 em { color: var(--rose); font-family: var(--serif); font-weight: 500; 
 .skills-grid { display: grid; grid-template-columns: .8fr 1.2fr; align-items: center; gap: 70px; padding-top: 50px; }
 .skills-intro > p:not(.handwritten) { max-width: 315px; margin-top: 22px; color: var(--muted); font-size: 12px; line-height: 2; }
 .skills-intro .handwritten { margin-left: 0; }
-.skills-cloud { display: flex; flex-wrap: wrap; gap: 10px; padding: 26px; border: 1px solid var(--line); border-radius: 5px 30px 5px 30px; background: var(--paper); }
-.skill-pill { display: flex; align-items: center; gap: 8px; padding: 12px 13px; border: 1px solid var(--line); border-radius: 30px; color: var(--muted); font-size: 10px; }
+.skills-catalog { display: grid; gap: 18px; padding: 24px; border: 1px solid var(--line); border-radius: 5px 30px 5px 30px; background: var(--paper); }
+.skill-group { padding-bottom: 17px; border-bottom: 1px solid var(--line); }
+.skill-group:last-of-type { padding-bottom: 0; border-bottom: 0; }
+.skill-group-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.skill-group-heading h3 { margin: 0; font: 21px var(--serif); }
+.skill-group-heading p { margin: 0; color: var(--muted); font-size: 9px; text-align: right; }
+.skill-group-list { display: grid; gap: 10px; }
+.skill-entry { min-width: 0; }
+.skill-pill { display: flex; width: 100%; align-items: center; gap: 8px; padding: 11px 12px; border: 1px solid var(--line); border-radius: 18px 18px 5px 5px; color: var(--muted); font-size: 10px; text-align: left; }
 .skill-pill b { color: var(--rose); font-size: 14px; }
-.skill-pill small { padding-left: 7px; border-left: 1px solid var(--line); font: 8px var(--mono); }
+.skill-action { margin-left: auto; color: var(--rose); font: 8px var(--mono); }
+.skill-pill:hover, .skill-pill.skill-selected { border-color: var(--rose); background: var(--soft); }
+.skill-projects { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; margin: 7px 2px 0; }
+.skill-projects > span { color: var(--muted); font: 7px var(--mono); letter-spacing: .1em; }
+.skill-projects a { color: var(--ink); font-size: 9px; text-decoration: underline; text-decoration-color: #cda5a5; text-underline-offset: 3px; }
+.skill-projects a:hover { color: var(--rose); }
 .skills-footnote { width: 100%; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font: italic 13px var(--serif); }
 .skills-footnote b { margin-right: 6px; color: var(--rose); }
 .journey-section { padding-top: 100px; padding-bottom: 100px; }
@@ -665,7 +693,7 @@ h1 em, h2 em { color: var(--rose); font-family: var(--serif); font-weight: 500; 
   .project-description { min-height: 125px; }
   .about-grid { gap: 40px; }
   .skills-grid { gap: 30px; }
-  .skills-cloud { padding: 18px; }
+  .skills-catalog { padding: 18px; }
   .skill-pill { padding: 10px; }
 }
 @media (max-width: 640px) {
@@ -722,7 +750,10 @@ h1 em, h2 em { color: var(--rose); font-family: var(--serif); font-weight: 500; 
   .section-kicker { font-size: 9px; line-height: 1.8; }
   .social-links { flex-wrap: wrap; }
   .skills-intro > p:not(.handwritten) { margin-top: 17px; }
-  .skills-cloud { gap: 8px; padding: 16px; }
+  .skills-catalog { gap: 16px; padding: 16px; }
+  .skill-group-heading { align-items: flex-start; flex-direction: column; gap: 4px; }
+  .skill-group-heading p { text-align: left; }
+  .skill-action { font-size: 7px; }
   .skill-pill { gap: 6px; padding: 10px 11px; font-size: 9px; }
   .skill-pill small { padding-left: 6px; font-size: 7px; }
   .contact-section { padding: 68px 0 52px; }
