@@ -113,8 +113,4 @@ ON DUPLICATE KEY UPDATE
   excerpt = VALUES(excerpt),
   content = VALUES(content);
 
-INSERT INTO achievements (title, issuer, description, credential_url, achieved_on, category)
-VALUES
-('Cisco learning badge', 'Cisco', 'A professional learning milestone. Replace this description and add the exact credential URL for the badge you earned.', NULL, NULL, 'Certification'),
-('Full-stack project experience', 'Life Choices Coding Academy', 'Collaborative learning through practical web development, debugging, Git workflows and building user-facing features.', NULL, NULL, 'Experience')
-;
+-- Add verified achievements and credentials here once their exact titles and URLs are confirmed.
