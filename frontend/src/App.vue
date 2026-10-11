@@ -37,7 +37,23 @@ onMounted(async () => {
 
   if (projectResult.status === 'fulfilled' && Array.isArray(projectResult.value)) {
     // Keep the designed examples when the database has no published projects yet.
-    if (projectResult.value.length) projects.value = projectResult.value
+    // The API/database does not store individual contribution lists, so preserve those
+    // verified frontend details when published project records replace the examples.
+    if (projectResult.value.length) {
+      const savedProjects = projects.value
+      projects.value = projectResult.value.map((apiProject) => {
+        const savedProject = savedProjects.find((project) =>
+          project.name === apiProject.name ||
+          project.number === String(apiProject.number).padStart(2, '0'),
+        )
+
+        return {
+          ...savedProject,
+          ...apiProject,
+          contributions: apiProject.contributions ?? savedProject?.contributions,
+        }
+      })
+    }
     projectsError.value = ''
   } else {
     projectsError.value = 'The project API is unavailable. Showing the saved portfolio examples instead.'
