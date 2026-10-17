@@ -475,3 +475,112 @@ img { max-width: 100%; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
 }
+
+
+/* Final visual consistency pass */
+.site-shell {
+  --surface-raised: #fffdfa;
+  --surface-border: #e9dfd9;
+}
+.site-shell.theme-dark {
+  --surface-raised: #34251b;
+  --surface-border: #604a39;
+}
+.page-wrap { width: min(100%, 1200px); }
+.content-section { scroll-margin-top: 100px; }
+.section-heading { margin-bottom: 30px; }
+.section-heading h2,
+.section-title,
+.section-heading .section-title {
+  text-wrap: balance;
+}
+.project-card,
+.blog-card,
+.achievement-card,
+.timeline-card,
+.explore-card,
+.skills-catalog,
+.skill-projects {
+  min-width: 0;
+  border-color: var(--surface-border);
+  transition: background-color .22s ease, border-color .22s ease, box-shadow .22s ease, transform .22s ease;
+}
+.project-card {
+  padding: 18px;
+  border: 1px solid var(--surface-border);
+  border-radius: 8px 24px 8px 24px;
+  background: var(--surface-raised);
+}
+.project-card:hover,
+.blog-card:hover,
+.achievement-card:hover,
+.timeline-card:hover,
+.explore-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px #38251a12;
+}
+.site-shell.theme-dark .project-card,
+.site-shell.theme-dark .blog-card,
+.site-shell.theme-dark .achievement-card,
+.site-shell.theme-dark .timeline-card,
+.site-shell.theme-dark .explore-card,
+.site-shell.theme-dark .skills-catalog {
+  background: var(--surface-raised);
+  border-color: var(--surface-border);
+}
+.site-shell.theme-dark .project-card:hover,
+.site-shell.theme-dark .blog-card:hover,
+.site-shell.theme-dark .achievement-card:hover,
+.site-shell.theme-dark .timeline-card:hover,
+.site-shell.theme-dark .explore-card:hover {
+  box-shadow: 0 16px 32px #0c07041f;
+  border-color: #98765a;
+}
+.project-art { border-radius: 8px 20px 8px 20px; }
+.tag-list span,
+.skill-pill { transition: background-color .2s ease, border-color .2s ease, color .2s ease; }
+.button-primary,
+.contact-button { border-radius: 999px; }
+.button-primary:focus-visible,
+.contact-button:focus-visible,
+.theme-toggle:focus-visible,
+.menu-toggle:focus-visible,
+.skill-pill:focus-visible { outline-offset: 4px; }
+.site-shell.theme-dark .contact-section {
+  background: linear-gradient(135deg, #2b1d14 0%, #3a281d 55%, #24180f 100%);
+  color: #f8efe6;
+}
+.site-shell.theme-dark .contact-section .section-kicker { color: #d2b9a4; }
+.site-shell.theme-dark .contact-section h2 em { color: #e0a5a6; }
+.site-shell.theme-dark .contact-form label { color: #e6d5c5; }
+.site-shell.theme-dark .contact-form input,
+.site-shell.theme-dark .contact-form textarea {
+  background: #24180f;
+  border-color: #74563f;
+  color: #fff6ed;
+}
+.site-shell.theme-dark .contact-form input:focus,
+.site-shell.theme-dark .contact-form textarea:focus {
+  border-color: #e0a5a6;
+  box-shadow: 0 0 0 3px #e0a5a622;
+}
+.site-shell.theme-dark .terminal-window {
+  background: #1c130d;
+  border-color: #5b4535;
+  color: #f8efe6;
+}
+.site-shell.theme-dark .navigation a:hover,
+.site-shell.theme-dark .navigation a:focus-visible { color: #e0a5a6; }
+.site-shell.theme-dark .announcement { background: #302219; }
+.site-shell.theme-dark .green-word { color: #c8d7b5; }
+.site-shell.theme-dark .project-art.rose { background: #5a3936; color: #f8e9e5; }
+.site-shell.theme-dark .project-art.lavender { background: #403343; color: #f0e8f8; }
+.site-shell.theme-dark .project-art.sage { background: #37402f; color: #e7efdc; }
+@media (max-width: 640px) {
+  .page-wrap { padding-left: 20px; padding-right: 20px; }
+  .content-section { padding-top: 64px; padding-bottom: 64px; }
+  .project-card { padding: 14px; }
+  .project-art { min-height: 220px; }
+  .section-heading { gap: 12px; }
+  .contact-form-row { grid-template-columns: minmax(0, 1fr); }
+}
