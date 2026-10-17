@@ -266,10 +266,6 @@ h1 em, h2 em { color: var(--rose); font-family: var(--serif); font-weight: 500; 
 .site-shell.theme-dark .contact-form textarea:focus { border-color: #e8aab4; }
 .site-shell.theme-dark .terminal-window { background: #171313; border: 1px solid #514040; }
 .site-shell.theme-dark .site-footer { border-color: var(--line); }
-.site-shell.theme-dark .topbar { border-color: var(--line); box-shadow: 0 8px 24px #00000018; }
-.site-shell.theme-dark .skills-cloud { background: #2a2222; }
-.site-shell.theme-dark .green-word { color: #b5c9a4; }
-.site-shell.theme-dark .green-word::after { background: #46523e; }
 .contact-section { position: relative; overflow: hidden; padding: 80px 0 65px; background: #413332; color: #fbf5f0; text-align: center; }
 .contact-inner { position: relative; z-index: 1; }
 .contact-section .section-kicker { justify-content: center; color: #c7aaa2; }
