@@ -23,7 +23,7 @@ This installs the root development runner and dependencies for both the backend 
 
 ### 2. Create and configure the database
 
-Run `backend/database/schema.sql` in MySQL Workbench or your hosted MySQL console. It creates the `portfolio` database and its tables, and seeds the portfolio projects and example blog posts. Add only verified achievements to the `achievements` table.
+Run `backend/database/schema.sql` in MySQL Workbench or your hosted MySQL console. It creates the `portfolio` database and its tables, and seeds the portfolio projects, example blog posts and supplied Cisco credential. Existing databases should run each applicable SQL migration in `backend/database/migrations/` once; back up the database first and review the migration before applying it.
 
 Create your backend environment file by copying the example:
 
@@ -63,7 +63,7 @@ Open `http://localhost:5000/api/health`. A healthy setup returns JSON with `"sta
 - `GET /api/achievements` — published achievements.
 - `POST /api/contact` — validates and stores a contact message in MySQL.
 
-The contact endpoint is rate-limited, validates fields on the server and uses parameterized SQL. There is deliberately no public endpoint for reading stored messages.
+The contact endpoint is rate-limited, validates fields on the server and uses parameterized SQL. There is deliberately no public endpoint for reading stored messages. Backend startup stops with a clear message when `DB_HOST`, `DB_USER` or `DB_PASSWORD` is missing.
 
 ## Before publishing
 
