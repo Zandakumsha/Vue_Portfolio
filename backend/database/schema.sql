@@ -114,16 +114,16 @@ ON DUPLICATE KEY UPDATE
   link_label = VALUES(link_label),
   sort_order = VALUES(sort_order);
 
-INSERT INTO blog_posts (slug, title, excerpt, content, category, published_at, reading_minutes)
+INSERT INTO blog_posts (slug, title, excerpt, content, category, published_at, reading_minutes, url, is_published)
 VALUES
 ('learning-to-debug-with-confidence', 'Learning to debug with confidence',
  'My first steps as a developer taught me that problem-solving is less about knowing every answer and more about asking better questions.',
  'Debugging has become one of the most valuable parts of my learning journey. I start by reproducing the issue, reading the error carefully, narrowing down the cause and testing one change at a time. It can be challenging, but every resolved bug helps me understand the system more deeply.',
- 'Learning', '2026-10-01 09:00:00', 3),
+ 'Learning', '2026-10-01 09:00:00', 3, NULL, FALSE),
 ('connecting-the-frontend-and-backend', 'Connecting the frontend to the backend',
  'A practical reflection on how APIs, databases and thoughtful UI states work together to make an application feel complete.',
  'A frontend becomes much more powerful when it can work with real data. Fetching data from an API, handling loading and error states, validating user input and storing information safely are all part of the experience. I am learning to treat the frontend and backend as two parts of one product.',
- 'Full-stack', '2026-10-05 09:00:00', 4)
+ 'Full-stack', '2026-10-05 09:00:00', 4, NULL, FALSE)
 ON DUPLICATE KEY UPDATE
   title = VALUES(title),
   excerpt = VALUES(excerpt),
@@ -141,7 +141,7 @@ SELECT
   '2026-10-29',
   'completed',
   'Learning',
-  TRUE
+  FALSE
 WHERE NOT EXISTS (
   SELECT 1
   FROM achievements
