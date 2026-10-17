@@ -7,7 +7,7 @@ defineProps({
 </script>
 
 <template>
-            <article v-for="project in projects" :key="project.number" :id="'project-' + project.number" class="project-card" :class="{ 'project-muted': selectedSkill && !project.tags.some(tag => selectedSkill.toLowerCase().includes(tag.toLowerCase()) || tag.toLowerCase().includes(selectedSkill.toLowerCase()) || project.description.toLowerCase().includes(selectedSkill.toLowerCase())) }">
+            <article :id="'project-' + project.number" class="project-card" :class="{ 'project-muted': selectedSkill && !project.tags.some(tag => selectedSkill.toLowerCase().includes(tag.toLowerCase()) || tag.toLowerCase().includes(selectedSkill.toLowerCase()) || project.description.toLowerCase().includes(selectedSkill.toLowerCase())) }">
               <a class="project-art" :class="project.theme" :href="project.url" target="_blank" rel="noreferrer" :aria-label="'Open ' + project.name">
                 <span class="art-label">{{ project.number }} / CASE STUDY</span>
                 <span class="art-star">✳</span>
