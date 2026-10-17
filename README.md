@@ -23,7 +23,7 @@ This installs the root development runner and dependencies for both the backend 
 
 ### 2. Create and configure the database
 
-Run `backend/database/schema.sql` in MySQL Workbench or your hosted MySQL console. It creates the `portfolio` database and its tables, and seeds the portfolio projects, example blog posts and supplied Cisco credential. Existing databases should run each applicable SQL migration in `backend/database/migrations/` once; back up the database first and review the migration before applying it.
+Run `backend/database/schema.sql` in MySQL Workbench or your hosted MySQL console. It creates the `portfolio` database and its tables, and seeds the portfolio projects, example blog posts and supplied Cisco credential. Existing databases should run each applicable SQL migration in `backend/database/migrations/` once; back up the database first and review each migration before applying it. The 2026-10-17 migrations hide seeded example journal entries and keep the supplied Cisco credential unpublished while its completion date is in the future.
 
 Create your backend environment file by copying the example:
 
@@ -70,6 +70,6 @@ The contact endpoint is rate-limited, validates fields on the server and uses pa
 - Use a hosted MySQL database and set backend environment variables in your hosting provider.
 - Set `FRONTEND_URL` to the deployed frontend origin in the backend environment.
 - Set `VITE_API_BASE_URL` to the deployed API URL if frontend and backend are hosted separately.
-- Add the exact title, date and credential URL for each achievement; do not publish placeholders.
+- Add the exact title, date and credential URL for each achievement; do not publish placeholders. The seeded journal entries are unpublished examples; publish only after replacing them with writing you approve.
 - Replace the demo CV data and placeholder contact email in `frontend/src/App.vue` with your real details.
 - Run `npm run build` from the repository root before deploying.
