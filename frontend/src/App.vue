@@ -6,7 +6,6 @@ const isDark = ref(false)
 const selectedSkill = ref('')
 const terminalCommand = ref('')
 const terminalOutput = ref('Try: help, about, skills, projects, contact')
-const emailCopied = ref(false)
 
 const menuOpen = ref(false)
 const blogPosts = ref([])
@@ -48,8 +47,7 @@ onMounted(async () => {
       const savedProjects = projects.value
       projects.value = projectResult.value.map((apiProject) => {
         const savedProject = savedProjects.find((project) =>
-          project.name === apiProject.name ||
-          project.number === String(apiProject.number).padStart(2, '0'),
+          project.name === apiProject.name,
         )
 
         return {
@@ -135,7 +133,6 @@ const projects = ref([
     challenge: 'Making sure employee-specific information and protected workflows stay connected to the correct database records.',
     approach: 'The application combines employee-facing pages with Node.js and Express routes backed by MySQL data.',
     learning: 'Connecting UI states to backend logic, thinking through authentication and data relationships, and debugging API/database issues.',
-    contributionNote: 'Personalise this section with the pages, routes, authentication or database features you personally implemented.',
     url: 'https://github.com/Zandakumsha/Modern_Tech_2',
     label: 'Explore project',
   },
@@ -167,7 +164,8 @@ const individualContributions = {
     'Supplier-side frontend pages and reusable components.',
     'Styling for the shop section of the buyer side.',
     'Express API routes and controllers.',
-    'Aiven database connection and',
+    'MySQL schema work, queries and database integration.',
+    'Aiven database connection and deployment configuration',
     'Testing, debugging and Git collaboration.',
   ],
   'Lightning News': [
@@ -205,9 +203,8 @@ function runTerminal() {
   terminalCommand.value = ''
 }
 async function copyEmail() {
-  const email = 'hello@zandaportfolio.dev'
-  try { await navigator.clipboard.writeText(email); emailCopied.value = true }
-  catch { emailCopied.value = false; window.location.href = 'mailto:' + email }
+  // A verified email address has not been supplied, so the contact form is the primary contact route.
+  window.location.hash = 'contact'
 }
 </script>
 
@@ -265,7 +262,7 @@ async function copyEmail() {
           <div class="portrait-backdrop"></div>
           <div class="portrait-frame">
             <img
-              src="/public/Screenshot 2026-06-05 184643.png"
+              src="/Screenshot%202026-06-05%20184643.png"
               alt="Editorial portrait representing a confident woman"
             />
             <span class="portrait-caption">01 / THE PERSON BEHIND THE PIXELS</span>
@@ -325,8 +322,9 @@ async function copyEmail() {
                   v-if="project.name === 'Lightning News'"
                   class="project-screenshot"
                   src="https://i.ibb.co/bj7C9TgS/Screenshot-2026-10-11-015612.png"
-                  alt="Lightning News analytics dashboard showing its topic network and news article cards"
+                  alt="Screenshot of the Lightning News analytics dashboard"
                   loading="lazy"
+                  decoding="async"
                 />
                 <div v-else class="mock-window">
                   <div class="window-bar"><i></i><i></i><i></i><small>studio / {{ project.initials.toLowerCase() }}</small></div>
@@ -512,15 +510,13 @@ async function copyEmail() {
               Leave this field empty
               <input v-model="contactForm.website" name="website" tabindex="-1" autocomplete="off" />
             </label>
-            <button class="contact-button" type="submit" :disabled="contactSubmitting">
+            <button class="contact-button" type="submit" :disabled="contactSubmitting || contactForm.message.trim().length < 10">
               {{ contactSubmitting ? 'Sending your note…' : 'Send a little hello ↗' }}
             </button>
             <p v-if="contactStatus" class="contact-status" :class="'status-' + contactStatusType" role="status" aria-live="polite">{{ contactStatus }}</p>
           </form>
           <div class="social-links">
             <a href="https://github.com/Zandakumsha" target="_blank" rel="noreferrer">GITHUB ↗</a><span>·</span>
-            <a href="mailto:hello@zandaportfolio.dev">EMAIL ↗</a><span>·</span>
-            <button class="copy-email" type="button" @click="copyEmail">{{ emailCopied ? "EMAIL COPIED ✓" : "COPY EMAIL" }}</button><span>·</span>
             <a href="#home">BACK TO TOP ↑</a>
           </div>
         </div>
