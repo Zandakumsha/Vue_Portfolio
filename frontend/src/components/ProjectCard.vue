@@ -42,7 +42,7 @@ defineProps({
                 <div class="case-study-content">
                   <p><strong>Project focus</strong>{{ project.focus }}</p>
                   <p><strong>The challenge</strong>{{ project.challenge }}</p>
-                  <p><strong>My approach</strong>{{ project.approach }}</p>
+                  <p><strong>Technical approach</strong>{{ project.approach }}</p>
                   <p><strong>What it taught me</strong>{{ project.learning }}</p>
                   <div v-if="individualContributions[project.name]" class="contribution-note">
                     <strong>My individual contributions</strong>
