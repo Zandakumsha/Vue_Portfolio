@@ -202,17 +202,13 @@ function runTerminal() {
   terminalOutput.value = replies[command] || 'Command not found. Try help'
   terminalCommand.value = ''
 }
-async function copyEmail() {
-  // A verified email address has not been supplied, so the contact form is the primary contact route.
-  window.location.hash = 'contact'
-}
 </script>
 
 <template>
   <div class="site-shell" :class="{ 'theme-dark': isDark }">
     <div class="announcement">
       <span class="status-dot"></span>
-      <span>OPEN TO NEW OPPORTUNITIES</span>
+      <span>OPEN TO LEARNING & COLLABORATION</span>
       <span class="announcement-flower">✳</span>
       <span>Building thoughtful things for the web</span>
     </div>
