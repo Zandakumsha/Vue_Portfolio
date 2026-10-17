@@ -71,5 +71,4 @@ The contact endpoint is rate-limited, validates fields on the server and uses pa
 - Set `FRONTEND_URL` to the deployed frontend origin in the backend environment.
 - Set `VITE_API_BASE_URL` to the deployed API URL if frontend and backend are hosted separately.
 - Add the exact title, date and credential URL for each achievement; do not publish placeholders. The seeded journal entries are unpublished examples; publish only after replacing them with writing you approve.
-- Replace the demo CV data and placeholder contact email in `frontend/src/App.vue` with your real details.
 - Run `npm run build` from the repository root before deploying.
