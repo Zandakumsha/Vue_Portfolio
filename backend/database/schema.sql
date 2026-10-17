@@ -78,7 +78,7 @@ VALUES
  'Keeping the frontend, API and relational data model aligned as supplier and buyer features evolve.',
  'Vue.js provides the interface, Express handles server-side routes, and MySQL stores structured application data.',
  'Full-stack integration, relational data, reusable UI patterns and collaborative Git workflows.',
- 'Team project — describe the exact screens, components, endpoints or database work you personally completed.',
+ NULL,
  'https://github.com/zahraamoerat/Project-3-E-Commerce1', 'Explore project', 1),
 (2, 'MT', 'lavender', 'HR TECHNOLOGY · WEB APPLICATION', 'Modern Tech',
  'An HR management experience for employee profiles, leave requests and calendars, with thoughtful workflows at its core.',
@@ -87,7 +87,7 @@ VALUES
  'Making sure employee-specific information and protected workflows stay connected to the correct database records.',
  'The application combines employee-facing pages with Node.js and Express routes backed by MySQL data.',
  'Connecting UI states to backend logic, thinking through authentication and data relationships, and debugging API/database issues.',
- 'Personalise this section with the pages, routes, authentication or database features you personally implemented.',
+ NULL,
  'https://github.com/Zandakumsha/Modern_Tech_2', 'Explore project', 2),
 (3, 'LN', 'sage', 'DATA · WEB SCRAPING · ANALYTICS', 'Lightning News',
  'A news analytics dashboard that brings scraped stories together with search, filtering and export-friendly views.',
@@ -96,23 +96,34 @@ VALUES
  'News sites can structure their pages differently, so scraped content needs to be parsed and presented consistently.',
  'BeautifulSoup supports HTML parsing, Flask exposes backend functionality, and Vue.js powers the interactive dashboard.',
  'Data extraction, handling inconsistent source markup, and joining backend scraping with frontend search and filtering.',
- 'Team project — specify the scraper, API routes, dashboard components or export features you personally worked on.',
+ NULL,
  'https://lightning-news.netlify.app/', 'View live demo', 3)
 ON DUPLICATE KEY UPDATE
+  project_number = VALUES(project_number),
+  initials = VALUES(initials),
+  theme = VALUES(theme),
+  project_type = VALUES(project_type),
   description = VALUES(description),
   tags = VALUES(tags),
-  url = VALUES(url);
+  focus = VALUES(focus),
+  challenge = VALUES(challenge),
+  approach = VALUES(approach),
+  learning = VALUES(learning),
+  contribution_note = VALUES(contribution_note),
+  url = VALUES(url),
+  link_label = VALUES(link_label),
+  sort_order = VALUES(sort_order);
 
-INSERT INTO blog_posts (slug, title, excerpt, content, category, published_at, reading_minutes)
+INSERT INTO blog_posts (slug, title, excerpt, content, category, published_at, reading_minutes, url, is_published)
 VALUES
 ('learning-to-debug-with-confidence', 'Learning to debug with confidence',
  'My first steps as a developer taught me that problem-solving is less about knowing every answer and more about asking better questions.',
  'Debugging has become one of the most valuable parts of my learning journey. I start by reproducing the issue, reading the error carefully, narrowing down the cause and testing one change at a time. It can be challenging, but every resolved bug helps me understand the system more deeply.',
- 'Learning', '2026-10-01 09:00:00', 3),
+ 'Learning', '2026-10-01 09:00:00', 3, NULL, FALSE),
 ('connecting-the-frontend-and-backend', 'Connecting the frontend to the backend',
  'A practical reflection on how APIs, databases and thoughtful UI states work together to make an application feel complete.',
  'A frontend becomes much more powerful when it can work with real data. Fetching data from an API, handling loading and error states, validating user input and storing information safely are all part of the experience. I am learning to treat the frontend and backend as two parts of one product.',
- 'Full-stack', '2026-10-05 09:00:00', 4)
+ 'Full-stack', '2026-10-05 09:00:00', 4, NULL, FALSE)
 ON DUPLICATE KEY UPDATE
   title = VALUES(title),
   excerpt = VALUES(excerpt),
@@ -130,7 +141,7 @@ SELECT
   '2026-10-29',
   'completed',
   'Learning',
-  TRUE
+  FALSE
 WHERE NOT EXISTS (
   SELECT 1
   FROM achievements

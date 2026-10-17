@@ -10,18 +10,32 @@ backend/node_modules/
 !.env.example
 !.env.*.example
 
-# Build outputs
+
+# Build outputs and coverage
 dist/
 frontend/dist/
 backend/dist/
+coverage/
+
 
 # Logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 
+pnpm-debug.log*
+
+
 # Local editor and operating-system files
 .vscode/
 .idea/
 .DS_Store
 Thumbs.db
+
+
+# Local certificates and private keys
+*.pem
+*.key
+*.p12
+*.pfx
+
