@@ -9,8 +9,23 @@ import blogRouter from './routes/blog.js';
 import achievementsRouter from './routes/achievements.js';
 import contactRouter from './routes/contact.js';
 
+const requiredDatabaseVariables = ['DB_HOST', 'DB_USER', 'DB_PASSWORD'];
+const missingDatabaseVariables = requiredDatabaseVariables.filter((key) => !process.env[key]?.trim());
+
+if (missingDatabaseVariables.length) {
+  console.error(
+    `Missing required database environment variables: ${missingDatabaseVariables.join(', ')}. Copy backend/.env.example to backend/.env and configure your database connection.`,
+  );
+  process.exit(1);
+}
+
 const app = express();
 const port = Number(process.env.PORT || 5000);
+
+if (!Number.isInteger(port) || port < 1 || port > 65535) {
+  console.error('PORT must be a valid TCP port between 1 and 65535.');
+  process.exit(1);
+}
 const allowedOrigins = (process.env.FRONTEND_URL || 'http://localhost:5173')
   .split(',')
   .map((origin) => origin.trim())
