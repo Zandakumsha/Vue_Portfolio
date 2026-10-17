@@ -7,6 +7,7 @@ An elegant, responsive Vue 3 portfolio with an Express API and MySQL storage for
 - `frontend/` — Vue 3 + Vite portfolio and existing design.
 - `backend/` — Express API, MySQL connection and API routes.
 - `backend/database/schema.sql` — database tables and sample project/blog content.
+- `backend/database/migrations/` — incremental schema and credential updates for existing databases.
 
 ## Run locally
 
@@ -27,7 +28,11 @@ Run `backend/database/schema.sql` in MySQL Workbench or your hosted MySQL consol
 Create your backend environment file by copying the example:
 
 ```bash
+# macOS / Linux / Git Bash
 cp backend/.env.example backend/.env
+
+# Windows PowerShell alternative
+Copy-Item backend/.env.example backend/.env
 ```
 
 Edit `backend/.env` with your actual MySQL host, port, username, password and database. For local MySQL, the defaults in the example can be used where they match your installation. For a managed database such as Aiven, use its connection details and configure `DB_SSL_CA` to the actual CA certificate path when required.
