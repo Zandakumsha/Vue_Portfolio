@@ -22,7 +22,7 @@ function closeMenu() { emit('update:menuOpen', false) }
         type="button"
         :aria-expanded="menuOpen"
         aria-controls="main-navigation"
-        @click="menuOpen = !menuOpen"
+        @click="$emit('update:menuOpen', !menuOpen)"
       >
         {{ menuOpen ? 'Close −' : 'Menu +' }}
       </button>
@@ -35,6 +35,6 @@ function closeMenu() { emit('update:menuOpen', false) }
         <a href="#achievements" @click="closeMenu">Milestones</a>
         <a class="nav-contact" href="#contact" @click="closeMenu">Let's talk ↗</a>
       </nav>
-      <button class="theme-toggle" type="button" :aria-pressed="isDark" @click="isDark = !isDark">{{ isDark ? "☼ Light mode" : "☾ Dark mode" }}</button>
+      <button class="theme-toggle" type="button" :aria-pressed="isDark" @click="$emit('update:isDark', !isDark)">{{ isDark ? "☼ Light mode" : "☾ Dark mode" }}</button>
     </header>
 </template>
