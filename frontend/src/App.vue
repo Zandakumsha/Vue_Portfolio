@@ -211,9 +211,9 @@ function runTerminal() {
 
 <template>
   <div class="site-shell" :class="{ 'theme-dark': isDark }">
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <SiteHeader v-model:is-dark="isDark" v-model:menu-open="menuOpen" />
 
-    <a class="skip-link" href="#main-content">Skip to content</a>
     <main id="main-content" tabindex="-1">
       <HeroSection />
 
