@@ -1,6 +1,10 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue'
 import { apiRequest } from './services/api.js'
+import SiteHeader from './components/SiteHeader.vue'
+import HeroSection from './components/HeroSection.vue'
+import AboutSection from './components/AboutSection.vue'
+import ProjectCard from './components/ProjectCard.vue'
 
 const isDark = ref(false)
 const selectedSkill = ref('')
@@ -130,9 +134,9 @@ const projects = ref([
     description: 'An HR management experience for employee profiles, leave requests and calendars, with thoughtful workflows at its core.',
     tags: ['JavaScript', 'Node.js', 'MySQL'],
     focus: 'A central place for employee information and everyday HR workflows such as leave requests and calendar events.',
-    challenge: 'Making sure employee-specific information and protected workflows stay connected to the correct database records.',
-    approach: 'The application combines employee-facing pages with Node.js and Express routes backed by MySQL data.',
-    learning: 'Connecting UI states to backend logic, thinking through authentication and data relationships, and debugging API/database issues.',
+    challenge: 'Keeping employee-specific information and protected workflows connected to the correct database records.',
+    approach: 'The project explores employee-facing workflows supported by a Node.js/Express backend and MySQL data.',
+    learning: 'Exploring how UI states connect to backend logic, authentication requirements and relational data.',
     url: 'https://github.com/Zandakumsha/Modern_Tech_2',
     label: 'Explore project',
   },
@@ -206,70 +210,11 @@ function runTerminal() {
 
 <template>
   <div class="site-shell" :class="{ 'theme-dark': isDark }">
-    <div class="announcement">
-      <span class="status-dot"></span>
-      <span>OPEN TO LEARNING & COLLABORATION</span>
-      <span class="announcement-flower">✳</span>
-      <span>Building thoughtful things for the web</span>
-    </div>
+    <SiteHeader v-model:is-dark="isDark" v-model:menu-open="menuOpen" />
 
-    <header class="topbar">
-      <a class="brand" href="#home" aria-label="Zanda home" @click="closeMenu">
-        <span class="brand-mark">z.</span>
-        <span class="brand-copy">ZANDA K.<small>DEVELOPER & CREATIVE THINKER</small></span>
-      </a>
-      <button
-        class="menu-toggle"
-        type="button"
-        :aria-expanded="menuOpen"
-        aria-controls="main-navigation"
-        @click="menuOpen = !menuOpen"
-      >
-        {{ menuOpen ? 'Close −' : 'Menu +' }}
-      </button>
-      <nav id="main-navigation" class="navigation" :class="{ 'navigation-open': menuOpen }" aria-label="Main navigation">
-        <a href="#about" @click="closeMenu">About</a>
-        <a href="#work" @click="closeMenu">Selected work</a>
-        <a href="#skills" @click="closeMenu">Expertise</a>
-        <a href="#journey" @click="closeMenu">Journey</a>
-        <a href="#blog" @click="closeMenu">Journal</a>
-        <a href="#achievements" @click="closeMenu">Milestones</a>
-        <a class="nav-contact" href="#contact" @click="closeMenu">Let's talk ↗</a>
-      </nav>
-      <button class="theme-toggle" type="button" :aria-pressed="isDark" @click="isDark = !isDark">{{ isDark ? "☼ Light mode" : "☾ Dark mode" }}</button>
-    </header>
-
-    <main>
-      <section id="home" class="hero page-wrap">
-        <div class="hero-copy">
-          <p class="eyebrow">HELLO, WORLD. I'M ZANDA.</p>
-          <h1>Soft heart.<br />Sharp <em>mind.</em><br />Beautifully<br />built <span class="green-word">code.</span></h1>
-          <p class="hero-description">
-            I'm a developer who loves turning complex ideas into thoughtful, intuitive digital experiences — one considered detail at a time.
-          </p>
-          <div class="hero-actions">
-            <a class="button-primary" href="#work">Explore my work <span>↗</span></a>
-            <a class="text-link" href="#about">A little about me ↓</a>
-          </div>
-          <p class="little-note"><span>✳</span> Curious by nature. Intentional by design.</p>
-        </div>
-
-        <div class="hero-art" aria-label="Portrait and creative details">
-          <div class="portrait-backdrop"></div>
-          <div class="portrait-frame">
-            <img
-              src="/Screenshot%202026-06-05%20184643.png"
-              alt="Editorial portrait representing a confident woman"
-            />
-            <span class="portrait-caption">01 / THE PERSON BEHIND THE PIXELS</span>
-          </div>
-          <div class="creative-sticker"><b>✳</b><span>CREATIVE<br />THINKING</span></div>
-          <div class="intention-sticker">✳<br />made with<br /><em>intention</em></div>
-          <div class="orbit-line"></div>
-          <span class="hero-spark">✴</span>
-        </div>
-        <div class="scroll-cue"><span>SCROLL TO DISCOVER</span><i></i><span>01 — 05</span></div>
-      </section>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <main id="main-content" tabindex="-1">
+      <HeroSection />
 
       <div class="manifesto">
         <div class="manifesto-inner">
@@ -279,26 +224,7 @@ function runTerminal() {
         </div>
       </div>
 
-      <section id="about" class="page-wrap content-section">
-        <p class="section-kicker"><span>01</span> A NOTE ABOUT ME</p>
-        <div class="about-grid">
-          <div>
-            <h2>Equal parts<br /><em>logic</em> & lovely.</h2>
-            <p class="handwritten">and always learning ↗</p>
-          </div>
-          <div class="body-copy">
-            <p class="statement">I believe the best digital experiences live where clean engineering meets a little bit of magic.</p>
-            <p>I'm Zanda, a developer growing my craft across frontend and backend technologies. I enjoy shaping ideas into useful products, untangling tricky problems and making the details feel just as considered as the big picture.</p>
-            <p>My approach is curious, collaborative and people-first. I'm here to keep learning, build with purpose and create technology that makes someone's day a little easier.</p>
-            <a class="under-link" href="#contact">Have a project in mind? <span>Let's connect ↗</span></a>
-          </div>
-        </div>
-        <div class="values-row">
-          <div class="value-item"><span class="value-icon">✳</span><div><strong>Thoughtful by design</strong><small>Details matter. People matter more.</small></div></div>
-          <div class="value-item"><span class="value-icon">♡</span><div><strong>Always evolving</strong><small>Curiosity is part of the process.</small></div></div>
-          <div class="value-item"><span class="value-icon">⌘</span><div><strong>Built to be useful</strong><small>Beautiful is better when it works.</small></div></div>
-        </div>
-      </section>
+      <AboutSection />
 
       <section id="work" class="work-section">
         <div class="page-wrap content-section">
@@ -375,42 +301,14 @@ function runTerminal() {
             <section v-for="group in skillGroups" :key="group.name" class="skill-group">
               <div class="skill-group-heading"><h3>{{ group.name }}</h3><p>{{ group.description }}</p></div>
               <div class="skill-group-list">
-                <article v-for="skill in group.skills" :key="skill.name" class="skill-entry">
-                  <button type="button" class="skill-pill" :class="{ 'skill-selected': selectedSkill === skill.name }" :aria-pressed="selectedSkill === skill.name" @click="selectSkill(skill.name)">
-                    <b>{{ skill.symbol }}</b>{{ skill.name }}<span class="skill-action">{{ selectedSkill === skill.name ? 'Selected ✓' : 'Highlight projects' }}</span>
-                  </button>
-                  <p class="skill-projects"><span>USED IN</span><a v-for="project in skill.projects" :key="project.id" :href="'#project-' + project.id">{{ project.name }} ↗</a></p>
-                </article>
-              </div>
-            </section>
-            <p class="skills-footnote"><b>♡</b> {{ selectedSkill ? "Highlighting projects connected to " + selectedSkill + ". Select again to clear." : "Choose a technology to highlight related projects, or jump directly to a project where it was used." }}</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="journey" class="journey-section page-wrap">
-        <p class="section-kicker"><span>04</span> THE JOURNEY SO FAR</p>
-        <h2 class="journey-heading">Growing into my <em>next chapter.</em></h2>
-        <p class="journey-intro">A little timeline for the work, learning and curiosity that keep shaping how I build. Update these milestones as your journey evolves.</p>
-        <div class="timeline-grid">
-          <article class="timeline-card"><small>FOUNDATIONS</small><h3>Learning by building</h3><p>Strengthening core web development skills through practical interfaces, responsive layouts and collaborative projects.</p></article>
-          <article class="timeline-card"><small>FULL-STACK</small><h3>Connecting the pieces</h3><p>Working across Vue, Node.js, Express and MySQL to understand how polished frontends connect to useful backend systems.</p></article>
-          <article class="timeline-card"><small>ALWAYS IN PROGRESS</small><h3>Curiosity, continued</h3><p>Exploring better UX, accessible interactions, clean code and ways to turn complex problems into friendly experiences.</p></article>
-        </div>
-        <div class="journey-bottom-grid">
-          <article class="explore-card"><small>CURRENTLY EXPLORING</small><h3>Small details, better experiences.</h3><p>Accessibility, interaction design, data visualisation and the little moments that make an app feel thoughtful.</p><span class="feature-label">NOW LEARNING · ALWAYS ITERATING ✳</span></article>
-          <article class="explore-card terminal-card"><small>A LITTLE DEVELOPER MAGIC</small><h3>Curious? Open the terminal.</h3><div class="terminal-window"><div class="terminal-dots"><i></i><i></i><i></i></div><p class="terminal-prompt">zanda@portfolio:~$ <span>help</span></p><p class="terminal-output" aria-live="polite">{{ terminalOutput }}</p><form @submit.prevent="runTerminal"><label for="terminal-command">zanda@portfolio:~$ </label><input id="terminal-command" v-model="terminalCommand" autocomplete="off" placeholder="type a command…" /></form></div><span class="feature-label">TRY: help · about · skills · projects · contact</span></article>
-        </div>
-      </section>
-
-      <section id="blog" class="page-wrap content-section portfolio-data-section">
-        <p class="section-kicker"><span>05</span> NOTES FROM THE JOURNEY</p>
-        <div class="work-heading">
-          <h2>A little <em>field journal.</em></h2>
-          <p>Thoughts on learning, problem-solving and the details behind building for the web.</p>
-        </div>
-        <p v-if="blogError" class="api-note" role="status">{{ blogError }}</p>
-        <p v-else-if="!blogPosts.length" class="api-note">New notes are on the way. Check back soon.</p>
+                <article v-for="skill in group.skills"            <ProjectCard
+              v-for="project in projects"
+              :key="project.number"
+              :project="project"
+              :selected-skill="selectedSkill"
+              :individual-contributions="individualContributions"
+            />s">{{ blogError }}</p>
+        <p v-else-if="!blogPosts.length" class="api-note">No journal posts are published yet.</p>
         <div v-else class="blog-grid">
           <article v-for="post in blogPosts" :key="post.post_id || post.slug" class="blog-card">
             <p class="project-meta">{{ post.category }} <span>·</span> {{ post.readingMinutes || 3 }} MIN READ</p>
@@ -863,5 +761,31 @@ h1 em, h2 em { color: var(--rose); font-family: var(--serif); font-weight: 500; 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; }
+}
+
+/* Responsive and keyboard-accessibility refinements */
+.skip-link { position: fixed; z-index: 1000; top: 12px; left: 12px; padding: 12px 16px; border-radius: 999px; background: var(--ink, #24231f); color: var(--paper, #fffdf8); transform: translateY(-160%); transition: transform .18s ease; }
+.skip-link:focus { transform: translateY(0); }
+:where(a, button, input, textarea, summary):focus-visible { outline: 3px solid var(--accent, #9a6b7b); outline-offset: 4px; }
+img { max-width: 100%; }
+.project-card, .blog-card, .achievement-card, .timeline-card, .explore-card { min-width: 0; }
+.project-description, .body-copy, .case-study-content, .blog-excerpt, .achievement-card p { overflow-wrap: anywhere; }
+.contact-form input, .contact-form textarea, .terminal-window input { max-width: 100%; min-width: 0; }
+@media (max-width: 640px) {
+  .page-wrap { width: min(100% - 32px, 100%); }
+  .topbar { gap: 12px; }
+  .brand-copy small { letter-spacing: .08em; }
+  .hero h1 { font-size: clamp(3rem, 13vw, 4.8rem); line-height: .98; }
+  .hero-art { width: 100%; max-width: 420px; margin-inline: auto; }
+  .project-grid, .blog-grid, .achievement-grid, .timeline-grid, .journey-bottom-grid { grid-template-columns: minmax(0, 1fr); }
+  .contact-form-row { grid-template-columns: minmax(0, 1fr); }
+  .project-card { padding: clamp(18px, 5vw, 28px); }
+  .project-art { min-height: 210px; }
+  .social-links { flex-wrap: wrap; }
+  .site-footer { gap: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .skip-link { transition: none; }
+  :where(a, button, input, textarea, summary):focus-visible { scroll-behavior: auto; }
 }
 </style>
