@@ -7,13 +7,10 @@
     "node": ">=22.18.0"
   },
   "scripts": {
-    "setup": "npm install && npm install --prefix backend && npm install --prefix frontend",
-    "dev": "concurrently -k -n API,WEB -c cyan,magenta \"npm:dev:backend\" \"npm:dev:frontend\"",
-    "dev:backend": "npm --prefix backend run dev",
-    "dev:frontend": "npm --prefix frontend run dev",
-    "build": "npm --prefix frontend run build"
-  },
-  "devDependencies": {
-    "concurrently": "^9.2.1"
+    "setup": "npm install --prefix frontend",
+    "dev": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend run build",
+    "preview": "npm --prefix frontend run preview",
+    "format": "npm --prefix frontend run format"
   }
 }
