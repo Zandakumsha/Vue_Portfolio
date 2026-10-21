@@ -18,6 +18,7 @@ const achievements = ref([
     achievement_id: 'cisco-introduction-to-cybersecurity',
     title: 'Introduction to Cybersecurity',
     issuer: 'Cisco',
+    imageUrl: '/IC%20%20BADGE.png',
     status: 'completed',
     achievedOn: '2026-10-29',
     credentialUrl: 'https://www.credly.com/badges/f0b44bf4-8edf-4190-8070-e1c7e6486a22/public_url',
