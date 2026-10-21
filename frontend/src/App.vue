@@ -12,7 +12,46 @@ const terminalCommand = ref('')
 const terminalOutput = ref('Try: help, about, skills, projects, contact')
 
 const menuOpen = ref(false)
-const blogPosts = ref([])
+const currentJournalIndex = ref(0)
+const blogPosts = ref([
+  {
+    slug: 'trust-the-process',
+    category: 'GROWTH & MINDSET',
+    readingMinutes: 3,
+    title: 'Learning to Trust My Problem-Solving Process',
+    excerpt: 'The first instinct is not always the answer. Sometimes the real skill is slowing down, asking better questions and following the clues.',
+    content: 'As a trainee developer, debugging has taught me that progress is rarely a straight line. When something breaks, I am learning to pause, read the error carefully and break the problem into smaller pieces instead of changing everything at once.\n\nTesting one idea at a time helps me understand what actually fixed the issue. The mistakes can be frustrating, but they are also clues. Every bug I work through gives me a little more confidence in my ability to investigate, learn and try again.',
+    imageUrl: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=85',
+    imageAlt: 'A focused workspace with a laptop and notes',
+    imageNote: 'ONE BUG AT A TIME',
+  },
+  {
+    slug: 'beyond-the-interface',
+    category: 'BUILDING & LEARNING',
+    readingMinutes: 3,
+    title: 'Building Beyond the Interface',
+    excerpt: 'A page is only one part of the story. I am learning how components, APIs and databases work together to make an experience feel seamless.',
+    content: 'Working on full-stack projects has helped me see the connections behind the screen. A frontend component needs useful data, an API needs to handle requests clearly, and a database needs to organise information reliably.\n\nOn projects such as WeConnect, I have had the chance to work across Vue components, Express routes and MySQL integration. It has made me think about the whole journey of a piece of information, not just how a page looks. The more I understand those connections, the better questions I can ask when something does not work.',
+    imageUrl: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=85',
+    imageAlt: 'A small team collaborating around a laptop',
+    imageNote: 'CONNECTING THE PIECES',
+  },
+  {
+    slug: 'design-is-part-of-the-experience',
+    category: 'DESIGN & ACCESSIBILITY',
+    readingMinutes: 3,
+    title: 'Design Is Part of the Experience',
+    excerpt: 'Soft edges and thoughtful details are lovely, but good design also helps people understand what to do next.',
+    content: 'I love creating interfaces that feel warm and welcoming, but I am learning that visual polish should always support the person using the product. Clear labels, readable contrast, responsive layouts and visible focus states are not extras; they help make an experience easier to use.\n\nI want my work to feel considered without becoming complicated. Sometimes that means refining spacing, simplifying a section or making an interaction more obvious. Those small decisions can make technology feel more human.',
+    imageUrl: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=85',
+    imageAlt: 'A laptop and notebook on a calm, minimal desk',
+    imageNote: 'DETAILS WITH PURPOSE',
+  },
+])
+const currentJournalPost = computed(() => blogPosts.value[currentJournalIndex.value])
+function moveJournal(direction) {
+  currentJournalIndex.value = (currentJournalIndex.value + direction + blogPosts.value.length) % blogPosts.value.length
+}
 const achievements = ref([
   {
     achievement_id: 'cisco-introduction-to-cybersecurity',
@@ -223,18 +262,32 @@ function runTerminal() {
           <h2>A little <em>field journal.</em></h2>
           <p>Thoughts on learning, problem-solving and the details behind building for the web.</p>
         </div>
-        <p v-if="!blogPosts.length" class="api-note">Journal notes will appear here as new writing is added.</p>
-        <div v-else class="blog-grid">
-          <article v-for="post in blogPosts" :key="post.post_id || post.slug" class="blog-card">
-            <p class="project-meta">{{ post.category }} <span>·</span> {{ post.readingMinutes || 3 }} MIN READ</p>
-            <h3>{{ post.title }}</h3>
-            <p class="blog-excerpt">{{ post.excerpt }}</p>
-            <details class="case-study">
-              <summary>Read the note +</summary>
-              <p class="blog-content">{{ post.content }}</p>
-            </details>
-            <a v-if="post.url" class="project-link" :href="post.url" target="_blank" rel="noreferrer">Read more ↗</a>
+        <div v-if="blogPosts.length" class="journal-carousel" aria-roledescription="carousel" aria-label="Field journal entries">
+          <article class="journal-slide" :key="currentJournalPost.slug" aria-live="polite">
+            <div class="journal-image-wrap">
+              <img class="journal-image" :src="currentJournalPost.imageUrl" :alt="currentJournalPost.imageAlt" loading="lazy" />
+              <span class="journal-image-note">{{ currentJournalPost.imageNote }}</span>
+              <span class="journal-image-spark" aria-hidden="true">✳</span>
+            </div>
+            <div class="journal-copy">
+              <p class="project-meta">{{ currentJournalPost.category }} <span>·</span> {{ currentJournalPost.readingMinutes }} MIN READ</p>
+              <p class="journal-number">FIELD NOTE 0{{ currentJournalIndex + 1 }} <span> / 0{{ blogPosts.length }}</span></p>
+              <h3>{{ currentJournalPost.title }}</h3>
+              <p class="blog-excerpt journal-excerpt">{{ currentJournalPost.excerpt }}</p>
+              <details class="case-study journal-details">
+                <summary>Read the full reflection <span aria-hidden="true">↗</span></summary>
+                <p class="blog-content">{{ currentJournalPost.content }}</p>
+              </details>
+              <div class="journal-controls">
+                <button type="button" class="journal-arrow" aria-label="Previous journal entry" @click="moveJournal(-1)">←</button>
+                <div class="journal-dots" role="group" aria-label="Choose a journal entry">
+                  <button v-for="(post, index) in blogPosts" :key="post.slug" type="button" class="journal-dot" :class="{ 'is-active': currentJournalIndex === index }" :aria-label="'Show entry ' + (index + 1) + ': ' + post.title" :aria-pressed="currentJournalIndex === index" @click="currentJournalIndex = index"></button>
+                </div>
+                <button type="button" class="journal-arrow" aria-label="Next journal entry" @click="moveJournal(1)">→</button>
+              </div>
+            </div>
           </article>
+          <p class="journal-footnote"><span>✳</span> NOTES FROM A DEVELOPER IN PROGRESS — ALWAYS LEARNING, ALWAYS MAKING</p>
         </div>
       </section>
 
