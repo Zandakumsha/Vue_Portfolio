@@ -1,13 +1,13 @@
 # Zanda K. — Developer Portfolio
 
-An elegant, responsive portfolio built with Vue 3 and Vite. This is a **frontend-only project**: portfolio content is managed in Vue files, with no Express server, API, database or backend environment variables.
+An elegant, responsive portfolio built with Vue 3 and Vite. This is a **frontend-only project**. Portfolio content lives in Vue components, and the contact form submits directly to Formspree. There is no custom backend server, API, or database.
 
 ## Tech stack
 
-- Vue 3
-- Vite
+- Vue 3 and Vite
 - JavaScript, HTML and CSS
-- Responsive layout, accessible navigation and a light/dark theme
+- Responsive layout, accessible navigation and light/dark theme
+- Formspree for contact form submissions
 
 ## Run locally
 
@@ -44,19 +44,10 @@ npm run preview
 - `frontend/src/assets/portfolio.css` — site styling and theme colors.
 - `frontend/public/` — static images and public assets.
 
-Projects are defined locally in `App.vue`; update the relevant project object to change descriptions, tags, links or case-study content. Journal and credential sections intentionally show an empty state until verified content is added. Do not publish unverified credentials or placeholder writing.
+## Contact form
 
-## Contact form (Formspree)
-
-The contact section uses a standard HTML form that submits directly to Formspree, so no backend server is needed.
-
-1. Create a form at [Formspree](https://formspree.io/) and confirm the receiving email address.
-2. Copy the form endpoint provided by Formspree. It looks like `https://formspree.io/f/xxxxxxxx`.
-3. Open `frontend/src/App.vue` and replace `YOUR_FORM_ID` in the form's `action` with your actual Formspree form ID (the part after `/f/`).
-4. Save and deploy the updated frontend. Submit a test message and follow any email verification steps Formspree requests.
-
-Until you replace `YOUR_FORM_ID` with your real endpoint, submissions will not reach your inbox. Formspree's plan limits and spam protections apply.
+The contact form is connected directly to Formspree at `https://formspree.io/f/xdearnka`. No custom backend is required. Ensure your Formspree account is active and complete any email verification it requests. Test the live form after deploying.
 
 ## Deployment
 
-Run `npm run build` and deploy the generated `frontend/dist/` directory to any static hosting provider, such as GitHub Pages, Netlify or Vercel. No backend service or database is required.
+Run `npm run build` and deploy the generated `frontend/dist/` directory to a static hosting provider, such as GitHub Pages, Netlify or Vercel. No backend service or database is required.
