@@ -1,38 +1,26 @@
-# frontend
+# Zanda K. — Portfolio frontend
 
-This template should help get you started developing with Vue 3 in Vite.
+Vue 3 + Vite single-page portfolio. All displayed content is managed in the frontend; no API or backend is required.
 
-## Recommended IDE Setup
-
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Recommended Browser Setup
-
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
+## Setup
 
 ```sh
 npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+## Production build
 
 ```sh
 npm run build
+npm run preview
 ```
+
+## Main files
+
+- `src/App.vue` — project content and page sections.
+- `src/components/` — reusable Vue components.
+- `src/assets/portfolio.css` — styling, responsive rules and themes.
+- `public/` — static assets.
+
+See the root README for full setup and deployment instructions.
