@@ -286,7 +286,7 @@ function runTerminal() {
           <p class="contact-description">I'm always happy to connect with kind people, curious teams and ideas worth building. Let's make something meaningful.</p>
           <form
             class="contact-form"
-            action="https://formspree.io/f/YOUR_FORM_ID"
+            action="https://formspree.io/f/xdearnka"
             method="POST"
           >
             <div class="contact-form-row">
