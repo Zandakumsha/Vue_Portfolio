@@ -1,6 +1,5 @@
 <script setup>
-import { computed, onMounted, ref } from 'vue'
-import { apiRequest } from './services/api.js'
+import { computed, ref } from 'vue'
 import SiteHeader from './components/SiteHeader.vue'
 import HeroSection from './components/HeroSection.vue'
 import AboutSection from './components/AboutSection.vue'
@@ -21,86 +20,6 @@ const completedAchievements = computed(() =>
 const learningAchievements = computed(() =>
   achievements.value.filter((item) => item.status === 'in_progress' || item.status === 'planned'),
 )
-const blogError = ref('')
-const achievementsError = ref('')
-const projectsError = ref('')
-const apiStatus = ref('loading')
-const contactForm = ref({ name: '', email: '', subject: '', message: '', website: '' })
-const contactSubmitting = ref(false)
-const contactStatus = ref('')
-const contactStatusType = ref('success')
-
-onMounted(async () => {
-  const results = await Promise.allSettled([
-    apiRequest('/projects'),
-    apiRequest('/blog'),
-    apiRequest('/achievements'),
-  ])
-
-  const [projectResult, blogResult, achievementResult] = results
-  apiStatus.value = results.every((result) => result.status === 'fulfilled')
-    ? 'connected'
-    : results.some((result) => result.status === 'fulfilled')
-      ? 'partial'
-      : 'offline'
-
-  if (projectResult.status === 'fulfilled' && Array.isArray(projectResult.value)) {
-    // Keep the designed examples when the database has no published projects yet.
-    // The API/database does not store individual contribution lists, so preserve those
-    // verified frontend details when published project records replace the examples.
-    if (projectResult.value.length) {
-      const savedProjects = projects.value
-      projects.value = projectResult.value.map((apiProject) => {
-        const savedProject = savedProjects.find((project) =>
-          project.name === apiProject.name,
-        )
-
-        return {
-          ...savedProject,
-          ...apiProject,
-          contributions: apiProject.contributions ?? savedProject?.contributions,
-        }
-      })
-    }
-    projectsError.value = ''
-  } else {
-    projectsError.value = 'The project API is unavailable. Showing the saved portfolio examples instead.'
-  }
-
-  if (blogResult.status === 'fulfilled' && Array.isArray(blogResult.value)) {
-    blogPosts.value = blogResult.value
-    blogError.value = ''
-  } else {
-    blogError.value = 'Blog posts could not be loaded from the API. Please check the backend and database.'
-  }
-
-  if (achievementResult.status === 'fulfilled' && Array.isArray(achievementResult.value)) {
-    achievements.value = achievementResult.value
-    achievementsError.value = ''
-  } else {
-    achievementsError.value = 'Achievements could not be loaded from the API. Please check the backend and database.'
-  }
-})
-
-async function submitContact() {
-  contactSubmitting.value = true
-  contactStatus.value = ''
-  try {
-    const result = await apiRequest('/contact', {
-      method: 'POST',
-      body: JSON.stringify(contactForm.value),
-    })
-    contactStatusType.value = 'success'
-    contactStatus.value = result.message || 'Thank you — your message has been received.'
-    contactForm.value = { name: '', email: '', subject: '', message: '', website: '' }
-  } catch (error) {
-    contactStatusType.value = 'error'
-    contactStatus.value = error.message || 'Your message could not be sent. Please try again.'
-  } finally {
-    contactSubmitting.value = false
-  }
-}
-
 const projects = ref([
   {
     number: '01',
@@ -234,8 +153,6 @@ function runTerminal() {
             <h2>A collection of<br /><em>curiosity.</em></h2>
             <p>Different challenges, one common thread: making technology more useful, clear and human.</p>
           </div>
-          <p v-if="apiStatus === 'connected'" class="api-note api-connected" role="status">Live projects, journal posts and achievements are connected to the backend.</p>
-          <p v-if="projectsError" class="api-note" role="status">{{ projectsError }}</p>
           <div class="project-grid">
             <ProjectCard
               v-for="project in projects"
@@ -295,8 +212,7 @@ function runTerminal() {
           <h2>A little <em>field journal.</em></h2>
           <p>Thoughts on learning, problem-solving and the details behind building for the web.</p>
         </div>
-        <p v-if="blogError" class="api-note" role="status">{{ blogError }}</p>
-        <p v-else-if="!blogPosts.length" class="api-note">No journal posts are published yet.</p>
+        <p v-if="!blogPosts.length" class="api-note">Journal notes will appear here as new writing is added.</p>
         <div v-else class="blog-grid">
           <article v-for="post in blogPosts" :key="post.post_id || post.slug" class="blog-card">
             <p class="project-meta">{{ post.category }} <span>·</span> {{ post.readingMinutes || 3 }} MIN READ</p>
@@ -318,15 +234,14 @@ function runTerminal() {
             <h2>Proof of <em>progress.</em></h2>
             <p>Learning milestones, credentials and experiences that are shaping my developer journey.</p>
           </div>
-          <p v-if="achievementsError" class="api-note" role="status">{{ achievementsError }}</p>
-          <div v-else class="credential-sections">
+          <div class="credential-sections">
             <section class="credential-group" aria-labelledby="completed-credentials-heading">
               <div class="credential-group-heading">
                 <h3 id="completed-credentials-heading">Completed credentials</h3>
                 <p>Certificates and badges that can be verified.</p>
               </div>
               <p v-if="!completedAchievements.length" class="api-note">
-                No verified credentials have been added yet. Only add a completed badge or certificate once its title, issuer, date and public verification link are confirmed.
+                Verified credentials will be listed here once their completion details and public verification links are confirmed.
               </p>
               <div v-else class="achievement-grid">
                 <article v-for="item in completedAchievements" :key="item.achievement_id" class="achievement-card">
@@ -369,34 +284,11 @@ function runTerminal() {
           <p class="contact-overline">GOOD THINGS START WITH A HELLO</p>
           <h2>Have a good feeling<br />about <em>this?</em></h2>
           <p class="contact-description">I'm always happy to connect with kind people, curious teams and ideas worth building. Let's make something meaningful.</p>
-          <form class="contact-form" @submit.prevent="submitContact">
-            <div class="contact-form-row">
-              <label>
-                Your name
-                <input v-model.trim="contactForm.name" name="name" type="text" autocomplete="name" minlength="2" maxlength="100" required placeholder="What should I call you?" />
-              </label>
-              <label>
-                Email address
-                <input v-model.trim="contactForm.email" name="email" type="email" autocomplete="email" maxlength="254" required placeholder="you@example.com" />
-              </label>
-            </div>
-            <label>
-              Subject <span class="optional-label">OPTIONAL</span>
-              <input v-model.trim="contactForm.subject" name="subject" type="text" maxlength="150" placeholder="A little about your idea" />
-            </label>
-            <label>
-              Your message
-              <textarea v-model.trim="contactForm.message" name="message" minlength="10" maxlength="5000" required rows="4" placeholder="Tell me what you're thinking…"></textarea>
-            </label>
-            <label class="honeypot" aria-hidden="true">
-              Leave this field empty
-              <input v-model="contactForm.website" name="website" tabindex="-1" autocomplete="off" />
-            </label>
-            <button class="contact-button" type="submit" :disabled="contactSubmitting || contactForm.message.trim().length < 10">
-              {{ contactSubmitting ? 'Sending your note…' : 'Send a little hello ↗' }}
-            </button>
-            <p v-if="contactStatus" class="contact-status" :class="'status-' + contactStatusType" role="status" aria-live="polite">{{ contactStatus }}</p>
-          </form>
+          <div class="contact-form contact-static-note">
+            <p>This portfolio is a frontend-only site, so it does not store or send messages from a form.</p>
+            <a class="contact-button" href="https://github.com/Zandakumsha" target="_blank" rel="noopener noreferrer">Connect on GitHub ↗</a>
+          </div>
+
           <div class="social-links">
             <a href="https://github.com/Zandakumsha" target="_blank" rel="noreferrer">GITHUB ↗</a><span>·</span>
             <a href="#home">BACK TO TOP ↑</a>
