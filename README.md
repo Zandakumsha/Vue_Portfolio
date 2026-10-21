@@ -46,9 +46,16 @@ npm run preview
 
 Projects are defined locally in `App.vue`; update the relevant project object to change descriptions, tags, links or case-study content. Journal and credential sections intentionally show an empty state until verified content is added. Do not publish unverified credentials or placeholder writing.
 
-## Contact
+## Contact form (Formspree)
 
-The portfolio does not submit or store contact messages. Visitors can connect through the linked GitHub profile or another social link you choose to add.
+The contact section uses a standard HTML form that submits directly to Formspree, so no backend server is needed.
+
+1. Create a form at [Formspree](https://formspree.io/) and confirm the receiving email address.
+2. Copy the form endpoint provided by Formspree. It looks like `https://formspree.io/f/xxxxxxxx`.
+3. Open `frontend/src/App.vue` and replace `YOUR_FORM_ID` in the form's `action` with your actual Formspree form ID (the part after `/f/`).
+4. Save and deploy the updated frontend. Submit a test message and follow any email verification steps Formspree requests.
+
+Until you replace `YOUR_FORM_ID` with your real endpoint, submissions will not reach your inbox. Formspree's plan limits and spam protections apply.
 
 ## Deployment
 
