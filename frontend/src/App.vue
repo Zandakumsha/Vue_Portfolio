@@ -284,10 +284,66 @@ function runTerminal() {
           <p class="contact-overline">GOOD THINGS START WITH A HELLO</p>
           <h2>Have a good feeling<br />about <em>this?</em></h2>
           <p class="contact-description">I'm always happy to connect with kind people, curious teams and ideas worth building. Let's make something meaningful.</p>
-          <div class="contact-form contact-static-note">
-            <p>This portfolio is a frontend-only site, so it does not store or send messages from a form.</p>
-            <a class="contact-button" href="https://github.com/Zandakumsha" target="_blank" rel="noopener noreferrer">Connect on GitHub ↗</a>
-          </div>
+          <form
+            class="contact-form"
+            action="https://formspree.io/f/YOUR_FORM_ID"
+            method="POST"
+          >
+            <div class="contact-form-row">
+              <label for="contact-name">
+                YOUR NAME
+                <input
+                  id="contact-name"
+                  type="text"
+                  name="name"
+                  placeholder="What should I call you?"
+                  autocomplete="name"
+                  required
+                />
+              </label>
+              <label for="contact-email">
+                EMAIL ADDRESS
+                <input
+                  id="contact-email"
+                  type="email"
+                  name="email"
+                  placeholder="you@example.com"
+                  autocomplete="email"
+                  required
+                />
+              </label>
+            </div>
+            <label for="contact-subject">
+              SUBJECT
+              <input
+                id="contact-subject"
+                type="text"
+                name="_subject"
+                placeholder="What would you like to talk about?"
+                required
+              />
+            </label>
+            <label for="contact-message">
+              YOUR MESSAGE
+              <textarea
+                id="contact-message"
+                name="message"
+                rows="5"
+                placeholder="Tell me a little about your idea..."
+                required
+              ></textarea>
+            </label>
+            <input
+              class="honeypot"
+              type="text"
+              name="_gotcha"
+              tabindex="-1"
+              autocomplete="off"
+              aria-hidden="true"
+            />
+            <button class="contact-button" type="submit">SEND MESSAGE ↗</button>
+            <p class="contact-form-note">Your message will be sent securely through Formspree. Please don't include sensitive information.</p>
+          </form>
 
           <div class="social-links">
             <a href="https://github.com/Zandakumsha" target="_blank" rel="noreferrer">GITHUB ↗</a><span>·</span>
