@@ -13,7 +13,17 @@ const terminalOutput = ref('Try: help, about, skills, projects, contact')
 
 const menuOpen = ref(false)
 const blogPosts = ref([])
-const achievements = ref([])
+const achievements = ref([
+  {
+    achievement_id: 'cisco-introduction-to-cybersecurity',
+    title: 'Introduction to Cybersecurity',
+    issuer: 'Cisco',
+    status: 'completed',
+    achievedOn: '2026-10-29',
+    credentialUrl: 'https://www.credly.com/badges/f0b44bf4-8edf-4190-8070-e1c7e6486a22/public_url',
+    description: 'Learned foundational ways to protect personal information, devices, networks and organisational data using practices such as strong passwords, encryption and firewalls. Explored cybersecurity ethics, online privacy and career opportunities in cybersecurity.',
+  },
+])
 const completedAchievements = computed(() =>
   achievements.value.filter((item) => !item.status || item.status === 'completed'),
 )
