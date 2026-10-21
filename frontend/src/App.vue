@@ -64,6 +64,24 @@ const achievements = ref([
     description: 'Learned foundational ways to protect personal information, devices, networks and organisational data using practices such as strong passwords, encryption and firewalls. Explored cybersecurity ethics, online privacy and career opportunities in cybersecurity.',
   },
 ])
+const learningExperiences = ref([
+  {
+    id: 'life-choices-trainee',
+    title: 'Trainee Developer Programme',
+    issuer: 'Life Choices Coding Academy',
+    statusLabel: 'TRAINEE PERIOD · COMPLETED',
+    period: 'April – October 2026',
+    description: 'Completed the first six-month trainee period, building my development foundations through hands-on coding, collaborative projects, problem-solving and debugging.',
+  },
+  {
+    id: 'lc-studio-internship',
+    title: 'Developer Internship',
+    issuer: 'LC Studio',
+    statusLabel: 'CURRENT INTERNSHIP · IN PROGRESS',
+    period: 'October 2026 – April 2027',
+    description: 'Started the second six-month stage of my journey as an intern at LC Studio, continuing to develop my technical skills and gain practical experience in a professional environment.',
+  },
+])
 const completedAchievements = computed(() =>
   achievements.value.filter((item) => !item.status || item.status === 'completed'),
 )
@@ -323,10 +341,18 @@ function runTerminal() {
             <section class="credential-group" aria-labelledby="learning-credentials-heading">
               <div class="credential-group-heading">
                 <h3 id="learning-credentials-heading">In progress & planned learning</h3>
-                <p>Learning goals are listed separately from completed credentials.</p>
+                <p>Training, internships and learning goals are tracked separately from completed credentials.</p>
               </div>
               <p v-if="!learningAchievements.length" class="api-note">No in-progress or planned learning items have been listed yet.</p>
-              <div v-else class="achievement-grid">
+              <div class="achievement-grid learning-experience-grid">
+                <article v-for="item in learningExperiences" :key="item.id" class="achievement-card learning-experience-card">
+                  <span class="achievement-icon" aria-hidden="true">{{ item.id === 'lc-studio-internship' ? '✦' : '✳' }}</span>
+                  <p class="project-meta">{{ item.statusLabel }}</p>
+                  <h4>{{ item.title }}</h4>
+                  <p class="achievement-issuer">{{ item.issuer }}</p>
+                  <p class="learning-period">{{ item.period }}</p>
+                  <p class="blog-excerpt">{{ item.description }}</p>
+                </article>
                 <article v-for="item in learningAchievements" :key="item.achievement_id" class="achievement-card">
                   <span class="achievement-icon" aria-hidden="true">✳</span>
                   <p class="project-meta">{{ item.status === 'planned' ? 'PLANNED' : 'IN PROGRESS' }}</p>
