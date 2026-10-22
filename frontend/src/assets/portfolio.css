@@ -683,6 +683,7 @@ img { max-width: 100%; }
   --decorative-sage: #d8dfcf;
   --surface-raised: #26150D;
   --surface-border: #d9d5e3;
+  --caramel: #AB8D6F;
   background: #26150D;
   color: var(--ink);
   color-scheme: dark;
@@ -851,6 +852,22 @@ img { max-width: 100%; }
   background: #26150D;
   border-color: #d9d5e3;
   color: #d9d5e3;
+}
+/* Light caramel is a restrained supporting accent, not a new surface colour. */
+.site-shell.theme-dark .little-note,
+.site-shell.theme-dark .handwritten,
+.site-shell.theme-dark .text-link,
+.site-shell.theme-dark .mini-label,
+.site-shell.theme-dark .credential-group-heading p {
+  color: var(--caramel);
+}
+.site-shell.theme-dark .value-icon {
+  border-color: var(--caramel);
+  color: var(--caramel);
+}
+.site-shell.theme-dark .scroll-cue i,
+.site-shell.theme-dark .more-note i {
+  background: var(--caramel);
 }
 .site-shell.theme-dark :focus-visible {
   outline-color: #e6c7c3;
