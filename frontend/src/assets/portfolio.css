@@ -1031,3 +1031,75 @@ img { max-width: 100%; }
 @media (prefers-reduced-motion: reduce) {
   .case-study-toggle { transition: none; }
 }
+
+
+/* Portfolio archive refinements: quieter editorial structure, useful project filters. */
+.portfolio-status-strip {
+  display: grid;
+  grid-template-columns: minmax(120px, .55fr) minmax(0, 2fr) auto;
+  align-items: center;
+  gap: 18px 28px;
+}
+.portfolio-status-strip p {
+  margin: 0;
+  font: clamp(18px, 2vw, 25px)/1.35 var(--serif);
+}
+.portfolio-status-strip > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink);
+  font: 9px var(--mono);
+  letter-spacing: .06em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.portfolio-status-strip > a span { color: var(--rose); font-size: 16px; }
+.project-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 9px;
+  margin: 28px 0 10px;
+}
+.project-filter {
+  min-height: 39px;
+  padding: 9px 15px;
+  border: 1px solid var(--surface-border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font: 9px var(--mono);
+  letter-spacing: .025em;
+  cursor: pointer;
+  transition: background-color .18s ease, color .18s ease, border-color .18s ease, transform .18s ease;
+}
+.project-filter:hover { transform: translateY(-1px); border-color: var(--rose); }
+.project-filter.is-active {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+.project-count {
+  margin: 0 0 23px;
+  color: var(--muted);
+  font: 9px/1.6 var(--mono);
+  letter-spacing: .04em;
+}
+.site-shell.theme-dark .project-filter.is-active {
+  background: #e6c7c3;
+  border-color: #e6c7c3;
+  color: #26150D;
+}
+.site-shell.theme-dark .project-filter { border-color: #d9d5e3; }
+.site-shell.theme-dark .project-filter:hover { border-color: #e6c7c3; }
+@media (max-width: 700px) {
+  .portfolio-status-strip { grid-template-columns: 1fr; gap: 10px; }
+  .portfolio-status-strip p { font-size: 21px; }
+  .portfolio-status-strip > a { white-space: normal; }
+  .project-filters { gap: 7px; }
+  .project-filter { min-height: 36px; padding: 8px 11px; font-size: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-filter { transition: none; }
+}
