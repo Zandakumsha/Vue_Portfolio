@@ -449,6 +449,7 @@ function runTerminal() {
       <p>Designed with care <span>♡</span> and a little bit of caffeine.</p>
       <small>© 2026 ZANDA K.</small>
     </footer>
+    <CursorGlow />
   </div>
 </template>
 
