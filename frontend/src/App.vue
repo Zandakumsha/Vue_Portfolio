@@ -4,6 +4,7 @@ import SiteHeader from './components/SiteHeader.vue'
 import HeroSection from './components/HeroSection.vue'
 import AboutSection from './components/AboutSection.vue'
 import ProjectCard from './components/ProjectCard.vue'
+import CursorGlow from './components/CursorGlow.vue'
 import './assets/portfolio.css'
 
 const isDark = ref(false)
