@@ -24,7 +24,8 @@
           </div>
           <div class="creative-sticker"><b>✳</b><span>CREATIVE<br />THINKING</span></div>
           <div class="intention-sticker">✳<br />made with<br /><em>intention</em></div>
-          <div class="orbit-line"></div>
+          <div class="orbit-line" aria-hidden="true"></div>
+          <span class="floating-orbit" aria-hidden="true">✦</span>
           <span class="hero-spark">✴</span>
         </div>
         <div class="scroll-cue"><span>SCROLL TO DISCOVER</span><i></i><span>01 — 05</span></div>
