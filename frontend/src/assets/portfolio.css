@@ -882,3 +882,38 @@ img { max-width: 100%; }
     --line: #d9d5e3;
   }
 }
+
+
+/* Soft pastel cursor glow — decorative, pointer-events stay untouched. */
+.site-cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #e6c7c3;
+  border-radius: 50%;
+  background: #e6c7c322;
+  box-shadow: 0 0 18px #e6c7c344;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate3d(-100px, -100px, 0);
+  transition: opacity 180ms ease, width 180ms ease, height 180ms ease, background 180ms ease;
+  will-change: transform;
+}
+.site-cursor-glow.is-visible { opacity: 1; }
+.site-cursor-glow.is-hovering {
+  width: 34px;
+  height: 34px;
+  background: #d9d5e344;
+  border-color: #d9d5e3;
+}
+.site-shell.theme-dark .site-cursor-glow {
+  border-color: #e6c7c3;
+  background: #e6c7c322;
+  box-shadow: 0 0 18px #e6c7c344;
+}
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .site-cursor-glow { display: none !important; }
+}
