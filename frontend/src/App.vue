@@ -128,6 +128,7 @@ const projects = ref([
     approach: 'The application combines employee-facing pages with Node.js and Express routes backed by MySQL data.',
     learning: 'Connecting UI states to backend logic, thinking through authentication and data relationships, and debugging API/database issues.',
     url: 'https://github.com/Zandakumsha/Modern_Tech_2',
+    repoUrl: 'https://github.com/Zandakumsha/Modern_Tech_2',
     label: 'Explore project',
   },
   {
@@ -147,6 +148,8 @@ const projects = ref([
       'Python/Flask backend work related to the scraping workflow.',
     ],
     url: 'https://lightning-news.netlify.app/',
+    demoUrl: 'https://lightning-news.netlify.app/',
+    repoUrl: 'https://github.com/Maiesha7-7Moohan/Team-Charlie',
     label: 'View live demo',
   },
 ])
