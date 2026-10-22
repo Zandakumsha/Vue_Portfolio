@@ -8,7 +8,7 @@ defineProps({
 
 <template>
             <article :id="'project-' + project.number" class="project-card" :class="{ 'project-muted': selectedSkill && !project.tags.some(tag => selectedSkill.toLowerCase().includes(tag.toLowerCase()) || tag.toLowerCase().includes(selectedSkill.toLowerCase()) || project.description.toLowerCase().includes(selectedSkill.toLowerCase())) }">
-              <a class="project-art" :class="project.theme" :href="project.url" target="_blank" rel="noreferrer" :aria-label="'Open ' + project.name">
+              <a class="project-art" :class="project.theme" :href="project.demoUrl || project.repoUrl || project.url" target="_blank" rel="noreferrer" :aria-label="'Open ' + project.name">
                 <span class="art-label">{{ project.number }} / CASE STUDY</span>
                 <span class="art-star">✳</span>
                 <img
@@ -23,9 +23,10 @@ defineProps({
                   <div class="window-bar"><i></i><i></i><i></i><small>studio / {{ project.initials.toLowerCase() }}</small></div>
                   <div class="window-content"><b>{{ project.initials }}</b><span class="mock-lines"><i></i><i></i><i></i></span><span class="mock-arrow">↗</span></div>
                 </div>
-                <span class="art-foot">VIEW PROJECT ↗</span>
+                <span class="art-foot">{{ project.demoUrl ? 'VIEW LIVE DEMO ↗' : 'VIEW REPOSITORY ↗' }}</span>
               </a>
               <p class="project-meta">{{ project.type }}</p>
+              <span class="project-number">PROJECT {{ project.number }} <span aria-hidden="true">✳</span></span>
               <h3>{{ project.name }}</h3>
               <p class="project-description">{{ project.description }}</p>
               <section v-if="individualContributions[project.name]" class="personal-contributions" :aria-label="'My individual contributions to ' + project.name">
@@ -36,9 +37,12 @@ defineProps({
                 <p class="team-context">Individual work within a wider team project.</p>
               </section>
               <div class="tag-list"><span v-for="tag in project.tags" :key="tag">{{ tag }}</span></div>
-              <a class="project-link" :href="project.url" target="_blank" rel="noreferrer">{{ project.label }} <span>↗</span></a>
+              <div class="project-actions">
+                <a class="project-link" :href="project.repoUrl || project.url" target="_blank" rel="noreferrer">View code <span aria-hidden="true">↗</span></a>
+                <a v-if="project.demoUrl" class="project-link project-demo-link" :href="project.demoUrl" target="_blank" rel="noreferrer">Live demo <span aria-hidden="true">↗</span></a>
+              </div>
               <details class="case-study">
-                <summary>Inside the project +</summary>
+                <summary>Explore the case study <span class="case-study-toggle" aria-hidden="true">＋</span></summary>
                 <div class="case-study-content">
                   <p><strong>Project focus</strong>{{ project.focus }}</p>
                   <p><strong>The challenge</strong>{{ project.challenge }}</p>
