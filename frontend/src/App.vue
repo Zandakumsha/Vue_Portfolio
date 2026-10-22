@@ -9,6 +9,14 @@ import './assets/portfolio.css'
 
 const isDark = ref(false)
 const selectedSkill = ref('')
+const activeProjectFilter = ref('All projects')
+const projectFilters = ['All projects', 'Full-stack', 'Data & scraping', 'HR technology']
+const visibleProjects = computed(() => {
+  if (activeProjectFilter.value === 'Full-stack') return projects.value.filter((project) => project.name === 'WeConnect')
+  if (activeProjectFilter.value === 'Data & scraping') return projects.value.filter((project) => project.name === 'Lightning News')
+  if (activeProjectFilter.value === 'HR technology') return projects.value.filter((project) => project.name === 'Modern Tech')
+  return projects.value
+})
 const terminalCommand = ref('')
 const terminalOutput = ref('Try: help, about, skills, projects, contact')
 
@@ -210,10 +218,10 @@ function runTerminal() {
       <HeroSection />
 
       <div class="manifesto">
-        <div class="manifesto-inner">
-          <span class="mini-label">MY LITTLE PHILOSOPHY</span>
-          <p>Good technology should feel <em>human.</em><br />Great design should feel <em>effortless.</em></p>
-          <span class="manifesto-flower">✳</span>
+        <div class="manifesto-inner portfolio-status-strip">
+          <span class="mini-label">CURRENT FOCUS</span>
+          <p>Building, debugging and learning — one thoughtful solution at a time.</p>
+          <a href="#work">Browse selected work <span aria-hidden="true">↘</span></a>
         </div>
       </div>
 
@@ -221,14 +229,18 @@ function runTerminal() {
 
       <section id="work" class="work-section">
         <div class="page-wrap content-section">
-          <p class="section-kicker"><span>02</span> A FEW THINGS I'VE BUILT</p>
+          <p class="section-kicker"><span>02</span> PROJECT ARCHIVE · SELECTED WORK</p>
           <div class="work-heading">
-            <h2>A collection of<br /><em>curiosity.</em></h2>
-            <p>Different challenges, one common thread: making technology more useful, clear and human.</p>
+            <h2>Projects &amp; <em>case studies.</em></h2>
+            <p>A closer look at the problems, technologies and confirmed contributions behind each project.</p>
           </div>
+          <div class="project-filters" role="group" aria-label="Filter projects">
+            <button v-for="filter in projectFilters" :key="filter" type="button" class="project-filter" :class="{ 'is-active': activeProjectFilter === filter }" :aria-pressed="activeProjectFilter === filter" @click="activeProjectFilter = filter">{{ filter }}</button>
+          </div>
+          <p class="project-count" aria-live="polite">Showing {{ visibleProjects.length }} of {{ projects.length }} projects</p>
           <div class="project-grid">
             <ProjectCard
-              v-for="project in projects"
+              v-for="project in visibleProjects"
               :key="project.number"
               :project="project"
               :selected-skill="selectedSkill"
