@@ -28,7 +28,7 @@ function closeMenu() { emit('update:menuOpen', false) }
       </button>
       <nav id="main-navigation" class="navigation" :class="{ 'navigation-open': menuOpen }" aria-label="Main navigation">
         <a href="#about" @click="closeMenu">About</a>
-        <a href="#work" @click="closeMenu">Selected work</a>
+        <a href="#work" @click="closeMenu">Projects</a>
         <a href="#skills" @click="closeMenu">Expertise</a>
         <a href="#journey" @click="closeMenu">Journey</a>
         <a href="#blog" @click="closeMenu">Journal</a>
