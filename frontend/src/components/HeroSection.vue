@@ -2,7 +2,7 @@
 <section id="home" class="hero page-wrap">
         <div class="hero-copy">
           <p class="eyebrow">HELLO, WORLD. I'M ZANDA.</p>
-          <h1>Soft heart.<br />Sharp <em>mind.</em><br />Beautifully<br />built <span class="green-word">code.</span></h1>
+          <h1>Thoughtful design.<br />Curious by nature.<br />Driven to build.<br /><em>Solutions that matter.</em></h1>
           <p class="hero-description">
             I'm a developer who loves turning complex ideas into thoughtful, intuitive digital experiences — one considered detail at a time.
           </p>
