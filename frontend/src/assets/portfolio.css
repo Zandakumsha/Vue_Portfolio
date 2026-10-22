@@ -950,3 +950,84 @@ img { max-width: 100%; }
 @media (prefers-reduced-motion: reduce) {
   .floating-orbit { animation: none; }
 }
+
+
+/* Project cards: clearer actions, balanced cards and compact-screen comfort. */
+.project-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.project-number {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  color: var(--muted);
+  font: 8px var(--mono);
+  letter-spacing: .1em;
+}
+.project-number span { color: var(--rose); font-size: 13px; }
+.project-card h3 { text-wrap: balance; }
+.project-description { min-height: 0; }
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px;
+  margin-top: auto;
+  padding-top: 20px;
+}
+.project-actions .project-link {
+  min-height: 34px;
+  align-items: center;
+  gap: 9px;
+}
+.project-actions .project-demo-link {
+  padding: 9px 13px;
+  border: 1px solid var(--decorative-rose);
+  border-radius: 999px;
+  background: #e6c7c322;
+}
+.project-actions a:hover { color: var(--ink); border-color: var(--rose); }
+.case-study { margin-top: 16px; }
+.case-study summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 3px 0;
+  font-weight: 600;
+  list-style: none;
+}
+.case-study summary::-webkit-details-marker { display: none; }
+.case-study-toggle { color: var(--rose); font-size: 15px; transition: transform .2s ease; }
+.case-study[open] .case-study-toggle { transform: rotate(45deg); }
+.case-study-content { padding-top: 5px; }
+.site-shell.theme-dark .project-actions .project-demo-link {
+  background: #e6c7c318;
+  border-color: #e6c7c3;
+  color: #e6c7c3;
+}
+.site-shell.theme-dark .project-actions a:hover { color: #f8efe6; }
+@media (min-width: 641px) {
+  .project-grid { align-items: stretch; }
+  .project-card { height: 100%; }
+}
+@media (max-width: 850px) {
+  .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+  .project-card { padding: 15px; }
+  .project-art { height: clamp(205px, 30vw, 250px); }
+}
+@media (max-width: 520px) {
+  .project-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .project-card { padding: 14px; }
+  .project-art { height: clamp(220px, 68vw, 300px); }
+  .project-actions { gap: 12px; }
+  .project-actions .project-link { font-size: 10px; }
+  .personal-contributions { padding: 13px; }
+  .personal-contributions ul { font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .case-study-toggle { transition: none; }
+}
