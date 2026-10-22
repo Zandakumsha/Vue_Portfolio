@@ -112,6 +112,7 @@ const projects = ref([
       'Testing, debugging and Git collaboration.',
     ],
     url: 'https://github.com/zahraamoerat/Project-3-E-Commerce1',
+    repoUrl: 'https://github.com/zahraamoerat/Project-3-E-Commerce1',
     label: 'Explore project',
   },
   {
