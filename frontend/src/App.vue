@@ -114,7 +114,7 @@ const achievements = ref([
     status: 'completed',
     achievedOn: '2026-10-29',
     credentialUrl: 'https://www.credly.com/badges/f0b44bf4-8edf-4190-8070-e1c7e6486a22/public_url',
-    description: 'Learned foundational ways to protect personal information, devices, networks and organisational data using practices such as strong passwords, encryption and firewalls. Explored cybersecurity ethics, online privacy and career opportunities in cybersecurity.',
+    description: 'Cybersecurity foundations: passwords, encryption, firewalls, privacy and ethics.',
   },
 ])
 const learningExperiences = ref([
@@ -264,7 +264,7 @@ function runTerminal() {
       <div class="manifesto">
         <div class="manifesto-inner portfolio-status-strip">
           <span class="mini-label">CURRENT FOCUS</span>
-          <p>Building, debugging and learning — one thoughtful solution at a time.</p>
+          <p>Building useful things. Learning as I go.</p>
           <a href="#work">Browse selected work <span aria-hidden="true">↘</span></a>
         </div>
       </div>
@@ -276,7 +276,7 @@ function runTerminal() {
           <p class="section-kicker"><span>02</span> PROJECT ARCHIVE · SELECTED WORK</p>
           <div class="work-heading">
             <h2>Projects &amp; <em>case studies.</em></h2>
-            <p>A closer look at the problems, technologies and confirmed contributions behind each project.</p>
+            <p>Selected builds. Real contributions. Lessons learned.</p>
           </div>
           <div class="project-discovery">
             <div class="project-filters" role="group" aria-label="Filter projects by category">
@@ -314,7 +314,7 @@ function runTerminal() {
         <div class="skills-grid">
           <div class="skills-intro">
             <h2>My kind of<br /><em>toolkit.</em></h2>
-            <p>A growing set of tools for bringing thoughtful ideas to life — from the pixels people see to the systems working behind the scenes.</p>
+            <p>Tools I use to turn ideas into working experiences.</p>
             <p class="handwritten">less noise, more meaning ✳</p>
           </div>
           <div class="skills-catalog">
@@ -329,7 +329,7 @@ function runTerminal() {
                 </article>
               </div>
             </section>
-            <p class="skills-footnote"><b>♡</b> {{ selectedSkill ? "Highlighting projects connected to " + selectedSkill + ". Select again to clear." : "Choose a technology to highlight related projects, or jump directly to a project where it was used." }}</p>
+            <p class="skills-footnote"><b>♡</b> {{ selectedSkill ? "Highlighting projects connected to " + selectedSkill + ". Select again to clear." : "Pick a skill to spotlight related projects." }}</p>
           </div>
         </div>
       </section>
@@ -339,16 +339,16 @@ function runTerminal() {
       <section id="journey" class="journey-section page-wrap">
         <p class="section-kicker"><span>04</span> THE JOURNEY SO FAR</p>
         <h2 class="journey-heading">Growing into my <em>next chapter.</em></h2>
-        <p class="journey-intro">A snapshot of the skills and questions guiding my growth as a developer.</p>
-        <p class="journey-intro journey-intro-personal">Every chapter has taught me something different. This is the path so far — and the part I’m still figuring out.</p>
+        <p class="journey-intro">From training to internship — still growing.</p>
+        <p class="journey-intro journey-intro-personal"></p>
         <div class="developer-timeline" aria-label="Developer journey timeline">
           <article class="developer-milestone is-complete">
             <div class="milestone-marker" aria-hidden="true"><span>01</span></div>
             <div class="milestone-card">
               <div class="milestone-topline"><small>APRIL – OCTOBER 2026</small><span class="milestone-state"><span aria-hidden="true">✓</span> COMPLETED</span></div>
-              <p class="milestone-role">Trainee Developer Programme</p>
+              <p class="milestone-role">Six months · completed</p>
               <h3>Life Choices Coding Academy</h3>
-              <p>I spent six months building my foundations in development, learning by writing code, working through bugs and collaborating on projects with other trainees.</p>
+              <p>Six months of coding, debugging and team projects.</p>
               <details class="milestone-reflection">
                 <summary>What I’m taking with me <span aria-hidden="true">＋</span></summary>
                 <p>I’m learning not to treat an error as a dead end. Reading the message, testing one change at a time and asking clearer questions has helped me build a more patient problem-solving process.</p>
@@ -361,9 +361,9 @@ function runTerminal() {
             <div class="milestone-marker" aria-hidden="true"><span>02</span></div>
             <div class="milestone-card">
               <div class="milestone-topline"><small>OCTOBER 2026 – APRIL 2027</small><span class="milestone-state"><span aria-hidden="true">✳</span> IN PROGRESS</span></div>
-              <p class="milestone-role">Developer Internship</p>
+              <p class="milestone-role">Six months · in progress</p>
               <h3>LC Studio</h3>
-              <p>I’ve started the next six months as an intern, carrying what I learned in training into a professional environment and staying open to new ways of working.</p>
+              <p>Now applying those foundations at LC Studio.</p>
               <details class="milestone-reflection">
                 <summary>What I want to keep practising <span aria-hidden="true">＋</span></summary>
                 <p>I want to keep asking thoughtful questions, learning from feedback, strengthening my technical decisions and understanding how small contributions fit into a wider team effort.</p>
@@ -376,9 +376,9 @@ function runTerminal() {
             <div class="milestone-marker" aria-hidden="true"><span>03</span></div>
             <div class="milestone-card">
               <div class="milestone-topline"><small>ALONG THE WAY</small><span class="milestone-state">LEARNING BY BUILDING</span></div>
-              <p class="milestone-role">Projects & practice</p>
+              <p class="milestone-role">Practice through projects</p>
               <h3>Turning lessons into working features</h3>
-              <p>Projects have helped me connect the pieces — from Vue interfaces to APIs, data and the details that make an experience easier to use.</p>
+              <p>From interfaces to APIs, data and user experience.</p>
               <details class="milestone-reflection">
                 <summary>A lesson from the projects <span aria-hidden="true">＋</span></summary>
                 <p>WeConnect helped me practise full-stack collaboration, Modern Tech challenged me to trace issues across an application, and Lightning News gave me experience parsing web content with Python and BeautifulSoup.</p>
@@ -389,8 +389,8 @@ function runTerminal() {
           </article>
         </div>
         <div class="journey-bottom-grid">
-          <article class="explore-card"><small>CURRENTLY EXPLORING</small><h3>Small details, better experiences.</h3><p>Accessibility, interaction design, data visualisation and the little moments that make an app feel thoughtful.</p><span class="feature-label">NOW LEARNING · ALWAYS ITERATING ✳</span></article>
-          <article class="explore-card terminal-card"><small>A LITTLE DEVELOPER MAGIC</small><h3>Curious? Open the terminal.</h3><div class="terminal-window"><div class="terminal-dots"><i></i><i></i><i></i></div><p class="terminal-prompt">zanda@portfolio:~$ <span>help</span></p><p class="terminal-output" aria-live="polite">{{ terminalOutput }}</p><form @submit.prevent="runTerminal"><label for="terminal-command">zanda@portfolio:~$ </label><input id="terminal-command" v-model="terminalCommand" autocomplete="off" placeholder="type a command…" /></form></div><span class="feature-label">TRY: help · about · skills · projects · contact</span></article>
+          <article class="explore-card"><small>CURRENTLY EXPLORING</small><h3>Small details, better experiences.</h3><p>Accessibility · interaction design · data visualisation</p><span class="feature-label">NOW LEARNING · ALWAYS ITERATING ✳</span></article>
+          <article class="explore-card terminal-card"><small>A LITTLE DEVELOPER MAGIC</small><h3>Try the mini terminal.</h3><div class="terminal-window"><div class="terminal-dots"><i></i><i></i><i></i></div><p class="terminal-prompt">zanda@portfolio:~$ <span>help</span></p><p class="terminal-output" aria-live="polite">{{ terminalOutput }}</p><form @submit.prevent="runTerminal"><label for="terminal-command">zanda@portfolio:~$ </label><input id="terminal-command" v-model="terminalCommand" autocomplete="off" placeholder="type a command…" /></form></div><span class="feature-label">TRY: help · about · skills · projects · contact</span></article>
         </div>
       </section>
 
@@ -398,11 +398,11 @@ function runTerminal() {
         <p class="section-kicker"><span>05</span> NOTES FROM THE JOURNEY</p>
         <div class="work-heading">
           <h2>A little <em>field journal.</em></h2>
-          <p>Thoughts on learning, problem-solving and the details behind building for the web.</p>
+          <p>Small lessons from building for the web.</p>
         </div>
         <div v-if="blogPosts.length" class="journal-archive">
           <div class="journal-archive-head">
-            <div><span class="journal-issue-label">FIELD NOTES · VOL. 01</span><p>A living record of what I'm learning, building and figuring out.</p></div>
+            <div><span class="journal-issue-label">FIELD NOTES · VOL. 01</span><p>Learning notes, one entry at a time.</p></div>
             <span class="journal-update-stamp">LAST UPDATED<br /><b>OCT 2026</b></span>
           </div>
           <div class="journal-index" role="group" aria-label="Browse field journal entries">
@@ -447,7 +447,7 @@ function runTerminal() {
           <p class="section-kicker"><span>06</span> LITTLE MILESTONES, BIG MEANING</p>
           <div class="work-heading">
             <h2>Proof of <em>progress.</em></h2>
-            <p>Learning milestones, credentials and experiences that are shaping my developer journey.</p>
+            <p>Credentials and milestones, earned one step at a time.</p>
           </div>
           <div class="credential-sections">
             <section class="credential-group" aria-labelledby="completed-credentials-heading">
@@ -474,7 +474,7 @@ function runTerminal() {
             <section class="credential-group" aria-labelledby="learning-credentials-heading">
               <div class="credential-group-heading">
                 <h3 id="learning-credentials-heading">In progress & planned learning</h3>
-                <p>Training, internships and learning goals are tracked separately from completed credentials.</p>
+                <p>Journey milestones, separate from verified credentials.</p>
               </div>
               <p v-if="!learningAchievements.length" class="api-note">No in-progress or planned learning items have been listed yet.</p>
               <div class="achievement-grid learning-experience-grid">
@@ -506,7 +506,7 @@ function runTerminal() {
           <div class="contact-flower">✳</div>
           <p class="contact-overline">GOOD THINGS START WITH A HELLO</p>
           <h2>Have a good feeling<br />about <em>this?</em></h2>
-          <p class="contact-description">I'm always happy to connect with kind people, curious teams and ideas worth building. Let's make something meaningful.</p>
+          <p class="contact-description">Curious people, good ideas and thoughtful teams — say hello.</p>
           <form
             class="contact-form"
             action="https://formspree.io/f/xdearnka"
