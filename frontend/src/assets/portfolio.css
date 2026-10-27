@@ -1210,3 +1210,55 @@ img { max-width: 100%; }
 @media (prefers-reduced-motion: reduce) {
   .project-filter, .project-card, .project-art { transition: none !important; }
 }
+
+
+/* Field journal archive: a living editorial record of the developer journey. */
+.journal-archive { margin-top: 25px; }
+.journal-archive-head { display: flex; justify-content: space-between; align-items: end; gap: 20px; margin-bottom: 22px; padding: 20px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.journal-issue-label { color: var(--rose); font: 9px var(--mono); letter-spacing: .13em; }
+.journal-archive-head p { margin: 8px 0 0; max-width: 460px; color: var(--muted); font-size: 12px; line-height: 1.8; }
+.journal-update-stamp { flex: 0 0 auto; padding: 10px 13px; border: 1px solid var(--line); border-radius: 3px 12px 3px 12px; color: var(--muted); font: 8px/1.8 var(--mono); letter-spacing: .07em; text-align: right; }
+.journal-update-stamp b { color: var(--rose); font-weight: 500; }
+.journal-index { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; margin-bottom: 18px; }
+.journal-index-item { display: flex; align-items: flex-start; gap: 9px; min-width: 0; min-height: 91px; padding: 13px 11px; border: 1px solid var(--line); border-radius: 4px 15px 4px 15px; background: var(--paper); color: var(--ink); text-align: left; cursor: pointer; transition: transform .2s ease, border-color .2s ease, background .2s ease; }
+.journal-index-item:hover { transform: translateY(-2px); border-color: var(--rose); }
+.journal-index-item.is-active { border-color: var(--rose); background: var(--soft); box-shadow: inset 0 2px 0 var(--rose); }
+.journal-index-number { color: var(--rose); font: 9px var(--mono); }
+.journal-index-copy { display: flex; min-width: 0; flex-direction: column; gap: 8px; }
+.journal-index-copy b { font: 14px/1.22 var(--serif); overflow-wrap: anywhere; }
+.journal-index-copy small { color: var(--muted); font: 7px/1.5 var(--mono); letter-spacing: .04em; }
+.journal-index-arrow { margin-left: auto; color: var(--rose); font-size: 12px; opacity: .55; }
+.journal-index-item.is-active .journal-index-arrow { opacity: 1; }
+.journal-takeaway { display: flex; align-items: flex-start; gap: 11px; margin: 18px 0 0; padding: 13px 15px; border-left: 2px solid var(--rose); background: var(--soft); color: var(--ink); font-size: 11px; line-height: 1.7; }
+.journal-takeaway > span:first-child { color: var(--rose); font-size: 14px; }
+.journal-takeaway > span:last-child { display: grid; gap: 3px; }
+.journal-takeaway small { color: var(--rose); font: 8px var(--mono); letter-spacing: .1em; }
+.journal-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 13px; }
+.journal-tags span { padding: 6px 9px; border: 1px solid var(--line); border-radius: 18px; color: var(--muted); font: 8px var(--mono); }
+.journal-slide-2 .journal-image-wrap { background: #e9e3f4; }
+.journal-slide-3 .journal-image-wrap { background: #dfe9df; }
+.journal-slide-4 .journal-image-wrap { background: #f2e2d6; }
+.journal-slide-5 .journal-image-wrap { background: #e5e5f0; }
+.theme-dark .journal-index-item { background: #2e1b12; border-color: #54382b; color: #f7e8e0; }
+.theme-dark .journal-index-item.is-active { background: #3b241b; border-color: #a9656e; }
+.theme-dark .journal-update-stamp, .theme-dark .journal-tags span { border-color: #54382b; }
+.theme-dark .journal-takeaway { background: #342018; color: #f7e8e0; }
+@media (max-width: 1000px) {
+  .journal-index { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 650px) {
+  .journal-index { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .journal-index-item { min-height: 82px; }
+  .journal-archive-head { align-items: flex-start; }
+  .journal-update-stamp { padding: 8px; }
+}
+@media (max-width: 420px) {
+  .journal-index { grid-template-columns: minmax(0, 1fr); }
+  .journal-index-item { min-height: auto; align-items: center; }
+  .journal-index-copy { gap: 4px; }
+  .journal-archive-head p { font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .journal-index-item, .journal-image { transition: none !important; }
+  .journal-index-item:hover { transform: none; }
+}
