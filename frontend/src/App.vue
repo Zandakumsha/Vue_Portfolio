@@ -348,6 +348,10 @@ function runTerminal() {
               <div class="milestone-topline"><small>APRIL – OCTOBER 2026</small><span class="milestone-state"><span aria-hidden="true">✓</span> COMPLETED</span></div>
               <p class="milestone-role">Six months · completed</p>
               <h3>Life Choices Coding Academy</h3>
+              <figure class="milestone-image">
+                <img src="/LC%20Academy.jpg" alt="Life Choices Coding Academy — proof of progress" loading="lazy" />
+                <figcaption>FOUNDATIONS BUILT · APRIL–OCTOBER 2026</figcaption>
+              </figure>
               <p>Six months of coding, debugging and team projects.</p>
               <details class="milestone-reflection">
                 <summary>What I’m taking with me <span aria-hidden="true">＋</span></summary>
@@ -363,6 +367,10 @@ function runTerminal() {
               <div class="milestone-topline"><small>OCTOBER 2026 – APRIL 2027</small><span class="milestone-state"><span aria-hidden="true">✳</span> IN PROGRESS</span></div>
               <p class="milestone-role">Six months · in progress</p>
               <h3>LC Studio</h3>
+              <figure class="milestone-image">
+                <img src="/LC%20%20Studio.png" alt="LC Studio — current developer internship" loading="lazy" />
+                <figcaption>THE NEXT CHAPTER · OCTOBER 2026–APRIL 2027</figcaption>
+              </figure>
               <p>Now applying those foundations at LC Studio.</p>
               <details class="milestone-reflection">
                 <summary>What I want to keep practising <span aria-hidden="true">＋</span></summary>
