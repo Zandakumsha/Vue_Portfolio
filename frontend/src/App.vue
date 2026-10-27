@@ -129,6 +129,7 @@ const learningExperiences = ref([
   {
     id: 'lc-studio-internship',
     title: 'Developer Internship',
+    imageUrl: 'LC%20%20Studio.png',
     issuer: 'LC Studio',
     statusLabel: 'CURRENT INTERNSHIP · IN PROGRESS',
     period: 'October 2026 – April 2027',
@@ -480,6 +481,7 @@ function runTerminal() {
               <div class="achievement-grid learning-experience-grid">
                 <article v-for="item in learningExperiences" :key="item.id" class="achievement-card learning-experience-card">
                   <span class="achievement-icon" aria-hidden="true">{{ item.id === 'lc-studio-internship' ? '✦' : '✳' }}</span>
+                  <img v-if="item.imageUrl" class="Developer Internship" :src="item.imageUrl" :alt="item.title + 'Developer Internship'" loading="lazy" />
                   <p class="project-meta">{{ item.statusLabel }}</p>
                   <h4>{{ item.title }}</h4>
                   <p class="achievement-issuer">{{ item.issuer }}</p>
