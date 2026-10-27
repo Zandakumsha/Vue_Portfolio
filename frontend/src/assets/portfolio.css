@@ -1760,3 +1760,102 @@ img { max-width: 100%; }
 @media (prefers-reduced-motion: reduce) {
   .studio-laptop { transform: none; }
 }
+
+
+/* Final consistency pass: shared spacing, card alignment, media sizing and form states */
+:root {
+  --content-width: 1130px;
+  --section-space: clamp(64px, 8vw, 105px);
+}
+.page-wrap { width: min(100%, var(--content-width)); }
+.content-section { padding-block: var(--section-space); }
+.journey-section { padding-block: var(--section-space); }
+.project-card, .blog-card, .achievement-card, .timeline-card, .explore-card,
+.milestone-card, .studio-feature-card, .studio-collection-card {
+  min-width: 0;
+}
+.project-card { display: flex; flex-direction: column; }
+.project-card .project-link { align-self: flex-start; margin-top: auto; }
+.project-description { min-height: 0; }
+.project-art { isolation: isolate; }
+.blog-card, .achievement-card { height: 100%; }
+.blog-card { display: flex; flex-direction: column; }
+.blog-card .blog-excerpt { flex: 1; }
+.credential-image {
+  width: 100%;
+  max-width: 260px;
+  height: 160px;
+  object-fit: contain;
+  object-position: left center;
+}
+.milestone-image { min-width: 0; }
+.milestone-image img { display: block; width: 100%; height: auto; object-fit: cover; }
+.learning-image, .learning-experience-image { display: block; max-width: 100%; height: auto; object-fit: cover; }
+.contact-section .contact-form label { color: #f2e7e1; }
+.contact-form input, .contact-form textarea {
+  min-height: 44px;
+  border: 1px solid #927d76;
+  border-radius: 8px 14px 8px 14px;
+  background: #332827;
+  color: #fff8f4;
+}
+.contact-form textarea { min-height: 130px; }
+.contact-form input:focus-visible, .contact-form textarea:focus-visible {
+  outline: 3px solid #e1b5b3;
+  outline-offset: 2px;
+  border-color: #e1b5b3;
+}
+button, input, textarea, select { font: inherit; }
+button:disabled { cursor: not-allowed; }
+img { max-width: 100%; }
+a, button { -webkit-tap-highlight-color: transparent; }
+@media (max-width: 850px) {
+  .topbar { padding-inline: 24px; }
+  .page-wrap { padding-inline: 24px; }
+  .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .timeline-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .skills-grid { gap: 34px; }
+  .about-grid { gap: 42px; }
+}
+@media (max-width: 640px) {
+  html { scroll-padding-top: 78px; }
+  [id] { scroll-margin-top: 78px; }
+  .topbar { height: 72px; padding-inline: 18px; gap: 10px; }
+  .brand-mark { font-size: 34px; }
+  .brand-copy { font-size: 10px; }
+  .brand-copy small { font-size: 7px; }
+  .page-wrap { padding-inline: 20px; }
+  .hero { min-height: 0; padding-top: 40px; padding-bottom: 70px; }
+  .hero h1 { font-size: clamp(46px, 12vw, 64px); }
+  .hero-art { height: min(108vw, 420px); }
+  .manifesto-inner { padding-inline: 20px; gap: 12px; }
+  .manifesto p { font-size: 17px; }
+  .about-grid, .skills-grid, .journey-bottom-grid { grid-template-columns: minmax(0, 1fr); }
+  .about-grid { gap: 26px; padding-top: 34px; }
+  .values-row { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .work-heading { align-items: flex-start; flex-direction: column; padding-block: 30px; }
+  .project-grid, .blog-grid, .achievement-grid, .timeline-grid { grid-template-columns: minmax(0, 1fr); }
+  .project-art { height: 230px; }
+  .project-card h3 { font-size: 26px; }
+  .skills-grid { gap: 26px; padding-top: 34px; }
+  .skills-catalog { padding: 18px; }
+  .credential-group-heading { align-items: flex-start; flex-direction: column; gap: 6px; }
+  .blog-card, .achievement-card, .timeline-card, .explore-card { padding: 20px; }
+  .contact-section { padding: 60px 0 45px; }
+  .contact-form-row { grid-template-columns: minmax(0, 1fr); }
+  .site-footer { padding-inline: 20px; }
+}
+@media (max-width: 380px) {
+  .page-wrap { padding-inline: 16px; }
+  .topbar { padding-inline: 14px; }
+  .brand { gap: 7px; }
+  .menu-toggle { padding: 8px 10px; font-size: 11px; }
+  .hero-actions { gap: 14px; }
+  .button-primary, .contact-button { padding: 13px 15px; }
+  .manifesto-inner { padding-inline: 14px; }
+  .manifesto .mini-label { font-size: 7px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}
