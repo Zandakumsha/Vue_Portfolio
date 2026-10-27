@@ -49,7 +49,9 @@ function resetCard(event) {
       <span class="studio-open-badge"><i aria-hidden="true"></i> OPEN STUDIO <span class="studio-live-spark" aria-hidden="true">✳</span></span>
     </div>
 
-    <div class="studio-window" :style="spotlightStyle" @pointermove="trackPointer" @pointerleave="resetPointer">
+    <div class="studio-laptop">
+      <div class="studio-laptop-screen">
+      <div class="studio-window" :style="spotlightStyle" @pointermove="trackPointer" @pointerleave="resetPointer">
       <div class="studio-window-bar">
         <div class="studio-window-controls" aria-hidden="true"><i></i><i></i><i></i></div>
         <span class="studio-window-title">zanda.studio <span>/</span> workspace</span>
@@ -131,6 +133,9 @@ function resetCard(event) {
           <div class="studio-room-footer"><span aria-hidden="true">✳</span><span>ROOM SELECTED</span><span class="studio-footer-line"></span><span>KEEP EXPLORING</span></div>
         </div>
       </div>
+      </div>
+      <div class="studio-laptop-hinge" aria-hidden="true"></div>
+      <div class="studio-laptop-base" aria-hidden="true"><span></span></div>
     </div>
     <p class="studio-footnote"><span>Every good build starts with curiosity.</span><a href="#contact">Let’s make something meaningful <b aria-hidden="true">↗</b></a></p>
   </section>
