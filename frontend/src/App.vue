@@ -116,11 +116,19 @@ const achievements = ref([
     credentialUrl: 'https://www.credly.com/badges/f0b44bf4-8edf-4190-8070-e1c7e6486a22/public_url',
     description: 'Cybersecurity foundations: passwords, encryption, firewalls, privacy and ethics.',
   },
+  {
+    achievement_id: 'cisco-introduction-to-data-science',
+    title: 'Introduction to Data Science',
+    issuer: 'Cisco',
+    status: 'completed',
+    description: 'An introduction to data science concepts, the data lifecycle, working with data, and how data can be explored to support insights and decisions.',
+  },
 ])
 const learningExperiences = ref([
   {
     id: 'life-choices-trainee',
     title: 'Trainee Developer Programme',
+    imageUrl: '/LC%20Academy.jpg',
     issuer: 'Life Choices Coding Academy',
     statusLabel: 'TRAINEE PERIOD · COMPLETED',
     period: 'April – October 2026',
