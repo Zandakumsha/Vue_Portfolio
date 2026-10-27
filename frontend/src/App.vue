@@ -120,6 +120,7 @@ const achievements = ref([
     achievement_id: 'cisco-introduction-to-data-science',
     title: 'Introduction to Data Science',
     issuer: 'Cisco',
+    imageUrl: '/introduction-to-data-science.png',
     status: 'completed',
     credentialUrl: 'https://www.credly.com/earner/earned/badge/775a80a2-7a1b-4ef7-b6a3-2b4b8101c5fc',
     description: 'An introduction to data science concepts, the data lifecycle, working with data, and how data can be explored to support insights and decisions.',
@@ -138,7 +139,7 @@ const learningExperiences = ref([
   {
     id: 'lc-studio-internship',
     title: 'Developer Internship',
-    imageUrl: 'LC%20Studio.png',
+    imageUrl: '/LC%20Studio.png',
     issuer: 'LC Studio',
     statusLabel: 'CURRENT INTERNSHIP · IN PROGRESS',
     period: 'October 2026 – April 2027',
