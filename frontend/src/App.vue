@@ -402,6 +402,42 @@ function runTerminal() {
         </div>
       </section>
 
+
+      <section id="behind-the-build" class="page-wrap content-section behind-build-section">
+        <p class="section-kicker"><span>05</span> BEHIND THE BUILD</p>
+        <div class="work-heading">
+          <h2>The thinking behind <em>the code.</em></h2>
+          <p>Not just what I build, but what I’m learning to notice along the way.</p>
+        </div>
+        <div class="build-reflection-grid">
+          <article class="build-reflection-card">
+            <span class="build-reflection-number">01 / DEBUGGING</span>
+            <span class="build-reflection-icon" aria-hidden="true">⌕</span>
+            <h3>Follow the clues.</h3>
+            <p>I’m practising a calmer debugging process: read the error, isolate one problem, test one change, then check what actually improved.</p>
+            <a href="#blog">Read my field notes <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="build-reflection-card">
+            <span class="build-reflection-number">02 / FULL-STACK</span>
+            <span class="build-reflection-icon" aria-hidden="true">↔</span>
+            <h3>Trace the whole journey.</h3>
+            <p>A useful feature connects the interface, API and data. My project work is helping me understand how those pieces depend on one another.</p>
+            <a href="#project-01">Explore WeConnect <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="build-reflection-card">
+            <span class="build-reflection-number">03 / USER EXPERIENCE</span>
+            <span class="build-reflection-icon" aria-hidden="true">♡</span>
+            <h3>Make the next step clear.</h3>
+            <p>I want visual details to support the person using the product, with readable content, clear actions, responsive layouts and accessible interactions.</p>
+            <a href="#skills">Explore my toolkit <span aria-hidden="true">↗</span></a>
+          </article>
+        </div>
+        <div class="build-note">
+          <span aria-hidden="true">✳</span>
+          <p><strong>My working principle:</strong> understand the problem, make a considered change, and learn from the result.</p>
+        </div>
+      </section>
+
       <section id="blog" class="page-wrap content-section portfolio-data-section">
         <p class="section-kicker"><span>05</span> NOTES FROM THE JOURNEY</p>
         <div class="work-heading">
