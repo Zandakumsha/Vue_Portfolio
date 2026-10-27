@@ -6,6 +6,7 @@ import AboutSection from './components/AboutSection.vue'
 import ProjectCard from './components/ProjectCard.vue'
 import CursorGlow from './components/CursorGlow.vue'
 import ToolkitSlider from './components/ToolkitSlider.vue'
+import DigitalStudio from './components/DigitalStudio.vue'
 import './assets/portfolio.css'
 
 const isDark = ref(false)
@@ -271,6 +272,8 @@ function runTerminal() {
       </div>
 
       <AboutSection />
+
+      <DigitalStudio />
 
       <section id="work" class="work-section">
         <div class="page-wrap content-section">
