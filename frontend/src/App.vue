@@ -341,7 +341,6 @@ function runTerminal() {
         <p class="section-kicker"><span>04</span> THE JOURNEY SO FAR</p>
         <h2 class="journey-heading">Growing into my <em>next chapter.</em></h2>
         <p class="journey-intro">From training to internship — still growing.</p>
-        <p class="journey-intro journey-intro-personal"></p>
         <div class="developer-timeline" aria-label="Developer journey timeline">
           <article class="developer-milestone is-complete">
             <div class="milestone-marker" aria-hidden="true"><span>01</span></div>
