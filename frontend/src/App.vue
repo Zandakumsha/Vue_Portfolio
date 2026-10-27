@@ -11,12 +11,18 @@ import './assets/portfolio.css'
 const isDark = ref(false)
 const selectedSkill = ref('')
 const activeProjectFilter = ref('All projects')
+const projectSearch = ref('')
 const projectFilters = ['All projects', 'Full-stack', 'Data & scraping', 'HR technology']
 const visibleProjects = computed(() => {
-  if (activeProjectFilter.value === 'Full-stack') return projects.value.filter((project) => project.name === 'WeConnect')
-  if (activeProjectFilter.value === 'Data & scraping') return projects.value.filter((project) => project.name === 'Lightning News')
-  if (activeProjectFilter.value === 'HR technology') return projects.value.filter((project) => project.name === 'Modern Tech')
-  return projects.value
+  let filtered = projects.value
+  if (activeProjectFilter.value === 'Full-stack') filtered = filtered.filter((project) => project.name === 'WeConnect')
+  if (activeProjectFilter.value === 'Data & scraping') filtered = filtered.filter((project) => project.name === 'Lightning News')
+  if (activeProjectFilter.value === 'HR technology') filtered = filtered.filter((project) => project.name === 'Modern Tech')
+  const query = projectSearch.value.trim().toLowerCase()
+  if (!query) return filtered
+  return filtered.filter((project) =>
+    [project.name, project.type, project.description, ...project.tags].some((value) => value.toLowerCase().includes(query)),
+  )
 })
 const terminalCommand = ref('')
 const terminalOutput = ref('Try: help, about, skills, projects, contact')
@@ -235,11 +241,19 @@ function runTerminal() {
             <h2>Projects &amp; <em>case studies.</em></h2>
             <p>A closer look at the problems, technologies and confirmed contributions behind each project.</p>
           </div>
-          <div class="project-filters" role="group" aria-label="Filter projects">
-            <button v-for="filter in projectFilters" :key="filter" type="button" class="project-filter" :class="{ 'is-active': activeProjectFilter === filter }" :aria-pressed="activeProjectFilter === filter" @click="activeProjectFilter = filter">{{ filter }}</button>
+          <div class="project-discovery">
+            <div class="project-filters" role="group" aria-label="Filter projects by category">
+              <button v-for="filter in projectFilters" :key="filter" type="button" class="project-filter" :class="{ 'is-active': activeProjectFilter === filter }" :aria-pressed="activeProjectFilter === filter" @click="activeProjectFilter = filter">{{ filter }}</button>
+            </div>
+            <label class="project-search">
+              <span aria-hidden="true">⌕</span>
+              <span class="sr-only">Search projects by name or technology</span>
+              <input v-model="projectSearch" type="search" placeholder="Search projects or technologies…" />
+              <button v-if="projectSearch" type="button" aria-label="Clear project search" @click="projectSearch = ''">Clear</button>
+            </label>
           </div>
-          <p class="project-count" aria-live="polite">Showing {{ visibleProjects.length }} of {{ projects.length }} projects</p>
-          <div class="project-grid">
+          <p class="project-count" aria-live="polite">Showing {{ visibleProjects.length }} of {{ projects.length }} projects<span v-if="projectSearch"> matching “{{ projectSearch }}”</span></p>
+          <div v-if="visibleProjects.length" class="project-grid">
             <ProjectCard
               v-for="project in visibleProjects"
               :key="project.number"
@@ -247,6 +261,12 @@ function runTerminal() {
               :selected-skill="selectedSkill"
               :individual-contributions="individualContributions"
             />
+          </div>
+          <div v-else class="project-empty-state">
+            <span aria-hidden="true">✳</span>
+            <h3>No projects found just yet.</h3>
+            <p>Try another project name or technology, or clear your filters to explore all selected work.</p>
+            <button type="button" @click="projectSearch = ''; activeProjectFilter = 'All projects'">Show all projects</button>
           </div>
           <div class="more-note"><span>✳</span> MORE IDEAS ARE ALWAYS IN THE MAKING <i></i></div>
         </div>
@@ -284,9 +304,9 @@ function runTerminal() {
         <h2 class="journey-heading">Growing into my <em>next chapter.</em></h2>
         <p class="journey-intro">A snapshot of the skills and questions guiding my growth as a developer.</p>
         <div class="timeline-grid">
-          <article class="timeline-card"><small>FOUNDATIONS</small><h3>Learning by building</h3><p>Strengthening core web development skills through practical interfaces, responsive layouts and collaborative projects.</p></article>
-          <article class="timeline-card"><small>FULL-STACK</small><h3>Connecting the pieces</h3><p>Working across Vue, Node.js, Express and MySQL to understand how polished frontends connect to useful backend systems.</p></article>
-          <article class="timeline-card"><small>ALWAYS IN PROGRESS</small><h3>Curiosity, continued</h3><p>Exploring better UX, accessible interactions, clean code and ways to turn complex problems into friendly experiences.</p></article>
+          <article class="timeline-card"><small>APRIL – OCTOBER 2026 · COMPLETED</small><h3>Life Choices Coding Academy</h3><p>Completed a six-month trainee period focused on building development foundations through hands-on coding, collaborative projects, problem-solving and debugging.</p><span class="timeline-status">FOUNDATIONS BUILT <b aria-hidden="true">✓</b></span></article>
+          <article class="timeline-card timeline-card-current"><small>OCTOBER 2026 – APRIL 2027 · CURRENT</small><h3>LC Studio internship</h3><p>Continuing the next six months as a developer intern, building on the training experience and growing through practical work in a professional environment.</p><span class="timeline-status">CURRENT CHAPTER <b aria-hidden="true">✳</b></span></article>
+          <article class="timeline-card"><small>ALONG THE WAY</small><h3>Learning through projects</h3><p>Exploring the full journey from interface to data through WeConnect, Modern Tech and Lightning News — with a focus on thoughtful UX, debugging and team collaboration.</p><a class="timeline-link" href="#work">Explore the projects ↗</a></article>
         </div>
         <div class="journey-bottom-grid">
           <article class="explore-card"><small>CURRENTLY EXPLORING</small><h3>Small details, better experiences.</h3><p>Accessibility, interaction design, data visualisation and the little moments that make an app feel thoughtful.</p><span class="feature-label">NOW LEARNING · ALWAYS ITERATING ✳</span></article>
