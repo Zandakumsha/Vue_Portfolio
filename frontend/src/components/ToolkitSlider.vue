@@ -342,4 +342,59 @@ onUnmounted(() => {
   .toolkit-art-ring { animation: none; }
   .tool-fade-enter-active, .tool-fade-leave-active, .toolkit-progress-item, .toolkit-control { transition: none; }
 }
+
+/* Keep the toolkit in sync with the site's espresso-brown dark theme. */
+:global(.theme-dark) .toolkit-showcase {
+  --toolkit-ink: #f7e9e2;
+  --toolkit-muted: #d1b8ad;
+  --toolkit-paper: #26150d;
+  --toolkit-rose: #e9aebc;
+  background: #26150d;
+  color: #f7e9e2;
+}
+:global(.theme-dark) .toolkit-stage {
+  border-color: rgba(233, 174, 188, .22);
+  background: linear-gradient(130deg, #382019 0%, #312019 48%, #39212b 100%);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .18);
+}
+:global(.theme-dark) .toolkit-stage-label,
+:global(.theme-dark) .toolkit-counter,
+:global(.theme-dark) .toolkit-art-index,
+:global(.theme-dark) .toolkit-signature,
+:global(.theme-dark) .toolkit-active-name { color: #d1b8ad; }
+:global(.theme-dark) .toolkit-counter span,
+:global(.theme-dark) .toolkit-active-name strong { color: #f7e9e2; }
+:global(.theme-dark) .toolkit-logo-card {
+  border-color: rgba(255, 235, 226, .16);
+  background: rgba(255, 245, 239, .94);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, .22), inset 0 1px 0 #fff;
+}
+:global(.theme-dark) .toolkit-description { color: #d1b8ad; }
+:global(.theme-dark) .toolkit-tags span {
+  border-color: rgba(233, 174, 188, .24);
+  color: #f0d9d5;
+  background: rgba(38, 21, 13, .42);
+}
+:global(.theme-dark) .toolkit-feature-bottom,
+:global(.theme-dark) .toolkit-bottom-bar { border-color: rgba(233, 174, 188, .2); }
+:global(.theme-dark) .toolkit-progress-item { color: #d1b8ad; }
+:global(.theme-dark) .toolkit-progress-item.is-active,
+:global(.theme-dark) .toolkit-progress-item:hover { color: #f7e9e2; border-color: #e9aebc; }
+:global(.theme-dark) .toolkit-control,
+:global(.theme-dark) .toolkit-pause { border-color: rgba(233, 174, 188, .35); color: #f7e9e2; background: rgba(38, 21, 13, .35); }
+:global(.theme-dark) .toolkit-control:hover,
+:global(.theme-dark) .toolkit-pause:hover { background: rgba(233, 174, 188, .14); }
+:global(.theme-dark) .toolkit-footnote { color: #d1b8ad; }
+@media (max-width: 640px) {
+  .toolkit-shell { width: min(100% - 2rem, 1120px); }
+  .toolkit-heading-row { align-items: flex-start; gap: 1rem; }
+  .toolkit-counter { padding-top: .25rem; }
+  .toolkit-stage-label span:last-child { text-align: right; }
+  .toolkit-feature-bottom { align-items: flex-start; flex-direction: column; gap: .75rem; }
+  .toolkit-bottom-bar { align-items: stretch; flex-direction: column; }
+  .toolkit-progress { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .35rem .65rem; }
+  .toolkit-progress-item { padding: .45rem .2rem; }
+  .toolkit-progress-name { font-size: .65rem; }
+  .toolkit-controls { justify-content: flex-end; }
+}
 </style>
