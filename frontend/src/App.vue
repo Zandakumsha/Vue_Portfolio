@@ -5,6 +5,7 @@ import HeroSection from './components/HeroSection.vue'
 import AboutSection from './components/AboutSection.vue'
 import ProjectCard from './components/ProjectCard.vue'
 import CursorGlow from './components/CursorGlow.vue'
+import ToolkitSlider from './components/ToolkitSlider.vue'
 import './assets/portfolio.css'
 
 const isDark = ref(false)
@@ -275,6 +276,8 @@ function runTerminal() {
           </div>
         </div>
       </section>
+
+      <ToolkitSlider />
 
       <section id="journey" class="journey-section page-wrap">
         <p class="section-kicker"><span>04</span> THE JOURNEY SO FAR</p>
