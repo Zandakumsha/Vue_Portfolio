@@ -1409,3 +1409,40 @@ img { max-width: 100%; }
 @media (prefers-reduced-motion: reduce) {
   .hero .little-note, .case-study summary { transition: none !important; }
 }
+
+
+/* Proof of progress: academy and internship images */
+.milestone-image {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
+  margin: 20px 0 4px;
+}
+.milestone-image img {
+  display: block;
+  width: 100%;
+  max-height: 260px;
+  aspect-ratio: 16 / 7;
+  object-fit: cover;
+  object-position: center;
+  border: 1px solid var(--line);
+  border-radius: 4px 18px 4px 18px;
+  background: var(--soft);
+}
+.milestone-image figcaption {
+  color: var(--muted);
+  font: 8px/1.6 var(--mono);
+  letter-spacing: .09em;
+}
+.site-shell.theme-dark .milestone-image img {
+  border-color: #d9d5e3;
+  background: #342018;
+}
+@media (max-width: 600px) {
+  .milestone-image { margin-top: 16px; }
+  .milestone-image img { aspect-ratio: 4 / 3; max-height: 240px; }
+  .milestone-image figcaption { font-size: 7px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .milestone-image img { scroll-behavior: auto; }
+}
