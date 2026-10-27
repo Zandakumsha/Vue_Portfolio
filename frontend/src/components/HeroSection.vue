@@ -4,13 +4,13 @@
           <p class="eyebrow">HELLO, WORLD. I'M ZANDA.</p>
           <h1>Thoughtful design.<br />Curious by nature.<br />Driven to build.<br /><em>Solutions that matter.</em></h1>
           <p class="hero-description">
-            I'm a developer who loves turning complex ideas into thoughtful, intuitive digital experiences — one considered detail at a time.
+            I build thoughtful digital experiences with code, curiosity and care.
           </p>
           <div class="hero-actions">
             <a class="button-primary" href="#work">Explore my work <span>↗</span></a>
             <a class="text-link" href="#about">A little about me ↓</a>
           </div>
-          <p class="little-note"><span>✳</span> Curious by nature. Intentional by design.</p>
+          <p class="little-note"><span>✳</span> VUE.JS&nbsp; · &nbsp;NODE.JS&nbsp; · &nbsp;PYTHON&nbsp; · &nbsp;MYSQL</p>
         </div>
 
         <div class="hero-art" aria-label="Portrait and creative details">
