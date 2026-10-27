@@ -33,6 +33,9 @@ const blogPosts = ref([
   {
     slug: 'trust-the-process',
     category: 'GROWTH & MINDSET',
+    publishedAt: 'OCT 2026',
+    tags: ['Debugging', 'Problem-solving'],
+    takeaway: 'Slow down. Read the clues. Test one change at a time.',
     readingMinutes: 3,
     title: 'Learning to Trust My Problem-Solving Process',
     excerpt: 'The first instinct is not always the answer. Sometimes the real skill is slowing down, asking better questions and following the clues.',
@@ -44,6 +47,9 @@ const blogPosts = ref([
   {
     slug: 'beyond-the-interface',
     category: 'BUILDING & LEARNING',
+    publishedAt: 'OCT 2026',
+    tags: ['Vue.js', 'APIs', 'MySQL'],
+    takeaway: 'A feature is more than the screen — follow the data.',
     readingMinutes: 3,
     title: 'Building Beyond the Interface',
     excerpt: 'A page is only one part of the story. I am learning how components, APIs and databases work together to make an experience feel seamless.',
@@ -53,8 +59,39 @@ const blogPosts = ref([
     imageNote: 'CONNECTING THE PIECES',
   },
   {
+    slug: 'from-trainee-to-intern',
+    category: 'CAREER JOURNEY',
+    publishedAt: 'OCT 2026',
+    tags: ['Growth', 'Practice', 'Next chapter'],
+    takeaway: 'Training gave me a foundation; the next step is to keep practising in real situations.',
+    readingMinutes: 4,
+    title: 'From Trainee to Intern: The Next Chapter',
+    excerpt: 'Finishing one six-month chapter and starting another is a reminder that growth is not a finish line — it is a practice.',
+    content: 'My six-month trainee period at Life Choices Coding Academy has come to an end, and I have started the next six months as an intern at LC Studio. It feels like a meaningful transition: I am taking the foundations I have been building and continuing to grow through practical experience.\n\nI am learning to value progress that is not always dramatic. Asking questions, being open to feedback, working through bugs and showing up ready to learn all count. I want to keep documenting the small lessons as well as the milestones, because those are part of the story too.',
+    imageUrl: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=85',
+    imageAlt: 'Colleagues sharing ideas around a table',
+    imageNote: 'A NEW CHAPTER, SAME CURIOSITY',
+  },
+  {
+    slug: 'teamwork-is-a-technical-skill',
+    category: 'TEAMWORK & PRACTICE',
+    publishedAt: 'OCT 2026',
+    tags: ['Communication', 'Git', 'Collaboration'],
+    takeaway: 'Good teamwork includes clear communication, small commits and shared problem-solving.',
+    readingMinutes: 3,
+    title: 'Teamwork Is a Technical Skill, Too',
+    excerpt: 'Building with other people means learning to communicate clearly, trace changes and solve problems together.',
+    content: 'Collaborative projects have shown me that development is not only about writing code. It also means understanding how your work fits into a shared goal, communicating when something is unclear, and being willing to investigate a problem with the team.\n\nGit workflows, testing and debugging are technical tools, but they also support collaboration. I am learning that it helps to explain what I changed, what I expected to happen and what actually happened. Clear notes and thoughtful questions can make a difficult bug feel more manageable for everyone.',
+    imageUrl: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=85',
+    imageAlt: 'A team collaborating around a table in a bright workspace',
+    imageNote: 'BETTER TOGETHER',
+  },
+  {
     slug: 'design-is-part-of-the-experience',
     category: 'DESIGN & ACCESSIBILITY',
+    publishedAt: 'OCT 2026',
+    tags: ['UX', 'Accessibility', 'Responsive design'],
+    takeaway: 'Make the next step clear for the person using it.',
     readingMinutes: 3,
     title: 'Design Is Part of the Experience',
     excerpt: 'Soft edges and thoughtful details are lovely, but good design also helps people understand what to do next.',
@@ -320,18 +357,30 @@ function runTerminal() {
           <h2>A little <em>field journal.</em></h2>
           <p>Thoughts on learning, problem-solving and the details behind building for the web.</p>
         </div>
-        <div v-if="blogPosts.length" class="journal-carousel" aria-roledescription="carousel" aria-label="Field journal entries">
-          <article class="journal-slide" :key="currentJournalPost.slug" aria-live="polite">
+        <div v-if="blogPosts.length" class="journal-archive">
+          <div class="journal-archive-head">
+            <div><span class="journal-issue-label">FIELD NOTES · VOL. 01</span><p>A living record of what I'm learning, building and figuring out.</p></div>
+            <span class="journal-update-stamp">LAST UPDATED<br /><b>OCT 2026</b></span>
+          </div>
+          <div class="journal-index" role="group" aria-label="Browse field journal entries">
+            <button v-for="(post, index) in blogPosts" :key="post.slug" type="button" class="journal-index-item" :class="{ 'is-active': currentJournalIndex === index }" :aria-pressed="currentJournalIndex === index" @click="currentJournalIndex = index">
+              <span class="journal-index-number">0{{ index + 1 }}</span><span class="journal-index-copy"><b>{{ post.title }}</b><small>{{ post.category }}</small></span><span class="journal-index-arrow" aria-hidden="true">↗</span>
+            </button>
+          </div>
+          <div class="journal-carousel" aria-roledescription="carousel" aria-label="Selected field journal entry">
+          <article class="journal-slide" :class="'journal-slide-' + (currentJournalIndex + 1)" :key="currentJournalPost.slug" aria-live="polite">
             <div class="journal-image-wrap">
               <img class="journal-image" :src="currentJournalPost.imageUrl" :alt="currentJournalPost.imageAlt" loading="lazy" />
               <span class="journal-image-note">{{ currentJournalPost.imageNote }}</span>
               <span class="journal-image-spark" aria-hidden="true">✳</span>
             </div>
             <div class="journal-copy">
-              <p class="project-meta">{{ currentJournalPost.category }} <span>·</span> {{ currentJournalPost.readingMinutes }} MIN READ</p>
+              <p class="project-meta">{{ currentJournalPost.category }} <span>·</span> {{ currentJournalPost.publishedAt }} <span>·</span> {{ currentJournalPost.readingMinutes }} MIN READ</p>
               <p class="journal-number">FIELD NOTE 0{{ currentJournalIndex + 1 }} <span> / 0{{ blogPosts.length }}</span></p>
               <h3>{{ currentJournalPost.title }}</h3>
               <p class="blog-excerpt journal-excerpt">{{ currentJournalPost.excerpt }}</p>
+              <p class="journal-takeaway"><span aria-hidden="true">✳</span><span><small>THE TAKEAWAY</small>{{ currentJournalPost.takeaway }}</span></p>
+              <div class="journal-tags" aria-label="Topics in this entry"><span v-for="tag in currentJournalPost.tags" :key="tag">{{ tag }}</span></div>
               <details class="case-study journal-details">
                 <summary>Read the full reflection <span aria-hidden="true">↗</span></summary>
                 <p class="blog-content">{{ currentJournalPost.content }}</p>
@@ -346,6 +395,7 @@ function runTerminal() {
             </div>
           </article>
           <p class="journal-footnote"><span>✳</span> NOTES FROM A DEVELOPER IN PROGRESS — ALWAYS LEARNING, ALWAYS MAKING</p>
+          </div>
         </div>
       </section>
 
