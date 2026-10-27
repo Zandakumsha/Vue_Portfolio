@@ -29,27 +29,21 @@ defineProps({
               <span class="project-number">PROJECT {{ project.number }} <span aria-hidden="true">✳</span></span>
               <h3>{{ project.name }}</h3>
               <p class="project-description">{{ project.description }}</p>
-              <section v-if="individualContributions[project.name]" class="personal-contributions" :aria-label="'My individual contributions to ' + project.name">
-                <h4>My individual contributions</h4>
-                <ul>
-                  <li v-for="contribution in individualContributions[project.name]" :key="contribution">{{ contribution }}</li>
-                </ul>
-                <p class="team-context">Individual work within a wider team project.</p>
-              </section>
+              
               <div class="tag-list"><span v-for="tag in project.tags" :key="tag">{{ tag }}</span></div>
               <div class="project-actions">
                 <a class="project-link" :href="project.repoUrl || project.url" target="_blank" rel="noreferrer">View code <span aria-hidden="true">↗</span></a>
                 <a v-if="project.demoUrl" class="project-link project-demo-link" :href="project.demoUrl" target="_blank" rel="noreferrer">Live demo <span aria-hidden="true">↗</span></a>
               </div>
               <details class="case-study">
-                <summary>Explore the case study <span class="case-study-toggle" aria-hidden="true">＋</span></summary>
+                <summary>Case study & contributions <span class="case-study-toggle" aria-hidden="true">＋</span></summary>
                 <div class="case-study-content">
                   <p><strong>Project focus</strong>{{ project.focus }}</p>
                   <p><strong>The challenge</strong>{{ project.challenge }}</p>
                   <p><strong>Technical approach</strong>{{ project.approach }}</p>
                   <p><strong>What it taught me</strong>{{ project.learning }}</p>
                   <div v-if="individualContributions[project.name]" class="contribution-note">
-                    <strong>My individual contributions</strong>
+                    <strong>My contributions</strong>
                     <ul>
                       <li v-for="contribution in individualContributions[project.name]" :key="contribution">{{ contribution }}</li>
                     </ul>
