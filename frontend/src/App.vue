@@ -340,10 +340,53 @@ function runTerminal() {
         <p class="section-kicker"><span>04</span> THE JOURNEY SO FAR</p>
         <h2 class="journey-heading">Growing into my <em>next chapter.</em></h2>
         <p class="journey-intro">A snapshot of the skills and questions guiding my growth as a developer.</p>
-        <div class="timeline-grid">
-          <article class="timeline-card"><small>APRIL – OCTOBER 2026 · COMPLETED</small><h3>Life Choices Coding Academy</h3><p>Completed a six-month trainee period focused on building development foundations through hands-on coding, collaborative projects, problem-solving and debugging.</p><span class="timeline-status">FOUNDATIONS BUILT <b aria-hidden="true">✓</b></span></article>
-          <article class="timeline-card timeline-card-current"><small>OCTOBER 2026 – APRIL 2027 · CURRENT</small><h3>LC Studio internship</h3><p>Continuing the next six months as a developer intern, building on the training experience and growing through practical work in a professional environment.</p><span class="timeline-status">CURRENT CHAPTER <b aria-hidden="true">✳</b></span></article>
-          <article class="timeline-card"><small>ALONG THE WAY</small><h3>Learning through projects</h3><p>Exploring the full journey from interface to data through WeConnect, Modern Tech and Lightning News — with a focus on thoughtful UX, debugging and team collaboration.</p><a class="timeline-link" href="#work">Explore the projects ↗</a></article>
+        <p class="journey-intro journey-intro-personal">Every chapter has taught me something different. This is the path so far — and the part I’m still figuring out.</p>
+        <div class="developer-timeline" aria-label="Developer journey timeline">
+          <article class="developer-milestone is-complete">
+            <div class="milestone-marker" aria-hidden="true"><span>01</span></div>
+            <div class="milestone-card">
+              <div class="milestone-topline"><small>APRIL – OCTOBER 2026</small><span class="milestone-state"><span aria-hidden="true">✓</span> COMPLETED</span></div>
+              <p class="milestone-role">Trainee Developer Programme</p>
+              <h3>Life Choices Coding Academy</h3>
+              <p>I spent six months building my foundations in development, learning by writing code, working through bugs and collaborating on projects with other trainees.</p>
+              <details class="milestone-reflection">
+                <summary>What I’m taking with me <span aria-hidden="true">＋</span></summary>
+                <p>I’m learning not to treat an error as a dead end. Reading the message, testing one change at a time and asking clearer questions has helped me build a more patient problem-solving process.</p>
+                <a href="#project-01">See how I practised this in WeConnect ↗</a>
+              </details>
+              <div class="milestone-tags"><span>Development foundations</span><span>Debugging</span><span>Team projects</span></div>
+            </div>
+          </article>
+          <article class="developer-milestone is-current">
+            <div class="milestone-marker" aria-hidden="true"><span>02</span></div>
+            <div class="milestone-card">
+              <div class="milestone-topline"><small>OCTOBER 2026 – APRIL 2027</small><span class="milestone-state"><span aria-hidden="true">✳</span> IN PROGRESS</span></div>
+              <p class="milestone-role">Developer Internship</p>
+              <h3>LC Studio</h3>
+              <p>I’ve started the next six months as an intern, carrying what I learned in training into a professional environment and staying open to new ways of working.</p>
+              <details class="milestone-reflection">
+                <summary>What I want to keep practising <span aria-hidden="true">＋</span></summary>
+                <p>I want to keep asking thoughtful questions, learning from feedback, strengthening my technical decisions and understanding how small contributions fit into a wider team effort.</p>
+                <a href="#blog">Read my notes from the journey ↗</a>
+              </details>
+              <div class="milestone-tags"><span>Practical experience</span><span>Feedback</span><span>Continued learning</span></div>
+            </div>
+          </article>
+          <article class="developer-milestone milestone-projects">
+            <div class="milestone-marker" aria-hidden="true"><span>03</span></div>
+            <div class="milestone-card">
+              <div class="milestone-topline"><small>ALONG THE WAY</small><span class="milestone-state">LEARNING BY BUILDING</span></div>
+              <p class="milestone-role">Projects & practice</p>
+              <h3>Turning lessons into working features</h3>
+              <p>Projects have helped me connect the pieces — from Vue interfaces to APIs, data and the details that make an experience easier to use.</p>
+              <details class="milestone-reflection">
+                <summary>A lesson from the projects <span aria-hidden="true">＋</span></summary>
+                <p>WeConnect helped me practise full-stack collaboration, Modern Tech challenged me to trace issues across an application, and Lightning News gave me experience parsing web content with Python and BeautifulSoup.</p>
+                <a href="#work">Explore my project work ↗</a>
+              </details>
+              <div class="milestone-tags"><span>WeConnect</span><span>Modern Tech</span><span>Lightning News</span></div>
+            </div>
+          </article>
         </div>
         <div class="journey-bottom-grid">
           <article class="explore-card"><small>CURRENTLY EXPLORING</small><h3>Small details, better experiences.</h3><p>Accessibility, interaction design, data visualisation and the little moments that make an app feel thoughtful.</p><span class="feature-label">NOW LEARNING · ALWAYS ITERATING ✳</span></article>
