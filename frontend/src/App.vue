@@ -129,7 +129,7 @@ const learningExperiences = ref([
   {
     id: 'lc-studio-internship',
     title: 'Developer Internship',
-    imageUrl: 'LC%20%20Studio.png',
+    imageUrl: 'LC%20Studio.png',
     issuer: 'LC Studio',
     statusLabel: 'CURRENT INTERNSHIP · IN PROGRESS',
     period: 'October 2026 – April 2027',
@@ -368,7 +368,7 @@ function runTerminal() {
               <p class="milestone-role">Six months · in progress</p>
               <h3>LC Studio</h3>
               <figure class="milestone-image">
-                <img src="/LC%20%20Studio.png" alt="LC Studio — current developer internship" loading="lazy" />
+                <img src="/LC%20Studio.png" alt="LC Studio — current developer internship" loading="lazy" />
                 <figcaption>THE NEXT CHAPTER · OCTOBER 2026–APRIL 2027</figcaption>
               </figure>
               <p>Now applying those foundations at LC Studio.</p>
@@ -488,7 +488,7 @@ function runTerminal() {
               <div class="achievement-grid learning-experience-grid">
                 <article v-for="item in learningExperiences" :key="item.id" class="achievement-card learning-experience-card">
                   <span class="achievement-icon" aria-hidden="true">{{ item.id === 'lc-studio-internship' ? '✦' : '✳' }}</span>
-                  <img v-if="item.imageUrl" class="Developer Internship" :src="item.imageUrl" :alt="item.title + 'Developer Internship'" loading="lazy" />
+                  <img v-if="item.imageUrl" class="credential-image learning-experience-image" :src="item.imageUrl" :alt="item.title + ' at ' + item.issuer" loading="lazy" />
                   <p class="project-meta">{{ item.statusLabel }}</p>
                   <h4>{{ item.title }}</h4>
                   <p class="achievement-issuer">{{ item.issuer }}</p>
