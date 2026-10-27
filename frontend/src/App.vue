@@ -7,10 +7,8 @@ import ProjectCard from './components/ProjectCard.vue'
 import CursorGlow from './components/CursorGlow.vue'
 import ToolkitSlider from './components/ToolkitSlider.vue'
 import DigitalStudio from './components/DigitalStudio.vue'
-import WelcomeExperience from './components/WelcomeExperience.vue'
 import './assets/portfolio.css'
 
-const isDark = ref(false)
 const selectedSkill = ref('')
 const activeProjectFilter = ref('All projects')
 const projectSearch = ref('')
@@ -254,20 +252,12 @@ function runTerminal() {
   terminalOutput.value = replies[command] || 'Command not found. Try help'
   terminalCommand.value = ''
 }
-const welcomeComplete = ref(false)
-const visitorName = ref('')
-function completeWelcome(name) {
-  visitorName.value = name
-  welcomeComplete.value = true
-}
-
 </script>
 
 <template>
-  <WelcomeExperience v-if="!welcomeComplete" @complete="completeWelcome" />
-  <div class="site-shell" :class="{ 'theme-dark': isDark }">
+  <div class="site-shell">
     <a class="skip-link" href="#main-content">Skip to content</a>
-    <SiteHeader v-model:is-dark="isDark" v-model:menu-open="menuOpen" />
+    <SiteHeader v-model:menu-open="menuOpen" />
 
     <main id="main-content" tabindex="-1">
       <HeroSection />
