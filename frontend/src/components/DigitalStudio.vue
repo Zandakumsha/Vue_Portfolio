@@ -137,6 +137,7 @@ function resetCard(event) {
       <div class="studio-laptop-hinge" aria-hidden="true"></div>
       <div class="studio-laptop-base" aria-hidden="true"><span></span></div>
     </div>
+    </div>
     <p class="studio-footnote"><span>Every good build starts with curiosity.</span><a href="#contact">Let’s make something meaningful <b aria-hidden="true">↗</b></a></p>
   </section>
 </template>
