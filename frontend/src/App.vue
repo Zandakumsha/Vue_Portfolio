@@ -121,6 +121,7 @@ const achievements = ref([
     title: 'Introduction to Data Science',
     issuer: 'Cisco',
     status: 'completed',
+    credentialUrl: 'https://www.credly.com/earner/earned/badge/775a80a2-7a1b-4ef7-b6a3-2b4b8101c5fc',
     description: 'An introduction to data science concepts, the data lifecycle, working with data, and how data can be explored to support insights and decisions.',
   },
 ])
