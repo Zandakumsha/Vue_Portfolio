@@ -1859,3 +1859,25 @@ a, button { -webkit-tap-highlight-color: transparent; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
 }
+
+
+/* Private reviewer access note for projects that require a demo login. */
+.demo-access {
+  margin-top: 1rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--line, rgba(150, 100, 100, 0.25));
+  border-radius: 1rem;
+  background: var(--surface-soft, rgba(245, 220, 225, 0.22));
+}
+.demo-access-label {
+  display: inline-block;
+  margin-bottom: 0.35rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+.demo-access p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
