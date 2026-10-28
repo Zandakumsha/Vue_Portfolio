@@ -218,7 +218,7 @@ const projects = ref([
   {
     number: '01',
     initials: 'WC',
-    theme: 'rose',
+    theme: 'chambray',
     type: 'FULL-STACK · VUE / NODE / MYSQL',
     name: 'WeConnect',
     description: 'A supplier network experience bringing buyers, suppliers and everyday business operations into one clear workspace.',
@@ -227,6 +227,9 @@ const projects = ref([
     challenge: 'Keeping the frontend, API and relational data model aligned as supplier and buyer features evolve.',
     approach: 'Vue.js provides the interface, Express handles server-side routes, and MySQL stores structured application data.',
     learning: 'Full-stack integration, relational data, reusable UI patterns and collaborative Git workflows.',
+    role: 'Frontend and backend contributor',
+    deliverables: ['Supplier-side navigation and pages', 'Buyer-side shop styling', 'Express API routes and controllers', 'MySQL schema, queries and database integration'],
+    nextSteps: 'Further polish can focus on end-to-end testing, consistent error states and verifying the deployed buyer, supplier and admin journeys.',
     contributions: [
       'Vue.js sidebar and navigation for the supplier side.',
       'Supplier-side frontend pages and reusable components.',
@@ -251,7 +254,7 @@ const projects = ref([
   {
     number: '02',
     initials: 'MT',
-    theme: 'lavender',
+    theme: 'espresso',
     type: 'HR TECHNOLOGY · WEB APPLICATION',
     name: 'Modern Tech',
     description: 'An HR management experience for employee profiles, leave requests and calendars, with thoughtful workflows at its core.',
@@ -260,6 +263,9 @@ const projects = ref([
     challenge: 'Making sure employee-specific information and protected workflows stay connected to the correct database records.',
     approach: 'The application combines employee-facing pages with Node.js and Express routes backed by MySQL data.',
     learning: 'Connecting UI states to backend logic, thinking through authentication and data relationships, and debugging API/database issues.',
+    role: 'Full-stack project contributor',
+    deliverables: ['Employee profile and HR workflow concepts', 'Node.js and Express backend routes', 'MySQL-backed application data'],
+    nextSteps: 'A useful next step is to document the main user journeys and test authentication, permissions and data validation across each HR workflow.',
     url: 'https://github.com/Zandakumsha/Modern_Tech_2',
     repoUrl: 'https://github.com/Zandakumsha/Modern_Tech_2',
     label: 'Explore project',
@@ -267,7 +273,7 @@ const projects = ref([
   {
     number: '03',
     initials: 'LN',
-    theme: 'sage',
+    theme: 'glacier',
     type: 'DATA · WEB SCRAPING · ANALYTICS',
     name: 'Lightning News',
     description: 'A news analytics dashboard that brings scraped stories together with search, filtering and export-friendly views.',
@@ -276,6 +282,9 @@ const projects = ref([
     challenge: 'News sites can structure their pages differently, so scraped content needs to be parsed and presented consistently.',
     approach: 'BeautifulSoup supports HTML parsing, Flask exposes backend functionality, and Vue.js powers the interactive dashboard.',
     learning: 'Data extraction, handling inconsistent source markup, and joining backend scraping with frontend search and filtering.',
+    role: 'Data extraction and backend contributor',
+    deliverables: ['BeautifulSoup parsing and data extraction', 'Python/Flask backend work', 'Dashboard search and filtering experience'],
+    nextSteps: 'Further improvements could include tests for changing page markup, clearer handling of unavailable sources and validation of exported data.',
     contributions: [
       'BeautifulSoup parsing and data extraction from web pages.',
       'Python/Flask backend work related to the scraping workflow.',
