@@ -2420,3 +2420,112 @@ body { background: #fffaf1; color: #20233d; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
 }
+
+
+/* About section portrait: make the introduction personal without repeating a large heading. */
+.about-grid {
+  grid-template-columns: minmax(260px, .88fr) minmax(0, 1.12fr);
+  align-items: center;
+  gap: clamp(38px, 7vw, 94px);
+}
+.about-portrait-column { min-width: 0; }
+.about-portrait-card {
+  position: relative;
+  width: min(100%, 420px);
+  margin: 0;
+  padding: 16px 16px 48px;
+  background: #fffaf1;
+  border: 1px solid #e7e2f2;
+  border-radius: 8px 8px 4px 4px;
+  box-shadow: 12px 12px 0 #e2d8ff, 0 22px 54px rgba(32, 35, 61, .09);
+  transform: rotate(-1.2deg);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.about-portrait-card:hover {
+  transform: rotate(0) translateY(-4px);
+  box-shadow: 15px 16px 0 #dff56a, 0 28px 60px rgba(32, 35, 61, .12);
+}
+.about-portrait-backdrop {
+  position: absolute;
+  z-index: 0;
+  inset: 16px 16px 48px;
+  background: linear-gradient(140deg, #dff56a, #e2d8ff 55%, #42d9e8);
+}
+.about-portrait {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 4.7;
+  object-fit: cover;
+  object-position: center 30%;
+  border-radius: 3px;
+  background: #e2d8ff;
+}
+.about-portrait-caption {
+  position: absolute;
+  z-index: 2;
+  left: 16px;
+  right: 16px;
+  bottom: 0;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: #20233d;
+  font: 8px var(--mono);
+  letter-spacing: .08em;
+}
+.about-portrait-index { color: #7c5cff; white-space: nowrap; }
+.about-portrait-sticker {
+  position: absolute;
+  z-index: 3;
+  top: 26px;
+  right: -18px;
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  border: 3px solid #fffaf1;
+  border-radius: 50%;
+  background: #dff56a;
+  color: #20233d;
+  box-shadow: 0 5px 15px rgba(32, 35, 61, .12);
+  font: 500 15px var(--mono);
+  transform: rotate(8deg);
+}
+.about-handwritten { margin: 25px 0 0 5px; }
+.about-intro-heading {
+  margin: 0 0 22px;
+  color: var(--ink);
+  font-size: clamp(36px, 4.3vw, 54px);
+  font-weight: 600;
+  letter-spacing: -.065em;
+  line-height: 1.04;
+}
+.about-intro-heading em { color: var(--dev-violet, #7c5cff); font-family: var(--serif); font-weight: 500; }
+.about-body-copy .statement { margin-top: 0; }
+.site-shell.theme-dark .about-portrait-card {
+  background: #20233d;
+  border-color: #393b5b;
+  box-shadow: 12px 12px 0 #393052, 0 22px 54px rgba(0, 0, 0, .22);
+}
+.site-shell.theme-dark .about-portrait-card:hover { box-shadow: 15px 16px 0 #dff56a, 0 28px 60px rgba(0, 0, 0, .3); }
+.site-shell.theme-dark .about-portrait-caption { color: #f8f6ff; }
+.site-shell.theme-dark .about-portrait-sticker { border-color: #20233d; }
+@media (max-width: 900px) {
+  .about-grid { grid-template-columns: minmax(220px, .8fr) minmax(0, 1.2fr); gap: 36px; }
+  .about-portrait-card { padding: 12px 12px 44px; }
+  .about-portrait-backdrop { inset: 12px 12px 44px; }
+  .about-portrait-caption { left: 12px; right: 12px; min-height: 44px; font-size: 7px; }
+}
+@media (max-width: 760px) {
+  .about-grid { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+  .about-portrait-column { width: min(100%, 390px); margin: 0 auto; }
+  .about-portrait-card { width: 100%; }
+  .about-intro-heading { font-size: clamp(38px, 9vw, 52px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .about-portrait-card { transition: none; }
+}
