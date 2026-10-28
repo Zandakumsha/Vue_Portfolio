@@ -2974,3 +2974,94 @@ html, body { background: #f7f6f2; color: #263238; }
   .project-card, .project-art, .project-art .mock-window, .project-case-dialog-actions a { transition: none !important; }
   .project-card { transform: none !important; will-change: auto; }
 }
+
+
+/* Espresso Walk & Cool Blue palette, sampled from the supplied reference. */
+:root {
+  --paper: #d2e2ec;
+  --ink: #3a2119;
+  --muted: #6f5549;
+  --rose: #7b9fc0;
+  --line: #c2d5e1;
+  --soft: #e6edf1;
+  --sage: #ebcdb7;
+  --sage-ink: #3a2119;
+  --surface: #f5e4d7;
+  --surface-border: #bca08e;
+  --decorative-rose: #ebcdb7;
+  --decorative-lavender: #d2e2ec;
+  --decorative-sage: #957662;
+}
+body { background: #d2e2ec; color: #3a2119; }
+.site-shell { background: #d2e2ec; color: #3a2119; }
+.site-shell.theme-dark {
+  --paper: #3a2119;
+  --ink: #f5e4d7;
+  --muted: #d4b8a5;
+  --rose: #7b9fc0;
+  --line: #65483d;
+  --soft: #4a2d23;
+  --sage: #957662;
+  --sage-ink: #f5e4d7;
+  --surface: #4a2d23;
+  --surface-border: #795a4b;
+}
+.site-shell.theme-dark, .site-shell.theme-dark .work-section,
+.site-shell.theme-dark .journey-section { background-color: #3a2119; color: #f5e4d7; }
+.site-shell.theme-dark .project-case-dialog { background: #3a2119; color: #f5e4d7; border-color: #795a4b; }
+.site-shell.theme-dark .project-case-dialog-close { background: #3a2119; color: #f5e4d7; border-color: #795a4b; }
+.site-shell.theme-dark .project-case-dialog p,
+.site-shell.theme-dark .project-case-dialog li { color: #d4b8a5; }
+.site-shell.theme-dark .project-filter.is-active { background: #7b9fc0; color: #211b1a; border-color: #7b9fc0; }
+.site-shell.theme-dark .project-filter { color: #f5e4d7; border-color: #795a4b; }
+.project-art.chambray { background: #7b9fc0; color: #fff8f2; }
+.project-art.espresso { background: #3a2119; color: #f5e4d7; }
+.project-art.glacier { background: #d2e2ec; color: #211b1a; }
+.project-art.bisque { background: #ebcdb7; color: #3a2119; }
+.project-art.clay { background: #957662; color: #fff8f2; }
+.project-case-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 14px 0 20px; }
+.project-case-facts > div { display: grid; gap: 7px; padding: 12px; border: 1px solid var(--surface-border); border-radius: 4px 14px 4px 14px; }
+.project-case-facts > div:last-child { grid-column: 1 / -1; }
+.project-case-facts span { color: var(--rose); font: 9px var(--mono); letter-spacing: .08em; }
+.project-case-facts strong { font-size: 12px; font-weight: 600; line-height: 1.6; }
+.project-case-dialog .project-case-dialog-contributions { margin-top: 8px; }
+.project-card { padding: 14px !important; border-radius: 5px 20px 5px 20px; }
+.project-art { height: clamp(145px, 18vw, 205px) !important; border-radius: 4px 15px 4px 15px; }
+.project-card .project-meta { margin: 12px 0 4px; font-size: 9px; }
+.project-card .project-number { font-size: 9px; }
+.project-card h3 { margin: 5px 0 6px; font-size: clamp(19px, 2vw, 24px); }
+.project-card .project-description { margin: 0 0 9px; font-size: 12px; line-height: 1.55; }
+.project-card .tag-list { gap: 5px; margin-top: 8px; }
+.project-card .tag-list span { padding: 4px 7px; font-size: 9px; }
+.project-card .project-actions { margin-top: 10px; padding-top: 9px; gap: 12px; }
+.project-card .project-actions .project-link { font-size: 10px; }
+.project-card .demo-credentials { margin-top: 10px; padding: 10px; }
+.project-card .case-study { display: none; }
+.project-case-dialog h4 { margin-top: 22px; }
+.journey-section { padding-top: 42px !important; padding-bottom: 44px !important; }
+.journey-heading { font-size: clamp(30px, 4vw, 48px) !important; margin-top: 9px !important; }
+.journey-intro { max-width: 470px; margin-bottom: 18px !important; font-size: 13px; line-height: 1.6; }
+.timeline-toolbar { margin: 16px 0 26px !important; gap: 7px; }
+.timeline-chip { padding: 7px 11px; font-size: 10px; }
+.portfolio-timeline { max-width: 960px; margin: 0 auto; }
+.portfolio-timeline-item { margin-bottom: 16px !important; }
+.portfolio-timeline-marker { top: 17px !important; width: 34px !important; height: 34px !important; margin-left: -17px !important; font-size: 10px !important; }
+.portfolio-timeline-card { padding: 15px 17px !important; margin-right: 36px !important; border-radius: 5px 17px 5px 17px !important; }
+.portfolio-timeline-item.is-even .portfolio-timeline-card { margin-left: 36px !important; margin-right: 0 !important; }
+.portfolio-timeline-card h3 { margin-top: 9px !important; font-size: 18px !important; }
+.portfolio-timeline-description { margin-bottom: 9px !important; font-size: 12px !important; line-height: 1.55 !important; }
+.portfolio-timeline-skills { gap: 4px !important; }
+.portfolio-timeline-skills li { padding: 3px 7px !important; font-size: 9px !important; }
+.portfolio-timeline-detail { margin-top: 6px !important; }
+.portfolio-timeline-detail summary { font-size: 11px !important; }
+.journey-finale { margin: 18px 0 24px !important; font-size: 9px !important; }
+.journey-bottom-grid { margin-top: 24px !important; }
+@media (max-width: 760px) {
+  .project-art { height: 185px !important; }
+  .portfolio-timeline-marker { width: 31px !important; height: 31px !important; }
+  .portfolio-timeline-item { padding-left: 45px !important; }
+  .timeline-rail, .timeline-progress { left: 15px !important; }
+  .portfolio-timeline-card, .portfolio-timeline-item.is-even .portfolio-timeline-card { padding: 13px !important; }
+  .project-case-facts { grid-template-columns: 1fr; }
+  .project-case-facts > div:last-child { grid-column: auto; }
+}
