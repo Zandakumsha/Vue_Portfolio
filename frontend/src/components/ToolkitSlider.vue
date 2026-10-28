@@ -12,6 +12,11 @@ const tools = [
     number: '01',
     accent: 'blue',
     tags: ['Code editor', 'Debugging', 'Extensions'],
+    projects: [
+      { name: 'WeConnect', id: '01' },
+      { name: 'Modern Tech', id: '02' },
+      { name: 'Lightning News', id: '03' },
+    ],
   },
   {
     name: 'Figma',
@@ -23,6 +28,7 @@ const tools = [
     number: '02',
     accent: 'coral',
     tags: ['UI ideas', 'Prototypes', 'Design systems'],
+    projects: [{ name: 'WeConnect', id: '01' }],
   },
   {
     name: 'HTML5',
@@ -34,6 +40,11 @@ const tools = [
     number: '03',
     accent: 'orange',
     tags: ['Semantic markup', 'Structure', 'Accessibility'],
+    projects: [
+      { name: 'WeConnect', id: '01' },
+      { name: 'Modern Tech', id: '02' },
+      { name: 'Lightning News', id: '03' },
+    ],
   },
   {
     name: 'CSS3',
@@ -45,6 +56,11 @@ const tools = [
     number: '04',
     accent: 'sky',
     tags: ['Responsive UI', 'Layout', 'Motion'],
+    projects: [
+      { name: 'WeConnect', id: '01' },
+      { name: 'Modern Tech', id: '02' },
+      { name: 'Lightning News', id: '03' },
+    ],
   },
   {
     name: 'Python',
@@ -56,6 +72,7 @@ const tools = [
     number: '05',
     accent: 'gold',
     tags: ['Data extraction', 'Automation', 'Flask'],
+    projects: [{ name: 'Lightning News', id: '03' }],
   },
   {
     name: 'JavaScript',
@@ -67,6 +84,11 @@ const tools = [
     number: '06',
     accent: 'yellow',
     tags: ['Interactivity', 'Application logic', 'DOM'],
+    projects: [
+      { name: 'WeConnect', id: '01' },
+      { name: 'Modern Tech', id: '02' },
+      { name: 'Lightning News', id: '03' },
+    ],
   },
   {
     name: 'Vue.js',
@@ -78,6 +100,7 @@ const tools = [
     number: '07',
     accent: 'green',
     tags: ['Components', 'Reactivity', 'Single-page apps'],
+    projects: [{ name: 'WeConnect', id: '01' }, { name: 'Lightning News', id: '03' }],
   },
 ]
 
@@ -175,6 +198,10 @@ onUnmounted(() => {
               <div class="toolkit-tags">
                 <span v-for="tag in activeTool.tags" :key="tag">{{ tag }}</span>
               </div>
+              <div v-if="activeTool.projects?.length" class="toolkit-used-in" aria-label="Projects using this tool">
+                <span>USED IN</span>
+                <a v-for="project in activeTool.projects" :key="project.id" :href="'#project-' + project.id">{{ project.name }} <span aria-hidden="true">↗</span></a>
+              </div>
               <div class="toolkit-feature-bottom">
                 <span class="toolkit-signature">CURIOUS BY NATURE <b>♡</b></span>
                 <span class="toolkit-active-name">CURRENT TOOL <strong>{{ activeTool.shortName }}</strong></span>
@@ -253,6 +280,11 @@ onUnmounted(() => {
 .toolkit-description { max-width: 430px; margin: 1.2rem 0 1.4rem; color: #79645c; font-size: .94rem; line-height: 1.85; }
 .toolkit-tags { display: flex; flex-wrap: wrap; gap: .5rem; }
 .toolkit-tags span { padding: .5rem .75rem; border: 1px solid rgba(108, 72, 57, .13); border-radius: 99px; color: #725a51; background: rgba(255,255,255,.45); font-size: .72rem; }
+.toolkit-used-in { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin-top: 1.15rem; }
+.toolkit-used-in > span { color: #a0877b; font-size: .6rem; font-weight: 850; letter-spacing: .14em; }
+.toolkit-used-in a { display: inline-flex; align-items: center; gap: .3rem; padding: .4rem .65rem; border: 1px solid rgba(108, 72, 57, .16); border-radius: 99px; color: #76566a; background: rgba(255,255,255,.5); font-size: .72rem; font-weight: 700; text-decoration: none; transition: border-color .2s ease, background .2s ease, transform .2s ease; }
+.toolkit-used-in a:hover, .toolkit-used-in a:focus-visible { border-color: #c98197; background: #fffaf6; transform: translateY(-1px); }
+.toolkit-used-in a:focus-visible { outline: 2px solid #c98197; outline-offset: 3px; }
 .toolkit-feature-bottom { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-top: 2.4rem; padding-top: 1rem; border-top: 1px solid rgba(108, 72, 57, .13); }
 .toolkit-signature { color: #a0877b; font-size: .61rem; font-weight: 800; letter-spacing: .13em; }
 .toolkit-signature b { padding-left: .3rem; color: #cf8ba0; font-size: .9rem; }
@@ -370,6 +402,9 @@ onUnmounted(() => {
   box-shadow: 0 25px 60px rgba(0, 0, 0, .22), inset 0 1px 0 #fff;
 }
 :global(.theme-dark) .toolkit-description { color: #d1b8ad; }
+:global(.theme-dark) .toolkit-used-in > span { color: #d1b8ad; }
+:global(.theme-dark) .toolkit-used-in a { border-color: rgba(233, 174, 188, .3); color: #f0d9d5; background: rgba(38, 21, 13, .6); }
+:global(.theme-dark) .toolkit-used-in a:hover, :global(.theme-dark) .toolkit-used-in a:focus-visible { border-color: #e9aebc; background: #40271e; }
 :global(.theme-dark) .toolkit-tags span {
   border-color: rgba(233, 174, 188, .24);
   color: #f0d9d5;
