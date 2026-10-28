@@ -176,6 +176,7 @@ const projects = ref([
     ],
     url: 'https://github.com/zahraamoerat/Project-3-E-Commerce1',
     repoUrl: 'https://github.com/zahraamoerat/Project-3-E-Commerce1',
+    demoAccess: 'Demo access is available for portfolio reviewers. Contact me to request temporary access details; login credentials are shared privately.',
     label: 'Explore project',
   },
   {
