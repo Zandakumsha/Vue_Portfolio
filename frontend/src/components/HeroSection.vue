@@ -2,9 +2,9 @@
   <section id="home" class="hero page-wrap">
     <div class="hero-copy">
       <p class="eyebrow">HELLO, WORLD. I'M ZANDA.</p>
-      <h1>Thoughtful design.<br />Curious by nature.<br />Driven to build.<br /><em>Solutions that matter.</em></h1>
+      <h1>Turning ideas into<br />working products.<br /><em>One commit at a time.</em></h1>
       <p class="hero-description">
-        I build thoughtful digital experiences with code, curiosity and care.
+        I build thoughtful web experiences across the stack — where clean code meets real-world problems.
       </p>
       <div class="hero-actions">
         <a class="button-primary" href="#work">Explore my work <span>↗</span></a>
