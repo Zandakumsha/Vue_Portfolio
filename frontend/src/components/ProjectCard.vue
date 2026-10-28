@@ -31,13 +31,29 @@ defineProps({
               <p class="project-description">{{ project.description }}</p>
               
               <div class="tag-list"><span v-for="tag in project.tags" :key="tag">{{ tag }}</span></div>
-              <aside v-if="project.demoAccess" class="demo-access" aria-label="Demo access information">
-                <span class="demo-access-label">DEMO ACCESS</span>
-                <p>{{ project.demoAccess }}</p>
-              </aside>
+              <section v-if="project.demoAccounts?.length" class="demo-credentials" aria-label="WeConnect live website and public demo login details">
+                <div class="demo-credentials-heading">
+                  <span class="demo-access-label">LIVE WEBSITE &amp; LOGIN DETAILS</span>
+                  <span class="demo-live-indicator"><i aria-hidden="true"></i> Public demo</span>
+                </div>
+                <div class="demo-resource-links">
+                  <a :href="project.demoUrl" target="_blank" rel="noopener noreferrer">Open main website <span aria-hidden="true">↗</span></a>
+                  <a :href="project.adminUrl" target="_blank" rel="noopener noreferrer">Open admin portal <span aria-hidden="true">↗</span></a>
+                  <a :href="project.adminRepoUrl" target="_blank" rel="noopener noreferrer">Admin repository <span aria-hidden="true">↗</span></a>
+                  <a :href="project.designUrl" target="_blank" rel="noopener noreferrer">View Figma design <span aria-hidden="true">↗</span></a>
+                </div>
+                <p class="demo-credentials-note">Use either demo account below to explore the relevant WeConnect experience.</p>
+                <div class="demo-account-list">
+                  <div v-for="account in project.demoAccounts" :key="account.role" class="demo-account">
+                    <h4>{{ account.role }} account</h4>
+                    <p><span>Email</span><code>{{ account.email }}</code></p>
+                    <p><span>Password</span><code>{{ account.password }}</code></p>
+                  </div>
+                </div>
+              </section>
               <div class="project-actions">
-                <a class="project-link" :href="project.repoUrl || project.url" target="_blank" rel="noreferrer">View code <span aria-hidden="true">↗</span></a>
-                <a v-if="project.demoUrl" class="project-link project-demo-link" :href="project.demoUrl" target="_blank" rel="noreferrer">Live demo <span aria-hidden="true">↗</span></a>
+                <a class="project-link" :href="project.repoUrl || project.url" target="_blank" rel="noopener noreferrer">View code <span aria-hidden="true">↗</span></a>
+                <a v-if="project.demoUrl && !project.demoAccounts?.length" class="project-link project-demo-link" :href="project.demoUrl" target="_blank" rel="noopener noreferrer">Live demo <span aria-hidden="true">↗</span></a>
               </div>
               <details class="case-study">
                 <summary>Case study & contributions <span class="case-study-toggle" aria-hidden="true">＋</span></summary>
