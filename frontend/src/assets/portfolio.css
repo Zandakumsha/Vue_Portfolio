@@ -2529,3 +2529,242 @@ body { background: #fffaf1; color: #20233d; }
 @media (prefers-reduced-motion: reduce) {
   .about-portrait-card { transition: none; }
 }
+
+
+/* Final cohesive palette override: deep navy, soft ivory, and restrained teal. */
+:root {
+  --paper: #f7f6f2;
+  --ink: #263238;
+  --muted: #65747b;
+  --rose: #397b78;
+  --line: #dce4e1;
+  --soft: #eaf1ee;
+  --sage: #d5e4df;
+  --sage-ink: #284b49;
+  --decorative-rose: #dce9e4;
+  --decorative-lavender: #e7ecea;
+  --decorative-sage: #c9ddd5;
+  --dev-violet: #397b78;
+  --dev-cyan: #80b8ad;
+  --dev-lime: #d5e4df;
+  --dev-night: #263238;
+}
+html, body { background: #f7f6f2; color: #263238; }
+.site-shell:not(.theme-dark) {
+  --paper: #f7f6f2;
+  --ink: #263238;
+  --muted: #65747b;
+  --rose: #397b78;
+  --line: #dce4e1;
+  --soft: #eaf1ee;
+  --sage: #d5e4df;
+  --sage-ink: #284b49;
+  --decorative-rose: #dce9e4;
+  --decorative-lavender: #e7ecea;
+  --decorative-sage: #c9ddd5;
+  background: #f7f6f2;
+  color: #263238;
+}
+.site-shell:not(.theme-dark) .topbar,
+.site-shell:not(.theme-dark) .site-header {
+  background: rgba(247, 246, 242, .94);
+  border-color: #dce4e1;
+}
+.announcement { background: #263238; color: #f7f6f2; border-color: #263238; }
+.announcement .status-dot, .animation-live-dot { background: #80b8ad; }
+.brand-mark { background: #397b78; color: #ffffff; box-shadow: 4px 4px 0 #c9ddd5; }
+.brand-copy { color: #263238; }
+.brand-copy small { color: #65747b; }
+.navigation a { color: #4d6065; }
+.navigation a:hover, .navigation a:focus-visible { color: #397b78; }
+.site-shell:not(.theme-dark) .button-primary,
+.site-shell:not(.theme-dark) .navigation .nav-contact,
+.site-shell:not(.theme-dark) .contact-button {
+  background: #397b78;
+  border-color: #397b78;
+  color: #ffffff;
+  box-shadow: 3px 3px 0 #c9ddd5;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.site-shell:not(.theme-dark) .button-primary:hover,
+.site-shell:not(.theme-dark) .navigation .nav-contact:hover,
+.site-shell:not(.theme-dark) .contact-button:hover {
+  background: #2e6663;
+  border-color: #2e6663;
+  box-shadow: 1px 1px 0 #c9ddd5;
+  transform: translate(2px, 2px);
+}
+.site-shell:not(.theme-dark) .section-kicker,
+.site-shell:not(.theme-dark) .hero-kicker,
+.site-shell:not(.theme-dark) .project-number,
+.site-shell:not(.theme-dark) .project-meta { color: #397b78; }
+.site-shell:not(.theme-dark) .hero h1 em,
+.site-shell:not(.theme-dark) h2 em,
+.site-shell:not(.theme-dark) .green-word { color: #397b78; }
+.green-word:after { background: #c9ddd5; opacity: 1; }
+.site-shell:not(.theme-dark) .content-section:nth-of-type(even),
+.site-shell:not(.theme-dark) .journey-section,
+.site-shell:not(.theme-dark) .journal-section { background-color: #edf1ed; }
+.manifesto { background: #263238; color: #f7f6f2; border-block: 1px solid #3e5558; }
+.manifesto .mini-label { color: #a9d0c4; }
+.manifesto p { color: #f7f6f2; }
+.manifesto a { color: #a9d0c4; }
+.site-shell:not(.theme-dark) .project-card,
+.site-shell:not(.theme-dark) .contact-form,
+.site-shell:not(.theme-dark) .journal-card,
+.site-shell:not(.theme-dark) .achievement-card,
+.site-shell:not(.theme-dark) .milestone-card,
+.site-shell:not(.theme-dark) .explore-card {
+  background: #fffefa;
+  border-color: #dce4e1;
+  box-shadow: 0 12px 34px rgba(38, 50, 56, .06);
+}
+.site-shell:not(.theme-dark) .project-card:hover,
+.site-shell:not(.theme-dark) .achievement-card:hover,
+.site-shell:not(.theme-dark) .milestone-card:hover,
+.site-shell:not(.theme-dark) .explore-card:hover {
+  border-color: #9cbdb3;
+  box-shadow: 0 18px 42px rgba(57, 123, 120, .12);
+}
+.site-shell:not(.theme-dark) .skill-pill,
+.site-shell:not(.theme-dark) .tag-list span,
+.site-shell:not(.theme-dark) .journal-tags span {
+  background: #eaf1ee;
+  border-color: #d2e2dc;
+  color: #315e59;
+}
+.site-shell:not(.theme-dark) .skill-pill:hover,
+.site-shell:not(.theme-dark) .tag-list span:hover {
+  background: #d5e4df;
+  border-color: #9cbdb3;
+  color: #263238;
+}
+.site-shell:not(.theme-dark) .project-filter.is-active,
+.site-shell:not(.theme-dark) .journal-index-item.is-active {
+  background: #d5e4df;
+  border-color: #9cbdb3;
+  color: #263238;
+}
+.site-shell:not(.theme-dark) .terminal-window {
+  background: #263238;
+  border-color: #3e5558;
+  color: #f7f6f2;
+  box-shadow: 0 14px 36px rgba(38, 50, 56, .16);
+}
+.site-shell:not(.theme-dark) .terminal-prompt,
+.site-shell:not(.theme-dark) .terminal-window form label { color: #a9d0c4; }
+.site-shell:not(.theme-dark) .terminal-output { color: #a9d0c4; }
+.site-shell:not(.theme-dark) .terminal-window input { color: #f7f6f2; caret-color: #a9d0c4; }
+.site-shell:not(.theme-dark) .contact-section { background: #263238; color: #f7f6f2; }
+.site-shell:not(.theme-dark) .contact-section .section-kicker,
+.site-shell:not(.theme-dark) .contact-overline { color: #a9d0c4; }
+.site-shell:not(.theme-dark) .contact-section h2,
+.site-shell:not(.theme-dark) .contact-section .contact-description { color: #f7f6f2; }
+.site-shell:not(.theme-dark) .contact-section h2 em { color: #a9d0c4; }
+.site-shell:not(.theme-dark) .contact-orbit { border-color: rgba(169, 208, 196, .32); }
+.site-shell:not(.theme-dark) .site-footer { background: #202b30; color: #e8eeeb; border-color: #3e5558; }
+.site-shell:not(.theme-dark) .site-footer a,
+.site-shell:not(.theme-dark) .site-footer p { color: #d0ded9; }
+.site-shell:not(.theme-dark) a:focus-visible,
+.site-shell:not(.theme-dark) button:focus-visible,
+.site-shell:not(.theme-dark) input:focus-visible,
+.site-shell:not(.theme-dark) textarea:focus-visible { outline-color: #397b78; }
+
+/* Keep the hero illustration and About portrait aligned with the calmer palette. */
+.animation-halo-back { background: linear-gradient(135deg, #e4ece5 0%, #dce9e4 58%, #dcebea 100%); }
+.animation-halo-front { background: #c9ddd5; opacity: .45; }
+.hero-laptop-animation { filter: drop-shadow(0 18px 22px rgba(38, 50, 56, .13)); }
+.laptop-screen { fill: #263238; stroke: #719c90; }
+.editor-caption { fill: #a9d0c4; }
+.editor-line-1, .editor-line-5 { stroke: #c3b68c; }
+.editor-line-2, .editor-line-4, .editor-line-6 { stroke: #a9d0c4; }
+.editor-line-3, .editor-line-7 { stroke: #e5eee8; }
+.laptop-base-highlight { fill: #f1f4eb; }
+.laptop-trackpad { fill: #a9c5ba; stroke: #d5e4df; }
+.floating-code-symbol path { stroke: #397b78; }
+.floating-sparkle { fill: #719c90; }
+.steam-wisp { stroke: #719c90; }
+.animation-label { color: #4d6865; }
+.animation-note-card { background: rgba(255, 254, 250, .97); border-color: #dce4e1; box-shadow: 0 12px 28px rgba(38, 50, 56, .1); }
+.animation-note-icon { background: #d5e4df; color: #284b49; }
+.animation-note-card strong { color: #263238; }
+.animation-note-card small { color: #65747b; }
+
+/* Portrait frame uses the same neutral surfaces and teal accent. */
+.about-portrait-card {
+  background: #fffefa;
+  border-color: #dce4e1;
+  box-shadow: 12px 12px 0 #d5e4df, 0 22px 54px rgba(38, 50, 56, .08);
+}
+.about-portrait-card:hover { box-shadow: 12px 12px 0 #9cbdb3, 0 24px 54px rgba(38, 50, 56, .11); }
+.about-portrait-backdrop { background: linear-gradient(140deg, #d5e4df, #e7ecea 55%, #dcebea); }
+.about-portrait-index { color: #397b78; }
+.about-portrait-sticker { background: #397b78; color: #ffffff; border-color: #fffefa; }
+.about-intro-heading em { color: #397b78; }
+
+.site-shell.theme-dark {
+  --paper: #1d282c;
+  --ink: #f0f3ef;
+  --muted: #bac8c6;
+  --rose: #9ec9bd;
+  --line: #3d5052;
+  --soft: #28383b;
+  --sage: #39504b;
+  --sage-ink: #e0eee8;
+  --decorative-rose: #3c4d49;
+  --decorative-lavender: #364348;
+  --decorative-sage: #30423e;
+  --surface-raised: #28383b;
+  --surface-border: #3d5052;
+  --caramel: #c3b68c;
+  background: #1d282c;
+  color: #f0f3ef;
+}
+.site-shell.theme-dark .topbar,
+.site-shell.theme-dark .site-header { background: rgba(29, 40, 44, .94); border-color: #3d5052; }
+.site-shell.theme-dark .brand-copy,
+.site-shell.theme-dark .navigation a { color: #f0f3ef; }
+.site-shell.theme-dark .brand-copy small,
+.site-shell.theme-dark .navigation a:not(.nav-contact) { color: #bac8c6; }
+.site-shell.theme-dark .announcement,
+.site-shell.theme-dark .manifesto { background: #172125; color: #f0f3ef; }
+.site-shell.theme-dark .manifesto p { color: #f0f3ef; }
+.site-shell.theme-dark .manifesto a { color: #a9d0c4; }
+.site-shell.theme-dark .content-section:nth-of-type(even),
+.site-shell.theme-dark .journey-section,
+.site-shell.theme-dark .journal-section { background-color: #243337; }
+.site-shell.theme-dark .project-card,
+.site-shell.theme-dark .contact-form,
+.site-shell.theme-dark .journal-card,
+.site-shell.theme-dark .achievement-card,
+.site-shell.theme-dark .milestone-card,
+.site-shell.theme-dark .explore-card {
+  background: #26383b;
+  border-color: #3d5052;
+  box-shadow: 0 16px 42px rgba(0, 0, 0, .16);
+}
+.site-shell.theme-dark .skill-pill,
+.site-shell.theme-dark .tag-list span,
+.site-shell.theme-dark .journal-tags span { background: #304744; border-color: #48645e; color: #d5e4df; }
+.site-shell.theme-dark .terminal-window { background: #172125; border-color: #3d5052; }
+.site-shell.theme-dark .terminal-prompt,
+.site-shell.theme-dark .terminal-window form label { color: #a9d0c4; }
+.site-shell.theme-dark .terminal-output { color: #a9d0c4; }
+.site-shell.theme-dark .contact-section { background: #172125; color: #f0f3ef; }
+.site-shell.theme-dark .contact-section h2,
+.site-shell.theme-dark .contact-section .contact-description { color: #f0f3ef; }
+.site-shell.theme-dark .contact-section h2 em { color: #a9d0c4; }
+.site-shell.theme-dark .site-footer { background: #151e21; border-color: #3d5052; }
+.site-shell.theme-dark .site-footer a,
+.site-shell.theme-dark .site-footer p { color: #d0ded9; }
+.site-shell.theme-dark .animation-note-card { background: rgba(38, 56, 59, .97); border-color: #3d5052; }
+.site-shell.theme-dark .animation-note-card strong { color: #f0f3ef; }
+.site-shell.theme-dark .animation-note-card small { color: #bac8c6; }
+.site-shell.theme-dark .animation-label { color: #d0ded9; }
+.site-shell.theme-dark .about-portrait-card { background: #26383b; border-color: #3d5052; box-shadow: 12px 12px 0 #304744, 0 22px 54px rgba(0, 0, 0, .22); }
+.site-shell.theme-dark .about-portrait-caption { color: #f0f3ef; }
+.site-shell.theme-dark .about-portrait-sticker { background: #9ec9bd; color: #1d282c; border-color: #26383b; }
+@media (max-width: 760px) {
+  .about-portrait-card { width: 100%; }
+  .announcement { font-size: 8px; }
+}
