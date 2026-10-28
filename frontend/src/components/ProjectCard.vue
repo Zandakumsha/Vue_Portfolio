@@ -31,6 +31,10 @@ defineProps({
               <p class="project-description">{{ project.description }}</p>
               
               <div class="tag-list"><span v-for="tag in project.tags" :key="tag">{{ tag }}</span></div>
+              <aside v-if="project.demoAccess" class="demo-access" aria-label="Demo access information">
+                <span class="demo-access-label">DEMO ACCESS</span>
+                <p>{{ project.demoAccess }}</p>
+              </aside>
               <div class="project-actions">
                 <a class="project-link" :href="project.repoUrl || project.url" target="_blank" rel="noreferrer">View code <span aria-hidden="true">↗</span></a>
                 <a v-if="project.demoUrl" class="project-link project-demo-link" :href="project.demoUrl" target="_blank" rel="noreferrer">Live demo <span aria-hidden="true">↗</span></a>
