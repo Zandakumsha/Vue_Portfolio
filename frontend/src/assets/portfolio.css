@@ -3,8 +3,8 @@
 
 :root {
   font-family: 'DM Sans', sans-serif;
-  color: #382f2e;
-  background: #fbf8f5;
+  color: #2f3a2c;
+  background: #f8f5ea;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -52,7 +52,7 @@ button { font: inherit; }
 .eyebrow::before { width: 27px; height: 1px; background: var(--rose); content: ''; }
 .hero h1 { margin: 27px 0 20px; font-size: clamp(58px, 7.1vw, 83px); font-weight: 500; letter-spacing: -.075em; line-height: .99; }
 h1 em, h2 em { color: var(--rose); font-family: var(--serif); font-weight: 500; letter-spacing: -.06em; }
-.green-word { position: relative; color: #657957; }
+.green-word { position: relative; color: #5f7552; }
 .green-word::after { position: absolute; z-index: 0; right: 0; bottom: 2px; left: 0; height: 8px; border-radius: 50%; background: var(--sage); content: ''; transform: rotate(-2deg); }
 .hero-description { max-width: 390px; margin: 24px 0; color: var(--muted); font-size: 13px; line-height: 1.95; }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 23px; }
