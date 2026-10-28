@@ -20,7 +20,9 @@ const visibleProjects = computed(() => {
   const query = projectSearch.value.trim().toLowerCase()
   if (!query) return filtered
   return filtered.filter((project) =>
-    [project.name, project.type, project.description, ...project.tags].some((value) => value.toLowerCase().includes(query)),
+    [project.name, project.type, project.description, project.focus, project.challenge, project.approach, project.learning, ...project.tags]
+      .filter(Boolean)
+      .some((value) => value.toLowerCase().includes(query)),
   )
 })
 const journeyFilter = ref('all')
