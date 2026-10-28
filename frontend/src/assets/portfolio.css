@@ -2843,3 +2843,134 @@ html, body { background: #f7f6f2; color: #263238; }
   .portfolio-timeline-item, .timeline-progress, .portfolio-timeline-item.is-current .portfolio-timeline-marker { animation: none; }
   .portfolio-timeline-card, .portfolio-timeline-marker, .timeline-chip { transition: none; }
 }
+
+
+/* Interactive project cards: tactile previews, tilt on capable pointers, accessible case-study dialog. */
+.project-card {
+  --project-rx: 0deg;
+  --project-ry: 0deg;
+  transform: perspective(1100px) rotateX(var(--project-rx)) rotateY(var(--project-ry));
+  transform-style: preserve-3d;
+  transition: transform .22s ease, box-shadow .25s ease, border-color .25s ease;
+  will-change: transform;
+}
+.project-card:hover {
+  box-shadow: 0 24px 48px rgba(38, 50, 56, .13);
+  border-color: #a9c6bb;
+}
+.project-art {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: background-color .25s ease;
+}
+.project-art::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(255,255,255,.16), transparent 52%, rgba(38,50,56,.06));
+}
+.project-art > * { position: relative; z-index: 1; }
+.project-art .mock-window {
+  transition: transform .35s ease, box-shadow .35s ease;
+  transform-origin: bottom center;
+}
+.project-card:hover .project-art .mock-window {
+  transform: translateY(-5px) scale(1.015);
+}
+.project-case-study-trigger {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+.project-case-study-trigger:hover { color: var(--rose); }
+.project-case-dialog {
+  width: min(660px, calc(100vw - 28px));
+  max-width: 660px;
+  max-height: min(84dvh, 820px);
+  padding: 0;
+  border: 1px solid var(--surface-border);
+  border-radius: 10px 28px 10px 28px;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 28px 90px rgba(20, 31, 26, .35);
+  overflow: auto;
+}
+.project-case-dialog::backdrop {
+  background: rgba(24, 35, 31, .72);
+  backdrop-filter: blur(4px);
+}
+.project-case-dialog-inner { position: relative; padding: clamp(24px, 5vw, 38px); }
+.project-case-dialog-close {
+  position: sticky;
+  float: right;
+  top: 0;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  margin: -4px -4px 12px 12px;
+  border: 1px solid var(--surface-border);
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+.project-case-dialog h3 {
+  clear: both;
+  margin: 12px 0 8px;
+  font-size: clamp(28px, 5vw, 40px);
+  line-height: 1.08;
+  letter-spacing: -.04em;
+}
+.project-case-dialog h4 {
+  margin: 24px 0 6px;
+  color: var(--rose);
+  font: 500 10px var(--mono);
+  letter-spacing: .13em;
+}
+.project-case-dialog p,
+.project-case-dialog li { color: var(--muted); font-size: 14px; line-height: 1.75; }
+.project-case-dialog-intro { font-size: 16px !important; }
+.project-case-dialog ul { padding-left: 20px; display: grid; gap: 6px; }
+.project-case-dialog-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.project-case-dialog-actions a {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 15px;
+  border: 1px solid var(--surface-border);
+  border-radius: 4px 14px 4px 14px;
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.project-case-dialog-actions a:first-child { background: var(--rose); border-color: var(--rose); color: var(--paper); }
+.project-case-dialog-actions a:hover { transform: translateY(-1px); }
+.site-shell.theme-dark .project-case-dialog {
+  background: #26332f;
+  color: #f0f3ec;
+  border-color: #4d5b52;
+}
+.site-shell.theme-dark .project-case-dialog-close { background: #26332f; color: #f0f3ec; border-color: #4d5b52; }
+.site-shell.theme-dark .project-case-dialog p,
+.site-shell.theme-dark .project-case-dialog li { color: #c1cbbd; }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .project-card { transition: transform .12s ease-out, box-shadow .25s ease, border-color .25s ease; }
+}
+@media (max-width: 520px) {
+  .project-case-dialog { border-radius: 8px 22px 8px 22px; max-height: 88dvh; }
+  .project-case-dialog-inner { padding: 22px 20px 26px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-card, .project-art, .project-art .mock-window, .project-case-dialog-actions a { transition: none !important; }
+  .project-card { transform: none !important; will-change: auto; }
+}
