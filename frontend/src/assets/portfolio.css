@@ -670,21 +670,21 @@ img { max-width: 100%; }
 
 /* Dark mode — espresso brown with the original pastel palette only */
 .site-shell.theme-dark {
-  --paper: #26150D;
-  --ink: #d2ddcc;
-  --muted: #e0dfd8;
-  --rose: #d2ddcc;
-  --line: #d8dfcf;
-  --soft: #26150D;
-  --sage: #d8dfcf;
-  --sage-ink: #26150D;
-  --decorative-rose: #d2ddcc;
-  --decorative-lavender: #e0dfd8;
-  --decorative-sage: #d8dfcf;
-  --surface-raised: #26150D;
-  --surface-border: #e0dfd8;
-  --caramel: #AB8D6F;
-  background: #26150D;
+  --paper: #171d14;
+  --ink: #f4f2ea;
+  --muted: #b4c0ad;
+  --rose: #bfd1b4;
+  --line: #45523f;
+  --soft: #232a1f;
+  --sage: #414b35;
+  --sage-ink: #e1e8d7;
+  --decorative-rose: #46513f;
+  --decorative-lavender: #3a3f37;
+  --decorative-sage: #37402f;
+  --surface-raised: #232a1f;
+  --surface-border: #45523f;
+  --caramel: #9eae8f;
+  background: #171d14;
   color: var(--ink);
   color-scheme: dark;
 }
@@ -1105,67 +1105,78 @@ img { max-width: 100%; }
 }
 
 
-/* Welcoming colour refresh: brighter pastels, balanced with warm cream. */
+/* Sage & Ivory reference theme: muted botanical greens, warm ivory, and soft neutral surfaces. */
 :root {
-  --paper: #fcfbf9;
-  --ink: #382a30;
-  --muted: #78666d;
-  --rose: #d96f91;
-  --line: #f0dce2;
-  --soft: #fff0f3;
-  --sage: #d7e8cf;
-  --sage-ink: #4f674b;
-  --decorative-rose: #f3c0cf;
-  --decorative-lavender: #d8ccf4;
-  --decorative-sage: #cfe4c5;
+  --paper: #f8f5ea;
+  --ink: #2f3a2c;
+  --muted: #747d69;
+  --rose: #5f7552;
+  --line: #e1dfcc;
+  --soft: #eeebd9;
+  --sage: #d5dfc6;
+  --sage-ink: #46563c;
+  --decorative-rose: #d2ddcc;
+  --decorative-lavender: #e0dfd8;
+  --decorative-sage: #d8dfcf;
 }
 .site-shell:not(.theme-dark) {
-  background: #fcfbf9;
-  color: #382a30;
+  --paper: #f8f5ea;
+  --ink: #2f3a2c;
+  --muted: #747d69;
+  --rose: #5f7552;
+  --line: #e1dfcc;
+  --soft: #eeebd9;
+  --sage: #d5dfc6;
+  --sage-ink: #46563c;
+  --decorative-rose: #d2ddcc;
+  --decorative-lavender: #e0dfd8;
+  --decorative-sage: #d8dfcf;
+  background: var(--paper);
+  color: var(--ink);
 }
 .site-shell:not(.theme-dark) .topbar,
 .site-shell:not(.theme-dark) .site-header {
-  background: rgba(255, 249, 246, .92);
-  border-color: #f0dce2;
+  background: rgba(248, 245, 234, .94);
+  border-color: var(--line);
 }
 .site-shell:not(.theme-dark) .button-primary,
 .site-shell:not(.theme-dark) .navigation .nav-contact {
-  background: #d96f91;
-  border-color: #d96f91;
-  color: #fffaf8;
+  background: var(--rose);
+  border-color: var(--rose);
+  color: #fffdf8;
 }
 .site-shell:not(.theme-dark) .button-primary:hover,
 .site-shell:not(.theme-dark) .navigation .nav-contact:hover {
-  background: #c85c80;
-  border-color: #c85c80;
+  background: #4b6241;
+  border-color: #4b6241;
 }
 .site-shell:not(.theme-dark) .section-kicker,
 .site-shell:not(.theme-dark) .hero-kicker,
 .site-shell:not(.theme-dark) .project-number {
-  color: #c85c80;
+  color: var(--rose);
 }
 .site-shell:not(.theme-dark) .skill-pill:hover,
 .site-shell:not(.theme-dark) .tag-list span:hover {
-  background: #ffe3eb;
-  border-color: #e9a1b7;
-  color: #733d51;
+  background: #e6ecd9;
+  border-color: #a9b99c;
+  color: #35472f;
 }
 .site-shell:not(.theme-dark) .content-section:nth-of-type(even),
 .site-shell:not(.theme-dark) .journey-section,
 .site-shell:not(.theme-dark) .journal-section {
-  background-color: #fff2f3;
+  background-color: #f0efe3;
 }
 .site-shell:not(.theme-dark) .project-card,
 .site-shell:not(.theme-dark) .contact-form,
 .site-shell:not(.theme-dark) .journal-card {
-  border-color: #f0dce2;
-  box-shadow: 0 16px 42px rgba(132, 76, 96, .07);
+  border-color: var(--line);
+  box-shadow: 0 16px 42px rgba(53, 67, 44, .07);
 }
 .site-shell:not(.theme-dark) a:focus-visible,
 .site-shell:not(.theme-dark) button:focus-visible,
 .site-shell:not(.theme-dark) input:focus-visible,
 .site-shell:not(.theme-dark) textarea:focus-visible {
-  outline-color: #d96f91;
+  outline-color: var(--rose);
 }
 
 
@@ -1193,7 +1204,7 @@ img { max-width: 100%; }
 .timeline-status b { display: grid; width: 19px; height: 19px; place-items: center; border-radius: 50%; background: var(--soft); font-size: 10px; }
 .timeline-link { display: inline-block; margin-top: 8px; padding-bottom: 4px; border-bottom: 1px solid #b6c3af; color: var(--rose); font-size: 10px; }
 .theme-dark .project-filter, .theme-dark .project-search, .theme-dark .project-empty-state { background: #2e1b12; border-color: #54382b; color: #d4bfb5; }
-.theme-dark .project-filter.is-active { background: #a9656e; border-color: #a9656e; color: #fffaf7; }
+.theme-dark .project-filter.is-active { background: var(--rose); border-color: var(--rose); color: #1b2417; }
 .theme-dark .project-search input { color: #f7e8e0; }
 .theme-dark .project-search input::placeholder { color: #b99d91; }
 .theme-dark .project-empty-state h3 { color: #f7e8e0; }
@@ -1240,7 +1251,7 @@ img { max-width: 100%; }
 .journal-slide-4 .journal-image-wrap { background: #f2e2d6; }
 .journal-slide-5 .journal-image-wrap { background: #e5e5f0; }
 .theme-dark .journal-index-item { background: #2e1b12; border-color: #54382b; color: #f7e8e0; }
-.theme-dark .journal-index-item.is-active { background: #3b241b; border-color: #a9656e; }
+.theme-dark .journal-index-item.is-active { background: var(--soft); border-color: var(--rose); }
 .theme-dark .journal-update-stamp, .theme-dark .journal-tags span { border-color: #54382b; }
 .theme-dark .journal-takeaway { background: #342018; color: #f7e8e0; }
 @media (max-width: 1000px) {
