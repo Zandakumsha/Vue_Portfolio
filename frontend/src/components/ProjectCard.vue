@@ -85,9 +85,19 @@ function resetTilt(event) {
                   <span class="project-meta">{{ project.type }}</span>
                   <h3 :id="'case-study-title-' + project.number">{{ project.name }}</h3>
                   <p class="project-case-dialog-intro">{{ project.focus }}</p>
+                  <h4>PROJECT SNAPSHOT</h4>
+                  <div class="project-case-facts">
+                    <div><span>PROJECT TYPE</span><strong>{{ project.type }}</strong></div>
+                    <div><span>TECHNOLOGIES</span><strong>{{ project.tags.join(' · ') }}</strong></div>
+                    <div><span>PROJECT FOCUS</span><strong>{{ project.focus }}</strong></div>
+                  </div>
                   <h4>THE CHALLENGE</h4><p>{{ project.challenge }}</p>
                   <h4>TECHNICAL APPROACH</h4><p>{{ project.approach }}</p>
                   <h4>WHAT I LEARNED</h4><p>{{ project.learning }}</p>
+                  <div v-if="project.contributions?.length" class="project-case-dialog-contributions">
+                    <h4>DELIVERABLES &amp; RESPONSIBILITIES</h4>
+                    <ul><li v-for="contribution in project.contributions" :key="contribution">{{ contribution }}</li></ul>
+                  </div>
                   <div v-if="individualContributions[project.name]" class="project-case-dialog-contributions">
                     <h4>MY CONTRIBUTIONS</h4>
                     <ul><li v-for="contribution in individualContributions[project.name]" :key="contribution">{{ contribution }}</li></ul>
@@ -99,22 +109,6 @@ function resetTilt(event) {
                   </div>
                 </div>
               </dialog>
-              <details class="case-study">
-                <summary>Case study & contributions <span class="case-study-toggle" aria-hidden="true">＋</span></summary>
-                <div class="case-study-content">
-                  <p><strong>Project focus</strong>{{ project.focus }}</p>
-                  <p><strong>The challenge</strong>{{ project.challenge }}</p>
-                  <p><strong>Technical approach</strong>{{ project.approach }}</p>
-                  <p><strong>What it taught me</strong>{{ project.learning }}</p>
-                  <div v-if="individualContributions[project.name]" class="contribution-note">
-                    <strong>My contributions</strong>
-                    <ul>
-                      <li v-for="contribution in individualContributions[project.name]" :key="contribution">{{ contribution }}</li>
-                    </ul>
-                    <p class="team-context">These are my confirmed contributions within a wider team project; the overall project description covers the team deliverable.</p>
-                  </div>
-                  <p v-else-if="project.contributionNote" class="contribution-note">{{ project.contributionNote }}</p>
-                </div>
-              </details>
+
             </article>
 </template>
