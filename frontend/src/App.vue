@@ -23,6 +23,67 @@ const visibleProjects = computed(() => {
     [project.name, project.type, project.description, ...project.tags].some((value) => value.toLowerCase().includes(query)),
   )
 })
+const journeyFilter = ref('all')
+const journeyDark = ref(false)
+const journeyFilters = [
+  { label: 'Everything', value: 'all' },
+  { label: 'Learning', value: 'learning' },
+  { label: 'Projects', value: 'project' },
+  { label: 'Credentials', value: 'credential' },
+]
+const journeyItems = [
+  {
+    id: 'training', type: 'learning', when: 'APRIL – OCTOBER 2026', status: 'COMPLETED',
+    title: 'Trainee Developer Programme', org: 'Life Choices Coding Academy',
+    description: 'Six months of hands-on coding, debugging and team projects that helped me build my development foundations.',
+    skills: ['Development foundations', 'Debugging', 'Team projects'],
+    detailLabel: 'What I took with me', detail: 'I stopped treating an error as a dead end. Reading the message, testing one change at a time and asking clearer questions gave me a more patient problem-solving process.',
+    link: '#achievements', linkLabel: 'See my learning milestones',
+  },
+  {
+    id: 'weconnect', type: 'project', when: 'ALONG THE WAY', status: 'PROJECT',
+    title: 'WeConnect', org: 'Full-stack · Vue / Node / MySQL',
+    description: 'A supplier network bringing buyers and suppliers into one clear workspace.',
+    skills: ['Vue.js', 'Express', 'MySQL'],
+    detailLabel: 'My contributions', detail: 'Supplier-side navigation and pages, styling for the buyer-side shop, Express routes and controllers, MySQL schema and queries, plus Git collaboration and testing.',
+    link: '#project-01', linkLabel: 'Explore WeConnect',
+  },
+  {
+    id: 'modern-tech', type: 'project', when: 'ALONG THE WAY', status: 'PROJECT',
+    title: 'Modern Tech', org: 'HR technology · web application',
+    description: 'An HR management experience for employee profiles, leave requests and calendars, designed around thoughtful workflows.',
+    skills: ['JavaScript', 'Node.js', 'MySQL'],
+    detailLabel: 'What it taught me', detail: 'Connecting interface states to backend logic, thinking through authentication and data relationships, and tracing bugs across API and database layers.',
+    link: '#project-02', linkLabel: 'Explore Modern Tech',
+  },
+  {
+    id: 'lightning-news', type: 'project', when: 'ALONG THE WAY', status: 'PROJECT',
+    title: 'Lightning News', org: 'Data · web scraping · analytics',
+    description: 'A dashboard that gathers stories from several sources with search and filtering.',
+    skills: ['Python', 'Flask', 'Vue.js'],
+    detailLabel: 'My contributions', detail: 'BeautifulSoup parsing and data extraction, plus Python/Flask backend work supporting the scraping workflow.',
+    link: '#project-03', linkLabel: 'Explore Lightning News',
+  },
+  {
+    id: 'credentials', type: 'credential', when: 'CREDENTIALS', status: 'CISCO',
+    title: 'Cybersecurity & Data Science', org: 'Cisco badges · verifiable online',
+    description: 'Foundations in passwords, encryption, firewalls and privacy, alongside the data lifecycle and data-driven thinking.',
+    skills: ['Cybersecurity', 'Data science'],
+    detailLabel: 'Why they matter', detail: 'They widen my view beyond building features: security and data thinking now shape how I design, test and question my own work.',
+    link: '#achievements', linkLabel: 'View credentials',
+  },
+  {
+    id: 'internship', type: 'learning', when: 'OCTOBER 2026 – APRIL 2027', status: 'IN PROGRESS', current: true,
+    title: 'Developer Internship', org: 'LC Studio',
+    description: 'Applying those foundations in a professional environment, one real task at a time.',
+    skills: ['Practical experience', 'Feedback', 'Continued learning'],
+    detailLabel: 'What I want to practise', detail: 'Asking thoughtful questions, learning from feedback, strengthening my technical decisions and seeing how small contributions fit a wider team effort.',
+    link: '#blog', linkLabel: 'Read my field notes',
+  },
+]
+const visibleJourneyItems = computed(() =>
+  journeyFilter.value === 'all' ? journeyItems : journeyItems.filter((item) => item.type === journeyFilter.value),
+)
 const terminalCommand = ref('')
 const terminalOutput = ref('Try: help, about, skills, projects, contact')
 
@@ -311,67 +372,40 @@ function runTerminal() {
 
       <ToolkitSlider />
 
-      <section id="journey" class="journey-section page-wrap">
+      <section id="journey" class="journey-section page-wrap" :class="{ 'timeline-theme-dark': journeyDark }">
         <p class="section-kicker"><span>04</span> THE JOURNEY SO FAR</p>
-        <h2 class="journey-heading">Growing into my <em>next chapter.</em></h2>
-        <p class="journey-intro">From training to internship — still growing.</p>
-        <div class="developer-timeline" aria-label="Developer journey timeline">
-          <article class="developer-milestone is-complete">
-            <div class="milestone-marker" aria-hidden="true"><span>01</span></div>
-            <div class="milestone-card">
-              <div class="milestone-topline"><small>APRIL – OCTOBER 2026</small><span class="milestone-state"><span aria-hidden="true">✓</span> COMPLETED</span></div>
-              <p class="milestone-role">Six months · completed</p>
-              <h3>Life Choices Coding Academy</h3>
-              <figure class="milestone-image">
-                <img src="/LC%20Academy.jpg" alt="Life Choices Coding Academy — proof of progress" loading="lazy" />
-                <figcaption>FOUNDATIONS BUILT · APRIL–OCTOBER 2026</figcaption>
-              </figure>
-              <p>Six months of coding, debugging and team projects.</p>
-              <details class="milestone-reflection">
-                <summary>What I’m taking with me <span aria-hidden="true">＋</span></summary>
-                <p>I’m learning not to treat an error as a dead end. Reading the message, testing one change at a time and asking clearer questions has helped me build a more patient problem-solving process.</p>
-                <a href="#project-01">See how I practised this in WeConnect ↗</a>
-              </details>
-              <div class="milestone-tags"><span>Development foundations</span><span>Debugging</span><span>Team projects</span></div>
-            </div>
-          </article>
-          <article class="developer-milestone is-current">
-            <div class="milestone-marker" aria-hidden="true"><span>02</span></div>
-            <div class="milestone-card">
-              <div class="milestone-topline"><small>OCTOBER 2026 – APRIL 2027</small><span class="milestone-state"><span aria-hidden="true">✳</span> IN PROGRESS</span></div>
-              <p class="milestone-role">Six months · in progress</p>
-              <h3>LC Studio</h3>
-              <figure class="milestone-image">
-                <img src="/LC%20Studio.png" alt="LC Studio — current developer internship" loading="lazy" />
-                <figcaption>THE NEXT CHAPTER · OCTOBER 2026–APRIL 2027</figcaption>
-              </figure>
-              <p>Now applying those foundations at LC Studio.</p>
-              <details class="milestone-reflection">
-                <summary>What I want to keep practising <span aria-hidden="true">＋</span></summary>
-                <p>I want to keep asking thoughtful questions, learning from feedback, strengthening my technical decisions and understanding how small contributions fit into a wider team effort.</p>
-                <a href="#blog">Read my notes from the journey ↗</a>
-              </details>
-              <div class="milestone-tags"><span>Practical experience</span><span>Feedback</span><span>Continued learning</span></div>
-            </div>
-          </article>
-          <article class="developer-milestone milestone-projects">
-            <div class="milestone-marker" aria-hidden="true"><span>03</span></div>
-            <div class="milestone-card">
-              <div class="milestone-topline"><small>ALONG THE WAY</small><span class="milestone-state">LEARNING BY BUILDING</span></div>
-              <p class="milestone-role">Practice through projects</p>
-              <h3>Turning lessons into working features</h3>
-              <p>From interfaces to APIs, data and user experience.</p>
-              <details class="milestone-reflection">
-                <summary>A lesson from the projects <span aria-hidden="true">＋</span></summary>
-                <p>WeConnect helped me practise full-stack collaboration, Modern Tech challenged me to trace issues across an application, and Lightning News gave me experience parsing web content with Python and BeautifulSoup.</p>
-                <a href="#work">Explore my project work ↗</a>
-              </details>
-              <div class="milestone-tags"><span>WeConnect</span><span>Modern Tech</span><span>Lightning News</span></div>
-            </div>
-          </article>
+        <h2 class="journey-heading">Built through <em>curiosity and practice.</em></h2>
+        <p class="journey-intro">From trainee to intern, with projects and lessons along the way. Follow the line to see how each chapter shaped me.</p>
+
+        <div class="timeline-toolbar" role="group" aria-label="Filter journey timeline">
+          <button v-for="filter in journeyFilters" :key="filter.value" type="button" class="timeline-chip" :class="{ 'is-active': journeyFilter === filter.value }" :aria-pressed="journeyFilter === filter.value" @click="journeyFilter = filter.value">{{ filter.label }}</button>
+          <button type="button" class="timeline-chip timeline-theme-toggle" :aria-pressed="journeyDark" @click="journeyDark = !journeyDark">{{ journeyDark ? 'Light theme' : 'Dark theme' }}</button>
         </div>
+
+        <div class="portfolio-timeline" aria-label="Developer journey timeline">
+          <div class="timeline-rail" aria-hidden="true"></div>
+          <div class="timeline-progress" aria-hidden="true"></div>
+          <article v-for="(item, index) in visibleJourneyItems" :key="item.id" class="portfolio-timeline-item" :class="{ 'is-current': item.current, 'is-even': index % 2 === 1 }">
+            <div class="portfolio-timeline-marker" aria-hidden="true">{{ String(index + 1).padStart(2, '0') }}</div>
+            <div class="portfolio-timeline-card">
+              <div class="portfolio-timeline-meta"><span>{{ item.when }}</span><span class="portfolio-timeline-tag" :class="{ 'is-current-tag': item.current }">{{ item.status }}</span></div>
+              <h3>{{ item.title }}</h3>
+              <p class="portfolio-timeline-org">{{ item.org }}</p>
+              <p class="portfolio-timeline-description">{{ item.description }}</p>
+              <ul class="portfolio-timeline-skills"><li v-for="skill in item.skills" :key="skill">{{ skill }}</li></ul>
+              <details class="portfolio-timeline-detail">
+                <summary>{{ item.detailLabel }} <span aria-hidden="true">＋</span></summary>
+                <p>{{ item.detail }}</p>
+                <a v-if="item.link" :href="item.link">{{ item.linkLabel }} ↗</a>
+              </details>
+            </div>
+          </article>
+          <p v-if="!visibleJourneyItems.length" class="timeline-empty">No milestones in this category yet. Choose another filter to explore the journey.</p>
+        </div>
+
+        <div class="journey-finale"><span aria-hidden="true">✳</span><p>THE NEXT CHAPTER IS STILL BEING WRITTEN</p></div>
         <div class="journey-bottom-grid">
-          <article class="explore-card"><small>CURRENTLY EXPLORING</small><h3>Small details, better experiences.</h3><p>Accessibility · interaction design · data visualisation</p><span class="feature-label">NOW LEARNING · ALWAYS ITERATING ✳</span></article>
+          <article class="explore-card"><small>CURRENTLY EXPLORING</small><h3>Small details, better experiences.</h3><p>Accessibility · interaction design · data visualisation</p><span class="feature-label">NOW LEARNING · ALWAYS ITERATING</span></article>
           <article class="explore-card terminal-card"><small>A LITTLE DEVELOPER MAGIC</small><h3>Try the mini terminal.</h3><div class="terminal-window"><div class="terminal-dots"><i></i><i></i><i></i></div><p class="terminal-prompt">zanda@portfolio:~$ <span>help</span></p><p class="terminal-output" aria-live="polite">{{ terminalOutput }}</p><form @submit.prevent="runTerminal"><label for="terminal-command">zanda@portfolio:~$ </label><input id="terminal-command" v-model="terminalCommand" autocomplete="off" placeholder="type a command…" /></form></div><span class="feature-label">TRY: help · about · skills · projects · contact</span></article>
         </div>
       </section>
