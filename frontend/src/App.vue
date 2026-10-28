@@ -9,7 +9,6 @@ import ToolkitSlider from './components/ToolkitSlider.vue'
 import DigitalStudio from './components/DigitalStudio.vue'
 import './assets/portfolio.css'
 
-const selectedSkill = ref('')
 const activeProjectFilter = ref('All projects')
 const projectSearch = ref('')
 const projectFilters = ['All projects', 'Full-stack', 'Data & scraping', 'HR technology']
@@ -242,28 +241,9 @@ const individualContributions = {
   ],
 }
 
-const skillGroups = [
-  { name: 'Frontend', description: 'Interfaces, components and responsive layouts', skills: [
-    { name: 'Vue.js', symbol: '✳', projects: [{ name: 'WeConnect', id: '01' }, { name: 'Lightning News', id: '03' }] },
-    { name: 'JavaScript', symbol: '⌘', projects: [{ name: 'WeConnect', id: '01' }, { name: 'Modern Tech', id: '02' }, { name: 'Lightning News', id: '03' }] },
-    { name: 'HTML & CSS', symbol: '◇', projects: [{ name: 'WeConnect', id: '01' }, { name: 'Modern Tech', id: '02' }, { name: 'Lightning News', id: '03' }] },
-  ]},
-  { name: 'Backend', description: 'Server routes and application logic', skills: [
-    { name: 'Node.js & Express', symbol: '↗', projects: [{ name: 'WeConnect', id: '01' }, { name: 'Modern Tech', id: '02' }] },
-    { name: 'Python & Flask', symbol: '✿', projects: [{ name: 'Lightning News', id: '03' }] },
-  ]},
-  { name: 'Databases', description: 'Structured application data', skills: [
-    { name: 'MySQL', symbol: '⊹', projects: [{ name: 'WeConnect', id: '01' }, { name: 'Modern Tech', id: '02' }] },
-  ]},
-  { name: 'Tools', description: 'Version control and collaboration', skills: [
-    { name: 'Git & GitHub', symbol: '⌘', projects: [{ name: 'WeConnect', id: '01' }, { name: 'Modern Tech', id: '02' }, { name: 'Lightning News', id: '03' }] },
-  ]},
-]
-
 function closeMenu() {
   menuOpen.value = false
 }
-function selectSkill(skill) { selectedSkill.value = selectedSkill.value === skill ? '' : skill }
 function runTerminal() {
   const command = terminalCommand.value.trim().toLowerCase()
   const replies = { help: 'Commands: help · about · skills · projects · contact', about: 'I’m Zanda — a developer who loves thoughtful, human-centred digital experiences.', skills: 'Vue.js · JavaScript · HTML/CSS · Node.js · Express · MySQL · Python · Flask', projects: 'WeConnect · Modern Tech · Lightning News', contact: 'Scroll to the contact section and say hello ✳' }
@@ -316,7 +296,6 @@ function runTerminal() {
               v-for="project in visibleProjects"
               :key="project.number"
               :project="project"
-              :selected-skill="selectedSkill"
               :individual-contributions="individualContributions"
             />
           </div>
@@ -327,31 +306,6 @@ function runTerminal() {
             <button type="button" @click="projectSearch = ''; activeProjectFilter = 'All projects'">Show all projects</button>
           </div>
           <div class="more-note"><span>✳</span> MORE IDEAS ARE ALWAYS IN THE MAKING <i></i></div>
-        </div>
-      </section>
-
-      <section id="skills" class="page-wrap content-section">
-        <p class="section-kicker"><span>03</span> TOOLS OF MY TRADE</p>
-        <div class="skills-grid">
-          <div class="skills-intro">
-            <h2>My kind of<br /><em>toolkit.</em></h2>
-            <p>Tools I use to turn ideas into working experiences.</p>
-            <p class="handwritten">less noise, more meaning ✳</p>
-          </div>
-          <div class="skills-catalog">
-            <section v-for="group in skillGroups" :key="group.name" class="skill-group">
-              <div class="skill-group-heading"><h3>{{ group.name }}</h3><p>{{ group.description }}</p></div>
-              <div class="skill-group-list">
-                <article v-for="skill in group.skills" :key="skill.name" class="skill-entry">
-                  <button type="button" class="skill-pill" :class="{ 'skill-selected': selectedSkill === skill.name }" :aria-pressed="selectedSkill === skill.name" @click="selectSkill(skill.name)">
-                    <b>{{ skill.symbol }}</b>{{ skill.name }}<span class="skill-action">{{ selectedSkill === skill.name ? 'Selected ✓' : 'Highlight projects' }}</span>
-                  </button>
-                  <p class="skill-projects"><span>USED IN</span><a v-for="project in skill.projects" :key="project.id" :href="'#project-' + project.id">{{ project.name }} ↗</a></p>
-                </article>
-              </div>
-            </section>
-            <p class="skills-footnote"><b>♡</b> {{ selectedSkill ? "Highlighting projects connected to " + selectedSkill + ". Select again to clear." : "Pick a skill to spotlight related projects." }}</p>
-          </div>
         </div>
       </section>
 
