@@ -1,9 +1,19 @@
 <script setup>
+import { ref } from 'vue'
+
 defineProps({
   project: { type: Object, required: true },
   selectedSkill: { type: String, default: '' },
   individualContributions: { type: Object, required: true },
 })
+
+const caseStudyDialog = ref(null)
+function openCaseStudy() {
+  caseStudyDialog.value?.showModal()
+}
+function closeCaseStudy() {
+  caseStudyDialog.value?.close()
+}
 </script>
 
 <template>
@@ -52,9 +62,30 @@ defineProps({
                 </div>
               </section>
               <div class="project-actions">
+                <button type="button" class="project-link project-case-study-trigger" @click="openCaseStudy">Case study <span aria-hidden="true">↗</span></button>
                 <a class="project-link" :href="project.repoUrl || project.url" target="_blank" rel="noopener noreferrer">View code <span aria-hidden="true">↗</span></a>
                 <a v-if="project.demoUrl && !project.demoAccounts?.length" class="project-link project-demo-link" :href="project.demoUrl" target="_blank" rel="noopener noreferrer">Live demo <span aria-hidden="true">↗</span></a>
               </div>
+              <dialog ref="caseStudyDialog" class="project-case-dialog" :aria-labelledby="'case-study-title-' + project.number" @click.self="closeCaseStudy">
+                <div class="project-case-dialog-inner">
+                  <button type="button" class="project-case-dialog-close" aria-label="Close case study" @click="closeCaseStudy">×</button>
+                  <span class="project-meta">{{ project.type }}</span>
+                  <h3 :id="'case-study-title-' + project.number">{{ project.name }}</h3>
+                  <p class="project-case-dialog-intro">{{ project.focus }}</p>
+                  <h4>THE CHALLENGE</h4><p>{{ project.challenge }}</p>
+                  <h4>TECHNICAL APPROACH</h4><p>{{ project.approach }}</p>
+                  <h4>WHAT I LEARNED</h4><p>{{ project.learning }}</p>
+                  <div v-if="individualContributions[project.name]" class="project-case-dialog-contributions">
+                    <h4>MY CONTRIBUTIONS</h4>
+                    <ul><li v-for="contribution in individualContributions[project.name]" :key="contribution">{{ contribution }}</li></ul>
+                  </div>
+                  <p v-else-if="project.contributionNote">{{ project.contributionNote }}</p>
+                  <div class="project-case-dialog-actions">
+                    <a v-if="project.demoUrl" :href="project.demoUrl" target="_blank" rel="noopener noreferrer">Live demo ↗</a>
+                    <a :href="project.repoUrl || project.url" target="_blank" rel="noopener noreferrer">Source code ↗</a>
+                  </div>
+                </div>
+              </dialog>
               <details class="case-study">
                 <summary>Case study & contributions <span class="case-study-toggle" aria-hidden="true">＋</span></summary>
                 <div class="case-study-content">
