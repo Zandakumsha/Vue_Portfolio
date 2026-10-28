@@ -94,6 +94,8 @@ function resetTilt(event) {
                   <h4>THE CHALLENGE</h4><p>{{ project.challenge }}</p>
                   <h4>TECHNICAL APPROACH</h4><p>{{ project.approach }}</p>
                   <h4>WHAT I LEARNED</h4><p>{{ project.learning }}</p>
+                  <h4>MY ROLE</h4><p>{{ project.role || 'Project contributor' }}</p>
+                  <h4>FUTURE IMPROVEMENTS</h4><p>{{ project.nextSteps || 'Further improvements can be identified through testing and feedback.' }}</p>
                   <div v-if="project.contributions?.length" class="project-case-dialog-contributions">
                     <h4>DELIVERABLES &amp; RESPONSIBILITIES</h4>
                     <ul><li v-for="contribution in project.contributions" :key="contribution">{{ contribution }}</li></ul>
