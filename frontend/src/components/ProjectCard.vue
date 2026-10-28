@@ -14,10 +14,23 @@ function openCaseStudy() {
 function closeCaseStudy() {
   caseStudyDialog.value?.close()
 }
+function tiltCard(event) {
+  if (event.pointerType === 'touch' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+  const card = event.currentTarget
+  const rect = card.getBoundingClientRect()
+  const x = (event.clientX - rect.left) / rect.width - 0.5
+  const y = (event.clientY - rect.top) / rect.height - 0.5
+  card.style.setProperty('--project-ry', `${x * 5}deg`)
+  card.style.setProperty('--project-rx', `${-y * 5}deg`)
+}
+function resetTilt(event) {
+  event.currentTarget.style.setProperty('--project-rx', '0deg')
+  event.currentTarget.style.setProperty('--project-ry', '0deg')
+}
 </script>
 
 <template>
-            <article :id="'project-' + project.number" class="project-card" :class="{ 'project-muted': selectedSkill && !project.tags.some(tag => selectedSkill.toLowerCase().includes(tag.toLowerCase()) || tag.toLowerCase().includes(selectedSkill.toLowerCase()) || project.description.toLowerCase().includes(selectedSkill.toLowerCase())) }">
+            <article @pointermove="tiltCard" @pointerleave="resetTilt" :id="'project-' + project.number" class="project-card" :class="{ 'project-muted': selectedSkill && !project.tags.some(tag => selectedSkill.toLowerCase().includes(tag.toLowerCase()) || tag.toLowerCase().includes(selectedSkill.toLowerCase()) || project.description.toLowerCase().includes(selectedSkill.toLowerCase())) }">
               <a class="project-art" :class="project.theme" :href="project.demoUrl || project.repoUrl || project.url" target="_blank" rel="noreferrer" :aria-label="'Open ' + project.name">
                 <span class="art-label">{{ project.number }} / CASE STUDY</span>
                 <span class="art-star">✳</span>
