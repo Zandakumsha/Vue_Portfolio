@@ -845,3 +845,133 @@ button { color: inherit; }
 .timeline-theme-dark{--paper:#211a16;--ink:#f5f1eb;--muted:#c7b8aa;--rose:#c17a68;--line:#5c463b;--soft:#302620;color:var(--ink);background:#211a16;padding:clamp(2rem,4vw,3rem);border-radius:18px}.timeline-theme-dark .portfolio-timeline-card,.timeline-theme-dark .explore-card{background:var(--soft)}.timeline-theme-dark .portfolio-timeline-marker,.timeline-theme-dark .timeline-chip{background:var(--soft);color:var(--ink)}.timeline-theme-dark .timeline-chip.is-active{background:var(--rose);color:#211a16}.timeline-theme-dark .terminal-window{background:#130e0b}
 @media(max-width:700px){.hero-animation-stage{min-height:300px}.animated-coffee{width:82px;right:0}.animation-note-card{left:0;bottom:6%}.project-case-facts,.demo-account-list{grid-template-columns:1fr}.project-actions{align-items:stretch}.project-link{min-height:40px}}
 @media(prefers-reduced-motion:reduce){.laptop-float,.animated-coffee,.animation-halo-front,.typing-caret,.steam-wisp{animation:none}}
+
+
+/* Refined typography and subtle visual polish — preserves existing layout and palette */
+:root {
+  --type-body: clamp(1.02rem, 0.96rem + 0.18vw, 1.12rem);
+  --reading-leading: 1.82;
+  --ease-refined: cubic-bezier(.2, .7, .25, 1);
+}
+html { scroll-behavior: smooth; scroll-padding-top: 6rem; }
+body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+.site-shell { overflow-x: clip; }
+.site-shell p,
+.site-shell li,
+.site-shell .section-description,
+.site-shell .about-copy,
+.site-shell .journal-excerpt,
+.site-shell .project-description,
+.site-shell .toolkit-description {
+  font-size: var(--type-body);
+  line-height: var(--reading-leading);
+  letter-spacing: .005em;
+}
+.site-shell p { max-width: 72ch; }
+.site-shell h1,
+.site-shell h2,
+.site-shell h3,
+.site-shell h4 { text-wrap: balance; }
+.site-shell h1 { letter-spacing: -.045em; }
+.site-shell h2 { letter-spacing: -.035em; }
+.site-shell a { text-underline-offset: .22em; }
+.site-shell a:not(.button-primary):not(.project-link):not(.brand):not(.navigation a) {
+  transition: color .22s var(--ease-refined), text-decoration-color .22s var(--ease-refined);
+}
+.site-shell a:focus-visible,
+.site-shell button:focus-visible,
+.site-shell input:focus-visible,
+.site-shell textarea:focus-visible,
+.site-shell select:focus-visible {
+  outline: 2px solid var(--rose);
+  outline-offset: 4px;
+}
+.site-shell button,
+.site-shell .button-primary,
+.site-shell .project-link,
+.site-shell .navigation a {
+  transition: color .22s var(--ease-refined), background-color .22s var(--ease-refined),
+    border-color .22s var(--ease-refined), box-shadow .22s var(--ease-refined),
+    transform .22s var(--ease-refined);
+}
+.topbar { backdrop-filter: blur(14px); background: color-mix(in srgb, var(--paper) 92%, transparent); }
+.brand-mark { transition: transform .35s var(--ease-refined), color .25s ease; }
+.brand:hover .brand-mark { transform: rotate(-8deg); color: var(--rose); }
+.navigation a { position: relative; text-decoration: none; }
+.navigation a:not(.nav-contact)::after {
+  position: absolute; right: 0; bottom: -.35rem; left: 0; height: 1px;
+  background: var(--rose); content: ""; transform: scaleX(0); transform-origin: right;
+  transition: transform .28s var(--ease-refined);
+}
+.navigation a:not(.nav-contact):hover::after,
+.navigation a:not(.nav-contact):focus-visible::after {
+  transform: scaleX(1); transform-origin: left;
+}
+.button-primary { box-shadow: 0 5px 14px rgb(48 38 32 / 10%); }
+.button-primary:hover { box-shadow: 0 9px 22px rgb(48 38 32 / 15%); }
+section { scroll-margin-top: 5.5rem; }
+section:not(:first-child) { position: relative; }
+.section-heading { margin-bottom: clamp(1.4rem, 3vw, 2.4rem); }
+.section-heading .eyebrow,
+.section-eyebrow,
+.eyebrow { text-transform: uppercase; }
+.section-heading .eyebrow::before,
+.section-eyebrow::before {
+  display: inline-block; width: 1.5rem; height: 1px; margin: 0 .65rem .22em 0;
+  background: var(--rose); content: ""; vertical-align: middle;
+}
+.project-card,
+.portfolio-timeline-card,
+.explore-card,
+.journal-card,
+.achievement-card,
+.toolkit-stage,
+.animation-note-card {
+  transition: border-color .28s var(--ease-refined), box-shadow .28s var(--ease-refined),
+    transform .28s var(--ease-refined);
+}
+.project-card:hover,
+.journal-card:hover,
+.achievement-card:hover {
+  border-color: color-mix(in srgb, var(--rose) 42%, var(--line));
+  box-shadow: 0 14px 38px rgb(48 38 32 / 9%);
+}
+.project-art { transition: transform .35s var(--ease-refined); }
+.project-card:hover .project-art { transform: translateY(-2px); }
+.project-link { min-height: 40px; }
+input, textarea, select {
+  font: inherit;
+  border-color: var(--line);
+  border-radius: 8px;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+input:focus, textarea:focus, select:focus {
+  border-color: var(--rose);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--rose) 12%, transparent);
+}
+::selection { color: var(--paper); background: var(--rose); }
+.site-footer { position: relative; }
+.site-footer::before {
+  position: absolute; top: 0; right: 5%; left: 5%; height: 1px;
+  background: color-mix(in srgb, var(--sage) 60%, transparent); content: "";
+}
+.site-shell.theme-dark .topbar { background: color-mix(in srgb, var(--paper) 92%, transparent); }
+.site-shell.theme-dark .project-card:hover,
+.site-shell.theme-dark .journal-card:hover,
+.site-shell.theme-dark .achievement-card:hover {
+  box-shadow: 0 14px 38px rgb(0 0 0 / 20%);
+}
+@media (max-width: 700px) {
+  :root { --type-body: 1rem; --reading-leading: 1.78; }
+  .section-heading { margin-bottom: 1.4rem; }
+  .navigation a:not(.nav-contact)::after { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
