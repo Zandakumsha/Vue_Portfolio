@@ -58,7 +58,7 @@ function resetTilt(event) {
               <div class="project-actions">
                 <button type="button" class="project-link project-case-study-trigger" @click="openCaseStudy">Case study <span aria-hidden="true">↗</span></button>
                 <a class="project-link" :href="project.repoUrl || project.url" target="_blank" rel="noopener noreferrer">View code <span aria-hidden="true">↗</span></a>
-                <a v-if="project.demoUrl && !project.demoAccounts?.length" class="project-link project-demo-link" :href="project.demoUrl" target="_blank" rel="noopener noreferrer">Live demo <span aria-hidden="true">↗</span></a>
+                <a v-if="project.demoUrl" class="project-link project-demo-link" :href="project.demoUrl" target="_blank" rel="noopener noreferrer">Live demo <span aria-hidden="true">↗</span></a>
               </div>
               <dialog ref="caseStudyDialog" class="project-case-dialog" :aria-labelledby="'case-study-title-' + project.number" @click.self="closeCaseStudy">
                 <div class="project-case-dialog-inner">
