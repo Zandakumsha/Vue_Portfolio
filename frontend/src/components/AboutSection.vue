@@ -75,12 +75,12 @@
   max-width: none;
   object-fit: cover;
   /* Shift the image upward in the frame to include the entire head. */
-  object-position: center 18%;
+  object-position: center top;
   transition: transform 450ms ease;
 }
 
 .about-photo-panel:hover .about-portrait {
-  transform: scale(1.025);
+  transform: scale(1.01);
 }
 
 .portrait-sparkle {
