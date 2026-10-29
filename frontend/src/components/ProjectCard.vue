@@ -94,6 +94,28 @@ function resetTilt(event) {
                     <div><span>TECHNOLOGIES</span><strong>{{ project.tags.join(' · ') }}</strong></div>
                     <div><span>PROJECT FOCUS</span><strong>{{ project.focus }}</strong></div>
                   </div>
+                  <section
+                    v-if="project.name === 'Modern Tech'"
+                    class="demo-credentials modern-tech-credentials"
+                    aria-label="Modern Tech live website and login details"
+                  >
+                    <div class="demo-credentials-heading">
+                      <span class="demo-access-label">LIVE WEBSITE &amp; LOGIN DETAILS</span>
+                      <span class="demo-live-indicator">HR demo account</span>
+                    </div>
+                    <div class="demo-resource-links">
+                      <a v-if="project.demoUrl" :href="project.demoUrl" target="_blank" rel="noopener noreferrer">Open live website ↗</a>
+                      <span v-else>Live website URL not configured yet.</span>
+                    </div>
+                    <p class="demo-credentials-note">Use the dedicated HR demo account to explore the Modern Tech application.</p>
+                    <div class="demo-account-list">
+                      <div class="demo-account">
+                        <h4>HR account</h4>
+                        <p><span>Email</span><code>hr@moderntech.com</code></p>
+                        <p><span>Password</span><code>Check the project owner’s supplied demo credentials</code></p>
+                      </div>
+                    </div>
+                  </section>
                   <section v-if="project.demoAccounts?.length" class="demo-credentials" aria-label="WeConnect live website and public demo login details">
                     <div class="demo-credentials-heading">
                       <span class="demo-access-label">LIVE WEBSITE &amp; LOGIN DETAILS</span>
