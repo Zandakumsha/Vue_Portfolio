@@ -3204,3 +3204,38 @@ body { background: #d2e2ec; color: #3a2119; }
   .topbar { padding-left: 21px; padding-right: 21px; }
   .site-footer { padding: 20px 21px; }
 }
+
+
+/* Final compact project-card pass: reserve detailed credentials and narrative for the case study. */
+.project-grid { align-items: start; }
+.project-card {
+  align-self: start;
+  min-width: 0;
+  padding: 11px !important;
+  border-radius: 5px 17px 5px 17px;
+}
+.project-art { height: clamp(112px, 13vw, 156px) !important; }
+.project-card .project-meta { margin: 8px 0 3px; }
+.project-card .project-number { display: block; margin-top: 2px; }
+.project-card h3 { margin: 4px 0 5px; font-size: clamp(18px, 1.8vw, 22px); }
+.project-card .project-description { margin-bottom: 5px; font-size: 11px; line-height: 1.45; }
+.project-card .tag-list { margin-top: 6px; gap: 4px; }
+.project-card .tag-list span { padding: 3px 6px; font-size: 9px; }
+.project-card .project-actions { margin-top: 8px; padding-top: 7px; gap: 10px; }
+.project-card .project-actions .project-link { font-size: 10px; }
+.project-card .project-screenshot { max-height: 130px; object-fit: cover; }
+.project-case-dialog .demo-credentials { margin-top: 14px; padding: 13px; }
+.project-case-dialog .demo-credentials-heading { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; }
+.project-case-dialog .demo-resource-links { display: flex; flex-wrap: wrap; gap: 8px 13px; margin-top: 12px; }
+.project-case-dialog .demo-resource-links a { font-size: 11px; }
+.project-case-dialog .demo-credentials-note { font-size: 12px !important; }
+.project-case-dialog .demo-account-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 12px; }
+.project-case-dialog .demo-account { min-width: 0; padding: 10px; border: 1px solid var(--surface-border); border-radius: 4px 12px 4px 12px; }
+.project-case-dialog .demo-account h4 { margin: 0 0 8px; }
+.project-case-dialog .demo-account p { display: grid; gap: 3px; margin: 5px 0; }
+.project-case-dialog .demo-account code { overflow-wrap: anywhere; font-size: 11px; }
+@media (max-width: 640px) {
+  .project-art { height: 135px !important; }
+  .project-card { padding: 10px !important; }
+  .project-case-dialog .demo-account-list { grid-template-columns: 1fr; }
+}
