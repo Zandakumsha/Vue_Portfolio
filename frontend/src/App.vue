@@ -27,6 +27,7 @@ const visibleProjects = computed(() => {
 })
 const journeyFilter = ref('all')
 const journeyDark = ref(false)
+const journeyPaused = ref(false)
 const journeyFilters = [
   { label: 'Everything', value: 'all' },
   { label: 'Learning', value: 'learning' },
@@ -393,25 +394,48 @@ function runTerminal() {
           <button type="button" class="timeline-chip timeline-theme-toggle" :aria-pressed="journeyDark" @click="journeyDark = !journeyDark">{{ journeyDark ? 'Light theme' : 'Dark theme' }}</button>
         </div>
 
-        <div class="portfolio-timeline" aria-label="Developer journey timeline">
-          <div class="timeline-rail" aria-hidden="true"></div>
-          <div class="timeline-progress" aria-hidden="true"></div>
-          <article v-for="(item, index) in visibleJourneyItems" :key="item.id" class="portfolio-timeline-item" :class="{ 'is-current': item.current, 'is-even': index % 2 === 1 }">
-            <div class="portfolio-timeline-marker" aria-hidden="true">{{ String(index + 1).padStart(2, '0') }}</div>
-            <div class="portfolio-timeline-card">
-              <div class="portfolio-timeline-meta"><span>{{ item.when }}</span><span class="portfolio-timeline-tag" :class="{ 'is-current-tag': item.current }">{{ item.status }}</span></div>
-              <h3>{{ item.title }}</h3>
-              <p class="portfolio-timeline-org">{{ item.org }}</p>
-              <p class="portfolio-timeline-description">{{ item.description }}</p>
-              <ul class="portfolio-timeline-skills"><li v-for="skill in item.skills" :key="skill">{{ skill }}</li></ul>
-              <details class="portfolio-timeline-detail">
-                <summary>{{ item.detailLabel }} <span aria-hidden="true">＋</span></summary>
-                <p>{{ item.detail }}</p>
-                <a v-if="item.link" :href="item.link">{{ item.linkLabel }} ↗</a>
-              </details>
+        <div class="timeline-carousel-controls">
+          <p class="timeline-carousel-hint">A few chapters along the way <span aria-hidden="true">→</span></p>
+          <button type="button" class="timeline-chip timeline-pause-toggle" :aria-pressed="journeyPaused" @click="journeyPaused = !journeyPaused">{{ journeyPaused ? 'Resume motion' : 'Pause motion' }}</button>
+        </div>
+        <div class="portfolio-timeline timeline-carousel" :class="{ 'is-paused': journeyPaused }" aria-label="Continuously scrolling developer journey carousel">
+          <div v-if="visibleJourneyItems.length" class="timeline-marquee">
+            <div class="timeline-marquee-group">
+              <article v-for="(item, index) in visibleJourneyItems" :key="'first-' + item.id" class="portfolio-timeline-item" :class="{ 'is-current': item.current }">
+                <div class="portfolio-timeline-marker" aria-hidden="true">{{ String(index + 1).padStart(2, '0') }}</div>
+                <div class="portfolio-timeline-card">
+                  <div class="portfolio-timeline-meta"><span>{{ item.when }}</span><span class="portfolio-timeline-tag" :class="{ 'is-current-tag': item.current }">{{ item.status }}</span></div>
+                  <h3>{{ item.title }}</h3>
+                  <p class="portfolio-timeline-org">{{ item.org }}</p>
+                  <p class="portfolio-timeline-description">{{ item.description }}</p>
+                  <ul class="portfolio-timeline-skills"><li v-for="skill in item.skills" :key="skill">{{ skill }}</li></ul>
+                  <details class="portfolio-timeline-detail">
+                    <summary>{{ item.detailLabel }} <span aria-hidden="true">＋</span></summary>
+                    <p>{{ item.detail }}</p>
+                    <a v-if="item.link" :href="item.link">{{ item.linkLabel }} ↗</a>
+                  </details>
+                </div>
+              </article>
             </div>
-          </article>
-          <p v-if="!visibleJourneyItems.length" class="timeline-empty">No milestones in this category yet. Choose another filter to explore the journey.</p>
+            <div class="timeline-marquee-group" aria-hidden="true" inert>
+              <article v-for="(item, index) in visibleJourneyItems" :key="'copy-' + item.id" class="portfolio-timeline-item" :class="{ 'is-current': item.current }">
+                <div class="portfolio-timeline-marker" aria-hidden="true">{{ String(index + 1).padStart(2, '0') }}</div>
+                <div class="portfolio-timeline-card">
+                  <div class="portfolio-timeline-meta"><span>{{ item.when }}</span><span class="portfolio-timeline-tag" :class="{ 'is-current-tag': item.current }">{{ item.status }}</span></div>
+                  <h3>{{ item.title }}</h3>
+                  <p class="portfolio-timeline-org">{{ item.org }}</p>
+                  <p class="portfolio-timeline-description">{{ item.description }}</p>
+                  <ul class="portfolio-timeline-skills"><li v-for="skill in item.skills" :key="skill">{{ skill }}</li></ul>
+                  <details class="portfolio-timeline-detail">
+                    <summary>{{ item.detailLabel }} <span aria-hidden="true">＋</span></summary>
+                    <p>{{ item.detail }}</p>
+                    <a v-if="item.link" :href="item.link">{{ item.linkLabel }} ↗</a>
+                  </details>
+                </div>
+              </article>
+            </div>
+          </div>
+          <p v-else class="timeline-empty">No milestones in this category yet. Choose another filter to explore the journey.</p>
         </div>
 
         <div class="journey-finale"><span aria-hidden="true">✳</span><p>THE NEXT CHAPTER IS STILL BEING WRITTEN</p></div>
