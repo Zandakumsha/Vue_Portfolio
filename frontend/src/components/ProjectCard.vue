@@ -34,6 +34,14 @@ function resetTilt(event) {
               <div class="project-art" :class="project.theme">
                 <span class="art-label">{{ project.number }} / CASE STUDY</span>
                 <span class="art-star">✳</span>
+                <img
+                  v-if="project.name === 'Modern Tech'"
+                  class="project-screenshot"
+                  src="/Screenshot%202026-07-05%20193803.png"
+                  alt="Screenshot of the Modern Tech HR management project"
+                  loading="lazy"
+                  decoding="async"
+                />
                 <iframe
                   v-if="project.name === 'WeConnect' && project.demoUrl"
                   class="project-live-demo"
