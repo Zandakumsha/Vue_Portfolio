@@ -32,21 +32,25 @@
 
 <style scoped>
 .about-photo-panel {
+  position: relative;
   isolation: isolate;
+  min-height: 430px;
+  border: 1px solid rgb(166 83 34 / 24%);
   background: var(--soft);
-  box-shadow: 0 22px 55px rgb(48 38 32 / 12%);
+  box-shadow: 0 22px 55px rgb(48 38 32 / 14%);
 }
 
 .about-portrait {
   position: absolute;
   inset: 0;
-  z-index: -1;
+  z-index: 0;
   display: block;
   width: 100%;
   height: 100%;
   max-width: none;
   object-fit: cover;
-  object-position: center 35%;
+  object-position: center 30%;
+  transform: scale(1.001);
   transition: transform 450ms ease;
 }
 
@@ -56,17 +60,35 @@
 
 .about-photo-panel .about-visual-caption {
   z-index: 1;
-  padding: 0.8rem 0.9rem;
-  border: 1px solid rgb(255 248 237 / 25%);
+  right: 0.9rem;
+  bottom: 0.9rem;
+  left: 0.9rem;
+  padding: 0.85rem 0.9rem;
+  border: 1px solid rgb(255 248 237 / 28%);
   border-radius: 5px 14px;
-  background: rgb(48 38 32 / 68%);
+  background: rgb(48 38 32 / 78%);
   color: #fff8ed;
+  font-size: 0.62rem;
+  line-height: 1.5;
   backdrop-filter: blur(8px);
+}
+
+@media (max-width: 900px) {
+  .about-photo-panel {
+    min-height: 370px;
+  }
 }
 
 @media (max-width: 700px) {
   .about-photo-panel {
-    min-height: 290px;
+    min-height: 320px;
+    max-height: 430px;
+  }
+
+  .about-photo-panel .about-visual-caption {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 0.35rem 0.8rem;
   }
 }
 
