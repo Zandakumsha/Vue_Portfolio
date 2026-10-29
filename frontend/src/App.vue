@@ -26,7 +26,7 @@ const visibleProjects = computed(() => {
   )
 })
 const journeyFilter = ref('all')
-const journeyDark = ref(false)
+const themeDark = ref(false)
 const journeyPaused = ref(false)
 const journeyFilters = [
   { label: 'Everything', value: 'all' },
@@ -335,9 +335,9 @@ function runTerminal() {
 </script>
 
 <template>
-  <div class="site-shell">
+  <div class="site-shell" :class="{ 'theme-dark': themeDark }">
     <a class="skip-link" href="#main-content">Skip to content</a>
-    <SiteHeader v-model:menu-open="menuOpen" />
+    <SiteHeader v-model:menu-open="menuOpen" :theme-dark="themeDark" @toggle-theme="themeDark = !themeDark" />
 
     <main id="main-content" tabindex="-1">
       <HeroSection />
@@ -393,14 +393,13 @@ function runTerminal() {
 
       <ToolkitSlider />
 
-      <section id="journey" class="journey-section page-wrap" :class="{ 'timeline-theme-dark': journeyDark }">
+      <section id="journey" class="journey-section page-wrap">
         <p class="section-kicker"><span>04</span> THE JOURNEY SO FAR</p>
         <h2 class="journey-heading">Built through <em>curiosity and practice.</em></h2>
         <p class="journey-intro">From trainee to intern, with projects and lessons along the way. Follow the line to see how each chapter shaped me.</p>
 
         <div class="timeline-toolbar" role="group" aria-label="Filter journey timeline">
           <button v-for="filter in journeyFilters" :key="filter.value" type="button" class="timeline-chip" :class="{ 'is-active': journeyFilter === filter.value }" :aria-pressed="journeyFilter === filter.value" @click="journeyFilter = filter.value">{{ filter.label }}</button>
-          <button type="button" class="timeline-chip timeline-theme-toggle" :aria-pressed="journeyDark" @click="journeyDark = !journeyDark">{{ journeyDark ? 'Light theme' : 'Dark theme' }}</button>
         </div>
 
         <div class="timeline-carousel-controls">
