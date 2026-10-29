@@ -31,11 +31,20 @@ function resetTilt(event) {
 
 <template>
             <article @pointermove="tiltCard" @pointerleave="resetTilt" :id="'project-' + project.number" class="project-card" :class="{ 'project-muted': selectedSkill && !project.tags.some(tag => selectedSkill.toLowerCase().includes(tag.toLowerCase()) || tag.toLowerCase().includes(selectedSkill.toLowerCase()) || project.description.toLowerCase().includes(selectedSkill.toLowerCase())) }">
-              <a class="project-art" :class="project.theme" :href="project.demoUrl || project.repoUrl || project.url" target="_blank" rel="noreferrer" :aria-label="'Open ' + project.name">
+              <div class="project-art" :class="project.theme">
                 <span class="art-label">{{ project.number }} / CASE STUDY</span>
                 <span class="art-star">✳</span>
+                <iframe
+                  v-if="project.name === 'WeConnect' && project.demoUrl"
+                  class="project-live-demo"
+                  :src="project.demoUrl"
+                  :title="'Live preview of ' + project.name"
+                  loading="lazy"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allow="clipboard-read; clipboard-write"
+                ></iframe>
                 <img
-                  v-if="project.name === 'Lightning News'"
+                  v-else-if="project.name === 'Lightning News'"
                   class="project-screenshot"
                   src="https://i.ibb.co/bj7C9TgS/Screenshot-2026-10-11-015612.png"
                   alt="Screenshot of the Lightning News analytics dashboard"
@@ -46,8 +55,13 @@ function resetTilt(event) {
                   <div class="window-bar"><i></i><i></i><i></i><small>studio / {{ project.initials.toLowerCase() }}</small></div>
                   <div class="window-content"><b>{{ project.initials }}</b><span class="mock-lines"><i></i><i></i><i></i></span><span class="mock-arrow">↗</span></div>
                 </div>
-                <span class="art-foot">{{ project.demoUrl ? 'VIEW LIVE DEMO ↗' : 'VIEW REPOSITORY ↗' }}</span>
-              </a>
+                <a
+                  class="art-foot"
+                  :href="project.demoUrl || project.repoUrl || project.url"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >{{ project.demoUrl ? 'OPEN LIVE DEMO ↗' : 'VIEW REPOSITORY ↗' }}</a>
+              </div>
               <p class="project-meta">{{ project.type }}</p>
               <span class="project-number">PROJECT {{ project.number }} <span aria-hidden="true">✳</span></span>
               <h3>{{ project.name }}</h3>
