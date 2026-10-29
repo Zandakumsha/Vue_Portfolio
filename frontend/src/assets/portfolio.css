@@ -1316,3 +1316,105 @@ hr { border: 0; border-top: 1px solid var(--line); }
   .site-shell .social-links { gap: .55rem; }
   .site-shell .social-links .social-link { padding: .5rem .65rem; font-size: .72rem; }
 }
+
+
+/* Final styling corrections: avoid global button pseudo-elements affecting controls */
+.site-shell button::after {
+  content: none;
+}
+.site-shell .button-primary::after,
+.site-shell .project-link::after,
+.site-shell .nav-contact::after {
+  content: "";
+}
+.site-shell .contact-section .social-links > span {
+  display: none;
+}
+.site-shell .contact-section .social-links {
+  justify-content: flex-start;
+  margin-top: 1.5rem;
+}
+.site-shell .contact-section .social-links .social-link {
+  min-width: 118px;
+  min-height: 44px;
+  background: transparent;
+  color: var(--paper);
+}
+.site-shell .contact-section .social-links .social-link:hover,
+.site-shell .contact-section .social-links .social-link:focus-visible {
+  background: var(--paper);
+  color: var(--rose);
+}
+.site-shell .contact-section .social-links .social-back-to-top {
+  min-width: auto;
+}
+.site-shell .topbar {
+  position: relative;
+  z-index: 20;
+  width: 100%;
+  box-sizing: border-box;
+}
+.site-shell .topbar .navigation a {
+  text-decoration: none;
+}
+.site-shell .topbar .navigation a:not(.nav-contact):hover,
+.site-shell .topbar .navigation a:not(.nav-contact):focus-visible {
+  color: var(--paper);
+  opacity: .78;
+}
+.site-shell .topbar .navigation .nav-contact {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: .6rem .95rem;
+  border: 1px solid var(--paper);
+  border-radius: 999px;
+}
+.site-shell .contact-section .contact-form {
+  width: 100%;
+  max-width: 680px;
+}
+.site-shell .contact-section .contact-form label {
+  display: grid;
+  gap: .5rem;
+  line-height: 1.5;
+}
+.site-shell .contact-section .contact-form input,
+.site-shell .contact-section .contact-form textarea {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+}
+.site-shell .contact-section .contact-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: .8rem 1.2rem;
+  border-radius: 999px;
+  font-weight: 750;
+}
+.site-shell .social-icon {
+  flex-shrink: 0;
+  overflow: visible;
+}
+@media (max-width: 700px) {
+  .site-shell .topbar {
+    gap: .75rem;
+  }
+  .site-shell .topbar .navigation {
+    z-index: 30;
+    box-sizing: border-box;
+    max-width: 100%;
+  }
+  .site-shell .contact-section .contact-form-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .site-shell .contact-section .social-links {
+    gap: .6rem;
+  }
+  .site-shell .contact-section .social-links .social-link {
+    min-width: 0;
+  }
+}
