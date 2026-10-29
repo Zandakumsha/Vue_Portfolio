@@ -1989,38 +1989,43 @@ a, button { -webkit-tap-highlight-color: transparent; }
 }
 
 
-/* Final warm beige theme overrides to keep later legacy styles from restoring pink and sage colors. */
+/* Final olive, cream and burnt-sienna theme overrides. */
 :root {
-  --paper: #fff8ed;
-  --ink: #402719;
-  --muted: #806b5a;
-  --rose: #a65322;
-  --line: #e2d2bd;
-  --soft: #e8d5bf;
-  --sage: #d9bda0;
-  --sage-ink: #60402b;
-  --decorative-rose: #d9bda0;
-  --decorative-lavender: #e8d5bf;
-  --decorative-sage: #d9bda0;
+  --paper: #2f3a2c;
+  --ink: #fff8ed;
+  --muted: #d2c7b5;
+  --rose: #c16a35;
+  --line: #596451;
+  --soft: #414d3b;
+  --sage: #596451;
+  --sage-ink: #fff8ed;
+  --decorative-rose: #c16a35;
+  --decorative-lavender: #596451;
+  --decorative-sage: #414d3b;
 }
 .site-shell:not(.theme-dark) {
-  background: #fff8ed;
-  color: #402719;
+  background: #2f3a2c;
+  color: #fff8ed;
 }
 .site-shell:not(.theme-dark) .topbar,
-.site-shell:not(.theme-dark) .site-header,
+.site-shell:not(.theme-dark) .site-header {
+  background: #2f3a2c;
+  color: #fff8ed;
+  border-color: #596451;
+}
 .site-shell:not(.theme-dark) .contact-form,
 .site-shell:not(.theme-dark) .project-card,
 .site-shell:not(.theme-dark) .journal-card {
   background-color: #fff8ed;
-  border-color: #e2d2bd;
+  color: #402719;
+  border-color: #d9bda0;
 }
 .site-shell:not(.theme-dark) .content-section:nth-of-type(even),
 .site-shell:not(.theme-dark) .journey-section,
 .site-shell:not(.theme-dark) .journal-section,
 .site-shell:not(.theme-dark) .about-section {
-  background-color: #e8d5bf;
-  color: #402719;
+  background-color: #414d3b;
+  color: #fff8ed;
 }
 .site-shell:not(.theme-dark) .button-primary,
 .site-shell:not(.theme-dark) .contact-button,
@@ -2035,7 +2040,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 .site-shell:not(.theme-dark) h3,
 .site-shell:not(.theme-dark) .brand,
 .site-shell:not(.theme-dark) .project-title {
-  color: #402719;
+  color: #fff8ed;
 }
 .site-shell:not(.theme-dark) h1 em,
 .site-shell:not(.theme-dark) h2 em,
@@ -2045,18 +2050,18 @@ a, button { -webkit-tap-highlight-color: transparent; }
 .site-shell:not(.theme-dark) .hero-kicker,
 .site-shell:not(.theme-dark) .project-number,
 .site-shell:not(.theme-dark) .little-note span {
-  color: #a65322;
+  color: #d58a55;
 }
 .site-shell:not(.theme-dark) .green-word::after,
 .site-shell:not(.theme-dark) .skill-pill:hover,
 .site-shell:not(.theme-dark) .tag-list span:hover {
-  background: #d9bda0;
-  border-color: #a65322;
-  color: #402719;
+  background: #596451;
+  border-color: #c16a35;
+  color: #fff8ed;
 }
 .site-shell:not(.theme-dark) a:focus-visible,
 .site-shell:not(.theme-dark) button:focus-visible,
 .site-shell:not(.theme-dark) input:focus-visible,
 .site-shell:not(.theme-dark) textarea:focus-visible {
-  outline-color: #a65322;
+  outline-color: #c16a35;
 }
