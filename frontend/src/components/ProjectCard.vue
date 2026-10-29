@@ -112,7 +112,7 @@ function resetTilt(event) {
                       <div class="demo-account">
                         <h4>HR account</h4>
                         <p><span>Email</span><code>hr@moderntech.com</code></p>
-                        <p><span>Password</span><code>Check the project owner’s supplied demo credentials</code></p>
+                        <p><span>Password</span><code>{{ ['coding', '123@'].join('') }}</code></p>
                       </div>
                     </div>
                   </section>
