@@ -29,3 +29,50 @@
     </div>
   </section>
 </template>
+
+<style scoped>
+.about-photo-panel {
+  isolation: isolate;
+  background: var(--soft);
+  box-shadow: 0 22px 55px rgb(48 38 32 / 12%);
+}
+
+.about-portrait {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center 35%;
+  transition: transform 450ms ease;
+}
+
+.about-photo-panel:hover .about-portrait {
+  transform: scale(1.035);
+}
+
+.about-photo-panel .about-visual-caption {
+  z-index: 1;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid rgb(255 248 237 / 25%);
+  border-radius: 5px 14px;
+  background: rgb(48 38 32 / 68%);
+  color: #fff8ed;
+  backdrop-filter: blur(8px);
+}
+
+@media (max-width: 700px) {
+  .about-photo-panel {
+    min-height: 290px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-portrait {
+    transition: none;
+  }
+}
+</style>
