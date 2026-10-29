@@ -94,6 +94,9 @@ function resetTilt(event) {
                   </section>
                   <h4>THE CHALLENGE</h4><p>{{ project.challenge }}</p>
                   <h4>TECHNICAL APPROACH</h4><p>{{ project.approach }}</p>
+                  <h4>ARCHITECTURE &amp; DATA FLOW</h4><p>{{ project.architecture || project.approach }}</p>
+                  <h4>TESTING CHECKLIST</h4><p>{{ project.testingNotes || 'Test the primary user journeys, validation, error states, accessibility and responsive layouts before release.' }}</p>
+                  <h4>KEY DESIGN DECISION</h4><p>{{ project.decisions || 'Keep responsibilities clear, validate data at the boundary, and make important states visible to the user.' }}</p>
                   <h4>WHAT I LEARNED</h4><p>{{ project.learning }}</p>
                   <h4>MY ROLE</h4><p>{{ project.role || 'Project contributor' }}</p>
                   <h4>FUTURE IMPROVEMENTS</h4><p>{{ project.nextSteps || 'Further improvements can be identified through testing and feedback.' }}</p>
