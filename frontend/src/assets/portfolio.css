@@ -3597,3 +3597,52 @@ button:focus-visible, a:focus-visible, summary:focus-visible {
   .topbar { background: rgba(185, 168, 153, .98); }
   .site-shell.theme-dark .topbar { background: rgba(48, 38, 32, .98); }
 }
+
+
+/* Palette override with higher specificity: earlier theme blocks were overriding :root values. */
+.site-shell:not(.theme-dark) {
+  --paper: #B9A899;
+  --ink: #302620;
+  --muted: #665448;
+  --rose: #612A22;
+  --line: #C9BDB1;
+  --soft: #D8CEC3;
+  --sage: #948C7A;
+  --sage-ink: #302620;
+  --surface: #E6DDD3;
+  --surface-border: #B9A899;
+  --decorative-rose: #612A22;
+  --decorative-lavender: #D8CEC3;
+  --decorative-sage: #775F4E;
+  background: #B9A899 !important;
+  color: #302620;
+}
+.site-shell:not(.theme-dark) .about-section,
+.site-shell:not(.theme-dark) .skills-section,
+.site-shell:not(.theme-dark) .contact-section { background: #B9A899 !important; color: #302620; }
+.site-shell:not(.theme-dark) .work-section,
+.site-shell:not(.theme-dark) .journey-section,
+.site-shell:not(.theme-dark) .site-footer { background: #D8CEC3 !important; color: #302620; }
+.site-shell:not(.theme-dark) .topbar { background: rgba(185, 168, 153, .98) !important; }
+.site-shell:not(.theme-dark) .project-card,
+.site-shell:not(.theme-dark) .timeline-carousel .portfolio-timeline-card,
+.site-shell:not(.theme-dark) .project-case-dialog { background: #E6DDD3 !important; color: #302620; border-color: #C9BDB1; }
+.site-shell:not(.theme-dark) .project-card .project-description,
+.site-shell:not(.theme-dark) .project-case-dialog p,
+.site-shell:not(.theme-dark) .project-case-dialog li { color: #665448; }
+.site-shell:not(.theme-dark) .project-card .tag-list span { background: #D8CEC3; color: #4D3D33; border-color: #C9BDB1; }
+.site-shell:not(.theme-dark) .project-card .project-link,
+.site-shell:not(.theme-dark) .project-case-dialog h4,
+.site-shell:not(.theme-dark) .project-case-facts span { color: #612A22; }
+.site-shell:not(.theme-dark) .project-filter.is-active,
+.site-shell:not(.theme-dark) .navigation .nav-contact,
+.site-shell:not(.theme-dark) .project-case-dialog-actions a:first-child,
+.site-shell:not(.theme-dark) .brand-mark { background: #612A22 !important; border-color: #612A22; color: #FFF8F0; }
+.site-shell:not(.theme-dark) .project-art.chambray { background: #948C7A !important; color: #FFF8F0; }
+.site-shell:not(.theme-dark) .project-art.espresso { background: #302620 !important; color: #F4ECE4; }
+.site-shell:not(.theme-dark) .project-art.glacier { background: #B9A899 !important; color: #302620; }
+.site-shell:not(.theme-dark) .project-art.bisque { background: #D8CEC3 !important; color: #302620; }
+.site-shell:not(.theme-dark) .project-art.clay { background: #612A22 !important; color: #FFF8F0; }
+.site-shell:not(.theme-dark) .timeline-carousel .portfolio-timeline-card { box-shadow: 0 8px 24px rgba(48, 38, 32, .08); }
+.site-shell:not(.theme-dark) .timeline-carousel .portfolio-timeline-marker { background: #B9A899; border-color: #612A22; color: #612A22; }
+.site-shell:not(.theme-dark) .timeline-carousel .portfolio-timeline-item.is-current .portfolio-timeline-marker { background: #612A22; color: #FFF8F0; }
