@@ -2,9 +2,13 @@
   <section id="about" class="page-wrap content-section about-section">
     <p class="section-kicker"><span>01</span> A NOTE ABOUT ME</p>
     <div class="about-grid">
-      <div class="about-visual-panel" role="img" aria-label="Animated typographic illustration representing curiosity and creative development">
-        <span class="about-visual-orbit" aria-hidden="true"></span>
-        <span class="about-visual-monogram" aria-hidden="true">z.</span>
+      <div class="about-visual-panel about-photo-panel">
+        <img
+          class="about-portrait"
+          src="/Screenshot%202026-06-05%20184643.png"
+          alt="Portrait of Zanda"
+          loading="lazy"
+        />
         <div class="about-visual-caption">
           <span>01 / ALWAYS LEARNING</span>
           <span>MADE WITH CURIOSITY</span>
