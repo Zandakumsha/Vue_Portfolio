@@ -630,9 +630,16 @@ function runTerminal() {
             <p class="contact-form-note">Your message will be sent securely through Formspree. Please don't include sensitive information.</p>
           </form>
 
-          <div class="social-links">
-            <a href="https://github.com/Zandakumsha" target="_blank" rel="noreferrer">GITHUB ↗</a><span>·</span>
-            <a href="#home">BACK TO TOP ↑</a>
+          <div class="social-links" aria-label="Social links">
+            <a class="social-link" href="https://github.com/Zandakumsha" target="_blank" rel="noopener noreferrer" aria-label="Visit Zanda's GitHub profile">
+              <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.55.1.76-.24.76-.54v-2.08c-3.1.67-3.76-1.32-3.76-1.32-.5-1.28-1.24-1.62-1.24-1.62-1.01-.69.08-.68.08-.68 1.12.08 1.71 1.15 1.71 1.15 1 .1.76 2.02 3.23 1.44.1-.72.39-1.21.7-1.49-2.47-.28-5.07-1.24-5.07-5.5 0-1.22.44-2.22 1.15-3-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.05 1.15a10.6 10.6 0 0 1 5.55 0c2.12-1.44 3.05-1.15 3.05-1.15.61 1.54.23 2.68.12 2.96.71.78 1.14 1.78 1.14 3.01 0 4.27-2.6 5.21-5.08 5.49.4.34.75 1 .75 2.02v3c0 .3.2.65.77.54A11.1 11.1 0 0 0 12 .9Z"/></svg>
+              <span>GitHub</span><span class="social-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="social-link" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="Open LinkedIn">
+              <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.45 2H3.55C2.69 2 2 2.68 2 3.52v16.96c0 .84.69 1.52 1.55 1.52h16.9c.86 0 1.55-.68 1.55-1.52V3.52c0-.84-.69-1.52-1.55-1.52ZM7.93 18.7H4.98V9.2h2.95v9.5ZM6.45 7.9a1.71 1.71 0 1 1 0-3.42 1.71 1.71 0 0 1 0 3.42Zm12.25 10.8h-2.94v-4.62c0-1.1-.02-2.51-1.53-2.51-1.53 0-1.76 1.19-1.76 2.43v4.7H9.53V9.2h2.82v1.3h.04c.39-.74 1.35-1.52 2.78-1.52 2.97 0 3.53 1.95 3.53 4.48v5.24Z"/></svg>
+              <span>LinkedIn</span><span class="social-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="social-link social-back-to-top" href="#home" aria-label="Back to top"><span aria-hidden="true">↑</span><span>Back to top</span></a>
           </div>
         </div>
       </section>
