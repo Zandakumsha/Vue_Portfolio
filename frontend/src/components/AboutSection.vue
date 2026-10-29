@@ -2,22 +2,13 @@
   <section id="about" class="page-wrap content-section about-section">
     <p class="section-kicker"><span>01</span> A NOTE ABOUT ME</p>
     <div class="about-grid">
-      <div class="about-portrait-column">
-        <figure class="about-portrait-card">
-          <div class="about-portrait-backdrop" aria-hidden="true"></div>
-          <img
-            class="about-portrait"
-            src="/Screenshot%202026-06-05%20184643.png"
-            alt="Portrait of Zanda"
-            loading="lazy"
-          />
-          <figcaption class="about-portrait-caption">
-            <span class="about-portrait-index">01 / 01</span>
-            <span>THE PERSON BEHIND THE PIXELS</span>
-          </figcaption>
-          <span class="about-portrait-sticker" aria-hidden="true">&lt;/&gt;</span>
-        </figure>
-        <p class="handwritten about-handwritten">and always learning ↗</p>
+      <div class="about-visual-panel" role="img" aria-label="Animated typographic illustration representing curiosity and creative development">
+        <span class="about-visual-orbit" aria-hidden="true"></span>
+        <span class="about-visual-monogram" aria-hidden="true">z.</span>
+        <div class="about-visual-caption">
+          <span>01 / ALWAYS LEARNING</span>
+          <span>MADE WITH CURIOSITY</span>
+        </div>
       </div>
       <div class="body-copy about-body-copy">
         <h2 class="about-intro-heading">Curious mind.<br /><em>Builder's mindset.</em></h2>
