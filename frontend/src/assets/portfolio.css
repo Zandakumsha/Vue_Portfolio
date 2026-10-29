@@ -1467,3 +1467,115 @@ hr { border: 0; border-top: 1px solid var(--line); }
     width: 100%;
   }
 }
+
+
+/* Portfolio polish pass: clearer focus, responsive project cards and calmer motion */
+.site-shell section[id] {
+  scroll-margin-top: 6.5rem;
+}
+
+.site-shell a:focus-visible,
+.site-shell button:focus-visible,
+.site-shell input:focus-visible,
+.site-shell textarea:focus-visible,
+.site-shell select:focus-visible {
+  outline: 3px solid var(--rose);
+  outline-offset: 4px;
+}
+
+.site-shell .project-card {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  transition: box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.site-shell .project-card:hover {
+  border-color: color-mix(in srgb, var(--rose) 42%, var(--line));
+  box-shadow: 0 18px 42px rgb(48 38 32 / 10%);
+}
+
+.site-shell .project-card .project-art {
+  overflow: hidden;
+}
+
+.site-shell .project-card .project-screenshot {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 350ms ease;
+}
+
+.site-shell .project-card .project-art:hover .project-screenshot,
+.site-shell .project-card .project-art:focus-visible .project-screenshot {
+  transform: scale(1.035);
+}
+
+.site-shell .project-card .project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .55rem .9rem;
+}
+
+.site-shell .project-case-dialog {
+  max-width: min(760px, calc(100vw - 2rem));
+  max-height: min(86dvh, 900px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.site-shell .project-case-dialog::backdrop {
+  background: rgb(32 24 20 / 68%);
+  backdrop-filter: blur(4px);
+}
+
+.site-shell .tag-list span {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 900px) {
+  .site-shell .projects-grid,
+  .site-shell .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .site-shell .projects-grid,
+  .site-shell .project-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .site-shell .project-card .project-art {
+    min-height: 210px;
+  }
+
+  .site-shell .project-card .project-actions > * {
+    min-height: 42px;
+  }
+
+  .site-shell .project-case-dialog {
+    width: calc(100% - 1rem);
+    max-width: none;
+    max-height: 90dvh;
+    padding: 1rem;
+  }
+
+  .site-shell .topbar .navigation {
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-shell *,
+  .site-shell *::before,
+  .site-shell *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
