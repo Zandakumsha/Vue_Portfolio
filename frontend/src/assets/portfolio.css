@@ -3448,3 +3448,152 @@ summary:focus-visible {
   .navigation a,
   .navigation .nav-contact { transition: none !important; }
 }
+
+
+/* Marusya Design reference palette: Wood Bark, Cloudy, Pine Cone, Heathered Grey and Caput Mortuum. */
+:root {
+  --paper: #B9A899;
+  --ink: #302620;
+  --muted: #665448;
+  --rose: #612A22;
+  --line: #C9BDB1;
+  --soft: #D8CEC3;
+  --sage: #948C7A;
+  --sage-ink: #302620;
+  --surface: #E6DDD3;
+  --surface-border: #B9A899;
+  --decorative-rose: #612A22;
+  --decorative-lavender: #D8CEC3;
+  --decorative-sage: #775F4E;
+}
+body { background: #B9A899; color: #302620; }
+.site-shell { background: #B9A899; color: #302620; }
+.site-shell.theme-dark {
+  --paper: #302620;
+  --ink: #F4ECE4;
+  --muted: #CBBDB0;
+  --rose: #B76B5D;
+  --line: #59473D;
+  --soft: #41342D;
+  --sage: #948C7A;
+  --sage-ink: #302620;
+  --surface: #3B2F28;
+  --surface-border: #775F4E;
+  --decorative-rose: #B76B5D;
+  --decorative-lavender: #41342D;
+  --decorative-sage: #948C7A;
+  background: #302620;
+  color: #F4ECE4;
+}
+.site-shell.theme-dark .about-section,
+.site-shell.theme-dark .skills-section,
+.site-shell.theme-dark .contact-section,
+.site-shell.theme-dark .work-section,
+.site-shell.theme-dark .journey-section,
+.site-shell.theme-dark .site-footer { background: #302620; color: #F4ECE4; }
+.site-shell.theme-dark .project-card,
+.site-shell.theme-dark .timeline-carousel .portfolio-timeline-card,
+.site-shell.theme-dark .project-case-dialog { background: #3B2F28; color: #F4ECE4; border-color: #59473D; }
+.site-shell.theme-dark .project-card .project-description,
+.site-shell.theme-dark .project-case-dialog p,
+.site-shell.theme-dark .project-case-dialog li { color: #CBBDB0; }
+.site-shell.theme-dark .project-card .tag-list span { background: #41342D; color: #E7D9CC; border-color: #59473D; }
+
+.announcement { background: #302620; color: #F4ECE4; }
+.topbar {
+  background: rgba(185, 168, 153, .96);
+  border-bottom-color: #A79788;
+}
+.site-shell.theme-dark .topbar { background: rgba(48, 38, 32, .96); border-bottom-color: #59473D; }
+.brand-mark,
+.navigation .nav-contact,
+.project-filter.is-active,
+.project-case-dialog-actions a:first-child {
+  background: #612A22;
+  border-color: #612A22;
+  color: #FFF8F0;
+}
+.brand-mark { box-shadow: 0 5px 14px rgba(48, 38, 32, .16); }
+.navigation a:hover,
+.navigation a:focus-visible { color: #612A22; }
+.navigation .nav-contact:hover,
+.project-case-dialog-actions a:first-child:hover,
+.project-filter.is-active:hover { background: #4F211B; color: #FFF8F0; }
+.work-section,
+.journey-section,
+.site-footer { background: #D8CEC3; }
+.site-footer { border-top-color: #C2B4A7; }
+.site-shell.theme-dark .work-section,
+.site-shell.theme-dark .journey-section,
+.site-shell.theme-dark .site-footer { border-color: #59473D; }
+.about-section,
+.skills-section,
+.contact-section { background: #B9A899; }
+.site-shell.theme-dark .about-section,
+.site-shell.theme-dark .skills-section,
+.site-shell.theme-dark .contact-section { background: #302620; }
+
+.project-card {
+  background: #E6DDD3;
+  border-color: #C9BDB1;
+  box-shadow: 0 7px 22px rgba(48, 38, 32, .07);
+}
+.project-card:hover {
+  border-color: #948C7A;
+  box-shadow: 0 15px 35px rgba(48, 38, 32, .14);
+}
+.project-card .project-description { color: #665448; }
+.project-card .tag-list span {
+  background: #D8CEC3;
+  border-color: #C9BDB1;
+  color: #4D3D33;
+}
+.project-card .project-actions { border-top-color: #C9BDB1; }
+.project-card .project-link,
+.project-case-dialog h4,
+.project-case-facts span { color: #612A22; }
+.project-card .project-link:hover { color: #302620; }
+.project-art.chambray { background: #948C7A; color: #FFF8F0; }
+.project-art.espresso { background: #302620; color: #F4ECE4; }
+.project-art.glacier { background: #B9A899; color: #302620; }
+.project-art.bisque { background: #D8CEC3; color: #302620; }
+.project-art.clay { background: #612A22; color: #FFF8F0; }
+.project-art { border-color: rgba(48, 38, 32, .12); }
+.project-case-dialog {
+  background: #E6DDD3;
+  border-color: #B9A899;
+  box-shadow: 0 30px 100px rgba(30, 22, 18, .32);
+}
+.project-case-dialog-actions a:first-child { color: #FFF8F0; }
+.project-case-dialog-actions a:not(:first-child):hover { border-color: #612A22; }
+
+.project-filter {
+  border-color: #B9A899;
+  color: #4D3D33;
+  background: rgba(230, 221, 211, .86);
+}
+.timeline-carousel .portfolio-timeline-card {
+  background: #E6DDD3;
+  border-color: #C9BDB1;
+  box-shadow: 0 8px 24px rgba(48, 38, 32, .08);
+}
+.timeline-carousel .portfolio-timeline-marker {
+  background: #B9A899;
+  border-color: #612A22;
+  color: #612A22;
+}
+.timeline-carousel .portfolio-timeline-item.is-current .portfolio-timeline-marker {
+  background: #612A22;
+  color: #FFF8F0;
+}
+.timeline-marquee-group::before { background: #948C7A; }
+.timeline-pause-toggle { border-color: #B9A899; color: #4D3D33; }
+.timeline-pause-toggle:hover { background: #612A22; color: #FFF8F0; }
+button:focus-visible, a:focus-visible, summary:focus-visible {
+  outline: 3px solid #612A22;
+  outline-offset: 3px;
+}
+@media (max-width: 760px) {
+  .topbar { background: rgba(185, 168, 153, .98); }
+  .site-shell.theme-dark .topbar { background: rgba(48, 38, 32, .98); }
+}
