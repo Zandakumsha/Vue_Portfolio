@@ -1263,3 +1263,56 @@ hr { border: 0; border-top: 1px solid var(--line); }
     transition: none !important;
   }
 }
+
+
+/* Accessible, branded social links with inline SVG icons */
+.site-shell .social-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .8rem 1.2rem;
+}
+.site-shell .social-links .social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .55rem;
+  min-height: 42px;
+  padding: .55rem .8rem;
+  border: 1px solid rgb(255 248 237 / 42%);
+  border-radius: 999px;
+  color: var(--paper);
+  font-size: .78rem;
+  font-weight: 750;
+  letter-spacing: .04em;
+  text-decoration: none;
+  transition: transform .2s ease, background-color .2s ease, color .2s ease, border-color .2s ease;
+}
+.site-shell .social-links .social-icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+}
+.site-shell .social-links .social-arrow {
+  font-size: .9rem;
+  transition: transform .2s ease;
+}
+.site-shell .social-links .social-link:hover,
+.site-shell .social-links .social-link:focus-visible {
+  transform: translateY(-2px);
+  border-color: var(--paper);
+  background: var(--paper);
+  color: var(--rose);
+}
+.site-shell .social-links .social-link:hover .social-arrow {
+  transform: translate(2px, -2px);
+}
+.site-shell .social-links .social-back-to-top {
+  border-color: transparent;
+  background: transparent;
+}
+@media (max-width: 480px) {
+  .site-shell .social-links { gap: .55rem; }
+  .site-shell .social-links .social-link { padding: .5rem .65rem; font-size: .72rem; }
+}
