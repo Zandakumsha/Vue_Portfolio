@@ -43,7 +43,7 @@ function resetTilt(event) {
                   decoding="async"
                 />
                 <iframe
-                  v-if="project.name === 'WeConnect' && project.demoUrl"
+                  v-else-if="project.name === 'WeConnect' && project.demoUrl"
                   class="project-live-demo"
                   :src="project.demoUrl"
                   :title="'Live preview of ' + project.name"
