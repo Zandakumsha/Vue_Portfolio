@@ -1030,3 +1030,51 @@ hr { border: 0; border-top: 1px solid var(--line); }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
 }
+
+
+/* Contact section: solid button-red background, without changing layout */
+.site-shell:not(.theme-dark) .contact-section {
+  background: var(--rose);
+  color: var(--paper);
+}
+.site-shell:not(.theme-dark) .contact-section .contact-overline,
+.site-shell:not(.theme-dark) .contact-section .contact-description,
+.site-shell:not(.theme-dark) .contact-section .contact-form-note {
+  color: var(--paper);
+  opacity: .92;
+}
+.site-shell:not(.theme-dark) .contact-section .contact-inner h2,
+.site-shell:not(.theme-dark) .contact-section .contact-flower,
+.site-shell:not(.theme-dark) .contact-section .social-links a {
+  color: var(--paper);
+}
+.site-shell:not(.theme-dark) .contact-section .contact-form label {
+  color: var(--paper);
+}
+.site-shell:not(.theme-dark) .contact-section .contact-form input,
+.site-shell:not(.theme-dark) .contact-section .contact-form textarea {
+  border-color: rgb(255 248 237 / 48%);
+  background: var(--paper);
+  color: #402719;
+}
+.site-shell:not(.theme-dark) .contact-section .contact-form input::placeholder,
+.site-shell:not(.theme-dark) .contact-section .contact-form textarea::placeholder {
+  color: #806b5a;
+}
+.site-shell:not(.theme-dark) .contact-section .contact-form input:focus-visible,
+.site-shell:not(.theme-dark) .contact-section .contact-form textarea:focus-visible {
+  outline-color: var(--paper);
+}
+.site-shell:not(.theme-dark) .contact-section .contact-orbit {
+  border-color: rgb(255 248 237 / 25%);
+}
+.site-shell:not(.theme-dark) .contact-section .contact-button {
+  border-color: var(--paper);
+  background: var(--paper);
+  color: #402719;
+}
+.site-shell:not(.theme-dark) .contact-section .contact-button:hover {
+  border-color: #402719;
+  background: #402719;
+  color: var(--paper);
+}
