@@ -1,6 +1,6 @@
 <script setup>
-defineProps({ menuOpen: Boolean })
-const emit = defineEmits(['update:menuOpen'])
+defineProps({ menuOpen: Boolean, themeDark: Boolean })
+const emit = defineEmits(['update:menuOpen', 'toggle-theme'])
 function closeMenu() { emit('update:menuOpen', false) }
 </script>
 
@@ -35,5 +35,6 @@ function closeMenu() { emit('update:menuOpen', false) }
         <a href="#achievements" @click="closeMenu">Milestones</a>
         <a class="nav-contact" href="#contact" @click="closeMenu">Let's talk ↗</a>
       </nav>
+      <button class="theme-toggle" type="button" :aria-pressed="themeDark" @click="emit('toggle-theme')">{{ themeDark ? 'Light mode ☼' : 'Dark mode ☾' }}</button>
     </header>
 </template>
