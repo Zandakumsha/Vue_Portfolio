@@ -1078,3 +1078,40 @@ hr { border: 0; border-top: 1px solid var(--line); }
   background: #402719;
   color: var(--paper);
 }
+
+
+/* Match the navbar background to the solid contact-section red */
+.site-shell:not(.theme-dark) .topbar {
+  background: var(--rose);
+  border-bottom-color: var(--rose);
+}
+.site-shell:not(.theme-dark) .topbar .brand,
+.site-shell:not(.theme-dark) .topbar .brand-copy,
+.site-shell:not(.theme-dark) .topbar .brand-copy small,
+.site-shell:not(.theme-dark) .topbar .navigation a,
+.site-shell:not(.theme-dark) .topbar .menu-toggle {
+  color: var(--paper);
+}
+.site-shell:not(.theme-dark) .topbar .brand-mark {
+  border-color: rgb(255 248 237 / 55%);
+  color: var(--paper);
+}
+.site-shell:not(.theme-dark) .topbar .navigation .nav-contact {
+  border-color: var(--paper);
+  color: var(--paper);
+}
+.site-shell:not(.theme-dark) .topbar .navigation .nav-contact:hover,
+.site-shell:not(.theme-dark) .topbar .navigation .nav-contact:focus-visible {
+  background: var(--paper);
+  color: var(--rose);
+}
+@media (max-width: 700px) {
+  .site-shell:not(.theme-dark) .topbar .navigation {
+    background: var(--rose);
+    border-bottom-color: rgb(255 248 237 / 35%);
+  }
+  .site-shell:not(.theme-dark) .topbar .navigation a {
+    color: var(--paper);
+    border-bottom-color: rgb(255 248 237 / 25%);
+  }
+}
