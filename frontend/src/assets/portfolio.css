@@ -3065,3 +3065,114 @@ body { background: #d2e2ec; color: #3a2119; }
   .project-case-facts { grid-template-columns: 1fr; }
   .project-case-facts > div:last-child { grid-column: auto; }
 }
+
+
+/* Horizontal, continuously looping journey carousel. */
+.timeline-carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 18px 0 14px;
+}
+.timeline-carousel-hint { margin: 0; color: var(--muted); font-size: 12px; }
+.timeline-carousel-hint span { color: var(--rose); padding-left: 6px; }
+.timeline-pause-toggle { margin-left: auto; }
+.portfolio-timeline.timeline-carousel {
+  --timeline-card-width: clamp(260px, 31vw, 340px);
+  --timeline-card-gap: 18px;
+  position: relative;
+  width: 100%;
+  max-width: none;
+  overflow: hidden;
+  padding: 16px 0 24px;
+  isolation: isolate;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 2.5%, #000 97.5%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 2.5%, #000 97.5%, transparent);
+}
+.timeline-carousel .timeline-marquee {
+  display: flex;
+  width: max-content;
+  align-items: stretch;
+  animation: journey-marquee 42s linear infinite;
+  will-change: transform;
+}
+.timeline-carousel.is-paused .timeline-marquee,
+.timeline-carousel:focus-within .timeline-marquee,
+.timeline-carousel:hover .timeline-marquee {
+  animation-play-state: paused;
+}
+.timeline-marquee-group {
+  position: relative;
+  display: flex;
+  flex: 0 0 auto;
+  align-items: stretch;
+  gap: var(--timeline-card-gap);
+  padding-right: var(--timeline-card-gap);
+}
+.timeline-marquee-group::before {
+  content: "";
+  position: absolute;
+  top: 16px;
+  right: 0;
+  left: 0;
+  z-index: -1;
+  height: 2px;
+  background: var(--line);
+}
+.timeline-carousel .portfolio-timeline-item {
+  position: relative;
+  display: flex;
+  flex: 0 0 var(--timeline-card-width);
+  flex-direction: column;
+  gap: 13px;
+  width: var(--timeline-card-width);
+  margin: 0;
+  padding-top: 0;
+  animation: none;
+}
+.timeline-carousel .portfolio-timeline-marker {
+  position: relative;
+  top: auto !important;
+  left: auto;
+  display: grid;
+  flex: 0 0 34px;
+  width: 34px !important;
+  height: 34px !important;
+  margin: 0 0 0 18px !important;
+  border-width: 2px;
+  background: var(--paper);
+}
+.timeline-carousel .portfolio-timeline-card,
+.timeline-carousel .portfolio-timeline-item.is-even .portfolio-timeline-card {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+  min-height: 275px;
+  margin: 0 !important;
+  padding: 17px 18px !important;
+  border-radius: 5px 19px 5px 19px !important;
+}
+.timeline-carousel .portfolio-timeline-card h3 { font-size: 19px !important; }
+.timeline-carousel .portfolio-timeline-description { font-size: 12px !important; line-height: 1.6 !important; }
+.timeline-carousel .portfolio-timeline-detail { margin-top: auto !important; padding-top: 12px; }
+.timeline-carousel .portfolio-timeline-detail[open] { margin-top: 12px !important; }
+.timeline-carousel .portfolio-timeline-skills li { font-size: 9px !important; }
+@keyframes journey-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.journey-section .journey-finale { margin: 14px 0 22px !important; }
+.journey-section .journey-bottom-grid { margin-top: 22px !important; }
+@media (max-width: 760px) {
+  .timeline-carousel-controls { align-items: flex-start; }
+  .timeline-carousel-hint { max-width: 200px; line-height: 1.5; }
+  .portfolio-timeline.timeline-carousel { --timeline-card-width: min(78vw, 310px); --timeline-card-gap: 13px; }
+  .timeline-carousel .portfolio-timeline-card,
+  .timeline-carousel .portfolio-timeline-item.is-even .portfolio-timeline-card { min-height: 300px; padding: 15px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .timeline-carousel .timeline-marquee { animation: none; }
+  .timeline-carousel .timeline-marquee-group[aria-hidden="true"] { display: none; }
+}
