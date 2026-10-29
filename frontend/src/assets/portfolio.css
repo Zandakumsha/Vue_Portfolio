@@ -3239,3 +3239,212 @@ body { background: #d2e2ec; color: #3a2119; }
   .project-card { padding: 10px !important; }
   .project-case-dialog .demo-account-list { grid-template-columns: 1fr; }
 }
+
+
+/* Visual polish pass — unify the Chambray / Espresso palette and reduce decorative noise. */
+:root {
+  --paper: #f5f0ea;
+  --ink: #34231e;
+  --muted: #75665f;
+  --rose: #648dad;
+  --line: #d8d0c8;
+  --soft: #e7edf0;
+  --sage: #e8c7b0;
+  --sage-ink: #34231e;
+  --surface: #fffaf5;
+  --surface-border: #d8c7ba;
+  --decorative-rose: #e8c7b0;
+  --decorative-lavender: #d2e2ec;
+  --decorative-sage: #648dad;
+}
+body {
+  background: #f5f0ea;
+  color: #34231e;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+.site-shell {
+  background: #f5f0ea;
+  color: #34231e;
+  overflow-x: clip;
+}
+.site-shell.theme-dark {
+  --paper: #29201d;
+  --ink: #f6eee7;
+  --muted: #c6b6aa;
+  --rose: #8fb2ce;
+  --line: #51413a;
+  --soft: #35302d;
+  --sage: #bd967e;
+  --sage-ink: #29201d;
+  --surface: #332823;
+  --surface-border: #655047;
+  --decorative-rose: #bd967e;
+  --decorative-lavender: #334754;
+  --decorative-sage: #8fb2ce;
+  background: #29201d;
+  color: #f6eee7;
+}
+.site-shell.theme-dark .work-section,
+.site-shell.theme-dark .journey-section,
+.site-shell.theme-dark .site-footer { background: var(--paper); color: var(--ink); }
+.site-shell.theme-dark .project-case-dialog { background: var(--surface); color: var(--ink); }
+.site-shell.theme-dark .project-case-dialog-close { background: var(--surface); color: var(--ink); }
+.site-shell.theme-dark .project-case-dialog p,
+.site-shell.theme-dark .project-case-dialog li { color: var(--muted); }
+
+/* Let the warm paper colour act as the neutral base; reserve blue for meaningful emphasis. */
+.announcement {
+  background: #34231e;
+  color: #f5f0ea;
+  letter-spacing: .12em;
+}
+.topbar {
+  min-height: 78px;
+  background: rgba(245, 240, 234, .96);
+  border-bottom: 1px solid #d8d0c8;
+  backdrop-filter: blur(16px);
+}
+.site-shell.theme-dark .topbar {
+  background: rgba(41, 32, 29, .95);
+  border-bottom-color: #51413a;
+}
+.brand-mark {
+  background: #648dad;
+  color: #fffaf5;
+  box-shadow: 0 5px 14px rgba(100, 141, 173, .18);
+}
+.navigation a { transition: color .2s ease, background .2s ease; }
+.navigation a:hover,
+.navigation a:focus-visible { color: #648dad; }
+.navigation .nav-contact {
+  background: #648dad;
+  color: #fffaf5;
+  border: 1px solid #648dad;
+  border-radius: 5px 15px 5px 15px;
+  padding: 10px 15px;
+}
+.navigation .nav-contact:hover { background: #4e7899; color: #fffaf5; }
+section { scroll-margin-top: 94px; }
+.work-section,
+.journey-section,
+.site-footer { background: #eaf0f2; }
+.site-footer { border-top: 1px solid #d1dce1; }
+.site-shell.theme-dark .work-section,
+.site-shell.theme-dark .journey-section,
+.site-shell.theme-dark .site-footer { border-color: #51413a; }
+
+/* Refined section hierarchy and rhythm. */
+.section-kicker,
+.project-meta,
+.project-number {
+  letter-spacing: .13em;
+}
+h1, h2, h3, .hero-title, .section-title, .journey-heading {
+  text-wrap: balance;
+}
+.project-grid { gap: clamp(14px, 2vw, 24px) !important; }
+.project-card {
+  background: #fffaf5;
+  border: 1px solid #e0d5cb;
+  box-shadow: 0 7px 22px rgba(52, 35, 30, .045);
+  transition: transform .24s ease, box-shadow .24s ease, border-color .24s ease;
+}
+.project-card:hover {
+  border-color: #a9c1d2;
+  box-shadow: 0 15px 35px rgba(52, 35, 30, .09);
+}
+.project-card .project-description { color: #75665f; }
+.project-card .tag-list span {
+  background: #eaf0f2;
+  border: 1px solid #d7e1e6;
+  color: #425c6e;
+  border-radius: 4px 10px 4px 10px;
+}
+.project-card .project-actions { border-top: 1px solid #e8ded5; }
+.project-card .project-link { color: #4f7897; }
+.project-card .project-case-study-trigger { font-weight: 700; }
+.project-card .project-link:hover { color: #34231e; }
+.project-art.chambray { background: #7b9fc0; color: #fffaf5; }
+.project-art.espresso { background: #34231e; color: #f5f0ea; }
+.project-art.glacier { background: #d2e2ec; color: #34231e; }
+.project-art.bisque { background: #e8c7b0; color: #34231e; }
+.project-art.clay { background: #8b7465; color: #fffaf5; }
+.project-art {
+  border: 1px solid rgba(52, 35, 30, .06);
+}
+.project-case-dialog {
+  background: #fffaf5;
+  border-color: #d8c7ba;
+  box-shadow: 0 30px 100px rgba(30, 22, 18, .28);
+}
+.project-case-dialog h4,
+.project-case-facts span { color: #4f7897; }
+.project-case-dialog-actions a:first-child {
+  background: #648dad;
+  border-color: #648dad;
+  color: #fffaf5;
+}
+.project-case-dialog-actions a:first-child:hover { background: #4e7899; }
+.project-case-dialog-actions a:not(:first-child):hover { border-color: #648dad; }
+
+/* Use the pale blue as a section surface and the peach as a small highlight, not competing accents. */
+.about-section,
+.skills-section,
+.contact-section { background: #f5f0ea; }
+.work-section,
+.journey-section { background: #eaf0f2; }
+.site-shell.theme-dark .about-section,
+.site-shell.theme-dark .skills-section,
+.site-shell.theme-dark .contact-section { background: #29201d; }
+.site-shell.theme-dark .work-section,
+.site-shell.theme-dark .journey-section { background: #303b40; }
+.project-filter {
+  border: 1px solid #c8d5dd;
+  color: #425c6e;
+  background: rgba(255, 250, 245, .7);
+  border-radius: 4px 12px 4px 12px;
+}
+.project-filter.is-active {
+  color: #fffaf5;
+  background: #648dad;
+  border-color: #648dad;
+}
+.timeline-carousel .portfolio-timeline-card {
+  background: #fffaf5;
+  border: 1px solid #dce2e3;
+  box-shadow: 0 8px 24px rgba(52, 35, 30, .055);
+}
+.timeline-carousel .portfolio-timeline-marker {
+  border-color: #648dad;
+  color: #4f7897;
+}
+.timeline-carousel .portfolio-timeline-item.is-current .portfolio-timeline-marker {
+  background: #648dad;
+  color: #fffaf5;
+}
+.timeline-marquee-group::before { background: #c4d4dd; }
+.timeline-pause-toggle {
+  border-color: #c8d5dd;
+  color: #425c6e;
+}
+.timeline-pause-toggle:hover {
+  background: #648dad;
+  color: #fffaf5;
+}
+button:focus-visible,
+a:focus-visible,
+summary:focus-visible {
+  outline: 3px solid #648dad;
+  outline-offset: 3px;
+}
+@media (max-width: 760px) {
+  .topbar { min-height: 68px; }
+  .project-grid { gap: 14px !important; }
+  .project-card { padding: 10px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-card,
+  .navigation a,
+  .navigation .nav-contact { transition: none !important; }
+}
