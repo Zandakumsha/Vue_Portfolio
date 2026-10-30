@@ -3464,3 +3464,108 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .site-shell .hero-actions .button-primary span { transition: none; }
 }
+
+
+/* Sections 05 and 06: remove stacked shadows and clarify card layers */
+.site-shell #blog .journal-archive,
+.site-shell #achievements .credential-group {
+  box-shadow: none !important;
+  transform: none !important;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--soft) 58%, var(--paper));
+}
+.site-shell #blog .journal-archive {
+  padding: clamp(1rem, 2.5vw, 1.75rem);
+  border-radius: 8px 24px;
+}
+.site-shell #blog .journal-copy {
+  box-shadow: 0 5px 18px rgb(48 38 32 / 5%);
+  border: 1px solid var(--line);
+  border-radius: 8px 20px;
+  background: var(--paper);
+}
+.site-shell #blog .journal-slide {
+  border-color: var(--line);
+  border-radius: 8px 20px;
+  box-shadow: none;
+}
+.site-shell #blog .journal-index-item {
+  box-shadow: none;
+  transition: border-color .2s ease, background-color .2s ease, color .2s ease;
+}
+.site-shell #blog .journal-index-item:hover,
+.site-shell #blog .journal-index-item.is-active {
+  box-shadow: none;
+  border-color: var(--rose);
+}
+.site-shell #blog .journal-takeaway {
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--rose);
+  border-radius: 4px 12px;
+}
+.site-shell #achievements .credential-group {
+  padding: clamp(1.1rem, 2.5vw, 1.7rem);
+  border-radius: 8px 24px;
+}
+.site-shell #achievements .achievement-card {
+  box-shadow: 0 5px 18px rgb(48 38 32 / 5%);
+  border-color: var(--line);
+  border-radius: 8px 20px;
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.site-shell #achievements .achievement-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--sage);
+  box-shadow: 0 9px 24px rgb(48 38 32 / 8%);
+}
+.site-shell #achievements .credential-group-heading {
+  padding-bottom: .85rem;
+  border-bottom: 1px solid var(--line);
+}
+.site-shell.theme-dark #blog .journal-archive,
+.site-shell.theme-dark #achievements .credential-group {
+  border-color: #59463b;
+  background: #29211c;
+  box-shadow: none !important;
+}
+.site-shell.theme-dark #blog .journal-copy,
+.site-shell.theme-dark #achievements .achievement-card {
+  border-color: #59463b;
+  background: #302620;
+  box-shadow: 0 5px 18px rgb(0 0 0 / 12%);
+}
+.site-shell.theme-dark #blog .journal-slide {
+  border-color: #59463b;
+  background: #302620;
+  box-shadow: none;
+}
+.site-shell.theme-dark #blog .journal-index-item {
+  border-color: #59463b;
+  background: #302620;
+  color: #f5eee7;
+}
+.site-shell.theme-dark #blog .journal-index-item:hover,
+.site-shell.theme-dark #blog .journal-index-item.is-active {
+  border-color: #d19a8e;
+  background: #3a2b25;
+}
+.site-shell.theme-dark #blog .journal-takeaway {
+  border-color: #59463b;
+  border-left-color: #d19a8e;
+  background: #261d18;
+  color: #f5eee7;
+}
+.site-shell.theme-dark #achievements .credential-group-heading {
+  border-bottom-color: #59463b;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .site-shell #achievements .achievement-card:hover {
+    box-shadow: 0 9px 24px rgb(48 38 32 / 8%);
+  }
+}
+@media (max-width: 640px) {
+  .site-shell #blog .journal-archive,
+  .site-shell #achievements .credential-group {
+    padding: 1rem;
+  }
+}
