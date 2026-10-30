@@ -1894,3 +1894,122 @@ hr { border: 0; border-top: 1px solid var(--line); }
   background: var(--footer-background) !important;
   color: var(--footer-foreground) !important;
 }
+
+
+/* Dark-mode refinement: consistent surfaces, readable text and form controls */
+.site-shell.theme-dark {
+  background: #211a16;
+  color: #f5f1eb;
+}
+
+.site-shell.theme-dark main,
+.site-shell.theme-dark .manifesto,
+.site-shell.theme-dark .work-section,
+.site-shell.theme-dark .skills-section,
+.site-shell.theme-dark .journey-section,
+.site-shell.theme-dark .portfolio-data-section,
+.site-shell.theme-dark .contact-section {
+  background-color: #211a16;
+  color: #f5f1eb;
+}
+
+.site-shell.theme-dark .manifesto,
+.site-shell.theme-dark .explore-card,
+.site-shell.theme-dark .project-card,
+.site-shell.theme-dark .portfolio-timeline-card,
+.site-shell.theme-dark .achievement-card,
+.site-shell.theme-dark .journal-archive,
+.site-shell.theme-dark .journal-copy,
+.site-shell.theme-dark .credential-group,
+.site-shell.theme-dark .project-case-dialog {
+  background-color: #302620;
+  color: #f5f1eb;
+  border-color: #5c463b;
+}
+
+.site-shell.theme-dark h1,
+.site-shell.theme-dark h2,
+.site-shell.theme-dark h3,
+.site-shell.theme-dark h4,
+.site-shell.theme-dark p,
+.site-shell.theme-dark li,
+.site-shell.theme-dark label,
+.site-shell.theme-dark .section-kicker,
+.site-shell.theme-dark .project-meta,
+.site-shell.theme-dark .contact-overline,
+.site-shell.theme-dark .contact-description {
+  color: inherit;
+}
+
+.site-shell.theme-dark .muted,
+.site-shell.theme-dark small,
+.site-shell.theme-dark .project-card p,
+.site-shell.theme-dark .journal-copy p,
+.site-shell.theme-dark .achievement-issuer {
+  color: #c7b8aa;
+}
+
+.site-shell.theme-dark a:not(.nav-contact):not(.social-link) {
+  color: #e0a08e;
+}
+
+.site-shell.theme-dark .project-card a,
+.site-shell.theme-dark .social-links .social-link {
+  border-color: #775f4e;
+}
+
+.site-shell.theme-dark input,
+.site-shell.theme-dark textarea,
+.site-shell.theme-dark select,
+.site-shell.theme-dark .contact-form input,
+.site-shell.theme-dark .contact-form textarea {
+  background: #302620;
+  color: #fff8ed;
+  border: 1px solid #775f4e;
+  border-radius: 8px;
+}
+
+.site-shell.theme-dark input::placeholder,
+.site-shell.theme-dark textarea::placeholder {
+  color: #b9a899;
+  opacity: 1;
+}
+
+.site-shell.theme-dark button:not(.theme-toggle):not(.menu-toggle) {
+  border-color: #775f4e;
+}
+
+.site-shell.theme-dark .contact-section .contact-button,
+.site-shell.theme-dark .button-primary {
+  background: #c17a68;
+  color: #211a16;
+  border-color: #c17a68;
+}
+
+.site-shell.theme-dark .contact-section .contact-button:hover,
+.site-shell.theme-dark .button-primary:hover {
+  background: #e0a08e;
+  border-color: #e0a08e;
+  color: #211a16;
+}
+
+.site-shell.theme-dark .contact-section .contact-orbit,
+.site-shell.theme-dark .contact-section .contact-flower {
+  display: none !important;
+}
+
+.site-shell.theme-dark .project-case-dialog::backdrop {
+  background: rgb(0 0 0 / 78%);
+}
+
+.site-shell.theme-dark :focus-visible {
+  outline-color: #e0a08e;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .site-shell.theme-dark .project-card,
+  .site-shell.theme-dark .explore-card,
+  .site-shell.theme-dark .achievement-card {
+    transition: background-color .2s ease, border-color .2s ease, color .2s ease, transform .2s ease;
+  }
+}
