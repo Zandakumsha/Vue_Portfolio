@@ -384,8 +384,6 @@ onUnmounted(() => {
   .toolkit-art-ring { animation: none; }
   .tool-fade-enter-active, .tool-fade-leave-active, .toolkit-progress-item, .toolkit-control { transition: none; }
 }
-
-/* Keep the toolkit in sync with the site's espresso-brown dark theme. */
 :global(.theme-dark) .toolkit-showcase {
   --toolkit-ink: #f5f1eb;
   --toolkit-muted: #c7b8aa;
