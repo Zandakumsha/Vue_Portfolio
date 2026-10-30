@@ -2464,3 +2464,63 @@ hr { border: 0; border-top: 1px solid var(--line); }
     transition-duration: .01ms !important;
   }
 }
+
+
+/* Small red editorial labels and page-number markers */
+.site-shell .section-kicker,
+.site-shell .section-kicker span,
+.site-shell .project-meta,
+.site-shell .eyebrow,
+.site-shell .section-eyebrow,
+.site-shell .journal-footnote,
+.site-shell .journal-footnote > span,
+.site-shell .journal-footnote-text {
+  color: #8f382d !important;
+  font-family: var(--mono, "SFMono-Regular", Consolas, monospace) !important;
+  font-size: .62rem !important;
+  font-weight: 750 !important;
+  letter-spacing: .13em !important;
+  line-height: 1.7 !important;
+  text-transform: uppercase;
+}
+
+.site-shell .section-kicker,
+.site-shell .journal-footnote {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: .55rem;
+}
+
+.site-shell .section-kicker span {
+  font-size: .72rem !important;
+  letter-spacing: .08em !important;
+}
+
+.site-shell .journal-footnote {
+  margin-top: 1.5rem;
+}
+
+.site-shell .journal-footnote > span:first-child {
+  font-size: .9rem !important;
+  line-height: 1 !important;
+}
+
+.site-shell.theme-dark .section-kicker,
+.site-shell.theme-dark .section-kicker span,
+.site-shell.theme-dark .project-meta,
+.site-shell.theme-dark .eyebrow,
+.site-shell.theme-dark .section-eyebrow,
+.site-shell.theme-dark .journal-footnote,
+.site-shell.theme-dark .journal-footnote > span,
+.site-shell.theme-dark .journal-footnote-text {
+  color: #e0a08e !important;
+}
+
+@media (max-width: 600px) {
+  .site-shell .section-kicker,
+  .site-shell .journal-footnote {
+    font-size: .58rem !important;
+    letter-spacing: .09em !important;
+  }
+}
