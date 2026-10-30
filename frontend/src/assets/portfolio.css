@@ -2524,3 +2524,32 @@ hr { border: 0; border-top: 1px solid var(--line); }
     letter-spacing: .09em !important;
   }
 }
+
+
+/* Hero introduction and location line */
+.site-shell .hero-eyebrow-dash {
+  display: inline-block;
+  margin-right: .3rem;
+  color: #8f382d;
+  font-size: 1.35em;
+  font-weight: 500;
+  vertical-align: -.04em;
+}
+
+.site-shell .hero-location {
+  margin: -.45rem 0 1.25rem;
+  color: var(--muted, #775f4e);
+  font-family: var(--mono, "SFMono-Regular", Consolas, monospace);
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .035em;
+  line-height: 1.6;
+}
+
+.site-shell.theme-dark .hero-eyebrow-dash {
+  color: #e0a08e;
+}
+
+.site-shell.theme-dark .hero-location {
+  color: #c7b8aa;
+}
