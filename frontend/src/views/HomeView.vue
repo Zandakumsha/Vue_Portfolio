@@ -7,7 +7,7 @@ import ProjectCard from '../components/ProjectCard.vue'
 import CursorGlow from '../components/CursorGlow.vue'
 import ToolkitSlider from '../components/ToolkitSlider.vue'
 import DigitalStudio from '../components/DigitalStudio.vue'
-import './assets/portfolio.css'
+import '../assets/portfolio.css'
 
 const activeProjectFilter = ref('All projects')
 const projectSearch = ref('')
