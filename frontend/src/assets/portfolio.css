@@ -2176,3 +2176,54 @@ hr { border: 0; border-top: 1px solid var(--line); }
     transition: background-color .2s ease, border-color .2s ease, color .2s ease, transform .2s ease;
   }
 }
+
+
+/* Contact section uses the same burgundy surface as the navbar */
+.site-shell .contact-section {
+  background: #612a22 !important;
+  color: #fff8ed !important;
+}
+
+.site-shell .contact-section h1,
+.site-shell .contact-section h2,
+.site-shell .contact-section h3,
+.site-shell .contact-section h4,
+.site-shell .contact-section p,
+.site-shell .contact-section label,
+.site-shell .contact-section .contact-overline,
+.site-shell .contact-section .contact-description,
+.site-shell .contact-section a {
+  color: #fff8ed !important;
+}
+
+.site-shell .contact-section input,
+.site-shell .contact-section textarea,
+.site-shell .contact-section select {
+  background: #fff8ed !important;
+  color: #302620 !important;
+  border-color: rgb(255 248 237 / 55%) !important;
+}
+
+.site-shell .contact-section input::placeholder,
+.site-shell .contact-section textarea::placeholder {
+  color: #776a60 !important;
+}
+
+.site-shell .contact-section .contact-button,
+.site-shell .contact-section button {
+  background: #fff8ed !important;
+  color: #612a22 !important;
+  border-color: #fff8ed !important;
+}
+
+.site-shell .contact-section .contact-button:hover,
+.site-shell .contact-section button:hover {
+  background: #e7c9bd !important;
+  color: #612a22 !important;
+  border-color: #e7c9bd !important;
+}
+
+.site-shell.theme-dark .contact-section {
+  background: #612a22 !important;
+  color: #fff8ed !important;
+}
