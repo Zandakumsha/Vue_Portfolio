@@ -6,7 +6,7 @@ import cvUrl from '../assets/Zanda-CV.pdf'
   <section id="home" class="hero page-wrap">
     <div class="hero-copy">
       <p class="eyebrow"><span class="hero-eyebrow-dash" aria-hidden="true">—</span> HELLO, I'M</p>
-      <p class="hero-location">Cape Town, Western Cape, South Africa — where I'm based.</p>
+      <p class="hero-location">Cape Town, Western Cape, South Africa </p>
       <h1><span class="hero-name">Zanda.</span><br /><em>Web developer.</em></h1>
       <p class="hero-description">
         I turn ideas into thoughtful web experiences, building across the stack to solve real-world problems.
