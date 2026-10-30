@@ -5,7 +5,10 @@ const props = defineProps({
   project: { type: Object, required: true },
   selectedSkill: { type: String, default: '' },
   individualContributions: { type: Object, required: true },
+  projectIndex: { type: Number, default: 0 },
+  projectCount: { type: Number, default: 1 },
 })
+const emit = defineEmits(['navigate-project'])
 
 const caseStudyDialog = ref(null)
 let lastFocusedElement = null
@@ -30,6 +33,7 @@ function resetTilt(event) {
   event.currentTarget.style.setProperty('--project-rx', '0deg')
   event.currentTarget.style.setProperty('--project-ry', '0deg')
 }
+defineExpose({ openCaseStudy })
 function contributionGroups(projectName) {
   const contributions = props.individualContributions?.[projectName] || []
   const groups = [
@@ -108,6 +112,10 @@ function contributionGroups(projectName) {
                   <span class="project-meta">{{ project.type }}</span>
                   <h3 :id="'case-study-title-' + project.number">{{ project.name }}</h3>
                   <p class="project-case-dialog-intro">{{ project.focus }}</p>
+                  <figure v-if="project.caseStudyImage" class="case-study-visual">
+                    <img :src="project.caseStudyImage" :alt="project.caseStudyImageAlt" loading="lazy" decoding="async" />
+                    <figcaption>{{ project.caseStudyImageCaption }}</figcaption>
+                  </figure>
                   <h4>PROJECT SNAPSHOT</h4>
                   <div class="project-case-facts">
                     <div><span>PROJECT TYPE</span><strong>{{ project.type }}</strong></div>
@@ -167,6 +175,11 @@ function contributionGroups(projectName) {
                     </div>
                   </div>
                   <p v-else-if="project.contributionNote">{{ project.contributionNote }}</p>
+                  <nav class="case-study-project-navigation" aria-label="Navigate between project case studies">
+                    <button type="button" :disabled="projectCount < 2" @click="emit('navigate-project', -1)">← Previous project</button>
+                    <span>PROJECT {{ project.number }} / 0{{ projectCount }}</span>
+                    <button type="button" :disabled="projectCount < 2" @click="emit('navigate-project', 1)">Next project →</button>
+                  </nav>
                   <div class="project-case-dialog-actions">
                     <a v-if="project.demoUrl" :href="project.demoUrl" target="_blank" rel="noopener noreferrer">Live demo ↗</a>
                     <a :href="project.repoUrl || project.url" target="_blank" rel="noopener noreferrer">Source code ↗</a>
