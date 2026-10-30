@@ -3494,3 +3494,425 @@ body {
     padding: 1rem;
   }
 }
+
+/* Responsive layout refinements */
+.site-shell,
+.site-shell main,
+.site-shell section,
+.site-shell .page-wrap,
+.site-shell .journey-section {
+  min-width: 0;
+}
+
+.site-shell img,
+.site-shell video,
+.site-shell iframe,
+.site-shell svg {
+  max-width: 100%;
+}
+
+.site-shell p,
+.site-shell h1,
+.site-shell h2,
+.site-shell h3,
+.site-shell h4,
+.site-shell a,
+.site-shell button,
+.site-shell label {
+  overflow-wrap: anywhere;
+}
+
+.site-shell .page-wrap,
+.site-shell .journey-section {
+  width: min(100% - 3rem, 1180px);
+}
+
+.site-shell .project-grid,
+.site-shell .achievement-grid,
+.site-shell .studio-collection,
+.site-shell .values-row,
+.site-shell .journey-bottom-grid {
+  min-width: 0;
+}
+
+@media (max-width: 1100px) {
+  .site-shell .topbar {
+    gap: .75rem;
+  }
+
+  .site-shell .navigation {
+    gap: .65rem;
+  }
+
+  .site-shell .navigation a {
+    font-size: .7rem;
+  }
+
+  .site-shell .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .site-shell .studio-workspace {
+    grid-template-columns: 190px minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .site-shell .topbar {
+    position: sticky;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    align-items: center;
+    min-height: 72px;
+    padding: .75rem 1.25rem;
+  }
+
+  .site-shell .menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .site-shell .navigation {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    z-index: 60;
+    flex-direction: column;
+    align-items: stretch;
+    gap: .15rem;
+    padding: .75rem 1.25rem 1.1rem;
+    border: 1px solid rgb(255 248 237 / 22%);
+    border-top: 0;
+    border-radius: 0 0 16px 16px;
+    background: var(--chrome-burgundy, #612a22) !important;
+    box-shadow: 0 16px 28px rgb(25 16 12 / 18%);
+  }
+
+  .site-shell .navigation.navigation-open {
+    display: flex;
+  }
+
+  .site-shell .navigation a {
+    width: 100%;
+    padding: .8rem .55rem;
+    color: var(--chrome-text, #fff8ed) !important;
+    font-size: .82rem;
+  }
+
+  .site-shell .navigation .nav-contact {
+    width: auto;
+    margin-top: .45rem;
+    text-align: center;
+  }
+
+  .site-shell .hero {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: auto;
+  }
+
+  .site-shell .hero-copy {
+    width: 100%;
+  }
+
+  .site-shell .hero-art {
+    width: min(100%, 600px);
+    min-width: 0;
+    margin-inline: auto;
+  }
+
+  .site-shell .about-grid {
+    grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+    gap: clamp(1.5rem, 4vw, 3rem);
+  }
+
+  .site-shell .studio-workspace {
+    grid-template-columns: 170px minmax(0, 1fr);
+  }
+
+  .site-shell .studio-collection {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .site-shell .studio-collection-card:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .site-shell .journal-slide {
+    grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+  }
+
+  .site-shell .journal-image-wrap,
+  .site-shell .journal-copy {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .site-shell .page-wrap,
+  .site-shell .journey-section {
+    width: calc(100% - 2rem);
+  }
+
+  .site-shell .topbar {
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    gap: .5rem;
+    padding: .7rem 1rem;
+  }
+
+  .site-shell .brand {
+    min-width: 0;
+    gap: .45rem;
+  }
+
+  .site-shell .brand-mark {
+    width: 36px;
+    height: 36px;
+    flex: 0 0 auto;
+  }
+
+  .site-shell .brand-copy {
+    min-width: 0;
+    font-size: .65rem;
+  }
+
+  .site-shell .brand-copy small {
+    font-size: .46rem;
+    letter-spacing: .07em;
+  }
+
+  .site-shell .theme-toggle,
+  .site-shell .menu-toggle {
+    min-height: 38px;
+    padding: .5rem .65rem;
+    font-size: .66rem;
+  }
+
+  .site-shell .hero {
+    gap: 1.5rem;
+    padding-block: 3rem 2.5rem;
+  }
+
+  .site-shell .hero h1 {
+    max-width: 100%;
+    font-size: clamp(3rem, 13.5vw, 5rem);
+    line-height: .98;
+    overflow-wrap: normal;
+  }
+
+  .site-shell .hero h1 .hero-name {
+    overflow-wrap: normal;
+  }
+
+  .site-shell .hero-description {
+    max-width: 100%;
+    font-size: .96rem;
+  }
+
+  .site-shell .hero-art {
+    height: clamp(270px, 78vw, 360px);
+    min-height: 0;
+  }
+
+  .site-shell .hero-actions {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .site-shell .about-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+    padding-block: 2rem;
+  }
+
+  .site-shell .about-visual-panel {
+    min-height: 240px;
+  }
+
+  .site-shell .values-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .site-shell .work-heading,
+  .site-shell .studio-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: .65rem;
+  }
+
+  .site-shell .project-grid,
+  .site-shell .achievement-grid,
+  .site-shell .learning-experience-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .site-shell .project-card {
+    min-width: 0;
+  }
+
+  .site-shell .project-art {
+    height: clamp(180px, 58vw, 250px);
+  }
+
+  .site-shell .studio-workspace {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .site-shell .studio-sidebar {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .45rem;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .site-shell .studio-room-button {
+    min-width: 0;
+    padding: .65rem .55rem;
+    font-size: .75rem;
+  }
+
+  .site-shell .studio-room-content {
+    padding: 1rem;
+  }
+
+  .site-shell .studio-collection {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .site-shell .studio-collection-card:last-child {
+    grid-column: auto;
+  }
+
+  .site-shell .portfolio-timeline-item {
+    flex: 0 0 270px;
+    width: 270px;
+    max-width: calc(100vw - 3rem);
+  }
+
+  .site-shell .journal-archive {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .site-shell .journal-archive-head {
+    grid-column: auto;
+    flex-wrap: wrap;
+    gap: .75rem;
+  }
+
+  .site-shell .journal-index {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .site-shell .journal-slide {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .site-shell .journal-image-wrap {
+    min-height: 220px;
+    max-height: 300px;
+  }
+
+  .site-shell .journal-copy {
+    padding: 1.1rem;
+  }
+
+  .site-shell .credential-sections {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .site-shell .contact-form-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .site-shell .contact-form,
+  .site-shell .contact-form label {
+    min-width: 0;
+  }
+
+  .site-shell .contact-form input,
+  .site-shell .contact-form textarea {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .site-shell .site-footer {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: .75rem;
+    padding: 1.5rem 1rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 420px) {
+  .site-shell .page-wrap,
+  .site-shell .journey-section {
+    width: calc(100% - 1.25rem);
+  }
+
+  .site-shell .topbar {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .site-shell .theme-toggle {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: end;
+    min-height: 32px;
+    margin-top: -.2rem;
+  }
+
+  .site-shell .menu-toggle {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .site-shell .brand {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+  }
+
+  .site-shell .brand-copy small {
+    max-width: 150px;
+    line-height: 1.35;
+  }
+
+  .site-shell .hero h1 {
+    font-size: clamp(2.7rem, 14vw, 3.8rem);
+  }
+
+  .site-shell .hero-actions .button-primary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .site-shell .studio-sidebar {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .site-shell .portfolio-timeline-item {
+    flex-basis: 245px;
+    width: 245px;
+  }
+
+  .site-shell .journal-image-wrap {
+    min-height: 190px;
+  }
+
+  .site-shell .contact-inner h2 {
+    font-size: clamp(2.4rem, 12vw, 3.4rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-shell .portfolio-timeline,
+  .site-shell .timeline-marquee,
+  .site-shell .about-visual-orbit,
+  .site-shell .about-visual-monogram {
+    animation: none !important;
+  }
+}
