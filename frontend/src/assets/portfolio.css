@@ -2553,3 +2553,193 @@ hr { border: 0; border-top: 1px solid var(--line); }
 .site-shell.theme-dark .hero-location {
   color: #c7b8aa;
 }
+
+
+/* Final refinement: stronger hierarchy, accessible focus and responsive layouts */
+.site-shell {
+  min-height: 100vh;
+  overflow-x: clip;
+  background: var(--paper);
+  color: var(--ink);
+}
+.site-shell a,
+.site-shell button,
+.site-shell input,
+.site-shell textarea,
+.site-shell select {
+  -webkit-tap-highlight-color: transparent;
+}
+.site-shell :focus-visible {
+  outline: 3px solid var(--rose);
+  outline-offset: 4px;
+}
+.site-shell .hero {
+  min-height: min(720px, calc(100svh - 84px));
+  padding-block: clamp(3rem, 7vw, 6rem);
+}
+.site-shell .hero-description {
+  max-width: 470px;
+  font-size: clamp(.95rem, 1.2vw, 1.08rem);
+}
+.site-shell .hero-actions {
+  gap: 1rem 1.4rem;
+}
+.site-shell .hero-actions .text-link {
+  text-underline-offset: .3em;
+}
+.site-shell .work-heading {
+  align-items: end;
+  gap: 1.5rem;
+}
+.site-shell .project-discovery {
+  margin-block: 2rem 1rem;
+}
+.site-shell .project-search input {
+  min-width: 0;
+}
+.site-shell .project-grid {
+  align-items: stretch;
+}
+.site-shell .project-card {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.site-shell .project-card .project-art {
+  min-height: 220px;
+  height: clamp(190px, 22vw, 270px);
+}
+.site-shell .project-card .project-description {
+  line-height: 1.75;
+}
+.site-shell .project-card .project-actions {
+  margin-top: auto;
+  padding-top: 1.5rem;
+}
+.site-shell .project-case-dialog {
+  width: min(900px, calc(100vw - 2rem));
+  max-height: min(88svh, 900px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.site-shell .project-case-dialog::backdrop {
+  background: rgb(25 18 14 / 72%);
+  backdrop-filter: blur(5px);
+}
+.site-shell .project-case-dialog-inner {
+  padding: clamp(1.25rem, 4vw, 3rem);
+}
+.site-shell .project-case-dialog h4 {
+  margin-top: 1.6rem;
+}
+.site-shell .portfolio-timeline {
+  scroll-margin-top: 6rem;
+}
+.site-shell .portfolio-timeline-card {
+  min-width: 0;
+}
+.site-shell .journey-bottom-grid {
+  align-items: stretch;
+}
+.site-shell .explore-card {
+  min-width: 0;
+}
+.site-shell .contact-form {
+  width: min(100%, 760px);
+  margin-inline: auto;
+}
+.site-shell .contact-form input,
+.site-shell .contact-form textarea {
+  width: 100%;
+  max-width: 100%;
+}
+.site-shell .social-links {
+  flex-wrap: wrap;
+}
+.site-shell .site-footer {
+  width: 100%;
+  padding-inline: max(5%, calc((100vw - 1200px) / 2));
+}
+.site-shell .navigation a,
+.site-shell .project-link,
+.site-shell .social-link {
+  transition: color .2s ease, background-color .2s ease, border-color .2s ease;
+}
+.site-shell .navigation a:focus-visible,
+.site-shell .project-link:focus-visible,
+.site-shell .social-link:focus-visible {
+  border-radius: 4px;
+}
+.site-shell.theme-dark .project-search,
+.site-shell.theme-dark .timeline-chip,
+.site-shell.theme-dark .journal-index-item,
+.site-shell.theme-dark .journal-arrow {
+  color: var(--ink);
+}
+.site-shell.theme-dark .project-search input::placeholder,
+.site-shell.theme-dark .contact-form input::placeholder,
+.site-shell.theme-dark .contact-form textarea::placeholder {
+  color: #b7a79a;
+  opacity: 1;
+}
+@media (max-width: 900px) {
+  .site-shell .hero {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    padding-block: 3.5rem 5rem;
+  }
+  .site-shell .hero-art {
+    width: min(100%, 620px);
+    margin-inline: auto;
+  }
+}
+@media (max-width: 640px) {
+  .site-shell .topbar {
+    padding: .85rem 5%;
+    gap: .75rem;
+  }
+  .site-shell .brand-copy {
+    font-size: .68rem;
+  }
+  .site-shell .brand-copy small {
+    font-size: .48rem;
+  }
+  .site-shell .theme-toggle,
+  .site-shell .menu-toggle {
+    padding: .55rem .7rem;
+    font-size: .72rem;
+  }
+  .site-shell .hero h1 {
+    font-size: clamp(2.8rem, 13vw, 4.5rem);
+  }
+  .site-shell .hero-actions {
+    align-items: flex-start;
+  }
+  .site-shell .project-discovery {
+    align-items: stretch;
+  }
+  .site-shell .project-filters {
+    overflow-x: auto;
+    padding-bottom: .5rem;
+  }
+  .site-shell .project-card .project-art {
+    height: 205px;
+  }
+  .site-shell .project-case-dialog {
+    width: calc(100vw - 1rem);
+    max-height: 92svh;
+  }
+  .site-shell .contact-form-row {
+    grid-template-columns: 1fr;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-shell *,
+  .site-shell *::before,
+  .site-shell *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
