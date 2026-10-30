@@ -497,7 +497,7 @@ function runTerminal() {
               </div>
             </div>
           </article>
-          <p class="journal-footnote"><span>✳</span> NOTES FROM A DEVELOPER IN PROGRESS — ALWAYS LEARNING, ALWAYS MAKING</p>
+          <p class="journal-footnote"><span>✳</span><span class="journal-footnote-text">NOTES FROM A DEVELOPER IN PROGRESS — ALWAYS LEARNING, ALWAYS MAKING</span></p>
           </div>
         </div>
       </section>
