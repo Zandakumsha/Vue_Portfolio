@@ -12,8 +12,8 @@ const activeRoom = computed(() => rooms.find((room) => room.id === activeRoomId.
 const pointerX = ref(50)
 const pointerY = ref(40)
 const spotlightStyle = computed(() => ({
-  '--spot-x': pointerX.value + '%',
-  '--spot-y': pointerY.value + '%',
+  '--spotlight-x': pointerX.value + '%',
+  '--spotlight-y': pointerY.value + '%',
 }))
 function trackPointer(event) {
   const bounds = event.currentTarget.getBoundingClientRect()
