@@ -17,7 +17,7 @@ async function navigateProjectCaseStudy(project, direction) {
   const currentIndex = visibleProjects.value.findIndex((item) => item.number === project.number)
   if (currentIndex < 0 || visibleProjects.value.length < 2) return
   const nextIndex = (currentIndex + direction + visibleProjects.value.length) % visibleProjects.value.length
-  projectCardRefs[project.number]?.closeCaseStudy()
+  projectCardRefs[project.number]?.closeCaseStudy(false)
   await nextTick()
   projectCardRefs[visibleProjects.value[nextIndex].number]?.openCaseStudy()
 }
