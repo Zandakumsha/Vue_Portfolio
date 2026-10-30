@@ -1,11 +1,11 @@
 <template>
   <section id="home" class="hero page-wrap">
     <div class="hero-copy">
-      <p class="eyebrow"><span class="hero-eyebrow-dash" aria-hidden="true">—</span> HELLO, WORLD. I'M ZANDA.</p>
+      <p class="eyebrow"><span class="hero-eyebrow-dash" aria-hidden="true">—</span> HELLO, I'M</p>
       <p class="hero-location">Cape Town, Western Cape, South Africa — where I'm based.</p>
-      <h1>Turning ideas into<br />working products.<br /><em>One commit at a time.</em></h1>
+      <h1><span class="hero-name">Zanda.</span><br /><em>Web developer.</em></h1>
       <p class="hero-description">
-        I build thoughtful web experiences across the stack — where clean code meets real-world problems.
+        I turn ideas into thoughtful web experiences, building across the stack to solve real-world problems.
       </p>
       <div class="hero-actions">
         <a class="button-primary" href="#work">Explore my work <span>↗</span></a>
