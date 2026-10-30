@@ -74,7 +74,6 @@
   height: 100%;
   max-width: none;
   object-fit: cover;
-  /* Shift the image upward in the frame to include the entire head. */
   object-position: center top;
   transition: transform 450ms ease;
 }
