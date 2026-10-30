@@ -561,10 +561,8 @@ function runTerminal() {
       </section>
 
       <section id="contact" class="contact-section">
-        <div class="contact-orbit"></div>
         <div class="page-wrap contact-inner">
           <p class="section-kicker"><span>07</span> THE NEXT CHAPTER</p>
-          <div class="contact-flower">✳</div>
           <p class="contact-overline">GOOD THINGS START WITH A HELLO</p>
           <h2>Have a good feeling<br />about <em>this?</em></h2>
           <p class="contact-description">Curious people, good ideas and thoughtful teams — say hello.</p>
