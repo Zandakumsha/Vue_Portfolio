@@ -1,3 +1,7 @@
+<script setup>
+import cvUrl from '../assets/Zanda-CV.pdf'
+</script>
+
 <template>
   <section id="home" class="hero page-wrap">
     <div class="hero-copy">
@@ -9,7 +13,7 @@
       </p>
       <div class="hero-actions">
         <a class="button-primary" href="#work">Explore my work <span>↗</span></a>
-        <a class="button-primary cv-download-button" href="/Zanda-CV.pdf" download="Zanda-Kumsha-CV.pdf">Download CV <span aria-hidden="true">↓</span></a>
+        <a class="button-primary cv-download-button" :href="cvUrl" download="Zanda-Kumsha-CV.pdf">Download CV <span aria-hidden="true">↓</span></a>
         <a class="text-link" href="https://github.com/Zandakumsha" target="_blank" rel="noopener noreferrer">Visit GitHub ↗</a>
         <a class="text-link" href="#journey">Explore my journey ↓</a>
         <a class="text-link" href="#contact">Let's connect ↓</a>
