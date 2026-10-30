@@ -2936,3 +2936,55 @@ body {
   .project-card, .project-screenshot, .button-primary, .contact-button { transition: none !important; }
   .project-card:hover, .studio-collection-card:hover, .studio-feature-card:hover, .studio-journal-card:hover { transform: none; }
 }
+
+
+/* Accessibility and interaction polish */
+.site-shell .contact-form-status {
+  min-height: 1.5em;
+  margin: .65rem 0 0;
+  color: var(--rose);
+  font-size: .85rem;
+  line-height: 1.6;
+}
+.site-shell .contact-button:disabled {
+  cursor: wait;
+  opacity: .68;
+  transform: none;
+}
+.site-shell .portfolio-timeline:focus-within .timeline-marquee,
+.site-shell .portfolio-timeline:hover .timeline-marquee {
+  animation-play-state: paused;
+}
+.site-shell .timeline-pause-toggle[aria-pressed="true"] {
+  border-color: var(--rose);
+  color: var(--rose);
+}
+.site-shell .project-case-dialog-inner a,
+.site-shell .demo-resource-links a {
+  text-underline-offset: .25em;
+  text-decoration-thickness: 1px;
+}
+.site-shell .project-case-dialog-inner a:focus-visible,
+.site-shell .demo-resource-links a:focus-visible {
+  outline: 3px solid var(--rose);
+  outline-offset: 4px;
+  border-radius: 3px;
+}
+.site-shell .project-case-facts > div,
+.site-shell .demo-account {
+  min-width: 0;
+}
+.site-shell .project-case-dialog-inner code {
+  overflow-wrap: anywhere;
+}
+@media (max-width: 640px) {
+  .site-shell .contact-form-status {
+    font-size: .8rem;
+  }
+  .site-shell .demo-resource-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .7rem;
+  }
+}
