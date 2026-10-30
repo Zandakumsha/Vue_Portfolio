@@ -1,7 +1,8 @@
 <template>
   <section id="home" class="hero page-wrap">
     <div class="hero-copy">
-      <p class="eyebrow">HELLO, WORLD. I'M ZANDA.</p>
+      <p class="eyebrow"><span class="hero-eyebrow-dash" aria-hidden="true">—</span> HELLO, WORLD. I'M ZANDA.</p>
+      <p class="hero-location">Cape Town, Western Cape, South Africa — where I'm based.</p>
       <h1>Turning ideas into<br />working products.<br /><em>One commit at a time.</em></h1>
       <p class="hero-description">
         I build thoughtful web experiences across the stack — where clean code meets real-world problems.
