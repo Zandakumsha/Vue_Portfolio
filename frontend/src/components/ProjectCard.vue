@@ -33,7 +33,7 @@ function resetTilt(event) {
   event.currentTarget.style.setProperty('--project-rx', '0deg')
   event.currentTarget.style.setProperty('--project-ry', '0deg')
 }
-defineExpose({ openCaseStudy })
+defineExpose({ openCaseStudy, closeCaseStudy })
 function contributionGroups(projectName) {
   const contributions = props.individualContributions?.[projectName] || []
   const groups = [
