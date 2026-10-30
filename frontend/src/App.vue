@@ -385,13 +385,19 @@ function runTerminal() {
     <main id="main-content" tabindex="-1">
       <HeroSection />
 
-      <div class="manifesto">
+      <section class="manifesto" aria-label="Current development focus">
         <div class="manifesto-inner portfolio-status-strip">
-          <span class="mini-label">CURRENT FOCUS</span>
-          <p>Building useful things. Learning as I go.</p>
-          <a href="#work">Browse selected work <span aria-hidden="true">↘</span></a>
+          <div class="manifesto-label">
+            <span class="manifesto-status-dot" aria-hidden="true"></span>
+            <span class="mini-label">CURRENT FOCUS</span>
+          </div>
+          <p class="manifesto-message">Building useful things.<br /><em>Learning as I go.</em></p>
+          <a class="manifesto-link" href="#work">
+            <span>Explore selected work</span>
+            <span class="manifesto-link-icon" aria-hidden="true">↗</span>
+          </a>
         </div>
-      </div>
+      </section>
 
       <AboutSection />
 
