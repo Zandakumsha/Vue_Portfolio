@@ -2743,3 +2743,43 @@ hr { border: 0; border-top: 1px solid var(--line); }
     transition-duration: .01ms !important;
   }
 }
+
+
+/* Project case-study and carousel finishing details */
+.site-shell .project-case-dialog {
+  border: 1px solid var(--line, rgb(97 42 34 / 22%));
+  border-radius: 18px;
+  color: var(--ink);
+  background: var(--paper);
+}
+.site-shell .project-case-dialog:not([open]) {
+  display: none;
+}
+.site-shell .project-case-dialog-close {
+  position: sticky;
+  top: .5rem;
+  z-index: 2;
+  float: right;
+}
+.site-shell .project-case-dialog-inner > h4 {
+  color: var(--rose, #8f382d);
+  font-size: .68rem;
+  letter-spacing: .13em;
+}
+.site-shell .project-case-dialog-inner p,
+.site-shell .project-case-dialog-inner li {
+  line-height: 1.75;
+}
+.site-shell .toolkit-progress-item:focus-visible,
+.site-shell .toolkit-control:focus-visible,
+.site-shell .toolkit-pause:focus-visible {
+  outline-offset: 5px;
+}
+@media (max-width: 640px) {
+  .site-shell .project-case-dialog-inner {
+    padding: 1.1rem;
+  }
+  .site-shell .project-case-dialog-inner h3 {
+    overflow-wrap: anywhere;
+  }
+}
