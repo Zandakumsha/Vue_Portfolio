@@ -95,6 +95,30 @@ const journeyItems = [
 const visibleJourneyItems = computed(() =>
   journeyFilter.value === 'all' ? journeyItems : journeyItems.filter((item) => item.type === journeyFilter.value),
 )
+const contactSending = ref(false)
+const contactStatus = ref('')
+
+async function submitContact(event) {
+  const form = event.currentTarget
+  if (contactSending.value) return
+  contactSending.value = true
+  contactStatus.value = 'Sending your message…'
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { Accept: 'application/json' },
+    })
+    if (!response.ok) throw new Error('The contact service could not accept the message.')
+    form.reset()
+    contactStatus.value = 'Thanks for reaching out. Your message has been sent.'
+  } catch {
+    contactStatus.value = 'Your message could not be sent right now. Please try again later or contact me through GitHub.'
+  } finally {
+    contactSending.value = false
+  }
+}
+
 const terminalCommand = ref('')
 const terminalOutput = ref('Try: help, about, skills, projects, contact')
 
@@ -257,10 +281,6 @@ const projects = ref([
     repoUrl: 'https://github.com/zahraamoerat/Project-3-E-Commerce1',
     adminRepoUrl: 'https://github.com/zahraamoerat/weconnect-admin',
     designUrl: 'https://www.figma.com/design/2HIrJehYpe7EYzPXBB0ppJ/Untitled?node-id=0-1&t=HYvPj1jjUSE7M4vk-1',
-    demoAccounts: [
-      { role: 'Small business', email: 'phelisa-final@weconnect.com', password: 'testpass123' },
-      { role: 'Supplier', email: 'info@greenfieldsagri.co.za', password: 'GFPassword123!' },
-    ],
     label: 'View live website',
   },
   {
@@ -578,6 +598,7 @@ function runTerminal() {
             class="contact-form"
             action="https://formspree.io/f/xdearnka"
             method="POST"
+            @submit.prevent="submitContact"
           >
             <div class="contact-form-row">
               <label for="contact-name">
@@ -631,18 +652,15 @@ function runTerminal() {
               autocomplete="off"
               aria-hidden="true"
             />
-            <button class="contact-button" type="submit">SEND MESSAGE ↗</button>
-            <p class="contact-form-note">Your message will be sent securely through Formspree. Please don't include sensitive information.</p>
+            <button class="contact-button" type="submit" :disabled="contactSending">{{ contactSending ? 'SENDING…' : 'SEND MESSAGE ↗' }}</button>
+            <p class="contact-form-status" role="status" aria-live="polite">{{ contactStatus }}</p>
+            <p class="contact-form-note">Your message is handled by Formspree. Please don't include passwords or other sensitive information.</p>
           </form>
 
           <div class="social-links" aria-label="Social links">
             <a class="social-link" href="https://github.com/Zandakumsha" target="_blank" rel="noopener noreferrer" aria-label="Visit Zanda's GitHub profile">
               <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.55.1.76-.24.76-.54v-2.08c-3.1.67-3.76-1.32-3.76-1.32-.5-1.28-1.24-1.62-1.24-1.62-1.01-.69.08-.68.08-.68 1.12.08 1.71 1.15 1.71 1.15 1 .1.76 2.02 3.23 1.44.1-.72.39-1.21.7-1.49-2.47-.28-5.07-1.24-5.07-5.5 0-1.22.44-2.22 1.15-3-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.05 1.15a10.6 10.6 0 0 1 5.55 0c2.12-1.44 3.05-1.15 3.05-1.15.61 1.54.23 2.68.12 2.96.71.78 1.14 1.78 1.14 3.01 0 4.27-2.6 5.21-5.08 5.49.4.34.75 1 .75 2.02v3c0 .3.2.65.77.54A11.1 11.1 0 0 0 12 .9Z"/></svg>
               <span>GitHub</span><span class="social-arrow" aria-hidden="true">↗</span>
-            </a>
-            <a class="social-link" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="Open LinkedIn">
-              <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.45 2H3.55C2.69 2 2 2.68 2 3.52v16.96c0 .84.69 1.52 1.55 1.52h16.9c.86 0 1.55-.68 1.55-1.52V3.52c0-.84-.69-1.52-1.55-1.52ZM7.93 18.7H4.98V9.2h2.95v9.5ZM6.45 7.9a1.71 1.71 0 1 1 0-3.42 1.71 1.71 0 0 1 0 3.42Zm12.25 10.8h-2.94v-4.62c0-1.1-.02-2.51-1.53-2.51-1.53 0-1.76 1.19-1.76 2.43v4.7H9.53V9.2h2.82v1.3h.04c.39-.74 1.35-1.52 2.78-1.52 2.97 0 3.53 1.95 3.53 4.48v5.24Z"/></svg>
-              <span>LinkedIn</span><span class="social-arrow" aria-hidden="true">↗</span>
             </a>
             <a class="social-link social-back-to-top" href="#home" aria-label="Back to top"><span aria-hidden="true">↑</span><span>Back to top</span></a>
           </div>
