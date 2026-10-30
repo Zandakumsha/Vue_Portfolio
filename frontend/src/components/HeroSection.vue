@@ -15,6 +15,7 @@ import cvUrl from '../assets/Zanda-CV.pdf'
         <a class="button-primary" href="#work">Explore my work <span>↗</span></a>
         <a class="button-primary cv-download-button" :href="cvUrl" download="Zanda-CV.pdf">Download CV <span aria-hidden="true">↓</span></a>
         <a class="text-link" href="https://github.com/Zandakumsha" target="_blank" rel="noopener noreferrer">Visit GitHub ↗</a>
+        <a class="text-link" href="https://www.linkedin.com/in/zanda-kumsha-84534a403/" target="_blank" rel="noopener noreferrer">Visit LinkedIn ↗</a>
         <a class="text-link" href="#journey">Explore my journey ↓</a>
         <a class="text-link" href="#contact">Let's connect ↓</a>
       </div>
