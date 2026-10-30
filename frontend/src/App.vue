@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onMounted, ref, watch } from 'vue'
+import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import SiteHeader from './components/SiteHeader.vue'
 import HeroSection from './components/HeroSection.vue'
 import AboutSection from './components/AboutSection.vue'
@@ -12,6 +12,15 @@ import './assets/portfolio.css'
 const activeProjectFilter = ref('All projects')
 const projectSearch = ref('')
 const projectFilters = ['All projects', 'Full-stack', 'Data & scraping', 'HR technology']
+const projectCardRefs = Object.create(null)
+async function navigateProjectCaseStudy(project, direction) {
+  const currentIndex = visibleProjects.value.findIndex((item) => item.number === project.number)
+  if (currentIndex < 0 || visibleProjects.value.length < 2) return
+  const nextIndex = (currentIndex + direction + visibleProjects.value.length) % visibleProjects.value.length
+  projectCardRefs[project.number]?.closeCaseStudy()
+  await nextTick()
+  projectCardRefs[visibleProjects.value[nextIndex].number]?.openCaseStudy()
+}
 const visibleProjects = computed(() => {
   let filtered = projects.value
   if (activeProjectFilter.value === 'Full-stack') filtered = filtered.filter((project) => project.name === 'WeConnect')
@@ -287,6 +296,9 @@ const projects = ref([
     number: '02',
     initials: 'MT',
     theme: 'espresso',
+    caseStudyImage: '/Screenshot%202026-07-05%20193803.png',
+    caseStudyImageAlt: 'Modern Tech HR management application screenshot',
+    caseStudyImageCaption: 'A look at the Modern Tech HR management interface.',
     type: 'HR TECHNOLOGY · WEB APPLICATION',
     name: 'Modern Tech',
     description: 'An HR management experience for employee profiles, leave requests and calendars, with thoughtful workflows at its core.',
@@ -309,6 +321,9 @@ const projects = ref([
     number: '03',
     initials: 'LN',
     theme: 'glacier',
+    caseStudyImage: 'https://i.ibb.co/bj7C9TgS/Screenshot-2026-10-11-015612.png',
+    caseStudyImageAlt: 'Lightning News analytics dashboard screenshot',
+    caseStudyImageCaption: 'The Lightning News dashboard for exploring gathered stories.',
     type: 'DATA · WEB SCRAPING · ANALYTICS',
     name: 'Lightning News',
     description: 'A news analytics dashboard that brings scraped stories together with search, filtering and export-friendly views.',
@@ -405,7 +420,11 @@ function runTerminal() {
             <ProjectCard
               v-for="project in visibleProjects"
               :key="project.number"
+              :ref="(element) => { if (element) projectCardRefs[project.number] = element }"
               :project="project"
+              :project-index="visibleProjects.findIndex((item) => item.number === project.number)"
+              :project-count="visibleProjects.length"
+              @navigate-project="navigateProjectCaseStudy(project, $event)"
               :individual-contributions="individualContributions"
             />
           </div>
