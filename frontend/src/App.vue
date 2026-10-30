@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import SiteHeader from './components/SiteHeader.vue'
 import HeroSection from './components/HeroSection.vue'
 import AboutSection from './components/AboutSection.vue'
@@ -27,6 +27,14 @@ const visibleProjects = computed(() => {
 })
 const journeyFilter = ref('all')
 const themeDark = ref(false)
+onMounted(() => {
+  themeDark.value = window.localStorage.getItem('zanda-portfolio-theme') === 'dark'
+})
+watch(themeDark, (isDark) => {
+  if (typeof window !== 'undefined') {
+    window.localStorage.setItem('zanda-portfolio-theme', isDark ? 'dark' : 'light')
+  }
+})
 const journeyPaused = ref(false)
 const journeyFilters = [
   { label: 'Everything', value: 'all' },
