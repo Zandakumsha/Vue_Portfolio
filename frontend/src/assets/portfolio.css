@@ -2988,3 +2988,80 @@ body {
     gap: .7rem;
   }
 }
+
+
+/* Case-study gallery and in-dialog project navigation */
+.site-shell .case-study-visual {
+  margin: 1.4rem 0 1.8rem;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px 22px;
+  background: var(--soft);
+}
+.site-shell .case-study-visual img {
+  display: block;
+  width: 100%;
+  max-height: 390px;
+  object-fit: cover;
+  object-position: top center;
+}
+.site-shell .case-study-visual figcaption {
+  padding: .75rem 1rem;
+  color: var(--muted);
+  font-size: .75rem;
+  line-height: 1.6;
+}
+.site-shell .case-study-project-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  margin-top: 2rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.site-shell .case-study-project-navigation button {
+  padding: .65rem .8rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink);
+  background: var(--soft);
+  font: inherit;
+  font-size: .75rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.site-shell .case-study-project-navigation button:hover:not(:disabled) {
+  border-color: var(--rose);
+  color: var(--rose);
+}
+.site-shell .case-study-project-navigation button:disabled {
+  cursor: not-allowed;
+  opacity: .45;
+}
+.site-shell .case-study-project-navigation > span {
+  color: var(--muted);
+  font-size: .62rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-align: center;
+}
+.site-shell .case-study-project-navigation button:focus-visible {
+  outline: 3px solid var(--rose);
+  outline-offset: 3px;
+}
+@media (max-width: 520px) {
+  .site-shell .case-study-project-navigation {
+    flex-wrap: wrap;
+  }
+  .site-shell .case-study-project-navigation > span {
+    order: -1;
+    width: 100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-shell .case-study-project-navigation button {
+    transition: none;
+  }
+}
