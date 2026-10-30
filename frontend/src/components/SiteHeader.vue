@@ -2,20 +2,24 @@
 defineProps({ menuOpen: Boolean, themeDark: Boolean })
 const emit = defineEmits(['update:menuOpen', 'toggle-theme'])
 function closeMenu() { emit('update:menuOpen', false) }
+function handleMenuKeydown(event) {
+  if (event.key === 'Escape') closeMenu()
+}
 </script>
 
 <template>
-  <header class="topbar">
+  <header class="topbar" @keydown="handleMenuKeydown">
     <a class="brand" href="#home" aria-label="Zanda home" @click="closeMenu">
       <span class="brand-mark">z.</span>
-      <span class="brand-copy">ZANDA K.<small>DEVELOPER & CREATIVE THINKER</small></span>
+      <span class="brand-copy">ZANDA K.<small>DEVELOPER &amp; CREATIVE THINKER</small></span>
     </a>
     <button
       class="menu-toggle"
       type="button"
       :aria-expanded="menuOpen"
       aria-controls="main-navigation"
-      @click="$emit('update:menuOpen', !menuOpen)"
+      :aria-label="menuOpen ? 'Close navigation menu' : 'Open navigation menu'"
+      @click="emit('update:menuOpen', !menuOpen)"
     >
       {{ menuOpen ? 'Close −' : 'Menu +' }}
     </button>
@@ -28,6 +32,12 @@ function closeMenu() { emit('update:menuOpen', false) }
       <a href="#achievements" @click="closeMenu">Milestones</a>
       <a class="nav-contact" href="#contact" @click="closeMenu">Let's talk ↗</a>
     </nav>
-    <button class="theme-toggle" type="button" :aria-pressed="themeDark" @click="emit('toggle-theme')">{{ themeDark ? 'Light mode ☼' : 'Dark mode ☾' }}</button>
+    <button
+      class="theme-toggle"
+      type="button"
+      :aria-pressed="themeDark"
+      :aria-label="themeDark ? 'Switch to light theme' : 'Switch to dark theme'"
+      @click="emit('toggle-theme')"
+    >{{ themeDark ? 'Light mode ☼' : 'Dark mode ☾' }}</button>
   </header>
 </template>
