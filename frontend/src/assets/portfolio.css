@@ -1854,3 +1854,43 @@ hr { border: 0; border-top: 1px solid var(--line); }
   }
   .site-shell .theme-toggle { margin-left: auto; }
 }
+
+
+/* Footer gets its own warm espresso tone, distinct from the burgundy navbar */
+.site-shell {
+  --footer-background: #302620;
+  --footer-foreground: #fff8ed;
+}
+
+.site-shell .site-footer {
+  background: var(--footer-background) !important;
+  color: var(--footer-foreground) !important;
+  border-top: 3px solid #b98a78 !important;
+  box-shadow: 0 -10px 30px rgb(25 16 12 / 8%);
+}
+
+.site-shell .site-footer p,
+.site-shell .site-footer small,
+.site-shell .site-footer a {
+  color: var(--footer-foreground) !important;
+}
+
+.site-shell .site-footer a {
+  text-decoration-color: #b98a78;
+  text-underline-offset: .25em;
+}
+
+.site-shell .site-footer a:hover,
+.site-shell .site-footer a:focus-visible {
+  color: #e4b9a7 !important;
+}
+
+.site-shell.theme-dark {
+  --footer-background: #17110e;
+  --footer-foreground: #f5eee7;
+}
+
+.site-shell.theme-dark .site-footer {
+  background: var(--footer-background) !important;
+  color: var(--footer-foreground) !important;
+}
