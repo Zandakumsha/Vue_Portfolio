@@ -1,4 +1,4 @@
- :root {
+:root {
   --paper: #f5f1eb;
   --ink: #302620;
   --muted: #776a60;
@@ -33,7 +33,6 @@
   color-scheme: dark;
 }
 
-/* Navigation */
 .topbar {
   position: sticky;
   top: 0;
@@ -105,8 +104,6 @@
   cursor: pointer;
 }
 
-
-/* Portfolio-wide theme support */
 .site-shell,
 .site-shell .announcement,
 .site-shell .topbar,
@@ -161,7 +158,6 @@
   .theme-toggle { margin-left: auto; }
 }
 
-/* Main content */
 .page-wrap {
   width: 100%;
   max-width: 1200px;
@@ -259,7 +255,6 @@ h2 em {
   font-family: var(--mono);
 }
 
-/* Hero illustration */
 .hero-art {
   position: relative;
   display: grid;
@@ -340,7 +335,6 @@ h2 em {
   font: 9px/1.4 var(--mono);
 }
 
-/* Section headings */
 .content-section {
   padding-block: 90px;
 }
@@ -387,7 +381,6 @@ h2 em {
   font: 19px/1.65 var(--serif);
 }
 
-/* Projects */
 .work-section {
   border-block: 1px solid var(--line);
   background: var(--soft);
@@ -515,7 +508,6 @@ h2 em {
   cursor: pointer;
 }
 
-/* SAGE-IVORY REDESIGN: layout, responsive styling and warm-neutral palette */
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 96px; }
 body { margin: 0; background: var(--paper); color: var(--ink); }
@@ -527,7 +519,6 @@ button, input, textarea, select { font: inherit; }
 button { color: inherit; }
 ::selection { background: var(--sage); color: var(--ink); }
 
-/* Full-width announcement, navigation and footer */
 .announcement { width: 100%; min-height: 34px; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: .65rem; padding: .45rem 1rem; background: var(--ink); color: var(--paper); font-size: .66rem; letter-spacing: .08em; text-align: center; }
 .announcement-flower { color: var(--sage); }
 .status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--sage); box-shadow: 0 0 0 3px rgb(185 168 153 / 18%); }
@@ -542,7 +533,6 @@ button { color: inherit; }
 .site-footer p, .site-footer small { margin: 0; color: var(--sage); }
 .site-footer a { color: var(--paper); }
 
-/* Hero */
 .hero { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(320px, .95fr); align-items: center; gap: clamp(2rem, 6vw, 5rem); min-height: min(690px, calc(100vh - 110px)); padding-block: clamp(4rem, 8vw, 7rem); }
 .hero h1 { max-width: 760px; font-size: clamp(2.8rem, 6vw, 5.7rem); line-height: .99; letter-spacing: -.065em; }
 .hero h1 em, .work-heading h2 em, .about-intro-heading em, .toolkit-heading h2 em, .studio-heading h2 em { color: var(--rose); font-family: var(--serif, Georgia, serif); font-weight: 400; }
@@ -556,7 +546,6 @@ button { color: inherit; }
 .button-primary, .contact-button { background: var(--rose); color: var(--paper); border-color: var(--rose); }
 .button-primary:hover, .contact-button:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 
-/* About section — no portrait; animated monogram illustration instead */
 .about-section { padding-block: clamp(4rem, 8vw, 7rem); }
 .about-grid { display: grid; grid-template-columns: minmax(250px, .8fr) minmax(0, 1.2fr); align-items: center; gap: clamp(2rem, 6vw, 6rem); }
 .about-visual-panel { position: relative; display: grid; min-height: 330px; place-items: center; overflow: hidden; border: 1px solid var(--line); border-radius: 48% 48% 22px 22px; background: linear-gradient(145deg, var(--soft), var(--paper)); }
@@ -577,7 +566,6 @@ button { color: inherit; }
 .value-item strong { font-size: .9rem; }
 .value-item small { margin-top: .35rem; color: var(--muted); line-height: 1.5; }
 
-/* Section headings and status strip */
 .content-section { padding-block: clamp(3.5rem, 7vw, 6rem); }
 .section-kicker { color: var(--muted); font-size: .68rem; font-weight: 800; letter-spacing: .15em; line-height: 1.6; }
 .section-kicker span { color: var(--rose); }
@@ -585,7 +573,6 @@ button { color: inherit; }
 .manifesto-inner { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding-block: 1.1rem; }
 .mini-label, .portfolio-status-strip { color: var(--muted); font-size: .68rem; letter-spacing: .1em; }
 
-/* Digital studio */
 .digital-studio-section { padding-block: clamp(3.5rem, 7vw, 6rem); }
 .studio-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; margin-bottom: 2rem; }
 .studio-heading h2 { margin: 0; font-size: clamp(2rem, 4.8vw, 4rem); line-height: 1.05; letter-spacing: -.055em; }
@@ -649,7 +636,6 @@ button { color: inherit; }
 .studio-footnote { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-top: 1.2rem; color: var(--muted); font-size: .75rem; }
 .studio-footnote a { color: var(--rose); text-decoration: none; }
 
-/* Project archive and compact case-study cards */
 .work-section { padding-block: clamp(3rem, 7vw, 6rem); background: var(--soft); }
 .work-heading { display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; margin-bottom: 1.8rem; }
 .work-heading h2 { margin: .4rem 0; font-size: clamp(2rem, 4.6vw, 3.8rem); line-height: 1.05; letter-spacing: -.05em; }
@@ -677,7 +663,6 @@ button { color: inherit; }
 .more-note { display: flex; align-items: center; gap: .8rem; margin-top: 2rem; color: var(--muted); font-size: .62rem; letter-spacing: .12em; }
 .more-note i { height: 1px; flex: 1; background: var(--line); }
 
-/* Recolour the toolkit's component-scoped styling to match this palette */
 .toolkit-showcase { --toolkit-ink: #302620; --toolkit-muted: #776a60; --toolkit-paper: #f5f1eb; --toolkit-rose: #612a22; color: var(--ink); background: var(--paper); }
 .toolkit-showcase .toolkit-heading h2 em, .toolkit-showcase .toolkit-eyebrow span, .toolkit-showcase .toolkit-category, .toolkit-showcase .toolkit-art-spark { color: var(--rose); }
 .toolkit-showcase .toolkit-stage { border-color: var(--line); background: linear-gradient(135deg, #e9e1d8, #f5f1eb 58%, #d7cbc0); box-shadow: 0 20px 55px rgb(48 38 32 / 7%); }
@@ -690,7 +675,6 @@ button { color: inherit; }
 .toolkit-showcase .toolkit-footnote { color: var(--muted); }
 .toolkit-showcase .accent-blue .toolkit-category, .toolkit-showcase .accent-coral .toolkit-category, .toolkit-showcase .accent-orange .toolkit-category, .toolkit-showcase .accent-sky .toolkit-category, .toolkit-showcase .accent-gold .toolkit-category, .toolkit-showcase .accent-yellow .toolkit-category, .toolkit-showcase .accent-green .toolkit-category { color: var(--rose); }
 
-/* Horizontal, continuously moving developer timeline */
 .journey-section { padding-block: clamp(3.5rem, 7vw, 6rem); overflow: hidden; }
 .journey-heading { max-width: 800px; margin: .5rem 0 1rem; font-size: clamp(2rem, 4.8vw, 4rem); line-height: 1.05; letter-spacing: -.055em; }
 .journey-heading em { color: var(--rose); font-family: Georgia, serif; font-weight: 400; }
@@ -732,7 +716,6 @@ button { color: inherit; }
 .terminal-window form { display: flex; flex-wrap: wrap; gap: .4rem; }
 .terminal-window input { flex: 1; min-width: 90px; border: 0; border-bottom: 1px solid var(--sage); outline: none; background: transparent; color: var(--paper); }
 
-/* Journal and achievements */
 .portfolio-data-section { padding-block: clamp(3rem, 6vw, 5rem); }
 .journal-archive { display: grid; grid-template-columns: minmax(180px, .7fr) minmax(0, 1.3fr); gap: 1.5rem; }
 .journal-archive-head { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--line); }
@@ -780,7 +763,6 @@ button { color: inherit; }
 .achievement-issuer, .learning-period, .credential-unverified { color: var(--muted); font-size: .8rem; line-height: 1.6; }
 .learning-experience-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
-/* Contact form and full-width footer */
 .contact-section { position: relative; isolation: isolate; overflow: hidden; padding: clamp(3.5rem, 7vw, 6rem) 0; background: var(--soft); }
 .contact-inner { position: relative; z-index: 1; }
 .contact-orbit { position: absolute; z-index: -1; top: -130px; right: -90px; width: 360px; aspect-ratio: 1; border: 1px solid rgb(119 95 78 / 22%); border-radius: 50%; }
@@ -801,7 +783,6 @@ button { color: inherit; }
 .skip-link { position: fixed; z-index: 1000; top: .7rem; left: .7rem; padding: .8rem 1rem; transform: translateY(-160%); border-radius: 8px; background: var(--ink); color: var(--paper); }
 .skip-link:focus { transform: translateY(0); }
 
-/* Responsive layout */
 @media (max-width: 900px) {
   .page-wrap, .journey-section { width: min(100% - 2.5rem, 760px); }
   .hero { grid-template-columns: 1fr; min-height: 0; gap: 1rem; }
@@ -869,7 +850,6 @@ button { color: inherit; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
 
-/* Functional styles for the existing Vue components */
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .brand{display:inline-flex;align-items:center;gap:.65rem;color:var(--ink);text-decoration:none}
 .brand-mark{display:grid;place-items:center;width:42px;height:42px;border:1px solid var(--line);border-radius:50%;color:var(--rose);font:italic 1.7rem Georgia,serif}
@@ -902,8 +882,6 @@ button { color: inherit; }
 @media(max-width:700px){.hero-animation-stage{min-height:300px}.animated-coffee{width:82px;right:0}.animation-note-card{left:0;bottom:6%}.project-case-facts,.demo-account-list{grid-template-columns:1fr}.project-actions{align-items:stretch}.project-link{min-height:40px}}
 @media(prefers-reduced-motion:reduce){.laptop-float,.animated-coffee,.animation-halo-front,.typing-caret,.steam-wisp{animation:none}}
 
-
-/* Refined typography and subtle visual polish — preserves existing layout and palette */
 :root {
   --type-body: clamp(1.02rem, 0.96rem + 0.18vw, 1.12rem);
   --reading-leading: 1.82;
@@ -1032,8 +1010,6 @@ input:focus, textarea:focus, select:focus {
   }
 }
 
-
-/* Typography and refined details — preserve existing structure and palette */
 :root { --body-copy-size: 1.08rem; --body-copy-leading: 1.85; }
 html { scroll-behavior: smooth; scroll-padding-top: 6rem; }
 body { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
@@ -1087,8 +1063,6 @@ hr { border: 0; border-top: 1px solid var(--line); }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
 }
 
-
-/* Contact section: solid button-red background, without changing layout */
 .site-shell:not(.theme-dark) .contact-section {
   background: var(--rose);
   color: var(--paper);
@@ -1135,8 +1109,6 @@ hr { border: 0; border-top: 1px solid var(--line); }
   color: var(--paper);
 }
 
-
-/* Match the navbar background to the solid contact-section red */
 .site-shell:not(.theme-dark) .topbar {
   background: var(--rose);
   border-bottom-color: var(--rose);
@@ -1172,8 +1144,6 @@ hr { border: 0; border-top: 1px solid var(--line); }
   }
 }
 
-
-/* Polished button interactions and pill styling for tool/skill spans */
 .site-shell button,
 .site-shell .button-primary,
 .site-shell .project-link,
@@ -1320,8 +1290,6 @@ hr { border: 0; border-top: 1px solid var(--line); }
   }
 }
 
-
-/* Accessible, branded social links with inline SVG icons */
 .site-shell .social-links {
   display: flex;
   align-items: center;
@@ -1373,8 +1341,6 @@ hr { border: 0; border-top: 1px solid var(--line); }
   .site-shell .social-links .social-link { padding: .5rem .65rem; font-size: .72rem; }
 }
 
-
-/* Final styling corrections: avoid global button pseudo-elements affecting controls */
 .site-shell button::after {
   content: none;
 }
@@ -1475,8 +1441,6 @@ hr { border: 0; border-top: 1px solid var(--line); }
   }
 }
 
-
-/* Centre the contact section content while preserving its existing layout */
 .site-shell .contact-section {
   text-align: center;
 }
@@ -1524,8 +1488,6 @@ hr { border: 0; border-top: 1px solid var(--line); }
   }
 }
 
-
-/* Portfolio polish pass: clearer focus, responsive project cards and calmer motion */
 .site-shell section[id] {
   scroll-margin-top: 6.5rem;
 }
@@ -1636,8 +1598,6 @@ hr { border: 0; border-top: 1px solid var(--line); }
   }
 }
 
-
-/* Unified navigation and footer styling */
 .site-shell .topbar,
 .site-shell .announcement,
 .site-shell .site-footer {
@@ -1730,8 +1690,6 @@ hr { border: 0; border-top: 1px solid var(--line); }
   }
 }
 
-
-/* Consistent burgundy navigation and footer in both colour themes */
 .site-shell {
   --chrome-burgundy: #612a22;
   --chrome-text: #fff8ed;
@@ -1855,8 +1813,6 @@ hr { border: 0; border-top: 1px solid var(--line); }
   .site-shell .theme-toggle { margin-left: auto; }
 }
 
-
-/* Footer gets its own warm espresso tone, distinct from the burgundy navbar */
 .site-shell {
   --footer-background: #302620;
   --footer-foreground: #fff8ed;
@@ -1895,8 +1851,6 @@ hr { border: 0; border-top: 1px solid var(--line); }
   color: var(--footer-foreground) !important;
 }
 
-
-/* Dark-mode refinement: consistent surfaces, readable text and form controls */
 .site-shell.theme-dark {
   background: #211a16;
   color: #f5f1eb;
@@ -2014,8 +1968,6 @@ hr { border: 0; border-top: 1px solid var(--line); }
   }
 }
 
-
-/* Contact section cleanup and portfolio-wide dark theme polish */
 .site-shell .contact-section .contact-orbit {
   display: none !important;
 }
@@ -2177,8 +2129,6 @@ hr { border: 0; border-top: 1px solid var(--line); }
   }
 }
 
-
-/* Contact section uses the same burgundy surface as the navbar */
 .site-shell .contact-section {
   background: #612a22 !important;
   color: #fff8ed !important;
@@ -2228,8 +2178,6 @@ hr { border: 0; border-top: 1px solid var(--line); }
   color: #fff8ed !important;
 }
 
-
-/* Final portfolio-wide visual refinement */
 .site-shell {
   --content-width: 1180px;
   --section-space: clamp(4.25rem, 8vw, 7.5rem);
@@ -2465,8 +2413,6 @@ hr { border: 0; border-top: 1px solid var(--line); }
   }
 }
 
-
-/* Small red editorial labels and page-number markers */
 .site-shell .section-kicker,
 .site-shell .section-kicker span,
 .site-shell .project-meta,
@@ -2525,8 +2471,6 @@ hr { border: 0; border-top: 1px solid var(--line); }
   }
 }
 
-
-/* Hero introduction and location line */
 .site-shell .hero-eyebrow-dash {
   display: inline-block;
   margin-right: .3rem;
@@ -2554,8 +2498,6 @@ hr { border: 0; border-top: 1px solid var(--line); }
   color: #c7b8aa;
 }
 
-
-/* Final refinement: stronger hierarchy, accessible focus and responsive layouts */
 .site-shell {
   min-height: 100vh;
   overflow-x: clip;
@@ -2744,8 +2686,6 @@ hr { border: 0; border-top: 1px solid var(--line); }
   }
 }
 
-
-/* Project case-study and carousel finishing details */
 .site-shell .project-case-dialog {
   border: 1px solid var(--line, rgb(97 42 34 / 22%));
   border-radius: 18px;
@@ -2784,8 +2724,6 @@ hr { border: 0; border-top: 1px solid var(--line); }
   }
 }
 
-
-/* Clearer project contribution breakdown */
 .site-shell .contribution-groups {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2819,8 +2757,6 @@ hr { border: 0; border-top: 1px solid var(--line); }
   }
 }
 
-
-/* VISUAL POLISH PASS — editorial typography, clearer hierarchy and calmer surfaces */
 :root {
   --paper: #f5f0e8;
   --ink: #292321;
@@ -2937,8 +2873,6 @@ body {
   .project-card:hover, .studio-collection-card:hover, .studio-feature-card:hover, .studio-journal-card:hover { transform: none; }
 }
 
-
-/* Accessibility and interaction polish */
 .site-shell .contact-form-status {
   min-height: 1.5em;
   margin: .65rem 0 0;
@@ -2989,8 +2923,6 @@ body {
   }
 }
 
-
-/* Case-study gallery and in-dialog project navigation */
 .site-shell .case-study-visual {
   margin: 1.4rem 0 1.8rem;
   overflow: hidden;
@@ -3066,7 +2998,6 @@ body {
   }
 }
 
-/* Hero-to-about transition: a compact editorial focus band. */
 .site-shell .manifesto {
   position: relative;
   isolation: isolate;
@@ -3213,8 +3144,6 @@ body {
   .site-shell .manifesto-link-icon { transition: none; }
 }
 
-
-/* Hero name-first headline hierarchy */
 .site-shell .hero-copy > .eyebrow {
   margin-bottom: .85rem;
 }
@@ -3260,8 +3189,6 @@ body {
   }
 }
 
-
-/* Refined hero composition: clearer hierarchy, spacing and visual balance */
 .site-shell .hero {
   position: relative;
   isolation: isolate;
@@ -3465,8 +3392,6 @@ body {
   .site-shell .hero-actions .button-primary span { transition: none; }
 }
 
-
-/* Sections 05 and 06: remove stacked shadows and clarify card layers */
 .site-shell #blog .journal-archive,
 .site-shell #achievements .credential-group {
   box-shadow: none !important;
