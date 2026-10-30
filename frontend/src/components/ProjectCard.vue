@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 
-defineProps({
+const props = defineProps({
   project: { type: Object, required: true },
   selectedSkill: { type: String, default: '' },
   individualContributions: { type: Object, required: true },
@@ -28,7 +28,7 @@ function resetTilt(event) {
   event.currentTarget.style.setProperty('--project-ry', '0deg')
 }
 function contributionGroups(projectName) {
-  const contributions = individualContributions[projectName] || []
+  const contributions = props.individualContributions?.[projectName] || []
   const groups = [
     { title: 'INTERFACE & EXPERIENCE', terms: ['vue', 'frontend', 'navigation', 'styling', 'pages', 'components', 'dashboard'] },
     { title: 'BACKEND & DATA', terms: ['express', 'api', 'mysql', 'database', 'aiven', 'python', 'flask', 'beautifulsoup', 'parsing', 'data extraction'] },
@@ -165,7 +165,7 @@ function contributionGroups(projectName) {
                     <h4>DELIVERABLES &amp; RESPONSIBILITIES</h4>
                     <ul><li v-for="contribution in project.contributions" :key="contribution">{{ contribution }}</li></ul>
                   </div>
-                  <div v-if="individualContributions[project.name]?.length" class="project-case-dialog-contributions">
+                  <div v-if="props.individualContributions?.[project.name]?.length" class="project-case-dialog-contributions">
                     <h4>MY CONTRIBUTIONS</h4>
                     <div class="contribution-groups">
                       <section v-for="group in contributionGroups(project.name)" :key="group.title" class="contribution-group">
