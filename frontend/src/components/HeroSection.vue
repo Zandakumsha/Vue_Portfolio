@@ -10,6 +10,7 @@
       <div class="hero-actions">
         <a class="button-primary" href="#work">Explore my work <span>↗</span></a>
         <a class="text-link" href="https://github.com/Zandakumsha" target="_blank" rel="noopener noreferrer">Visit GitHub ↗</a>
+        <a class="text-link" href="#journey">Explore my journey ↓</a>
         <a class="text-link" href="#contact">Let's connect ↓</a>
       </div>
       <p class="little-note"><span>✳</span> VUE.JS&nbsp; · &nbsp;NODE.JS&nbsp; · &nbsp;PYTHON&nbsp; · &nbsp;MYSQL</p>
