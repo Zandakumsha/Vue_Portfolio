@@ -27,6 +27,22 @@ function resetTilt(event) {
   event.currentTarget.style.setProperty('--project-rx', '0deg')
   event.currentTarget.style.setProperty('--project-ry', '0deg')
 }
+function contributionGroups(projectName) {
+  const contributions = individualContributions[projectName] || []
+  const groups = [
+    { title: 'INTERFACE & EXPERIENCE', terms: ['vue', 'frontend', 'navigation', 'styling', 'pages', 'components', 'dashboard'] },
+    { title: 'BACKEND & DATA', terms: ['express', 'api', 'mysql', 'database', 'aiven', 'python', 'flask', 'beautifulsoup', 'parsing', 'data extraction'] },
+    { title: 'DELIVERY & COLLABORATION', terms: ['testing', 'debugging', 'git', 'collaboration', 'deployment'] },
+  ]
+  const categorized = groups.map((group) => ({
+    title: group.title,
+    items: contributions.filter((item) => group.terms.some((term) => item.toLowerCase().includes(term))),
+  })).filter((group) => group.items.length)
+  const assigned = new Set(categorized.flatMap((group) => group.items))
+  const remaining = contributions.filter((item) => !assigned.has(item))
+  if (remaining.length) categorized.push({ title: 'OTHER CONTRIBUTIONS', items: remaining })
+  return categorized
+}
 </script>
 
 <template>
@@ -149,9 +165,14 @@ function resetTilt(event) {
                     <h4>DELIVERABLES &amp; RESPONSIBILITIES</h4>
                     <ul><li v-for="contribution in project.contributions" :key="contribution">{{ contribution }}</li></ul>
                   </div>
-                  <div v-if="individualContributions[project.name]" class="project-case-dialog-contributions">
+                  <div v-if="individualContributions[project.name]?.length" class="project-case-dialog-contributions">
                     <h4>MY CONTRIBUTIONS</h4>
-                    <ul><li v-for="contribution in individualContributions[project.name]" :key="contribution">{{ contribution }}</li></ul>
+                    <div class="contribution-groups">
+                      <section v-for="group in contributionGroups(project.name)" :key="group.title" class="contribution-group">
+                        <h5>{{ group.title }}</h5>
+                        <ul><li v-for="contribution in group.items" :key="contribution">{{ contribution }}</li></ul>
+                      </section>
+                    </div>
                   </div>
                   <p v-else-if="project.contributionNote">{{ project.contributionNote }}</p>
                   <div class="project-case-dialog-actions">
