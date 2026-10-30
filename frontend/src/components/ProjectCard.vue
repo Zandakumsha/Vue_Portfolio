@@ -13,12 +13,12 @@ const emit = defineEmits(['navigate-project'])
 const caseStudyDialog = ref(null)
 let lastFocusedElement = null
 function openCaseStudy(event) {
-  lastFocusedElement = event?.currentTarget || document.activeElement
+  lastFocusedElement = event?.currentTarget || caseStudyDialog.value?.closest('.project-card')?.querySelector('.project-case-study-trigger') || document.activeElement
   caseStudyDialog.value?.showModal()
 }
-function closeCaseStudy() {
+function closeCaseStudy(restoreFocus = true) {
   caseStudyDialog.value?.close()
-  requestAnimationFrame(() => lastFocusedElement?.focus?.())
+  if (restoreFocus) requestAnimationFrame(() => lastFocusedElement?.focus?.())
 }
 function tiltCard(event) {
   if (event.pointerType === 'touch' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
