@@ -348,8 +348,6 @@ const projects = ref([
     label: 'View live demo',
   },
 ])
-
-// Keep verified personal contributions independent of API/database project records.
 const individualContributions = {
   WeConnect: [
     'Vue.js sidebar and navigation for the supplier side.',
