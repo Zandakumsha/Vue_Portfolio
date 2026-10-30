@@ -46,6 +46,7 @@ function resetTilt(event) {
                   v-else-if="project.name === 'WeConnect' && project.demoUrl"
                   class="project-live-demo"
                   :src="project.demoUrl"
+                  sandbox="allow-scripts allow-forms allow-same-origin"
                   :title="'Live preview of ' + project.name"
                   loading="lazy"
                   referrerpolicy="strict-origin-when-cross-origin"
@@ -78,7 +79,7 @@ function resetTilt(event) {
               <div class="tag-list"><span v-for="tag in project.tags" :key="tag">{{ tag }}</span></div>
 
               <div class="project-actions">
-                <button type="button" class="project-link project-case-study-trigger" @click="openCaseStudy">Case study <span aria-hidden="true">↗</span></button>
+                <button type="button" class="project-link project-case-study-trigger" aria-haspopup="dialog" @click="openCaseStudy">Case study <span aria-hidden="true">↗</span></button>
                 <a class="project-link" :href="project.repoUrl || project.url" target="_blank" rel="noopener noreferrer">View code <span aria-hidden="true">↗</span></a>
                 <a v-if="project.demoUrl" class="project-link project-demo-link" :href="project.demoUrl" target="_blank" rel="noopener noreferrer">Live demo <span aria-hidden="true">↗</span></a>
               </div>
