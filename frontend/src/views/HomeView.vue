@@ -1,12 +1,12 @@
 <script setup>
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
-import SiteHeader from './components/SiteHeader.vue'
-import HeroSection from './components/HeroSection.vue'
-import AboutSection from './components/AboutSection.vue'
-import ProjectCard from './components/ProjectCard.vue'
-import CursorGlow from './components/CursorGlow.vue'
-import ToolkitSlider from './components/ToolkitSlider.vue'
-import DigitalStudio from './components/DigitalStudio.vue'
+import SiteHeader from '../components/SiteHeader.vue'
+import HeroSection from '../components/HeroSection.vue'
+import AboutSection from '../components/AboutSection.vue'
+import ProjectCard from '../components/ProjectCard.vue'
+import CursorGlow from '../components/CursorGlow.vue'
+import ToolkitSlider from '../components/ToolkitSlider.vue'
+import DigitalStudio from '../components/DigitalStudio.vue'
 import './assets/portfolio.css'
 
 const activeProjectFilter = ref('All projects')
