@@ -107,6 +107,7 @@ const tools = [
 const activeIndex = ref(0)
 const isPaused = ref(false)
 const isHovered = ref(false)
+const isFocused = ref(false)
 const activeTool = computed(() => tools[activeIndex.value])
 const motionAllowed = ref(true)
 let timer
@@ -122,7 +123,7 @@ function previous() {
 }
 function startTimer() {
   stopTimer()
-  if (motionAllowed.value && !isPaused.value && !isHovered.value) {
+  if (motionAllowed.value && !isPaused.value && !isHovered.value && !isFocused.value && !document.hidden) {
     timer = window.setInterval(next, 5200)
   }
 }
@@ -132,6 +133,15 @@ function stopTimer() {
 }
 function togglePause() {
   isPaused.value = !isPaused.value
+  startTimer()
+}
+function handleFocusIn() {
+  isFocused.value = true
+  stopTimer()
+}
+function handleFocusOut(event) {
+  if (event.currentTarget.contains(event.relatedTarget)) return
+  isFocused.value = false
   startTimer()
 }
 function handleVisibility() {
@@ -157,8 +167,8 @@ onUnmounted(() => {
     aria-labelledby="toolkit-slider-title"
     @mouseenter="isHovered = true; stopTimer()"
     @mouseleave="isHovered = false; startTimer()"
-    @focusin="stopTimer()"
-    @focusout="startTimer()"
+    @focusin="handleFocusIn"
+    @focusout="handleFocusOut"
   >
     <div class="toolkit-shell">
       <div class="toolkit-heading">
