@@ -2227,3 +2227,240 @@ hr { border: 0; border-top: 1px solid var(--line); }
   background: #612a22 !important;
   color: #fff8ed !important;
 }
+
+
+/* Final portfolio-wide visual refinement */
+.site-shell {
+  --content-width: 1180px;
+  --section-space: clamp(4.25rem, 8vw, 7.5rem);
+  --card-radius: 18px;
+  --soft-shadow: 0 12px 34px rgb(48 38 32 / 7%);
+  --lift-shadow: 0 22px 48px rgb(48 38 32 / 13%);
+  font-family: var(--sans, Inter, ui-sans-serif, system-ui, sans-serif);
+  line-height: 1.65;
+  letter-spacing: .005em;
+}
+
+.site-shell main > section,
+.site-shell main > div > section {
+  scroll-margin-top: 6.5rem;
+}
+
+.site-shell .page-wrap,
+.site-shell .section-inner,
+.site-shell .section-container {
+  width: min(var(--content-width), calc(100% - clamp(2rem, 8vw, 7rem)));
+  margin-inline: auto;
+}
+
+.site-shell h1,
+.site-shell h2,
+.site-shell h3 {
+  letter-spacing: -.035em;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+.site-shell h2 {
+  margin-bottom: 1.1rem;
+}
+
+.site-shell p {
+  text-wrap: pretty;
+}
+
+.site-shell a,
+.site-shell button,
+.site-shell input,
+.site-shell textarea,
+.site-shell select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.site-shell a {
+  text-underline-offset: .22em;
+  text-decoration-thickness: 1px;
+}
+
+.site-shell :focus-visible {
+  outline: 3px solid #b98a78;
+  outline-offset: 3px;
+}
+
+.site-shell .project-card,
+.site-shell .explore-card,
+.site-shell .achievement-card,
+.site-shell .portfolio-timeline-card,
+.site-shell .journal-copy,
+.site-shell .journal-archive,
+.site-shell .credential-group {
+  border-radius: var(--card-radius);
+  box-shadow: var(--soft-shadow);
+  transition: transform .24s ease, box-shadow .24s ease, background-color .24s ease, border-color .24s ease;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .site-shell .project-card:hover,
+  .site-shell .explore-card:hover,
+  .site-shell .achievement-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--lift-shadow);
+  }
+}
+
+.site-shell .project-card,
+.site-shell .explore-card,
+.site-shell .achievement-card {
+  overflow: hidden;
+}
+
+.site-shell .project-link,
+.site-shell .button-primary,
+.site-shell .contact-button,
+.site-shell .nav-contact,
+.site-shell .theme-toggle,
+.site-shell .menu-toggle {
+  min-height: 42px;
+  border-radius: 999px;
+  font-weight: 700;
+  letter-spacing: .015em;
+  transition: transform .2s ease, background-color .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.site-shell .project-link:hover,
+.site-shell .button-primary:hover,
+.site-shell .contact-button:hover,
+.site-shell .nav-contact:hover,
+.site-shell .theme-toggle:hover {
+  transform: translateY(-2px);
+}
+
+.site-shell input,
+.site-shell textarea,
+.site-shell select {
+  width: 100%;
+  min-height: 46px;
+  border-radius: 10px;
+  padding: .75rem .9rem;
+  font: inherit;
+  transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
+}
+
+.site-shell textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.site-shell input:focus,
+.site-shell textarea:focus,
+.site-shell select:focus {
+  outline: none;
+  border-color: #b98a78;
+  box-shadow: 0 0 0 3px rgb(185 138 120 / 20%);
+}
+
+.site-shell .tag-list span {
+  border-radius: 999px;
+  padding: .38rem .72rem;
+  font-weight: 650;
+}
+
+.site-shell .section-kicker,
+.site-shell .project-meta,
+.site-shell .contact-overline {
+  letter-spacing: .13em;
+  font-weight: 800;
+}
+
+.site-shell .topbar {
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.site-shell .site-footer {
+  line-height: 1.7;
+}
+
+.site-shell.theme-dark {
+  --soft-shadow: 0 12px 34px rgb(0 0 0 / 18%);
+  --lift-shadow: 0 22px 48px rgb(0 0 0 / 28%);
+}
+
+.site-shell.theme-dark .project-card,
+.site-shell.theme-dark .explore-card,
+.site-shell.theme-dark .achievement-card,
+.site-shell.theme-dark .portfolio-timeline-card,
+.site-shell.theme-dark .journal-copy,
+.site-shell.theme-dark .journal-archive,
+.site-shell.theme-dark .credential-group {
+  box-shadow: var(--soft-shadow);
+}
+
+.site-shell.theme-dark .project-card:hover,
+.site-shell.theme-dark .explore-card:hover,
+.site-shell.theme-dark .achievement-card:hover {
+  box-shadow: var(--lift-shadow);
+}
+
+.site-shell.theme-dark input,
+.site-shell.theme-dark textarea,
+.site-shell.theme-dark select {
+  background: #302620;
+  border-color: #665044;
+  color: #fff8ed;
+}
+
+.site-shell.theme-dark .tag-list span {
+  background: #382d26;
+  border-color: #665044;
+  color: #e8d9cc;
+}
+
+@media (max-width: 900px) {
+  .site-shell {
+    --section-space: clamp(3.75rem, 7vw, 5.5rem);
+  }
+  .site-shell .page-wrap,
+  .site-shell .section-inner,
+  .site-shell .section-container {
+    width: min(100% - 2.5rem, var(--content-width));
+  }
+}
+
+@media (max-width: 600px) {
+  .site-shell {
+    font-size: 15px;
+  }
+  .site-shell .page-wrap,
+  .site-shell .section-inner,
+  .site-shell .section-container {
+    width: calc(100% - 2rem);
+  }
+  .site-shell .project-card,
+  .site-shell .explore-card,
+  .site-shell .achievement-card,
+  .site-shell .portfolio-timeline-card,
+  .site-shell .journal-copy,
+  .site-shell .journal-archive {
+    border-radius: 14px;
+  }
+  .site-shell .project-actions {
+    gap: .55rem;
+  }
+  .site-shell .project-link,
+  .site-shell .button-primary,
+  .site-shell .contact-button {
+    min-height: 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-shell *,
+  .site-shell *::before,
+  .site-shell *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
